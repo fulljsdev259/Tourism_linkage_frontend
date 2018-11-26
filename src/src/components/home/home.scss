@@ -1,0 +1,98 @@
+.App{
+min-height:100vh;
+    .menu{
+    height:6vh;
+    margin-left:50px;
+    margin-right:50px;
+    padding:10px 0px;
+    display:flex;
+    .logoDiv{
+        flex:.9;
+        .logo{
+        
+            width:95px;
+            padding:10px 20px;
+        }
+    }
+    .itemDiv{
+        flex:3;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        .item{
+            display:flex;
+            .normal{
+            margin:0px 10px;
+            font-size:10px;
+            padding:7px
+
+            }
+            .getStarted{
+            margin:0px 10px;
+            font-size:10px;
+            border-radius:3px;
+            color:#fff;
+            font-weight: 700;
+                padding:7px 15px;
+                background-color: blue;
+
+            }
+
+        }
+    }
+    .registerDiv{
+        flex:1;
+        display:flex;
+        justify-content:flex-end;
+        font-size:10px;
+        margin:20px;
+    }
+
+}
+.home{
+    display: flex;
+    margin-left:50px;
+    margin-right:50px;
+    
+    .divBanner{
+        flex:1;
+      
+        .img{
+            max-width:100%;
+          }
+    }
+    .divMiddle{
+        flex:1;
+        padding:10px;
+        background-color:#FBFCFF;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        h3{
+            color: #5165FF;
+        }
+
+    }
+    .divMap{
+        flex:1.5;
+       
+    }
+
+}
+
+
+
+
+
+}
+
+
+.Overlay{
+     position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+  
+}
