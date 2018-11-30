@@ -1,0 +1,52 @@
+.about{
+    margin:30px 75px;
+    .header{
+        display:flex;
+        justify-content: space-between;
+        div{
+            span{
+            font-family: Helvetica;
+            font-size: 18px;
+            
+            }
+            hr{
+                background-color: blue;
+                margin-top:2px;
+                height:2px;
+            }
+        }
+        img{
+            width:20px;
+            height:20px;
+        }
+    }
+    .content{
+        margin-top:35px;
+        .heading{
+            font-family: "Open Sans"; 
+            font-weight: bolder;
+            margin:15px 0px;
+            font-size: 30px;
+            color:#5165FF;
+        }
+        p{
+           
+            color:#929292;
+            font-size: 16;
+        }
+        .subHeading{
+            font-size:18;
+            font-weight: 'semi-bold';
+            margin-left:60px
+        }
+        ul{
+            font-size:16px;
+            color:#929292;
+            margin-left:20px;
+            font-weight: 'semi-bold';
+            li{
+                padding:10px 0px;
+            }
+        }
+    }
+}

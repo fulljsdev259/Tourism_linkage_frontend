@@ -1,0 +1,36 @@
+
+.register{
+      
+    margin:30px 75px;
+    .header{
+        display:flex;
+        justify-content: space-between;
+        div{
+            span{
+             color:  #F8F9FF;
+            font-family: Helvetica;
+            font-size: 18px;
+            
+            }
+            hr{
+                background-color:#A4AFD0;
+                margin-top:2px;
+                height:2px;
+            }
+        }
+        img{
+            width:20px;
+            height:20px;
+        }
+    }
+    .content{
+        margin-top:35px;
+        .heading{
+            font-family: "Open Sans"; 
+            font-weight: bolder;
+            margin:15px 0px;
+            font-size: 30px;
+            color:#fff;
+        }
+    }
+}

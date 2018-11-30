@@ -1,0 +1,52 @@
+.news{
+    margin:30px 75px;
+    .header{
+        display:flex;
+        justify-content: space-between;
+        div{
+            span{
+            font-family: Helvetica;
+            font-size: 18px;
+            
+            }
+            hr{
+                background-color: blue;
+                margin-top:2px;
+                height:2px;
+            }
+        }
+        img{
+            width:20px;
+            height:20px;
+        }
+    }
+    .content{
+        margin-top:35px;
+        .heading{
+            font-size:30px;
+            font-weight:bold;
+            color:black;
+        }
+        .date{
+            color:#929292;
+            font-size:12px;
+            margin:20px 0px;
+        }
+        hr{
+            background-color:#EBEBEB;
+            margin:20px 0px;
+        }
+        p{
+            font-size:15px;
+            color:#929292;
+            .link{
+                color:#5165FF;
+                font-weight:bold;
+            }
+        }
+        img{
+            max-width:70%;
+            max-height:70%
+        }
+    }
+}

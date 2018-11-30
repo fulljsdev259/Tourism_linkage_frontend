@@ -1,0 +1,23 @@
+.about{
+    margin:50px 75px;
+    .header{
+        display:flex;
+        justify-content: space-between;
+        div{
+            span{
+            font-family: Helvetica;
+            font-size: 18px;
+            
+            }
+            hr{
+                background-color: blue;
+                margin-top:2px;
+                height:2px;
+            }
+        }
+        img{
+            width:20px;
+            height:20px;
+        }
+    }
+}
