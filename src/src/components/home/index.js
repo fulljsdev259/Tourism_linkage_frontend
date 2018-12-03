@@ -2,7 +2,17 @@ import React from 'react';
 import './home.scss'
 import Pic from '../../images/picture.png'
 import Logo from '../../images/logo.png'
+import Printing from '../../images/icon/printing.svg'
+import Printing2 from '../../images/icon/printing2.svg'
+import Metal from '../../images/icon/metal.svg'
+import Electricity from '../../images/icon/electicity.svg'
+import furniture from '../../images/icon/furniture.svg'
+import furniture2 from '../../images/icon/furniture2.svg'
+import Textile from '../../images/icon/textile.svg'
+
+
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
+
 
 import Modal from 'react-modal';
 import About from '../about';
@@ -20,7 +30,7 @@ const customStyles = {
         bottom: '0%',
         borderTopLeftRadius: 30,
 
-
+        border: 'none',
         marginLeft: '35%',
         transform: 'translate(0%, 0%)'
     }
@@ -32,6 +42,7 @@ const customStylesRegister = {
         left: '0%',
         right: '0%',
         bottom: '0%',
+        border: 'none',
         borderTopLeftRadius: 30,
         backgroundColor: '#5165FF',
 
@@ -133,8 +144,46 @@ export default class Home extends React.Component {
                 <div className="divBanner"><img className="img" src={ Pic } /></div>
                 <div className="divMiddle">
                     <h3>Discover local manufactures</h3>
+                    <select>
+                        <option value="Western Jamica">Western Jamica</option>
+                        <option value="Western Jamica">Western Jamica</option>
+                    </select>
+                    <div className="contentItems">
+                        <div className="icon"><img src={ Printing } /></div>
+                        <div className="content">Food & Agro</div>
+                        <div className="value">21</div>
+                    </div>
+                    <div className="contentItems">
+                        <div className="icon"><img src={ Printing2 } /></div>
+                        <div className="content">Printing & Packaging</div>
+                        <div className="value">117</div>
+                    </div>
+                    <div className="contentItems">
+                        <div className="icon"><img src={ Metal } /></div>
+                        <div className="content">Minerals & Metals</div>
+                        <div className="value">202</div>
+                    </div>
+                    <div className="contentItems">
+                        <div className="icon"><img src={ Electricity } /></div>
+                        <div className="content">Electrical,Electronics & <br />automative</div>
+                        <div className="value">202</div>
+                    </div>
+                    <div className="contentItems">
+                        <div className="icon"><img src={ furniture } /></div>
+                        <div className="content">Chemical, Cosmetics & <br />Pharmaceuticals</div>
+                        <div className="value">256</div>
+                    </div>
+                    <div className="contentItems">
+                        <div className="icon"><img src={ furniture2 } /></div>
+                        <div className="content">Furniture, Wooden & <br />Bedding</div>
+                        <div className="value">202</div>
+                    </div>
+                    <div className="contentItems">
+                        <div className="icon"><img src={ Textile } /></div>
+                        <div className="content">Textile & Sewn</div>
+                        <div className="value">202</div>
+                    </div>
 
-                    <button onClick={ this.openModal }>Open Modal</button>
                     <Modal
                         isOpen={ this.state.modalIsOpen }
                         onAfterOpen={ this.afterOpenModal }
@@ -157,6 +206,8 @@ export default class Home extends React.Component {
                     </Modal>
 
 
+
+
                 </div>
                 <div className="divMap">
                     <Map
@@ -174,6 +225,6 @@ export default class Home extends React.Component {
                     </Map>
                 </div>
             </div>
-        </div>
+        </div >
     }
 }

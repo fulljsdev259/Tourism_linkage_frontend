@@ -71,6 +71,66 @@ min-height:100vh;
         h3{
             color: #5165FF;
         }
+        select{
+         margin:20px 0px;
+            padding: 8px 11px;
+            border:none;
+             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+             background-color: #FFFFFF;
+             min-width: 310px;
+            height:40px;
+            option{
+                padding:10px;
+                  min-width: 250px;
+                height:30px;
+            }
+        }
+        .contentItems{
+            width: 310px;
+            min-height:60px;
+            border-radius: 4px;
+            background-color:#FFFFFF;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            margin-top:15px;
+            transition: width 1s;
+            display:flex;
+            &:hover{
+                width: 350px;
+                min-height:60px;
+                font-weight: bold;
+                font-size:18px;
+            }
+            .icon{
+                flex:.5;
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                padding:10px;
+                img{
+                 max-width:25px;
+                max-height:25px;
+                }
+            }
+            .content{
+                flex:5;
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                padding:10px;
+                color:#929292;
+                font-size:12px;
+            }
+            .value{
+                flex:.5;
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                padding:10px;
+                 font-size:12px;
+                   color:#929292;
+            }
+
+        }
 
     }
     .divMap{
