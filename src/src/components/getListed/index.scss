@@ -1,6 +1,7 @@
 .getListed{
-    margin:50px 75px;
+   
     .header{
+    margin:20px 50px;
         display:flex;
         justify-content: space-between;
         div{
@@ -19,5 +20,127 @@
             width:20px;
             height:20px;
         }
+    }
+    .content{
+        margin-top:35px;
+        .heading{
+            font-family: "Open Sans"; 
+            font-weight: bolder;
+            margin:15px 50px;
+            font-size: 30px;
+            color:#5165FF;
+        }
+        p{
+                 margin:15px 50px;
+            color:#929292;
+            font-size: 16;
+        }
+        .formDiv1{
+            width:80%;
+            margin:15px -20px;
+            background-color: #F8F9FF;
+            .header{
+                margin:15px 65px;
+                display: flex;
+                font-size: 16px;
+                .number{
+                  text-align: center;
+                  vertical-align: middle;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                    margin:5px;
+                     height: 30px;
+                    width: 30px;
+                    background-color:#5165FF;
+                    color: #fff;
+                    border-radius: 50%;
+
+                }
+                .subHeading{
+                    flex:3;
+                    margin:5px 5px 5px 20px;
+                    display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                }
+            }
+            .content{
+                margin:15px 65px;
+                min-height:150px;
+            }
+            
+        }
+        .formDiv2{
+             width:80%;
+            margin:15px -20px;
+            background-color:#F8F9FF;
+            .header{
+                margin:15px 65px;
+                display: flex;
+                font-size: 16px;
+                .number{
+                  text-align: center;
+                  vertical-align: middle;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                    margin:5px;
+                     height: 30px;
+                    width: 30px;
+                    background-color:#5165FF;
+                    color: #fff;
+                    border-radius: 50%;
+
+                }
+                .subHeading{
+                    flex:3;
+                    margin:5px 5px 5px 20px;
+                    display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                }
+            }
+            .content{
+                margin:15px 65px;
+                min-height:150px;
+            }
+
+        }
+        .formDiv3{
+            width:80%;
+            margin:15px -20px;
+            background-color:#F8F9FF;
+            .header{
+                margin:15px 65px;
+                display: flex;
+                font-size: 16px;
+                .number{
+                  text-align: center;
+                  vertical-align: middle;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                    margin:5px;
+                     height: 30px;
+                    width: 30px;
+                    background-color:#5165FF;
+                    color: #fff;
+                    border-radius: 50%;
+
+                }
+                .subHeading{
+                    flex:3;
+                    margin:5px 5px 5px 20px;
+                    display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                }
+            }
+            .content{
+                margin:15px 65px;
+                
+            }
+            }
     }
 }

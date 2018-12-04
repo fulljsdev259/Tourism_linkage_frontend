@@ -1,11 +1,39 @@
 .App{
 min-height:100vh;
+      .menuMobile{
+          display: none;
+        @media (max-width:950px){
+          
+        display:flex;
+        justify-content: space-between;
+              min-height:60px;
+            .logoDiv{
+                
+                .logo{
+                    width:125px;
+                    padding:20px 20px;
+                }
+            }
+            .itemDiv{
+               
+                display:flex;
+               
+                  .logo{
+                    width:125px;
+                    padding:20px 20px;
+                }
+            }
+        }
+    }
     .menu{
-    height:6vh;
+    height:10vh;
     margin-left:50px;
     margin-right:50px;
     padding:10px 0px;
     display:flex;
+    @media screen and(max-width:951px){
+     display: none
+    }
     .logoDiv{
         flex:.9;
         .logo{
@@ -53,21 +81,35 @@ min-height:100vh;
     display: flex;
     margin-left:50px;
     margin-right:50px;
-    
+      @media screen and(max-width:750px){
+     flex-direction: column ;
+     margin-left:0px;
+    margin-right:0px;  
+    }
     .divBanner{
-        flex:1;
       
         .img{
-            max-width:100%;
+            min-width: 25vw;
+             min-height: 80vh;
+                   @media screen and(max-width:750px){
+                      min-width:100vw; 
+                   }
+                   @media screen and(min-width:751px){
+             min-width:26vw
+         }
           }
     }
     .divMiddle{
-        flex:1;
+         min-width: 30vw;
         padding:10px;
         background-color:#FBFCFF;
         display:flex;
         flex-direction: column;
         align-items: center;
+       
+          @media screen and(min-width:751px) and (max-width:1251px){
+             min-width:60vw
+         }
         h3{
             color: #5165FF;
         }
@@ -77,16 +119,28 @@ min-height:100vh;
             border:none;
              box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
              background-color: #FFFFFF;
-             min-width: 310px;
+             min-width: 20vw;
             height:40px;
+             @media screen and(max-width:551px){
+                     width: 80vw;
+                    }
+                    @media screen and(max-width:1251px){
+             min-width:30vw
+         }
             option{
                 padding:10px;
-                  min-width: 250px;
+                  min-width: 22vw;
                 height:30px;
+                 @media screen and(max-width:551px){
+                     width: 40vw;
+                    }
+                      @media screen and(max-width:1251px){
+             min-width:30vw
+         }
             }
         }
         .contentItems{
-            width: 310px;
+           width:20vw;
             min-height:60px;
             border-radius: 4px;
             background-color:#FFFFFF;
@@ -94,11 +148,23 @@ min-height:100vh;
             margin-top:15px;
             transition: width 1s;
             display:flex;
+             @media screen and(max-width:551px){
+                     width: 80vw;
+                    }
+                      @media screen and(max-width:1251px){
+             min-width:30vw
+         }
             &:hover{
-                width: 350px;
+                width: 22vw;
                 min-height:60px;
                 font-weight: bold;
                 font-size:18px;
+                 @media screen and(max-width:551px){
+                     width: 90vw;
+                    }
+                      @media screen and(max-width:1251px){
+             min-width:30vw
+         }
             }
             .icon{
                 flex:.5;
@@ -134,7 +200,10 @@ min-height:100vh;
 
     }
     .divMap{
-        flex:1.5;
+         min-width: 35vw;
+         @media screen and(max-width:1251px){
+                     display: none
+                    }
        
     }
 

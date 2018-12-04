@@ -1,18 +1,11 @@
-
-<svg width="48px" height="52px" viewBox="0 0 48 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/furniture</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Final-concept" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="main-paig_1" transform="translate(-676.000000, -752.000000)" fill-rule="nonzero">
-            <g id="categories" transform="translate(653.000000, 125.000000)">
-                <g id="#5" transform="translate(0.000000, 604.000000)">
-                    <g id="icon/furniture" transform="translate(16.000000, 23.000000)">
-                        <rect id="Rectangle" fill="#FFFFFF" opacity="0" x="0" y="0" width="60" height="60"></rect>
-                        <path d="M29.7066822,1.36909361 C23.3763868,3.47427057 -4.73912926,14.0342141 13.6459213,31.9525875 C19.6838449,37.8372474 17.3980199,52.7445536 29.7066822,51.6688464 C46.4781382,48.8802158 34.4733187,34.6024814 39.477885,24.3196744 C42.243447,18.6373159 63.7389457,13.2240412 50.8355887,3.67099186 C44.8829276,-0.736083354 36.0369777,-0.736083354 29.7066822,1.36909361 Z" id="Path-8" fill="#FF7192"></path>
-                    </g>
-                </g>
-            </g>
-        </g>
+    <g id="icon/furniture" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" opacity="0" x="0" y="0" width="24" height="24"></rect>
+        <path d="M7.36728651,9.07834105 C14.2112112,9.63660222 9.1884341,5.92558796 13.1794902,2.3908667 C16.4635398,-0.517686764 19.2903248,1.85709067 20.1661657,3.01955178 C24.3152029,8.52636716 22.2964477,10.6955776 16.4871086,13.9832973 C13.4298315,15.7135234 14.9655468,21.0296538 7.81606845,20.330778 C1.66966548,19.6995278 -5.95127265,5.98668421 7.36728651,9.07834105 Z" id="Path-9" fill="#D876FE" fill-rule="nonzero"></path>
     </g>
 </svg>

@@ -1,0 +1,130 @@
+.form{
+    background-color:#F8F9FF;
+    padding:10px;
+    margin-left:-20px;
+    margin-right:50px;
+         .header{
+                margin:15px 65px;
+                display: flex;
+                font-size: 16px;
+                .number{
+                  text-align: center;
+                  vertical-align: middle;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                    margin:5px;
+                     height: 30px;
+                    width: 30px;
+                    background-color:#5165FF;
+                    color: #fff;
+                    border-radius: 50%;
+
+                }
+                .subHeading{
+                    flex:3;
+                    margin:5px 5px 5px 20px;
+                    display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                }
+            }
+                        form{
+                 margin:15px 9vw;
+            }
+
+}
+
+
+ .inActiveHeader{
+                 background-color: #fff;
+                margin:15px 65px;
+                display: flex;
+                font-size: 16px;
+                .number{
+                  text-align: center;
+                  vertical-align: middle;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                    margin:5px;
+                     height: 30px;
+                    width: 30px;
+                    background-color:#5165FF;
+                    color: #fff;
+                    border-radius: 50%;
+
+                }
+                .subHeading{
+                    flex:3;
+                    margin:5px 5px 5px 20px;
+                    display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                }
+            }
+
+
+
+
+.renderField{
+    label{
+        font-size: 9px;
+        color:#B0B0B0;
+         margin-top:5px;
+        font-weight:bold;
+    }
+    .input{
+      outline:none;
+      border:none;
+        border-radius:5px; 
+        min-width:25vw;
+        margin-top:5px;
+        min-height:25px;
+        padding:10px;
+        font-size:12px;
+    }
+    span{
+        margin-left:15px;
+        color:red;
+        font-size:12px
+    }
+    
+}
+
+
+.renderSelect{
+    display: flex;
+    flex-direction: column;
+   label{
+        font-size: 9px;
+        color:#B0B0B0;
+         margin-top:5px;
+        font-weight:bold;
+    }
+    select{
+      outline:none;
+      border:none;
+        border-radius:5px; 
+        min-width:25vw;
+        margin-top:5px;
+        height:20px;
+        padding:10px;
+        font-size:12px;
+    }
+    span{
+        margin-left:15px;
+        color:red;
+        font-size:12px
+    }
+}
+
+.next{
+        margin-top:10px;
+        padding:5px 25px;
+        border:none;
+        border-radius: .2em;
+        color:#fff;
+        font-size:14px;
+        background-color: #5165FF;
+    }

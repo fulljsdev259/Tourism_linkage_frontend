@@ -2,6 +2,7 @@ import React from 'react';
 import './home.scss'
 import Pic from '../../images/picture.png'
 import Logo from '../../images/logo.png'
+import Menu from '../../images/icon/menu.svg'
 import Printing from '../../images/icon/printing.svg'
 import Printing2 from '../../images/icon/printing2.svg'
 import Metal from '../../images/icon/metal.svg'
@@ -90,6 +91,14 @@ export default class Home extends React.Component {
     }
     render() {
         return <div className="App">
+            <div className="menuMobile">
+                <div className="logoDiv">
+                    <img className="logo" src={ Logo } />
+                </div>
+                <div className="itemDiv">
+                    <img className="logo" src={ Menu } />
+                </div>
+            </div>
             <div className="menu">
                 <div className="logoDiv">
                     <img className="logo" src={ Logo } />
