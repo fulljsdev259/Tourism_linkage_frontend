@@ -1,7 +1,7 @@
 import React from 'react';
 import './home.scss'
 import Pic from '../../images/picture.png'
-import Logo from '../../images/logo.png'
+import Logo from '../../images/Tourism_Linkages_Network_Logo.gif'
 import Menu from '../../images/icon/menu.svg'
 import Printing from '../../images/icon/printing.svg'
 import Printing2 from '../../images/icon/printing2.svg'
@@ -53,14 +53,14 @@ const customStylesRegister = {
 };
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement( '#root' )
+Modal.setAppElement('#root')
 
 
 
 
-const Map = ReactMapboxGl( {
+const Map = ReactMapboxGl({
     accessToken: "pk.eyJ1Ijoia2VjaGVhbGV4cHJ0MiIsImEiOiJjam94azh4OHcyODByM3FqeHd1Nm43NWl6In0.0w8_b3fwLMXf8a1zSGgC2w"
-} );
+});
 
 export default class Home extends React.Component {
     constructor() {
@@ -72,13 +72,13 @@ export default class Home extends React.Component {
             news: false, register: false, mobileMenu: false
         };
 
-        this.openModal = this.openModal.bind( this );
-        this.afterOpenModal = this.afterOpenModal.bind( this );
-        this.closeModal = this.closeModal.bind( this );
+        this.openModal = this.openModal.bind(this);
+        this.afterOpenModal = this.afterOpenModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     openModal() {
-        this.setState( { modalIsOpen: true } );
+        this.setState({ modalIsOpen: true });
     }
 
     afterOpenModal() {
@@ -87,23 +87,23 @@ export default class Home extends React.Component {
     }
 
     closeModal() {
-        this.setState( { modalIsOpen: false } );
+        this.setState({ modalIsOpen: false });
     }
     render() {
         return <div className="App">
             <div className="menuMobile">
                 <div className="logoDiv">
-                    <img className="logo" src={ Logo } />
+                    <img className="logo" src={Logo} />
                 </div>
                 <div className="itemDiv">
-                    <img onClick={ () => this.setState( { mobileMenu: !this.state.mobileMenu } ) } className="logo" src={ Menu } />
+                    <img onClick={() => this.setState({ mobileMenu: !this.state.mobileMenu })} className="logo" src={Menu} />
                 </div>
             </div>
             {
-                <div className={ this.state.mobileMenu ? "menuItemMobile" : "menuItemMobileNone" }>
+                <div className={this.state.mobileMenu ? "menuItemMobile" : "menuItemMobileNone"}>
                     <div className="headerMobileMenu">
                         <div></div>
-                        <img onClick={ () => this.setState( { mobileMenu: !this.state.mobileMenu } ) } src={ Close } />
+                        <img onClick={() => this.setState({ mobileMenu: !this.state.mobileMenu })} src={Close} />
                     </div>
                     <div className="contentMobileMenu">
                         <div className="item">About</div>
@@ -118,56 +118,56 @@ export default class Home extends React.Component {
             }
             <div className="menu">
                 <div className="logoDiv">
-                    <img className="logo" src={ Logo } />
+                    <img className="logo" src={Logo} />
                 </div>
                 <div className="itemDiv">
                     <div className="item">
-                        <div className="normal" onClick={ () => {
-                            this.setState( {
+                        <div className="normal" onClick={() => {
+                            this.setState({
                                 about: true, contact: false, event: false, getListed: false,
                                 news: false, register: false, modalIsOpen: true
-                            } )
-                        } }>ABOUT</div>
-                        <div className="normal" onClick={ () => {
-                            this.setState( {
+                            })
+                        }}>ABOUT</div>
+                        <div className="normal" onClick={() => {
+                            this.setState({
                                 about: false, contact: false, event: false, getListed: false,
                                 news: true, register: false, modalIsOpen: true
-                            } )
-                        } }>NEWS</div>
-                        <div className="normal" onClick={ () => {
-                            this.setState( {
+                            })
+                        }}>NEWS</div>
+                        <div className="normal" onClick={() => {
+                            this.setState({
                                 about: false, contact: false, event: true, getListed: false,
                                 news: false, register: false, modalIsOpen: true
-                            } )
-                        } }>EVENT</div>
-                        <div className="normal" onClick={ () => {
-                            this.setState( {
+                            })
+                        }}>EVENT</div>
+                        <div className="normal" onClick={() => {
+                            this.setState({
                                 about: false, contact: true, event: false, getListed: false,
                                 news: false, register: false, modalIsOpen: true
-                            } )
-                        } }>CONTACT US</div>
-                        <div className="getStarted" onClick={ () => {
-                            this.setState( {
+                            })
+                        }}>CONTACT US</div>
+                        <div className="getStarted" onClick={() => {
+                            this.setState({
                                 about: false, contact: false, event: false, getListed: true,
                                 news: false, register: false, modalIsOpen: true
-                            } )
-                        } }>GET COMPANY LISTED</div>
+                            })
+                        }}>GET COMPANY LISTED</div>
 
                     </div>
                 </div>
                 <div className="registerDiv"
-                    onClick={ () => {
-                        this.setState( {
+                    onClick={() => {
+                        this.setState({
                             about: false, contact: false, event: false, getListed: false,
                             news: false, register: true, modalIsOpen: true
-                        } );
+                        });
 
 
-                    } }
+                    }}
                 >REGISTER/LOGIN</div>
             </div>
             <div className="home">
-                <div className="divBanner"><img className="img" src={ Pic } /></div>
+                <div className="divBanner"><img className="img" src={Pic} /></div>
                 <div className="divMiddle">
                     <h3>Discover local manufactures</h3>
                     <select>
@@ -175,46 +175,46 @@ export default class Home extends React.Component {
                         <option value="Western Jamica">Western Jamica</option>
                     </select>
                     <div className="contentItems">
-                        <div className="icon"><img src={ Printing } /></div>
+                        <div className="icon"><img src={Printing} /></div>
                         <div className="content">Food & Agro</div>
                         <div className="value">21</div>
                     </div>
                     <div className="contentItems">
-                        <div className="icon"><img src={ Printing2 } /></div>
+                        <div className="icon"><img src={Printing2} /></div>
                         <div className="content">Printing & Packaging</div>
                         <div className="value">117</div>
                     </div>
                     <div className="contentItems">
-                        <div className="icon"><img src={ Metal } /></div>
+                        <div className="icon"><img src={Metal} /></div>
                         <div className="content">Minerals & Metals</div>
                         <div className="value">202</div>
                     </div>
                     <div className="contentItems">
-                        <div className="icon"><img src={ Electricity } /></div>
+                        <div className="icon"><img src={Electricity} /></div>
                         <div className="content">Electrical,Electronics & <br />automative</div>
                         <div className="value">202</div>
                     </div>
                     <div className="contentItems">
-                        <div className="icon"><img src={ furniture } /></div>
+                        <div className="icon"><img src={furniture} /></div>
                         <div className="content">Chemical, Cosmetics & <br />Pharmaceuticals</div>
                         <div className="value">256</div>
                     </div>
                     <div className="contentItems">
-                        <div className="icon"><img src={ furniture2 } /></div>
+                        <div className="icon"><img src={furniture2} /></div>
                         <div className="content">Furniture, Wooden & <br />Bedding</div>
                         <div className="value">202</div>
                     </div>
                     <div className="contentItems">
-                        <div className="icon"><img src={ Textile } /></div>
+                        <div className="icon"><img src={Textile} /></div>
                         <div className="content">Textile & Sewn</div>
                         <div className="value">202</div>
                     </div>
 
                     <Modal
-                        isOpen={ this.state.modalIsOpen }
-                        onAfterOpen={ this.afterOpenModal }
-                        onRequestClose={ this.closeModal }
-                        style={ this.state.register ? customStylesRegister : customStyles }
+                        isOpen={this.state.modalIsOpen}
+                        onAfterOpen={this.afterOpenModal}
+                        onRequestClose={this.closeModal}
+                        style={this.state.register ? customStylesRegister : customStyles}
                         contentLabel="Example Modal"
                         overlayClassName="Overlay"
 
@@ -222,12 +222,12 @@ export default class Home extends React.Component {
 
 
 
-                        { this.state.about ? <About closeModal={ () => this.closeModal() } /> : '' }
-                        { this.state.contact ? <Contact closeModal={ () => this.closeModal() } /> : '' }
-                        { this.state.event ? <Event closeModal={ () => this.closeModal() } /> : '' }
-                        { this.state.getListed ? <GetListed closeModal={ () => this.closeModal() } /> : '' }
-                        { this.state.news ? <News closeModal={ () => this.closeModal() } /> : '' }
-                        { this.state.register ? <Register closeModal={ () => this.closeModal() } /> : '' }
+                        {this.state.about ? <About closeModal={() => this.closeModal()} /> : ''}
+                        {this.state.contact ? <Contact closeModal={() => this.closeModal()} /> : ''}
+                        {this.state.event ? <Event closeModal={() => this.closeModal()} /> : ''}
+                        {this.state.getListed ? <GetListed closeModal={() => this.closeModal()} /> : ''}
+                        {this.state.news ? <News closeModal={() => this.closeModal()} /> : ''}
+                        {this.state.register ? <Register closeModal={() => this.closeModal()} /> : ''}
 
                     </Modal>
 
@@ -238,15 +238,15 @@ export default class Home extends React.Component {
                 <div className="divMap">
                     <Map
                         style="mapbox://styles/mapbox/streets-v8"
-                        containerStyle={ {
+                        containerStyle={{
                             height: "100vh",
                             width: "100%"
-                        } }>
+                        }}>
                         <Layer
                             type="symbol"
                             id="marker"
-                            layout={ { "icon-image": "marker-15" } }>
-                            <Feature coordinates={ [-0.481747846041145, 51.3233379650232] } />
+                            layout={{ "icon-image": "marker-15" }}>
+                            <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
                         </Layer>
                     </Map>
                 </div>
