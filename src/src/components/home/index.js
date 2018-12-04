@@ -10,7 +10,7 @@ import Electricity from '../../images/icon/electicity.svg'
 import furniture from '../../images/icon/furniture.svg'
 import furniture2 from '../../images/icon/furniture2.svg'
 import Textile from '../../images/icon/textile.svg'
-
+import Close from '../../images/icon/cross.svg';
 
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 
@@ -69,7 +69,7 @@ export default class Home extends React.Component {
         this.state = {
             modalIsOpen: false,
             about: false, contact: false, event: false, getListed: false,
-            news: false, register: false
+            news: false, register: false, mobileMenu: false
         };
 
         this.openModal = this.openModal.bind( this );
@@ -96,9 +96,26 @@ export default class Home extends React.Component {
                     <img className="logo" src={ Logo } />
                 </div>
                 <div className="itemDiv">
-                    <img className="logo" src={ Menu } />
+                    <img onClick={ () => this.setState( { mobileMenu: !this.state.mobileMenu } ) } className="logo" src={ Menu } />
                 </div>
             </div>
+            {
+                <div className={ this.state.mobileMenu ? "menuItemMobile" : "menuItemMobileNone" }>
+                    <div className="headerMobileMenu">
+                        <div></div>
+                        <img onClick={ () => this.setState( { mobileMenu: !this.state.mobileMenu } ) } src={ Close } />
+                    </div>
+                    <div className="contentMobileMenu">
+                        <div className="item">About</div>
+                        <div className="item">News</div>
+                        <div className="item">Events</div>
+                        <div className="item">Contact Us</div>
+                        <div className="getStarted">About</div>
+
+                    </div>
+
+                </div>
+            }
             <div className="menu">
                 <div className="logoDiv">
                     <img className="logo" src={ Logo } />

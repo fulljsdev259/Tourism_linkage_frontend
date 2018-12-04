@@ -1,10 +1,69 @@
 .App{
 min-height:100vh;
-      .menuMobile{
+.menuItemMobileNone{
+display: none;
+}
+.menuItemMobile{
+             
+        @media (max-width:950px){
+               position: absolute;
+               top:0;
+               left:0;
+               right: 0;
+               bottom: 0; 
+                background-color: #fff;
+                z-index: 1;
+             .headerMobileMenu{
+                display: flex;
+                justify-content: space-between;
+                margin:10vw;
+                font-size:16px;
+                img{
+                    cursor: pointer;
+                }
+             } 
+             .headerMobileMenu{
+                 font-size:16px;
+                 color:#4C4C4C;
+                 margin:10vw;
+                 .itemMobile{
+                    padding: 10px;
+                 }
+             }
+             .contentMobileMenu{
+                 .item{
+                     margin-left:100px;
+                     padding:10px;
+                     font-size:28px;
+                     font-weight: 'semi-bold';
+                 }
+                  .getStarted{
+                      text-align: center;
+                    margin-left:110px;
+                    margin-top:20px;
+                    width:200px;
+                    font-size:22px;
+                    border-radius:3px;
+                    color:#fff;
+                    font-weight: 700;
+                    padding:9px 15px;
+                    background-color: blue;
+
+            }
+
+             }
+
+
+
+
+            }
+        }
+            .menuMobile{
           display: none;
         @media (max-width:950px){
-          
-        display:flex;
+            
+
+            display:flex;
         justify-content: space-between;
               min-height:60px;
             .logoDiv{
@@ -87,10 +146,12 @@ min-height:100vh;
     margin-right:0px;  
     }
     .divBanner{
-      
+     
         .img{
             min-width: 25vw;
-             min-height: 80vh;
+             min-height: 90vh;
+                   max-height: 90vh;
+
                    @media screen and(max-width:750px){
                       min-width:100vw; 
                    }
@@ -201,9 +262,7 @@ min-height:100vh;
     }
     .divMap{
          min-width: 35vw;
-         @media screen and(max-width:1251px){
-                     display: none
-                    }
+    
        
     }
 
