@@ -1,0 +1,180 @@
+.App {
+  .home {
+    margin-left: 50px;
+    margin-right: 50px;
+    overflow-x: hidden;
+    @media screen and(max-width:750px) {
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+  }
+  .itemDetail-Map {
+    min-width: 25vw;
+  }
+  .item-detail {
+    display: flex;
+    flex-direction: row;
+    .back-arrow {
+      min-width: 4vw;
+      img {
+        float: right;
+        margin: 12px 0px 0px 0px;
+        width: 16px;
+        height: 16px;
+        object-fit: contain;
+      }
+    }
+    .content-section {
+      min-width: 40vw;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      @media screen and(min-width:751px) and (max-width: 1251px) {
+        min-width: 60vw;
+      }
+      h3 {
+        font-family: "Open Sans";
+        font-size: 30px;
+        font-weight: bold;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.67;
+        color: #0a0a0a;
+      }
+      .back-link {
+        width: 71px;
+        height: 19px;
+        font-family: "Open Sans";
+        font-size: 14px;
+        color: #a4afd0;
+      }
+      .item-reviews {
+        display: flex;
+        flex-direction: row;
+        padding: 0px 5px 0px 0px;
+        font-size: 14px;
+        height: 30px;
+        color: #929292;
+
+        .seperator {
+          border-right: 1px solid #929292;
+          height: 15px;
+          margin-top: 3px;
+          margin-right: 20px;
+          margin-left: 20px;
+        }
+        img {
+          height: 18px;
+          margin-right: 20px;
+        }
+      }
+      .item-category {
+        display: flex;
+      }
+      .tags {
+        display: flex;
+        flex-direction: row;
+        margin-top: 15px;
+        span {
+          margin-right: 10px;
+          padding: 5px 10px 5px 10px;
+          text-align: center;
+
+          border-radius: 140px;
+          background-color: #f8f9ff;
+        }
+      }
+      .item-desciption {
+        margin-top: 20px;
+        p {
+          font-family: "Open Sans";
+          font-size: 16px;
+          line-height: 1.75;
+          letter-spacing: normal;
+          color: #929292;
+        }
+      }
+    }
+  }
+
+  .itemDetail-contact {
+    padding: 20px;
+    .contact-section {
+      padding-bottom: 20px;
+      .item-contact {
+        flex: 0.5;
+        display: flex;
+        flex-direction: row;
+        padding: 1px;
+        img {
+          max-width: 10px;
+          max-height: 15px;
+        }
+        span {
+          padding-left: 10px;
+          font-size: 10px;
+        }
+      }
+    }
+    .open-hour {
+      padding-bottom: 20px;
+      .schedule {
+        display: flex;
+        font-size: 10px;
+        line-height: 2;
+        .day {
+          min-width: 5vw;
+        }
+        .time {
+          padding: 0px;
+        }
+      }
+    }
+    .image-section {
+      .img {
+        min-width: 25vw;
+        max-width: 25vw;
+        min-height: 30vh;
+        max-height: 30vh;
+        overflow-x: hidden;
+
+        @media screen and(max-width:750px) {
+          min-width: 100vw;
+        }
+        @media screen and(min-width:751px) {
+          min-width: 25vw;
+        }
+      }
+      .image-row {
+        max-width: 25vw;
+        display: flex;
+
+        @media screen and(max-width:750px) {
+          min-width: 25vw;
+        }
+        @media screen and(min-width:751px) {
+          max-width: 25vw;
+        }
+
+        .image {
+          max-height: 9vh;
+          float: left;
+          @media screen and(max-width:750px) {
+            min-width: 25vw;
+          }
+          @media screen and(min-width:751px) {
+            max-width: 25vw;
+          }
+        }
+      }
+    }
+  }
+}
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+}

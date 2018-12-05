@@ -1,0 +1,143 @@
+.App{
+    .home{
+        display: flex;
+        margin-left:50px;
+        margin-right:50px;
+          @media screen and(max-width:750px){
+         flex-direction: column ;
+         margin-left:0px;
+        margin-right:0px;  
+        }
+        .divBanner{
+         
+            .img{
+                min-width: 25vw;
+                 min-height: 90vh;
+                       max-height: 90vh;
+    
+                       @media screen and(max-width:750px){
+                          min-width:100vw; 
+                       }
+                       @media screen and(min-width:751px){
+                 min-width:26vw
+             }
+              }
+        }
+        .divMiddle{
+             min-width: 30vw;
+            padding:10px;
+            background-color:#FBFCFF;
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+           
+              @media screen and(min-width:751px) and (max-width:1251px){
+                 min-width:60vw
+             }
+            h3{
+                color: #5165FF;
+            }
+            select{
+             margin:20px 0px;
+                padding: 8px 11px;
+                border:none;
+                 box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+                 background-color: #FFFFFF;
+                 min-width: 20vw;
+                height:40px;
+                 @media screen and(max-width:551px){
+                         width: 80vw;
+                        }
+                        @media screen and(max-width:1251px){
+                 min-width:30vw
+             }
+                option{
+                    padding:10px;
+                      min-width: 22vw;
+                    height:30px;
+                     @media screen and(max-width:551px){
+                         width: 40vw;
+                        }
+                          @media screen and(max-width:1251px){
+                 min-width:30vw
+             }
+                }
+            }
+            .contentItems{
+               width:20vw;
+                min-height:60px;
+                border-radius: 4px;
+                background-color:#FFFFFF;
+                box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+                margin-top:15px;
+                transition: width 1s;
+                display:flex;
+                 @media screen and(max-width:551px){
+                         width: 80vw;
+                        }
+                          @media screen and(max-width:1251px){
+                 min-width:30vw
+             }
+                &:hover{
+                    width: 22vw;
+                    min-height:60px;
+                    font-weight: bold;
+                    font-size:18px;
+                     @media screen and(max-width:551px){
+                         width: 90vw;
+                        }
+                          @media screen and(max-width:1251px){
+                 min-width:30vw
+             }
+                }
+                .icon{
+                    flex:.5;
+                    display:flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    padding:10px;
+                    img{
+                     max-width:25px;
+                    max-height:25px;
+                    }
+                }
+                .content{
+                    flex:5;
+                    display:flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    padding:10px;
+                    color:#929292;
+                    font-size:12px;
+                }
+                .value{
+                    flex:.5;
+                    display:flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    padding:10px;
+                     font-size:12px;
+                       color:#929292;
+                }
+    
+            }
+    
+        }
+        .divMap{
+             min-width: 35vw;
+        }
+    
+    }
+
+    }
+    
+    
+    .Overlay{
+         position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.75);
+      
+    }
