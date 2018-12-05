@@ -63,44 +63,26 @@ export default class Header extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            modalIsOpen: false,
-            about: false, contact: false, event: false, getListed: false,
-            news: false, register: false, mobileMenu: false
-        };
-
-        this.openModal = this.openModal.bind(this);
-        this.afterOpenModal = this.afterOpenModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
+   
     }
 
-    openModal() {
-        this.setState({ modalIsOpen: true });
-    }
-
-    afterOpenModal() {
-        // references are now sync'd and can be accessed.
-        //        this.subtitle.style.color = '#f00';
-    }
-
-    closeModal() {
-        this.setState({ modalIsOpen: false });
-    }
+  
     render() {
+        const oThis = this;
         return <div>
             <div className="menuMobile">
                 <div className="logoDiv">
                     <img className="logo" src={Logo} />
                 </div>
                 <div className="itemDiv">
-                    <img onClick={() => this.setState({ mobileMenu: !this.state.mobileMenu })} className="logo" src={Menu} />
+                    <img onClick={() => this.setState({ mobileMenu: !this.props.mobileMenu })} className="logo" src={Menu} />
                 </div>
             </div>
             {
-                <div className={this.state.mobileMenu ? "menuItemMobile" : "menuItemMobileNone"}>
+                <div className={this.props.mobileMenu ? "menuItemMobile" : "menuItemMobileNone"}>
                     <div className="headerMobileMenu">
                         <div></div>
-                        <img onClick={() => this.setState({ mobileMenu: !this.state.mobileMenu })} src={Close} />
+                        <img onClick={() => this.setState({ mobileMenu: !this.props.mobileMenu })} src={Close} />
                     </div>
                     <div className="contentMobileMenu">
                         <div className="item">About</div>
@@ -120,46 +102,27 @@ export default class Header extends React.Component {
                 <div className="itemDiv">
                     <div className="item">
                         <div className="normal" onClick={() => {
-                            this.setState({
-                                about: true, contact: false, event: false, getListed: false,
-                                news: false, register: false, modalIsOpen: true
-                            })
+                            oThis.props.modalStateHandler(true,false,false,false,false,false,true)
                         }}>ABOUT</div>
                         <div className="normal" onClick={() => {
-                            this.setState({
-                                about: false, contact: false, event: false, getListed: false,
-                                news: true, register: false, modalIsOpen: true
-                            })
+                            oThis.props.modalStateHandler(false,false,false,false,true,false,true)
                         }}>NEWS</div>
                         <div className="normal" onClick={() => {
-                            this.setState({
-                                about: false, contact: false, event: true, getListed: false,
-                                news: false, register: false, modalIsOpen: true
-                            })
+                            oThis.props.modalStateHandler(false,false,true,false,false,false,true)
                         }}>EVENT</div>
                         <div className="normal" onClick={() => {
-                            this.setState({
-                                about: false, contact: true, event: false, getListed: false,
-                                news: false, register: false, modalIsOpen: true
-                            })
+                               oThis.props.modalStateHandler(false,true,false,false,false,false,true)
                         }}>CONTACT US</div>
                         <div className="getStarted" onClick={() => {
-                            this.setState({
-                                about: false, contact: false, event: false, getListed: true,
-                                news: false, register: false, modalIsOpen: true
-                            })
+                  
+                            oThis.props.modalStateHandler(false,false,false,true,false,false,true)
                         }}>GET COMPANY LISTED</div>
 
                     </div>
                 </div>
                 <div className="registerDiv"
                     onClick={() => {
-                        this.setState({
-                            about: false, contact: false, event: false, getListed: false,
-                            news: false, register: true, modalIsOpen: true
-                        });
-
-
+                        oThis.props.modalStateHandler(false,false,false,false,false,true,true)
                     }}
                 >REGISTER/LOGIN</div>
             </div>

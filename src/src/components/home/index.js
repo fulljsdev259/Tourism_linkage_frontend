@@ -5,6 +5,12 @@ import ItemDetail from '../itemDetail';
 import Header from '../header';
 import Index from '../index/index';
 import { Route, Switch } from 'react-router';
+import About from '../about';
+import Contact from '../contact';
+import Event from '../events';
+import GetListed from '../getListed';
+import News from '../news'
+import Register from '../register';
 
 const customStyles = {
     content: {
@@ -45,16 +51,62 @@ const Map = ReactMapboxGl({
 export default class Home extends React.Component {
     constructor() {
         super();
+        this.state = {
+            modalIsOpen: false,
+            about: false, contact: false, event: false, getListed: false,
+            news: false, register: false, mobileMenu: false
+        };
+
+        this.openModal = this.openModal.bind(this);
+        this.afterOpenModal = this.afterOpenModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+        this.handleModalState = this.handleModalState.bind(this);
+    }
+    openModal() {
+        this.setState({ modalIsOpen: true });
     }
 
+    afterOpenModal() {
+        // references are now sync'd and can be accessed.
+        //        this.subtitle.style.color = '#f00';
+    }
+
+    handleModalState(about, contact, event, getListed, news, register, modalIsOpen = true) {
+        this.setState({
+            about, contact, event, getListed,
+            news, register, modalIsOpen
+        })
+    }
+
+    closeModal() {
+        this.setState({ modalIsOpen: false });
+    }
     render() {
         return (
             <div className="App">
-                <Header />
+                <Header {...this.state} modalStateHandler={this.handleModalState} />
                 <Switch>
-                    <Route exact path="/" component={Index} />
-                    <Route path="/detail" component={ItemDetail} />
+                    <Route {...this.state} exact path="/" component={Index} />
+                    <Route {...this.state} path="/detail" component={ItemDetail} />
                 </Switch>
+                <Modal
+                    isOpen={this.state.modalIsOpen}
+                    onAfterOpen={this.afterOpenModal}
+                    onRequestClose={this.closeModal}
+                    style={this.state.register ? customStylesRegister : customStyles}
+                    contentLabel="Example Modal"
+                    overlayClassName="Overlay"
+
+                >
+
+                    {this.state.about ? <About closeModal={() => this.closeModal()} /> : ''}
+                    {this.state.contact ? <Contact closeModal={() => this.closeModal()} /> : ''}
+                    {this.state.event ? <Event closeModal={() => this.closeModal()} /> : ''}
+                    {this.state.getListed ? <GetListed closeModal={() => this.closeModal()} /> : ''}
+                    {this.state.news ? <News closeModal={() => this.closeModal()} /> : ''}
+                    {this.state.register ? <Register closeModal={() => this.closeModal()} /> : ''}
+
+                </Modal>
             </div>
         );
     }

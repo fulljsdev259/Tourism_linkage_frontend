@@ -16,14 +16,6 @@ import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 
 
 import Modal from 'react-modal';
-import About from '../about';
-import Contact from '../contact';
-import Event from '../events';
-import GetListed from '../getListed';
-import News from '../news'
-import Register from '../register';
-import ItemDetail from '../itemDetail';
-import Router from 'react-router';
 
 const customStyles = {
     content: {
@@ -55,7 +47,6 @@ const customStylesRegister = {
 };
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement('#root')
 
 
 
@@ -116,24 +107,7 @@ export default class Index extends React.Component {
                         <div className="value">202</div>
                     </div>
 
-                    <Modal
-                        isOpen={this.props.modalIsOpen}
-                        onAfterOpen={this.afterOpenModal}
-                        onRequestClose={this.closeModal}
-                        style={this.props.register ? customStylesRegister : customStyles}
-                        contentLabel="Example Modal"
-                        overlayClassName="Overlay"
-
-                    >
-
-                        {this.props.about ? <About closeModal={() => this.closeModal()} /> : ''}
-                        {this.props.contact ? <Contact closeModal={() => this.closeModal()} /> : ''}
-                        {this.props.event ? <Event closeModal={() => this.closeModal()} /> : ''}
-                        {this.props.getListed ? <GetListed closeModal={() => this.closeModal()} /> : ''}
-                        {this.props.news ? <News closeModal={() => this.closeModal()} /> : ''}
-                        {this.props.register ? <Register closeModal={() => this.closeModal()} /> : ''}
-
-                    </Modal>
+               
                 </div>
                 <div className="divMap">
                     <Map

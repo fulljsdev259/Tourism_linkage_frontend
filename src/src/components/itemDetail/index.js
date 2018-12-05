@@ -8,10 +8,11 @@ import location from '../../images/icon/location.svg'
 import phone from '../../images/icon/phone.svg'
 import rating from '../../images/icon/rating.svg'
 import arrowBack from '../../images/icon/arrowback.svg'
-import Metal from '../../images/icon/metal.svg'
-import Electricity from '../../images/icon/electicity.svg'
+import fav from '../../images/icon/favorites.svg'
+import share from '../../images/icon/share.svg'
 import furniture3 from '../../images/icon/furniture3.svg'
-import furniture2 from '../../images/icon/furniture2.svg'
+import facebook from '../../images/Bitmap.png'
+import tweet from '../../images/tweet.png'
 import Textile from '../../images/icon/textile.svg'
 import Close from '../../images/icon/cross.svg';
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
@@ -93,9 +94,9 @@ export default class ItemDetail extends React.Component {
                     <Map
                         style="mapbox://styles/mapbox/streets-v8"
                         containerStyle={{
-                            height: "100vh",
+                            height: "100%",
                             width: "100%"
-                        }}>
+                        }} >
                         <Layer
                             type="symbol"
                             id="marker"
@@ -109,31 +110,66 @@ export default class ItemDetail extends React.Component {
                         <img src={arrowBack} />
                     </div>
                     <div className="content-section">
-                        <span className="back-link">Back to list</span>
+                        <div className="item-info">
+                            <span className="back-link">Back to list</span>
 
-                        <h3>Kearion Young</h3>
-                        <div className="item-reviews">
-                            <span>Fabric</span>
-                            <span className="seperator"></span>
-                            <img src={rating}></img>
-                            <span>2 Reviews</span>
-                        </div>
-                        <div className="item-category ">
-                            <img src={furniture3} />
-                            <span>Chemical, Cosmetics &amp; Pharmaceuticals</span>
-                        </div>
-                        <div className="tags">
+                            <h3>Kearion Young</h3>
+                            <div className="item-reviews">
+                                <span>Fabric</span>
+                                <span className="seperator"></span>
+                                <img src={rating}></img>
+                                <span>2 Reviews</span>
+                            </div>
+                            <div className="item-category ">
+                                <img src={furniture3} />
+                                <span>Chemical, Cosmetics &amp; Pharmaceuticals</span>
+                            </div>
+                            <div className="tags">
 
-                            <span>Bandana</span>
-                            <span>shirts</span>
-                            <span>blouse</span>
-                            <span>jamaican colour apparel</span>
+                                <span>Bandana</span>
+                                <span>shirts</span>
+                                <span>blouse</span>
+                                <span>jamaican colour apparel</span>
 
-                        </div>
-                        <div className="item-description">
-                            <p>
-                                Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molestie ut ipsum et, suscipit vehicula odio. Vestibulum interdum vestibulum felis ac molestie. Praesent aliquet quam et libero dictum, vitae dignissim leo eleifend. In in turpis turpis. Quisque justo turpis, vestibulum non enim nec, tempor mollis mi. Sed vel tristique quam.
+                            </div>
+                            <div className="item-description">
+                                <p>
+                                    Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molestie ut ipsum et, suscipit vehicula odio. Vestibulum interdum vestibulum felis ac molestie. Praesent aliquet quam et libero dictum, vitae dignissim leo eleifend. In in turpis turpis. Quisque justo turpis, vestibulum non enim nec, tempor mollis mi. Sed vel tristique quam.
                             </p>
+                            </div>
+                            <div className="social-icons">
+                                <div className="left">
+                                    <img src={facebook} />
+                                    <img src={tweet} />
+                                </div>
+                                <div className="right">
+                                    <img src={fav} />
+                                    <img src={share} />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="hr">
+                        </div>
+                        <div className="review-section">
+                            <h3>Reviews</h3>
+                            <div className="user">
+                                <span>Sandra</span>
+                                <img src={rating}></img>
+                            </div>
+                            <div className="user-comments" >
+                                <p>Exelent! We often order shirts for our hotel stuff here. Very good quality. Highly recommended. </p>
+                            </div>
+                            <div className="user">
+                                <span>Viktoria</span>
+                                <img src={rating}></img>
+                            </div>
+                            <div className="user-comments" >
+                                <p>Love them. </p>
+                            </div>
+                            <div className="Leave-review">
+                                <a href="#">Leave review</a>
+                            </div>
+
                         </div>
 
 
