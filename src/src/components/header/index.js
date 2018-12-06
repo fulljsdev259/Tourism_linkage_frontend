@@ -75,14 +75,14 @@ export default class Header extends React.Component {
                     <img className="logo" src={Logo} />
                 </div>
                 <div className="itemDiv">
-                    <img onClick={() => this.setState({ mobileMenu: !this.props.mobileMenu })} className="logo" src={Menu} />
+                    <img onClick={this.props.setMobileMenu} className="logo" src={Menu} />
                 </div>
             </div>
             {
                 <div className={this.props.mobileMenu ? "menuItemMobile" : "menuItemMobileNone"}>
                     <div className="headerMobileMenu">
                         <div></div>
-                        <img onClick={() => this.setState({ mobileMenu: !this.props.mobileMenu })} src={Close} />
+                        <img onClick={this.props.setMobileMenu} src={Close} />
                     </div>
                     <div className="contentMobileMenu">
                         <div className="item">About</div>

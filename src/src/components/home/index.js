@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import ItemDetail from '../itemDetail';
 import Header from '../header';
+import Footer from '../footer';
 import Index from '../index/index';
 import { Route, Switch } from 'react-router';
 import About from '../about';
@@ -54,14 +55,22 @@ export default class Home extends React.Component {
         this.state = {
             modalIsOpen: false,
             about: false, contact: false, event: false, getListed: false,
-            news: false, register: false, mobileMenu: false
+            news: false, register: false, mobileMenu: false, showListing: false, showMap: true
         };
 
         this.openModal = this.openModal.bind(this);
         this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.handleModalState = this.handleModalState.bind(this);
+        this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
+        this.toggleListing = this.toggleListing.bind(this);
+        this.toggleMap = this.toggleMap.bind(this);
     }
+
+    toggleMobileMenu = () => {
+        this.setState({ mobileMenu: !this.state.mobileMenu })
+    }
+
     openModal() {
         this.setState({ modalIsOpen: true });
     }
@@ -81,12 +90,22 @@ export default class Home extends React.Component {
     closeModal() {
         this.setState({ modalIsOpen: false });
     }
+    toggleListing = () => {
+        this.setState({
+            showListing: !this.state.showListing
+        });
+    }
+    toggleMap = () => {
+        this.setState({
+            showMap: this.state.showMap
+        })
+    }
     render() {
         return (
             <div className="App">
-                <Header {...this.state} modalStateHandler={this.handleModalState} />
+                <Header {...this.state} setMobileMenu={this.toggleMobileMenu} modalStateHandler={this.handleModalState} />
                 <Switch>
-                    <Route {...this.state} exact path="/" component={Index} />
+                    <Route exact path="/" render={props => (<Index toggleListing={this.toggleListing} toggleMap={this.toggleMap} {...this.state} />)} />
                     <Route {...this.state} path="/detail" component={ItemDetail} />
                 </Switch>
                 <Modal
@@ -107,6 +126,7 @@ export default class Home extends React.Component {
                     {this.state.register ? <Register closeModal={() => this.closeModal()} /> : ''}
 
                 </Modal>
+                <Footer/>
             </div>
         );
     }

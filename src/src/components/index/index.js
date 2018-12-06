@@ -11,8 +11,11 @@ import furniture from '../../images/icon/furniture.svg'
 import furniture2 from '../../images/icon/furniture2.svg'
 import Textile from '../../images/icon/textile.svg'
 import Close from '../../images/icon/cross.svg';
-
-import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
+import location from '../../images/icon/location.svg';
+import phone from '../../images/icon/phone.svg';
+import rating from '../../images/icon/rating.svg'
+import norating from '../../images/icon/norating.svg'
+import ReactMapboxGl, { Layer, Marker, Feature, Popup, GeoJSONLayer } from "react-mapbox-gl";
 
 
 import Modal from 'react-modal';
@@ -48,6 +51,75 @@ const customStylesRegister = {
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 
+const geojson = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Dupont Circle",
+                "marker-color": "#ff0000",
+                "marker-symbol": "rail-metro",
+                "line": "red"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.04341435972708,
+                    38.90959805757176
+                ]
+            },
+            "obj": {
+                "id": 1,
+                "title": "Test Popup 1",
+                "desc": " This is Test description for poup 1"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Pentagon",
+                "marker-color": "#0000ff",
+                "marker-symbol": "rail-metro",
+                "line": "blue"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.05371567343194,
+                    38.869462701258364
+                ]
+            },
+            "obj": {
+                "id": 2,
+                "title": "Test Popup 2",
+                "desc": " This is Test description for poup 2"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Crystal City",
+                "marker-color": "#0000ff",
+                "marker-symbol": "rail-metro",
+                "line": "blue"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.05028980970857,
+                    38.857904320437974
+                ]
+            },
+            "obj": {
+                "id": 3,
+                "title": "Test Popup 3",
+                "desc": " This is Test description for poup 3"
+            }
+        }
+    ]
+}
+
 
 
 
@@ -56,11 +128,23 @@ const Map = ReactMapboxGl({
 });
 
 export default class Index extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        this.state = {
+            location: null
+        };
+
+    }
+    markerClick = (station) => {
+        this.setState({ location: station });
+    };
+
+    closePopup = () => {
+        this.setState({ location: null });
     }
 
     render() {
+        const { location } = this.state;
         return <div>
             <div className="home">
 
@@ -107,22 +191,173 @@ export default class Index extends React.Component {
                         <div className="value">202</div>
                     </div>
 
-               
+
                 </div>
-                <div className="divMap">
-                    <Map
-                        style="mapbox://styles/mapbox/streets-v8"
-                        containerStyle={{
-                            height: "100vh",
-                            width: "100%"
-                        }}>
-                        <Layer
-                            type="symbol"
-                            id="marker"
-                            layout={{ "icon-image": "marker-15" }}>
-                            <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
-                        </Layer>
-                    </Map>
+                <div className="map-section" name="map-listing">
+                    <div className="toggler">
+                        <button className={!this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn"} onClick={this.props.toggleListing}>Map</button>
+                        <button className={this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn"} onClick={this.props.toggleListing}>List</button>
+                    </div>
+                    <div className={this.props.showListing ? "hide" : "divMap"}>
+                        <Map
+                            style="mapbox://styles/mapbox/streets-v8"
+                            containerStyle={{
+                                height: "100vh",
+                                width: "100%"
+                            }}
+                        >
+                            <Layer type="symbol" id="marker" layout={{ "icon-image": "marker-15" }}>
+                                {Object.keys(geojson.features).map((item, index) => (
+                                    <Feature
+                                        key={geojson.features[index].obj.id}
+                                        onClick={this.markerClick.bind(this, geojson.features[item])}
+                                        coordinates={geojson.features[item].geometry.coordinates}
+                                    />
+                                ))}
+                            </Layer>
+                            {location && (
+                                <Popup onClick={this.closePopup} key={location.id} coordinates={location.geometry.coordinates}>
+                                    <div style={{
+                                        backgroundColor: '#fff',
+                                        color: '#3f618c',
+                                        fontWeight: 400,
+                                        padding: '5px',
+                                        borderRadius: '2px'
+                                    }}>
+
+                                        <div>{location.obj.title}</div>
+                                        <p>{location.obj.desc}</p>
+                                    </div>
+                                </Popup>
+                            )}
+                        </Map>
+                    </div>
+                    <div className={this.props.showListing ? "list-section" : "hide"}>
+                        <div className="category">
+                            256 Chemical, Cosmetics &amp; Pharmaceuticals
+                        </div>
+                        <div className="list-item">
+                            <div className="item-header">
+                                <span className="title">Richard James Robinson</span>
+
+                                <img className="rating" src={rating} />
+                                <div className="reviews">
+                                    <span>9 Reviews</span>
+                                </div>
+
+                            </div>
+                            <span className="category">Cotton Fabric</span>
+                            <div className="labels">
+                                <span>
+                                    male closing
+                                </span>
+                                <span>female closing</span>
+
+                            </div>
+                            <div className="contact-section">
+                                <div className="item-contact">
+                                    <img src={location} />
+                                    <span>350 Seaview Gardens, Kingston 11</span>
+                                </div>
+                                <div className="item-contact">
+                                    <img src={phone} />
+                                    <span> 834-4811</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div className="list-item">
+                            <div className="item-header">
+                                <span className="title">Richard James Robinson</span>
+
+                                <img className="rating" src={norating} />
+                                <div className="reviews">
+                                    <span>No Reviews</span>
+                                </div>
+
+                            </div>
+                            <span className="category">Cotton Fabric</span>
+                            <div className="labels">
+                                <span>
+                                    male closing
+                                </span>
+                                <span>female closing</span>
+
+                            </div>
+                            <div className="contact-section">
+                                <div className="item-contact">
+                                    <img src={location} />
+                                    <span>350 Seaview Gardens, Kingston 11</span>
+                                </div>
+                                <div className="item-contact">
+                                    <img src={phone} />
+                                    <span> 834-4811</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div className="list-item">
+                            <div className="item-header">
+                                <span className="title">Richard James Robinson</span>
+
+                                <img className="rating" src={rating} />
+                                <div className="reviews">
+                                    <span>2 Reviews</span>
+                                </div>
+
+                            </div>
+                            <span className="category">Cotton Fabric</span>
+                            <div className="labels">
+                                <span>
+                                    male closing
+                                </span>
+                                <span>female closing</span>
+
+                            </div>
+                            <div className="contact-section">
+                                <div className="item-contact">
+                                    <img src={location} />
+                                    <span>350 Seaview Gardens, Kingston 11</span>
+                                </div>
+                                <div className="item-contact">
+                                    <img src={phone} />
+                                    <span> 834-4811</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div className="list-item">
+                            <div className="item-header">
+                                <span className="title">Richard James Robinson</span>
+
+                                <img className="rating" src={rating} />
+                                <div className="reviews">
+                                    <span>1 Review</span>
+                                </div>
+
+                            </div>
+                            <span className="category">Cotton Fabric</span>
+                            <div className="labels">
+                                <span>
+                                    male closing
+                                </span>
+                                <span>female closing</span>
+
+                            </div>
+                            <div className="contact-section">
+                                <div className="item-contact">
+                                    <img src={location} />
+                                    <span>350 Seaview Gardens, Kingston 11</span>
+                                </div>
+                                <div className="item-contact">
+                                    <img src={phone} />
+                                    <span> 834-4811</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div >
