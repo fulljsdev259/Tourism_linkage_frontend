@@ -86,8 +86,8 @@ export default class Header extends React.Component {
                     </div>
                     <div className="contentMobileMenu">
                         <div className="item">About</div>
-                        <div className="item">News</div>
-                        <div className="item">Events</div>
+                        {/* <div className="item">News</div>
+                        <div className="item">Events</div> */}
                         <div className="item">Contact Us</div>
                         <div className="getStarted">About</div>
 
@@ -104,12 +104,12 @@ export default class Header extends React.Component {
                         <div className="normal" onClick={() => {
                             oThis.props.modalStateHandler(true,false,false,false,false,false,true)
                         }}>ABOUT</div>
-                        <div className="normal" onClick={() => {
+                        {/* <div className="normal" onClick={() => {
                             oThis.props.modalStateHandler(false,false,false,false,true,false,true)
                         }}>NEWS</div>
                         <div className="normal" onClick={() => {
                             oThis.props.modalStateHandler(false,false,true,false,false,false,true)
-                        }}>EVENT</div>
+                        }}>EVENT</div> */}
                         <div className="normal" onClick={() => {
                                oThis.props.modalStateHandler(false,true,false,false,false,false,true)
                         }}>CONTACT US</div>

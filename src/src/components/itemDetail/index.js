@@ -223,7 +223,7 @@ export default class ItemDetail extends React.Component {
                             <span>Closed </span>
                         </div>
                     </div>
-                    <div className="image-section">
+                    {/* <div className="image-section">
                         <div>
                             <img className="img" src={ContactSectionPic1} />
                         </div>
@@ -234,7 +234,7 @@ export default class ItemDetail extends React.Component {
                             <img className="image" src={ContactSectionPic} />
 
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

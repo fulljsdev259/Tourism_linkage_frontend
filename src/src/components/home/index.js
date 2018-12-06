@@ -40,6 +40,7 @@ const customStylesRegister = {
         marginLeft: '35%',
         transform: 'translate(0%, 0%)'
     }
+    
 };
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
@@ -115,6 +116,7 @@ export default class Home extends React.Component {
                     style={this.state.register ? customStylesRegister : customStyles}
                     contentLabel="Example Modal"
                     overlayClassName="Overlay"
+                
 
                 >
 
