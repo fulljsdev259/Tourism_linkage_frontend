@@ -1,8 +1,8 @@
 .App {
   .home {
     display: flex;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
     @media screen and(max-width:750px) {
       flex-direction: column;
       margin-left: 0px;
@@ -26,19 +26,26 @@
             background: #5165ff;
             border: none;
             padding: 5px;
-            color:#ffffff;
+            color: #ffffff;
           }
           float: left;
         }
       }
       .divMap {
-        min-width: 35vw;
+        display: flex;
+        min-width: 41vw;
+        width: 100%;
+        .map {
+          min-height: 750px;
+          min-width: 521px;
+        }
       }
       .hide {
         display: none !important;
       }
       .list-section {
         margin-top: 15px;
+        min-width: 521px;
         padding-left: 20px;
         color: #5165ff;
         .list-item {
@@ -109,16 +116,16 @@
       }
     }
     .divBanner {
-      .img {
-        min-width: 25vw;
-        min-height: 90vh;
-        max-height: 90vh;
-
-        @media screen and(max-width:750px) {
-          min-width: 100vw;
-        }
-        @media screen and(min-width:751px) {
-          min-width: 26vw;
+      .slider {
+        height: 100% !important;
+        min-width: 29vw;
+      }
+      .slider-title {
+        h1 {
+          color: white;
+          text-align: center;
+          text-transform: uppercase;
+          padding: 20px;
         }
       }
     }

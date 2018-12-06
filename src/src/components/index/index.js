@@ -1,6 +1,11 @@
 import React from 'react';
 import './index.scss'
 import Pic from '../../images/picture.png'
+import slider1 from '../../images/slider1.png'
+import slider2 from '../../images/slider2.png'
+import slider3 from '../../images/slider3.png'
+import slider4 from '../../images/slider4.png'
+import slider5 from '../../images/slider5.png'
 import Logo from '../../images/Tourism_Linkages_Network_Logo.gif'
 import Menu from '../../images/icon/menu.svg'
 import Printing from '../../images/icon/printing.svg'
@@ -16,7 +21,8 @@ import phone from '../../images/icon/phone.svg';
 import rating from '../../images/icon/rating.svg'
 import norating from '../../images/icon/norating.svg'
 import ReactMapboxGl, { Layer, Marker, Feature, Popup, GeoJSONLayer } from "react-mapbox-gl";
-
+import Slider from 'react-animated-slider';
+import 'react-animated-slider/build/horizontal.css';
 
 import Modal from 'react-modal';
 
@@ -119,7 +125,26 @@ const geojson = {
         }
     ]
 }
-
+const sliderImages = [{
+    url: slider1,
+    title: "Fostering joy through Jamaica Made products.",
+}, {
+    url: slider1,
+    title: "Keeping money in the local economy.",
+}, {
+    url: slider2,
+    title: "Creating and supporting community jobs",
+}, {
+    url: slider3,
+    title: "Regenerating Jamaica's most valuable resources. You!",
+}, {
+    url: slider4,
+    title: "Building vibrant and creative communities",
+}, {
+    url: slider5,
+    title: "Regenerating Jamaica’s most valuable resources. You!",
+},
+]
 
 
 
@@ -131,8 +156,9 @@ export default class Index extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            location: null
+            location: null,
         };
+
 
     }
     markerClick = (station) => {
@@ -148,7 +174,23 @@ export default class Index extends React.Component {
         return <div>
             <div className="home">
 
-                <div className="divBanner"><img className="img" src={Pic} /></div>
+                <div className="divBanner">
+
+
+                    <Slider autoplay={3000}>
+                        {sliderImages.map((item, index) => (
+
+                            <div
+                                key={index}
+                                style={{ background: `url('${item.url}') no-repeat center center` }}
+                            >
+                                <div className="center slider-title">
+                                    <h1>{item.title}</h1>
+                                </div>
+                            </div>
+                        ))}
+                    </Slider>
+                </div>
                 <div className="divMiddle">
                     <h3>Discover local manufactures</h3>
                     <select>
@@ -201,10 +243,7 @@ export default class Index extends React.Component {
                     <div className={this.props.showListing ? "hide" : "divMap"}>
                         <Map
                             style="mapbox://styles/mapbox/streets-v8"
-                            containerStyle={{
-                                height: "100vh",
-                                width: "100%"
-                            }}
+                            className="map"
                         >
                             <Layer type="symbol" id="marker" layout={{ "icon-image": "marker-15" }}>
                                 {Object.keys(geojson.features).map((item, index) => (
