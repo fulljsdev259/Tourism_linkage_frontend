@@ -62,7 +62,7 @@ export default class Header extends React.Component {
 
     render() {
         const oThis = this;
-        return <div>
+        return <div style={{ borderBottom: "1px solid #ebebeb" }}>
             <div className="menuMobile">
                 <div className="logoDiv">
                     <img className="logo" src={Logo} />
