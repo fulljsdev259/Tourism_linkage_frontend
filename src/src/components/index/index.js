@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.scss'
 import Pic from '../../images/picture.png'
-import slider1 from '../../images/slider1.png'
+import slider1 from '../../images/picture.png'
 import slider2 from '../../images/slider2.png'
 import slider3 from '../../images/slider3.png'
 import slider4 from '../../images/slider4.png'
@@ -71,8 +71,8 @@ const geojson = {
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -77.04341435972708,
-                    38.90959805757176
+                    - 77.465895,
+                    18.065138
                 ]
             },
             "obj": {
@@ -92,8 +92,8 @@ const geojson = {
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -77.05371567343194,
-                    38.869462701258364
+                    - 77.465895,
+                    18.065138
                 ]
             },
             "obj": {
@@ -113,8 +113,8 @@ const geojson = {
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -77.05028980970857,
-                    38.857904320437974
+                    - 77.465895,
+                    18.065138
                 ]
             },
             "obj": {
@@ -144,6 +144,7 @@ const sliderImages = [{
     url: slider5,
     title: "Regenerating Jamaica’s most valuable resources. You!",
 },
+
 ]
 
 
@@ -177,14 +178,14 @@ export default class Index extends React.Component {
                 <div className="divBanner">
 
 
-                    <Slider autoplay={3000}>
+                    <Slider>
                         {sliderImages.map((item, index) => (
 
                             <div
                                 key={index}
                                 style={{ background: `url('${item.url}') no-repeat center center` }}
                             >
-                                <div className="center slider-title">
+                                <div className="slider-title">
                                     <h1>{item.title}</h1>
                                 </div>
                             </div>
@@ -194,8 +195,10 @@ export default class Index extends React.Component {
                 <div className="divMiddle">
                     <h3>Discover local manufactures</h3>
                     <select>
-                        <option value="Western Jamica">Western Jamica</option>
-                        <option value="Western Jamica">Western Jamica</option>
+                        <option value="Western Jamica">All Jamaica</option>
+                        <option value="Western Jamica">Western Jamaica</option>
+                        <option value="Western Jamica">Central Jamaica</option>
+                        <option value="Western Jamica">Eastern Jamaica</option>
                     </select>
                     <div className="contentItems">
                         <div className="icon"><img src={Printing} /></div>

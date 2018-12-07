@@ -123,15 +123,21 @@
       .slider-title {
         h1 {
           color: white;
-          text-align: center;
-          text-transform: uppercase;
-          padding: 20px;
+          text-align: left;
+          text-transform: capitalize;
+          padding: 10px;
+          line-height:40px;
+          margin-top:40px;
+          font-weight: bold;
+          font-size:35px;
+          letter-spacing: -2px;
+         
         }
       }
     }
     .divMiddle {
       min-width: 30vw;
-      padding: 10px;
+      padding: 30px;
       background-color: #fbfcff;
       display: flex;
       flex-direction: column;
@@ -142,6 +148,7 @@
       }
       h3 {
         color: #5165ff;
+        font-weight: 700;
       }
       select {
         margin: 20px 0px;
