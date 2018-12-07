@@ -1,15 +1,8 @@
 import React from 'react';
 import './header.scss'
-import Pic from '../../images/picture.png'
 import Logo from '../../images/Tourism_Linkages_Network_Logo.gif'
 import Menu from '../../images/icon/menu.svg'
-import Printing from '../../images/icon/printing.svg'
-import Printing2 from '../../images/icon/printing2.svg'
-import Metal from '../../images/icon/metal.svg'
-import Electricity from '../../images/icon/electicity.svg'
-import furniture from '../../images/icon/furniture.svg'
-import furniture2 from '../../images/icon/furniture2.svg'
-import Textile from '../../images/icon/textile.svg'
+import profile from '../../images/oval.png'
 import Close from '../../images/icon/cross.svg';
 
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
@@ -63,10 +56,10 @@ export default class Header extends React.Component {
     constructor(props) {
         super(props);
 
-   
+
     }
 
-  
+
     render() {
         const oThis = this;
         return <div>
@@ -102,7 +95,7 @@ export default class Header extends React.Component {
                 <div className="itemDiv">
                     <div className="item">
                         <div className="normal" onClick={() => {
-                            oThis.props.modalStateHandler(true,false,false,false,false,false,true)
+                            oThis.props.modalStateHandler(true, false, false, false, false, false, true)
                         }}>ABOUT</div>
                         {/* <div className="normal" onClick={() => {
                             oThis.props.modalStateHandler(false,false,false,false,true,false,true)
@@ -111,20 +104,30 @@ export default class Header extends React.Component {
                             oThis.props.modalStateHandler(false,false,true,false,false,false,true)
                         }}>EVENT</div> */}
                         <div className="normal" onClick={() => {
-                               oThis.props.modalStateHandler(false,true,false,false,false,false,true)
+                            oThis.props.modalStateHandler(false, true, false, false, false, false, true)
                         }}>CONTACT US</div>
                         <div className="getStarted" onClick={() => {
-                  
-                            oThis.props.modalStateHandler(false,false,false,true,false,false,true)
+
+                            oThis.props.modalStateHandler(false, false, false, true, false, false, true)
                         }}>GET COMPANY LISTED</div>
 
                     </div>
                 </div>
                 <div className="registerDiv"
                     onClick={() => {
-                        oThis.props.modalStateHandler(false,false,false,false,false,true,true)
+                        oThis.props.modalStateHandler(false, false, false, false, false, true, true)
                     }}
                 >REGISTER/LOGIN</div>
+                {/* <div className="profileDiv">
+                    <div class="dropdown">
+                    <img  class="dropbtn" src={profile}/>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                </div> */}
             </div>
 
         </div >
