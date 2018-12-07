@@ -1,151 +1,135 @@
-.App{
-    min-height:100vh;
-    .menuItemMobileNone{
+.App {
+  min-height: 100vh;
+  .menuItemMobileNone {
     display: none;
+  }
+  .menuItemMobile {
+    @media (max-width: 950px) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #fff;
+      z-index: 1;
+      .headerMobileMenu {
+        display: flex;
+        justify-content: space-between;
+        margin: 10vw;
+        font-size: 16px;
+        img {
+          cursor: pointer;
+        }
+      }
+      .headerMobileMenu {
+        font-size: 16px;
+        color: #4c4c4c;
+        margin: 10vw;
+        .itemMobile {
+          padding: 10px;
+        }
+      }
+      .contentMobileMenu {
+        .item {
+          margin-left: 100px;
+          padding: 10px;
+          font-size: 28px;
+          font-weight: "semi-bold";
+        }
+        .getStarted {
+          text-align: center;
+          margin-left: 110px;
+          margin-top: 20px;
+          width: 200px;
+          font-size: 22px;
+          border-radius: 3px;
+          color: #fff;
+          font-weight: 700;
+          padding: 9px 15px;
+          background-color: blue;
+        }
+      }
     }
-    .menuItemMobile{
-                 
-            @media (max-width:950px){
-                   position: absolute;
-                   top:0;
-                   left:0;
-                   right: 0;
-                   bottom: 0; 
-                    background-color: #fff;
-                    z-index: 1;
-                 .headerMobileMenu{
-                    display: flex;
-                    justify-content: space-between;
-                    margin:10vw;
-                    font-size:16px;
-                    img{
-                        cursor: pointer;
-                    }
-                 } 
-                 .headerMobileMenu{
-                     font-size:16px;
-                     color:#4C4C4C;
-                     margin:10vw;
-                     .itemMobile{
-                        padding: 10px;
-                     }
-                 }
-                 .contentMobileMenu{
-                     .item{
-                         margin-left:100px;
-                         padding:10px;
-                         font-size:28px;
-                         font-weight: 'semi-bold';
-                     }
-                      .getStarted{
-                          text-align: center;
-                        margin-left:110px;
-                        margin-top:20px;
-                        width:200px;
-                        font-size:22px;
-                        border-radius:3px;
-                        color:#fff;
-                        font-weight: 700;
-                        padding:9px 15px;
-                        background-color: blue;
-    
-                }
-    
-                 }
-    
-    
-    
-    
-                }
-            }
-                .menuMobile{
-              display: none;
-            @media (max-width:950px){
-                
-    
-                display:flex;
-            justify-content: space-between;
-                  min-height:60px;
-                .logoDiv{
-                    
-                    .logo{
-                        width:150px;
-                        padding:20px 20px;
-                    }
-                }
-                .itemDiv{
-                   
-                    display:flex;
-                   
-                      .logo{
-                        width:125px;
-                        padding:20px 20px;
-                    }
-                }
-            }
+  }
+  .menuMobile {
+    display: none;
+    @media (max-width: 950px) {
+      display: flex;
+      justify-content: space-between;
+      min-height: 60px;
+      .logoDiv {
+        .logo {
+          width: 150px;
+          padding: 20px 20px;
         }
-        .menu{
-        height:13vh;
-        margin-left:50px;
-        margin-right:50px;
-        padding:10px 0px;
-        display:flex;
-        @media screen and(max-width:951px){
-         display: none
+      }
+      .itemDiv {
+        display: flex;
+
+        .logo {
+          width: 125px;
+          padding: 20px 20px;
         }
-        .logoDiv{
-            flex:.9;
-            .logo{
-            
-                width:160px;
-                padding:10px 25px;
-            }
-        }
-        .itemDiv{
-            flex:3;
-            display:flex;
-            flex-direction: column;
-            justify-content: center;
-            .item{
-                display:flex;
-                .normal{
-                margin:0px 10px;
-                font-size:10px;
-                padding:7px
-    
-                }
-                .getStarted{
-                margin:0px 10px;
-                font-size:10px;
-                border-radius:3px;
-                color:#fff;
-                font-weight: 700;
-                    padding:7px 15px;
-                    background-color: blue;
-    
-                }
-    
-            }
-        }
-        .profileDiv{
-            flex:1;
-            display:flex;
-            justify-content:flex-end;
-            font-size:10px;
-            margin:20px;
-        }
-    
+      }
     }
-    
+  }
+  .menu {
+    margin-left: 50px;
+    margin-right: 50px;
+    display: flex;
+    @media screen and(max-width:951px) {
+      display: none;
     }
-    
-    
-    .Overlay{
-         position: fixed;
-          top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0, 0, 0, 0.75);
-      
+    .logoDiv {
+      flex: 0.9;
+      .logo {
+        width: 160px;
+        padding: 10px 25px;
+      }
     }
+    .itemDiv {
+      flex: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .item {
+        display: flex;
+        .normal {
+          margin: 0px 10px;
+          font-size: 10px;
+          padding: 7px;
+        }
+        .getStarted {
+          margin: 0px 10px;
+          font-size: 10px;
+          border-radius: 3px;
+          color: #fff;
+          font-weight: 700;
+          padding: 7px 15px;
+          background-color: blue;
+        }
+      }
+    }
+    .profileDiv {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      font-size: 10px;
+      margin: 20px;
+    }
+    .registerDiv {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+}
