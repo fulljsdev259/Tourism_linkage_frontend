@@ -5,17 +5,21 @@ import ReactRouter from 'react-router';
 import Home from './src/components/home';
 import { Provider } from 'react-redux';
 import { store } from './src/config/store'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { ApolloProvider } from 'react-apollo';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { client } from './src/config/apolloClient'
 class App extends Component {
   render() {
     return (
-      <Provider store={store}>
-        <Router>
-          <div className="App">
-            <Home />
-          </div>
-        </Router>
-      </Provider>
+      <ApolloProvider client={ client }>
+        <Provider store={ store }>
+          <Router>
+            <div className="App">
+              <Home />
+            </div>
+          </Router>
+        </Provider>
+      </ApolloProvider >
     );
   }
 }
