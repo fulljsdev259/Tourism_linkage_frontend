@@ -11,9 +11,17 @@
   }
   .copyright {
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
     @media screen and(max-width: 750px) {
       flex-direction: column;
+    }
+  }
+  @media (max-width: 576px) {
+    .copyright > :nth-child(1) {
+      order: 2;
+    }
+    .copyright > :nth-child(2) {
+      order: 1;
     }
   }
   img {
@@ -31,7 +39,6 @@
     img {
       width: 24px;
       height: 24px;
-      
     }
   }
 }

@@ -33,7 +33,6 @@ const customStyles = {
         right: '0%',
         bottom: '0%',
         borderTopLeftRadius: 30,
-
         border: 'none',
         marginLeft: '35%',
         transform: 'translate(0%, 0%)'
@@ -49,7 +48,6 @@ const customStylesRegister = {
         border: 'none',
         borderTopLeftRadius: 30,
         backgroundColor: '#5165FF',
-
         marginLeft: '35%',
         transform: 'translate(0%, 0%)'
     }
@@ -183,7 +181,7 @@ export default class Index extends React.Component {
 
                             <div
                                 key={index}
-                                style={{ background: `url('${item.url}') no-repeat center center` }}
+                                style={{ background: `url('${item.url}') no-repeat`,backgroundSize: 'cover' }}
                             >
                                 <div className="slider-title">
                                     <h1>{item.title}</h1>

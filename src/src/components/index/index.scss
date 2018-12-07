@@ -8,6 +8,7 @@
       margin-left: 0px;
       margin-right: 0px;
     }
+ 
     .map-section {
       position: relative;
       .toggler {
@@ -116,39 +117,51 @@
       }
     }
     .divBanner {
+      @media screen and(min-width:576px) and (max-width: 750px) {
+        min-height: 29vh;
+        min-height: 29vh;
+      }
+      @media all and(max-width:576px) {
+        min-height: 100vh;
+        min-width: 29vw;
+      }
       .slider {
         height: 100% !important;
         min-width: 29vw;
+        @media (max-width: 576px) {
+          min-height: 100vh;
+          min-width: 29vw;
+        }
+        @media screen and(max-width:1251px) {
+          min-width: 29vw;
+        }
+        @media screen and(min-width:576px) and (max-width: 750px) {
+          min-height: 100vh;
+          min-width: 29vw;
+        }
       }
       .slider-title {
         h1 {
           color: white;
-          text-align: left;
-          text-transform: capitalize;
-          padding: 10px;
-          line-height:40px;
-          margin-top:40px;
-          font-weight: bold;
-          font-size:35px;
-          letter-spacing: -2px;
-         
+          text-align: center;
+          text-transform: uppercase;
+          padding: 20px;
         }
       }
     }
     .divMiddle {
       min-width: 30vw;
-      padding: 30px;
+      padding: 10px;
       background-color: #fbfcff;
       display: flex;
       flex-direction: column;
       align-items: center;
 
       @media screen and(min-width:751px) and (max-width: 1251px) {
-        min-width: 60vw;
+        min-width: 40vw;
       }
       h3 {
         color: #5165ff;
-        font-weight: 700;
       }
       select {
         margin: 20px 0px;
@@ -158,17 +171,20 @@
         background-color: #ffffff;
         min-width: 20vw;
         height: 40px;
-        @media screen and(max-width:551px) {
+        @media screen and(max-width:576px) {
           width: 80vw;
         }
         @media screen and(max-width:1251px) {
           min-width: 30vw;
         }
+        @media screen and(min-width:576px) and (max-width: 750px) {
+          width: 80vw;
+        }
         option {
           padding: 10px;
           min-width: 22vw;
           height: 30px;
-          @media screen and(max-width:551px) {
+          @media screen and(max-width:576px) {
             width: 40vw;
           }
           @media screen and(max-width:1251px) {
@@ -185,9 +201,13 @@
         margin-top: 15px;
         transition: width 1s;
         display: flex;
-        @media screen and(max-width:551px) {
+        @media screen and(max-width:576px) {
           width: 80vw;
         }
+        @media screen and(min-width:576px) and (max-width: 750px) {
+          width: 80vw;
+        }
+
         @media screen and(max-width:1251px) {
           min-width: 30vw;
         }
@@ -196,7 +216,7 @@
           min-height: 60px;
           font-weight: bold;
           font-size: 18px;
-          @media screen and(max-width:551px) {
+          @media screen and(max-width:576px) {
             width: 90vw;
           }
           @media screen and(max-width:1251px) {
@@ -235,6 +255,17 @@
       }
     }
   }
+  @media (max-width: 576px) {
+    .home > :nth-child(1) {
+      order: 1 !important;
+    }
+    .home > :nth-child(2) {
+      order: 1 !important;
+    }
+    .home > :nth-child(3) {
+      display: none;
+    }
+  }
 }
 
 .Overlay {
@@ -262,4 +293,3 @@
 .ReactModal__Overlay--before-close {
   opacity: 0;
 }
-
