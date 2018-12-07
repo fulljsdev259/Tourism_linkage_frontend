@@ -16,7 +16,7 @@ import furniture from '../../images/icon/furniture.svg'
 import furniture2 from '../../images/icon/furniture2.svg'
 import Textile from '../../images/icon/textile.svg'
 import Close from '../../images/icon/cross.svg';
-import location from '../../images/icon/location.svg';
+import locationIcon from '../../images/icon/location.svg';
 import phone from '../../images/icon/phone.svg';
 import rating from '../../images/icon/rating.svg'
 import norating from '../../images/icon/norating.svg'
@@ -89,8 +89,12 @@ const geojson = {
             },
             "obj": {
                 "id": 1,
-                "title": "Test Popup 1",
-                "desc": " This is Test description for poup 1"
+                "title": "Kearion Young",
+                "Category": " Fabric",
+                "tags": ['bandana', 'shorts', 'blouse', 'jamaican colour apparel'],
+                "location": "350 Seaview Gardens, Kingston 11 Kingston",
+                "phone": "834-4811",
+                "reviews": "9"
             }
         },
         {
@@ -200,8 +204,8 @@ class Index extends React.Component {
                         { sliderImages.map( ( item, index ) => (
 
                             <div
-                                key={ index }
-                                style={ { background: `url('${ item.url }') no-repeat`, backgroundSize: 'cover' } }
+                                key={index}
+                                style={{ background: `url('${item.url}') no-repeat`, backgroundSize: 'cover' }}
                             >
                                 <div className="slider-title">
                                     <h1>{ item.title }</h1>
@@ -296,18 +300,39 @@ class Index extends React.Component {
                                     />
                                 ) ) }
                             </Layer>
-                            { location && (
-                                <Popup onClick={ this.closePopup } key={ location.id } coordinates={ location.geometry.coordinates }>
-                                    <div style={ {
-                                        backgroundColor: '#fff',
-                                        color: '#3f618c',
-                                        fontWeight: 400,
-                                        padding: '5px',
-                                        borderRadius: '2px'
-                                    } }>
+                            {location && (
+                                <Popup onClick={this.closePopup} key={location.id} coordinates={location.geometry.coordinates}>
+                                    <div className="popup">
+                                        <div className="popup-content">
 
-                                        <div>{ location.obj.title }</div>
-                                        <p>{ location.obj.desc }</p>
+                                            <p>{location.obj.desc}</p>
+                                            <div className="popup-header">
+                                                <span className="title">{location.obj.title}</span>
+                                            </div>
+                                            <span className="category">Fabric</span>
+                                            <div className="labels">
+                                                <span>
+                                                    male closing
+                                                    </span>
+                                                <span>female closing</span>
+                                            </div>
+                                            <div className="contact-section">
+                                                <div className="item-contact">
+                                                    <img src={locationIcon} />
+                                                    <span>350 Seaview Gardens, Kingston 11</span>
+                                                </div>
+                                                <div className="item-contact">
+                                                    <img src={phone} />
+                                                    <span> 834-4811</span>
+                                                </div>
+                                            </div>
+                                            <div className="reviews-section">
+                                                <img className="rating" src={rating} />
+                                                <div className="reviews">
+                                                    <span>9 Reviews</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </Popup>
                             ) }
@@ -337,7 +362,7 @@ class Index extends React.Component {
                             </div>
                             <div className="contact-section">
                                 <div className="item-contact">
-                                    <img src={ location } />
+                                    <img src={locationIcon} />
                                     <span>350 Seaview Gardens, Kingston 11</span>
                                 </div>
                                 <div className="item-contact">
@@ -367,7 +392,7 @@ class Index extends React.Component {
                             </div>
                             <div className="contact-section">
                                 <div className="item-contact">
-                                    <img src={ location } />
+                                    <img src={locationIcon} />
                                     <span>350 Seaview Gardens, Kingston 11</span>
                                 </div>
                                 <div className="item-contact">
@@ -397,7 +422,7 @@ class Index extends React.Component {
                             </div>
                             <div className="contact-section">
                                 <div className="item-contact">
-                                    <img src={ location } />
+                                    <img src={locationIcon} />
                                     <span>350 Seaview Gardens, Kingston 11</span>
                                 </div>
                                 <div className="item-contact">
@@ -427,7 +452,7 @@ class Index extends React.Component {
                             </div>
                             <div className="contact-section">
                                 <div className="item-contact">
-                                    <img src={ location } />
+                                    <img src={locationIcon} />
                                     <span>350 Seaview Gardens, Kingston 11</span>
                                 </div>
                                 <div className="item-contact">
