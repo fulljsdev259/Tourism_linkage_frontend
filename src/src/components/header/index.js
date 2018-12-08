@@ -78,14 +78,30 @@ export default class Header extends React.Component {
                         <img onClick={this.props.setMobileMenu} src={Close} />
                     </div>
                     <div className="contentMobileMenu">
-                        <div className="item">About</div>
-                        {/* <div className="item">News</div>
+                        <div className="upper-section">
+                            <div className="item" onClick={() => {
+                                oThis.props.modalStateHandler(true, false, false, false, false, false, true)
+                            }}>ABOUT</div>
+                            {/* <div className="item">News</div>
                         <div className="item">Events</div> */}
-                        <div className="item">Contact Us</div>
-                        <div className="getStarted">About</div>
+                            <div className="item" onClick={() => {
+                                oThis.props.modalStateHandler(false, true, false, false, false, false, true)
+                            }}>CONTACT US</div>
+                            <div className="getStarted" onClick={() => {
+
+                                oThis.props.modalStateHandler(false, false, false, true, false, false, true)
+                            }}>GET COMPANY LISTED</div>
+                        </div>
+
 
                     </div>
-
+                    <div className="lower-section" >
+                        <div className="registerDiv"
+                            onClick={() => {
+                                oThis.props.modalStateHandler(false, false, false, false, false, true, true)
+                            }}
+                        >REGISTER / LOGIN</div>
+                    </div>
                 </div>
             }
             <div className="menu">
@@ -117,7 +133,7 @@ export default class Header extends React.Component {
                     onClick={() => {
                         oThis.props.modalStateHandler(false, false, false, false, false, true, true)
                     }}
-                >REGISTER/LOGIN</div>
+                >REGISTER / LOGIN</div>
                 {/* <div className="profileDiv">
                     <div class="dropdown">
                     <img  class="dropbtn" src={profile}/>

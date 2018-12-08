@@ -1,5 +1,6 @@
 import React from 'react';
 import Close from '../../images/icon/cross.svg';
+import crossWhite from '../../images/icon/cross-white.svg';
 import './index.scss'
 import Register1 from './signUp';
 import Login from './LogIn';
@@ -23,7 +24,7 @@ export default class Register extends React.Component {
                         <span>REGISTER / LOGIN </span>
                         <hr />
                     </div>
-                    <img src={ Close } onClick={ () => closeModal() } />
+                    <img src={ crossWhite } onClick={ () => closeModal() } />
                 </div>
                 <div className="content">
                     <div className="heading">Welcome to TLN</div>

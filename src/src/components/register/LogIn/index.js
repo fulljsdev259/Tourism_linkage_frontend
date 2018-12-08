@@ -7,8 +7,16 @@ export default () => {
 
         <input placeholder="Email" />
         <input placeholder="Password" />
+
+        <div className="remember-me">
+            <input type="checkbox" id="RememberMe" name="RememberMe" value="Remember Me" />
+            <label for="RememberMe">Remember Me</label>
+        </div>
         <button className="button" >
             Login
         </button>
+        <div>
+            <span className="forgot-password">Forgot Password?</span>
+        </div>
     </div>
 }

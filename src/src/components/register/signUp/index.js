@@ -11,7 +11,7 @@ export default () => {
 
         <input placeholder="Retype password" />
         <button className="button" >
-            Login
+            Register
         </button>
     </div>
 }

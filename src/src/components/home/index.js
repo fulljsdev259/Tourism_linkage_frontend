@@ -40,7 +40,7 @@ const customStylesRegister = {
         marginLeft: '35%',
         transform: 'translate(0%, 0%)'
     }
-    
+
 };
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
@@ -56,7 +56,9 @@ export default class Home extends React.Component {
         this.state = {
             modalIsOpen: false,
             about: false, contact: false, event: false, getListed: false,
-            news: false, register: false, mobileMenu: false, showListing: false, showMap: true
+            news: false, register: false, mobileMenu: false, showListing: false, showMap: true, width: 0,
+            height: 0,
+            windowResized: false
         };
 
         this.openModal = this.openModal.bind(this);
@@ -66,6 +68,7 @@ export default class Home extends React.Component {
         this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
         this.toggleListing = this.toggleListing.bind(this);
         this.toggleMap = this.toggleMap.bind(this);
+        this.updateDimensions = this.updateDimensions.bind(this);
     }
 
     toggleMobileMenu = () => {
@@ -101,6 +104,18 @@ export default class Home extends React.Component {
             showMap: this.state.showMap
         })
     }
+    updateDimensions = () => {
+        this.setState({ width: window.innerWidth, height: window.innerHeight, windowResized: true });
+    }
+    componentWillMount = () => {
+        this.updateDimensions();
+    }
+    componentDidMount = () => {
+        window.addEventListener("resize", this.updateDimensions);
+    }
+    componentWillUnmount = () => {
+        window.removeEventListener("resize", this.updateDimensions);
+    }
     render() {
         return (
             <div className="App">
@@ -116,7 +131,7 @@ export default class Home extends React.Component {
                     style={this.state.register ? customStylesRegister : customStyles}
                     contentLabel="Example Modal"
                     overlayClassName="Overlay"
-                
+
 
                 >
 
@@ -128,7 +143,7 @@ export default class Home extends React.Component {
                     {this.state.register ? <Register closeModal={() => this.closeModal()} /> : ''}
 
                 </Modal>
-                <Footer/>
+                <Footer />
             </div>
         );
     }

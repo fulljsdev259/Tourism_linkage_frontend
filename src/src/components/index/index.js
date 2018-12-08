@@ -164,7 +164,6 @@ const sliderImages = [{
 ]
 
 
-
 const Map = ReactMapboxGl({
     accessToken: "pk.eyJ1Ijoia2VjaGVhbGV4cHJ0MiIsImEiOiJjam94azh4OHcyODByM3FqeHd1Nm43NWl6In0.0w8_b3fwLMXf8a1zSGgC2w"
 });
@@ -174,11 +173,12 @@ class Index extends React.Component {
         super(props);
         this.state = {
             location: null,
-            region: 'all'
+            region: 'all',
+
         };
 
-
     }
+
     markerClick = (station) => {
         this.setState({ location: station });
     };
@@ -288,7 +288,7 @@ class Index extends React.Component {
                     </div>
                     <div className={this.props.showListing ? "hide" : "divMap"}>
                         <Map
-                            style="mapbox://styles/mapbox/streets-v8"
+                            style="mapbox://styles/mapbox/streets-v9"
                             className="map"
                         >
                             <Layer type="symbol" id="marker" layout={{ "icon-image": "marker-15" }}>
