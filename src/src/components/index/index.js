@@ -155,7 +155,7 @@ const sliderImages = [{
 },
 {
     url: slider6,
-    title: "Fostering smiles through locally sourced goods and service",
+    title: "Fostering smiles throughout Jamaica",
 },
 {
     url: slider3,
@@ -171,13 +171,13 @@ const sliderImages = [{
 ]
 
 
-const Map = ReactMapboxGl( {
+const Map = ReactMapboxGl({
     accessToken: "pk.eyJ1Ijoia2VjaGVhbGV4cHJ0MiIsImEiOiJjam94azh4OHcyODByM3FqeHd1Nm43NWl6In0.0w8_b3fwLMXf8a1zSGgC2w"
-} );
+});
 
 class Index extends React.Component {
-    constructor( props ) {
-        super( props );
+    constructor(props) {
+        super(props);
         this.state = {
             location: null,
             region: 'all',
@@ -189,39 +189,40 @@ class Index extends React.Component {
 
     }
 
-    markerClick = ( station ) => {
-        this.setState( { location: station } );
+    markerClick = (station) => {
+        this.setState({ location: station });
     };
 
     closePopup = () => {
-        this.setState( { location: null } );
+        this.setState({ location: null });
     }
 
 
 
     render() {
+
         const { location } = this.state;
         const { data } = this.props;
-        if ( data.loading ) {
+        if (data.loading) {
             return <span>Loading</span>
         }
         let geoJson = null;
 
 
-        if ( this.state.category === 'all' && this.state.region === 'all' ) {
+        if (this.state.category === 'all' && this.state.region === 'all') {
             geoJson = data.party;
         }
-        if ( !this.state.region === 'all' && this.state.category === 'all' ) {
-            geoJson = data.party.filter( item => item.region === this.state.region )
+        if (!this.state.region === 'all' && this.state.category === 'all') {
+            geoJson = data.party.filter(item => item.region === this.state.region)
         }
-        if ( this.state.region === 'all' && !this.state.category === 'all' ) {
-            geoJson = data.party.filter( item => item.categories === this.state.category )
+        if (this.state.region === 'all' && !this.state.category === 'all') {
+            geoJson = data.party.filter(item => item.categories === this.state.category)
         }
-        if ( !this.state.region === 'all' && !this.state.category === 'all' ) {
-            geoJson = data.party.filter( item => item.categories === this.state.category && item.region === this.state.region )
+        if (!this.state.region === 'all' && !this.state.category === 'all') {
+            geoJson = data.party.filter(item => item.categories === this.state.category && item.region === this.state.region)
         }
 
-        console.log( geoJson )
+        console.log(geoJson)
 
 
 
@@ -268,147 +269,142 @@ class Index extends React.Component {
 
 
                     <Slider>
-                        { sliderImages.map( ( item, index ) => (
+                        {sliderImages.map((item, index) => (
 
                             <div
-                                key={ index }
-                                style={ { background: `url('${ item.url }') no-repeat`, backgroundSize: 'cover' } }
+                                key={index}
+                                style={{ background: `url('${item.url}') no-repeat`, backgroundSize: 'cover' }}
                             >
                                 <div className="slider-title">
-                                    <h1>{ item.title }</h1>
+                                    <h1>{item.title}</h1>
                                 </div>
                             </div>
-                        ) ) }
+                        ))}
                     </Slider>
                 </div>
                 <div className="divMiddle">
-<<<<<<< HEAD
-                    <h3>Discover local manufactures</h3>
-                    <select onChange={ ( e ) => this.setState( { region: e.target.value } ) }>
-=======
                     <h3>Find local manufactures in Jamaica</h3> <span class="jamaicalove"><img width="20" src={JamaicaLove} /></span>
                     <select onChange={(e) => this.setState({ region: e.target.value })}>
->>>>>>> 72d1b1089ee81ed23d6685faa15bf7b6f244a06c
                         <option value="Western Jamica" value="all">All Jamaica</option>
                         <option value="Western Jamica" value="Western Jamaica">Western Jamaica</option>
                         <option value="Central Jamaica" value="Central Jamaica">Central Jamaica</option>
                         <option value="Western Jamica" value="Eastern Jamaica">Eastern Jamaica</option>
                     </select>
-                    <div onClick={ () => this.setState( { category: 'FOOD and AGRO' } ) } className="contentItems">
-                        <div className="icon"><img src={ Printing } /></div>
+                    <div onClick={() => this.setState({ category: 'FOOD and AGRO' })} className="contentItems">
+                        <div className="icon"><img src={Printing} /></div>
                         <div className="content">Food & Agro</div>
-                        <div className="value">{ this.state.region === 'all' ?
-                            this.props.data.party.filter( ( item ) => item.categories === 'FOOD and AGRO' ).length :
-                            data.party.filter( ( item ) => item.categories === 'FOOD and AGRO'
-                                && item.region === this.state.region ).length }</div>
+                        <div className="value">{this.state.region === 'all' ?
+                            this.props.data.party.filter((item) => item.categories === 'FOOD and AGRO').length :
+                            data.party.filter((item) => item.categories === 'FOOD and AGRO'
+                                && item.region === this.state.region).length}</div>
                     </div>
-                    <div onClick={ () => this.setState( { category: 'PRINTING, PACKAGING and PAPER' } ) } className="contentItems">
-                        <div className="icon"><img src={ Printing2 } /></div>
+                    <div onClick={() => this.setState({ category: 'PRINTING, PACKAGING and PAPER' })} className="contentItems">
+                        <div className="icon"><img src={Printing2} /></div>
                         <div className="content">Printing & Packaging</div>
-                        <div className="value">{ this.state.region === 'all' ?
-                            this.props.data.party.filter( ( item ) => item.categories === 'PRINTING, PACKAGING and PAPER' ).length :
-                            data.party.filter( ( item ) => item.categories === 'PRINTING, PACKAGING and PAPER'
-                                && item.region === this.state.region ).length }</div>
+                        <div className="value">{this.state.region === 'all' ?
+                            this.props.data.party.filter((item) => item.categories === 'PRINTING, PACKAGING and PAPER').length :
+                            data.party.filter((item) => item.categories === 'PRINTING, PACKAGING and PAPER'
+                                && item.region === this.state.region).length}</div>
                     </div>
-                    <div onClick={ () => this.setState( { category: 'MINERALS and METAL' } ) } className="contentItems">
-                        <div className="icon"><img src={ Metal } /></div>
+                    <div onClick={() => this.setState({ category: 'MINERALS and METAL' })} className="contentItems">
+                        <div className="icon"><img src={Metal} /></div>
                         <div className="content">Minerals & Metals</div>
-                        <div className="value">{ this.state.region === 'all' ?
-                            this.props.data.party.filter( ( item ) => item.categories === 'MINERALS and METAL' ).length :
-                            data.party.filter( ( item ) => item.categories === 'MINERALS and METAL'
-                                && item.region === this.state.region ).length }</div>
+                        <div className="value">{this.state.region === 'all' ?
+                            this.props.data.party.filter((item) => item.categories === 'MINERALS and METAL').length :
+                            data.party.filter((item) => item.categories === 'MINERALS and METAL'
+                                && item.region === this.state.region).length}</div>
                     </div>
-                    <div onClick={ () => this.setState( { category: 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE' } ) } className="contentItems">
-                        <div className="icon"><img src={ Electricity } /></div>
+                    <div onClick={() => this.setState({ category: 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE' })} className="contentItems">
+                        <div className="icon"><img src={Electricity} /></div>
                         <div className="content">Electrical,Electronics & <br />automative</div>
-                        <div className="value">{ this.state.region === 'all' ?
-                            this.props.data.party.filter( ( item ) => item.categories === 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE' ).length :
-                            data.party.filter( ( item ) => item.categories === 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE'
-                                && item.region === this.state.region ).length }</div>
+                        <div className="value">{this.state.region === 'all' ?
+                            this.props.data.party.filter((item) => item.categories === 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE').length :
+                            data.party.filter((item) => item.categories === 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE'
+                                && item.region === this.state.region).length}</div>
                     </div>
-                    <div onClick={ () => this.setState( { category: 'CHEMICALS, COSMETICS and PHARMACEUTICALS' } ) } className="contentItems">
-                        <div className="icon"><img src={ furniture } /></div>
+                    <div onClick={() => this.setState({ category: 'CHEMICALS, COSMETICS and PHARMACEUTICALS' })} className="contentItems">
+                        <div className="icon"><img src={furniture} /></div>
                         <div className="content">Chemical, Cosmetics & <br />Pharmaceuticals</div>
-                        <div className="value">{ this.state.region === 'all' ?
-                            this.props.data.party.filter( ( item ) => item.categories === 'CHEMICALS, COSMETICS and PHARMACEUTICALS' ).length :
-                            data.party.filter( ( item ) => item.categories === 'CHEMICALS, COSMETICS and PHARMACEUTICALS'
-                                && item.region === this.state.region ).length }</div>
+                        <div className="value">{this.state.region === 'all' ?
+                            this.props.data.party.filter((item) => item.categories === 'CHEMICALS, COSMETICS and PHARMACEUTICALS').length :
+                            data.party.filter((item) => item.categories === 'CHEMICALS, COSMETICS and PHARMACEUTICALS'
+                                && item.region === this.state.region).length}</div>
                     </div>
-                    <div onClick={ () => this.setState( { category: 'FURNITURE, WOODEN and BEDDING' } ) } className="contentItems">
-                        <div className="icon"><img src={ furniture2 } /></div>
+                    <div onClick={() => this.setState({ category: 'FURNITURE, WOODEN and BEDDING' })} className="contentItems">
+                        <div className="icon"><img src={furniture2} /></div>
                         <div className="content">Furniture, Wooden & <br />Bedding</div>
-                        <div className="value">{ this.state.region === 'all' ?
-                            this.props.data.party.filter( ( item ) => item.categories === 'FURNITURE, WOODEN and BEDDING' ).length :
-                            data.party.filter( ( item ) => item.categories === 'FURNITURE, WOODEN and BEDDING'
-                                && item.region === this.state.region ).length }</div>
+                        <div className="value">{this.state.region === 'all' ?
+                            this.props.data.party.filter((item) => item.categories === 'FURNITURE, WOODEN and BEDDING').length :
+                            data.party.filter((item) => item.categories === 'FURNITURE, WOODEN and BEDDING'
+                                && item.region === this.state.region).length}</div>
                     </div>
-                    <div onClick={ () => this.setState( { category: 'TEXTILE and SEWN' } ) } className="contentItems">
-                        <div className="icon"><img src={ Textile } /></div>
+                    <div onClick={() => this.setState({ category: 'TEXTILE and SEWN' })} className="contentItems">
+                        <div className="icon"><img src={Textile} /></div>
                         <div className="content">Textile & Sewn</div>
-                        <div className="value">{ this.state.region === 'all' ?
-                            this.props.data.party.filter( ( item ) => item.categories === 'TEXTILE and SEWN' ).length :
-                            data.party.filter( ( item ) => item.categories === 'TEXTILE and SEWN'
-                                && item.region === this.state.region ).length }</div>
+                        <div className="value">{this.state.region === 'all' ?
+                            this.props.data.party.filter((item) => item.categories === 'TEXTILE and SEWN').length :
+                            data.party.filter((item) => item.categories === 'TEXTILE and SEWN'
+                                && item.region === this.state.region).length}</div>
                     </div>
 
 
                 </div>
                 <div className="map-section" name="map-listing">
                     <div className="toggler">
-                        <button className={ !this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn" } onClick={ this.props.toggleListing }>Map</button>
-                        <button className={ this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn" } onClick={ this.props.toggleListing }>List</button>
+                        <button className={!this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn"} onClick={this.props.toggleListing}>Map</button>
+                        <button className={this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn"} onClick={this.props.toggleListing}>List</button>
                     </div>
-                    <div className={ this.props.showListing ? "hide" : "divMap" }>
+                    <div className={this.props.showListing ? "hide" : "divMap"}>
                         <Map
                             style="mapbox://styles/mapbox/streets-v9"
                             className="map"
-                            center={ [-77.319222, 18] }
-                            zoom={ [7.5] }
+                            center={[-77.319222, 18]}
+                            zoom={[7.5]}
                         >
 
-                            <Layer type="symbol" id="marker" layout={ { "icon-image": "rail-metro" } }>
-                                { data.party.filter( item => this.state.region === 'all' ? item
-                                    : item.region === this.state.region )
-                                    .filter( item => this.state.category === 'all' ? item
-                                        : item.categories === this.state.category )
-                                    .map( ( item, index ) => (
+                            <Layer type="symbol" id="marker" layout={{ "icon-image": "rail-metro" }}>
+                                {data.party.filter(item => this.state.region === 'all' ? item
+                                    : item.region === this.state.region)
+                                    .filter(item => this.state.category === 'all' ? item
+                                        : item.categories === this.state.category)
+                                    .map((item, index) => (
                                         <Feature
-                                            key={ index }
-                                            onClick={ this.markerClick.bind( this, item ) }
-                                            coordinates={ [item.longitude, item.latitude] }
+                                            key={index}
+                                            onClick={this.markerClick.bind(this, item)}
+                                            coordinates={[item.longitude, item.latitude]}
                                         />
-                                    ) ) }
+                                    ))}
                             </Layer>
-                            { location && (
-                                <Popup onClick={ this.closePopup } key={ location.id } coordinates={ [location.longitude, location.latitude] }>
+                            {location && (
+                                <Popup onClick={this.closePopup} key={location.id} coordinates={[location.longitude, location.latitude]}>
                                     <div className="popup">
                                         <div className="popup-content">
 
-                                            <p>{ location.name }</p>
+                                            <p>{location.name}</p>
                                             <div className="popup-header">
-                                                <span className="title">{ location.name }</span>
+                                                <span className="title">{location.name}</span>
                                             </div>
-                                            <span className="category">{ location.categories }</span>
+                                            <span className="category">{location.categories}</span>
                                             <div className="labels">
-                                                { location.tags.split( ',' ).map( ( data, i ) => {
-                                                    if ( i < 4 ) {
-                                                        return <span key={ i }>{ data }</span>
+                                                {location.tags.split(',').map((data, i) => {
+                                                    if (i < 4) {
+                                                        return <span key={i}>{data}</span>
                                                     }
-                                                } ) }
+                                                })}
 
                                             </div>
                                             <div className="contact-section">
                                                 <div className="item-contact">
-                                                    <img src={ locationIcon } />
+                                                    <img src={locationIcon} />
                                                     <span>350 Seaview Gardens, Kingston 11</span>
                                                 </div>
                                                 <div className="item-contact">
-                                                    <img src={ phone } />
+                                                    <img src={phone} />
                                                     <span> 834-4811</span>
                                                 </div>
                                             </div>
                                             <div className="reviews-section">
-                                                <img className="rating" src={ rating } />
+                                                <img className="rating" src={rating} />
                                                 <div className="reviews">
                                                     <span>9 Reviews</span>
                                                 </div>
@@ -416,10 +412,10 @@ class Index extends React.Component {
                                         </div>
                                     </div>
                                 </Popup>
-                            ) }
+                            )}
                         </Map>
                     </div>
-                    <div className={ this.props.showListing ? "list-section" : "hide" }>
+                    <div className={this.props.showListing ? "list-section" : "hide"}>
                         <div className="category">
                             <span>256</span> Chemical, Cosmetics &amp; Pharmaceuticals
                         </div>
@@ -427,7 +423,7 @@ class Index extends React.Component {
                             <div className="item-header">
                                 <span className="title">Richard James Robinson</span>
 
-                                <img className="rating" src={ rating } />
+                                <img className="rating" src={rating} />
                                 <div className="reviews">
                                     <span>9 Reviews</span>
                                 </div>
@@ -443,11 +439,11 @@ class Index extends React.Component {
                             </div>
                             <div className="contact-section">
                                 <div className="item-contact">
-                                    <img src={ locationIcon } />
+                                    <img src={locationIcon} />
                                     <span>350 Seaview Gardens, Kingston 11</span>
                                 </div>
                                 <div className="item-contact">
-                                    <img src={ phone } />
+                                    <img src={phone} />
                                     <span> 834-4811</span>
                                 </div>
                             </div>
@@ -457,7 +453,7 @@ class Index extends React.Component {
                             <div className="item-header">
                                 <span className="title">Richard James Robinson</span>
 
-                                <img className="rating" src={ norating } />
+                                <img className="rating" src={norating} />
                                 <div className="reviews">
                                     <span>No Reviews</span>
                                 </div>
@@ -473,11 +469,11 @@ class Index extends React.Component {
                             </div>
                             <div className="contact-section">
                                 <div className="item-contact">
-                                    <img src={ locationIcon } />
+                                    <img src={locationIcon} />
                                     <span>350 Seaview Gardens, Kingston 11</span>
                                 </div>
                                 <div className="item-contact">
-                                    <img src={ phone } />
+                                    <img src={phone} />
                                     <span> 834-4811</span>
                                 </div>
                             </div>
@@ -487,7 +483,7 @@ class Index extends React.Component {
                             <div className="item-header">
                                 <span className="title">Richard James Robinson</span>
 
-                                <img className="rating" src={ rating } />
+                                <img className="rating" src={rating} />
                                 <div className="reviews">
                                     <span>2 Reviews</span>
                                 </div>
@@ -503,11 +499,11 @@ class Index extends React.Component {
                             </div>
                             <div className="contact-section">
                                 <div className="item-contact">
-                                    <img src={ locationIcon } />
+                                    <img src={locationIcon} />
                                     <span>350 Seaview Gardens, Kingston 11</span>
                                 </div>
                                 <div className="item-contact">
-                                    <img src={ phone } />
+                                    <img src={phone} />
                                     <span> 834-4811</span>
                                 </div>
                             </div>
@@ -517,7 +513,7 @@ class Index extends React.Component {
                             <div className="item-header">
                                 <span className="title">Richard James Robinson</span>
 
-                                <img className="rating" src={ rating } />
+                                <img className="rating" src={rating} />
                                 <div className="reviews">
                                     <span>1 Review</span>
                                 </div>
@@ -533,11 +529,11 @@ class Index extends React.Component {
                             </div>
                             <div className="contact-section">
                                 <div className="item-contact">
-                                    <img src={ locationIcon } />
+                                    <img src={locationIcon} />
                                     <span>350 Seaview Gardens, Kingston 11</span>
                                 </div>
                                 <div className="item-contact">
-                                    <img src={ phone } />
+                                    <img src={phone} />
                                     <span> 834-4811</span>
                                 </div>
                             </div>
@@ -553,4 +549,4 @@ class Index extends React.Component {
 
 
 
-export default graphql( query )( Index );
+export default graphql(query)(Index);

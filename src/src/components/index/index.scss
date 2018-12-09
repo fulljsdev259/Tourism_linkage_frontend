@@ -90,6 +90,7 @@
                   font-size: 12px;
                   color: #a4afd0;
                   font-family: "Open Sans";
+                  text-transform: lowercase;
                 }
               }
               .contact-section {
@@ -138,8 +139,10 @@
           font-size: 14px;
           font-weight: 600;
           font-style: "Open Sans";
+         
           span {
             color: black;
+            
           }
         }
         .list-item {
@@ -170,8 +173,9 @@
           }
           .category {
             font-family: "Open Sans";
-            font-size: 14px;
+            font-size: 10px;
             color: #929292;
+            text-transform: uppercase;
           }
           .labels {
             display: flex;
@@ -219,7 +223,7 @@
         rgba(0,0,0,0.85) 0%, 
         rgba(0,0,0,0) 50%,
         rgba(0,0,0,0) 80%,
-        rgba(0,0,0,0.85) 100%
+      //rgba(0,0,0,0.85) 100%
       );
     }
     .divBanner {
