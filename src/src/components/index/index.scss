@@ -131,6 +131,8 @@
       .list-section {
         margin-top: 15px;
         width: 41vw;
+       max-height: 85vh;
+        overflow: auto;
         padding: 0px 20px 0px 20px;
         color: #5165ff;
 

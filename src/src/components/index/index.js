@@ -39,6 +39,8 @@ const query = gql`
         latitude
         longitude
         tags
+        address
+        phoneNumber
     }
 }
 `
@@ -401,11 +403,11 @@ class Index extends React.Component {
                                             <div className="contact-section">
                                                 <div className="item-contact">
                                                     <img src={ locationIcon } />
-                                                    <span>350 Seaview Gardens, Kingston 11</span>
+                                                    <span>{ location.address }</span>
                                                 </div>
                                                 <div className="item-contact">
                                                     <img src={ phone } />
-                                                    <span> 834-4811</span>
+                                                    <span>{ location.phoneNumber }</span>
                                                 </div>
                                             </div>
                                             <div className="reviews-section">
@@ -423,38 +425,50 @@ class Index extends React.Component {
                     </div>
                     <div className={ this.props.showListing ? "list-section" : "hide" }>
                         <div className="category">
-                            <span>256</span> Chemical, Cosmetics &amp; Pharmaceuticals
+                            <span>{ data.party.filter( item => this.state.region === 'all' ? item
+                                : item.region === this.state.region )
+                                .filter( item => this.state.category === 'all' ? item
+                                    : item.categories === this.state.category ).length }</span> { this.state.category.toUpperCase() }
                         </div>
-                        <div className="list-item">
-                            <div className="item-header">
-                                <span className="title">Richard James Robinson</span>
+                        { data.party.filter( item => this.state.region === 'all' ? item
+                            : item.region === this.state.region )
+                            .filter( item => this.state.category === 'all' ? item
+                                : item.categories === this.state.category )
+                            .map( ( item, i ) => {
 
-                                <img className="rating" src={ rating } />
-                                <div className="reviews">
-                                    <span>9 Reviews</span>
+                                return <div key={ i } className="list-item">
+                                    <div className="item-header">
+                                        <span className="title">{ item.name }</span>
+
+                                        <img className="rating" src={ rating } />
+                                        <div className="reviews">
+                                            <span>9 Reviews</span>
+                                        </div>
+
+                                    </div>
+                                    <span className="category">{ item.categories }</span>
+                                    <div className="labels">
+                                        { item.tags.split( ',' ).map( ( data, i ) => {
+                                            if ( i < 4 ) {
+                                                return <span key={ i }>{ data }</span>
+                                            }
+                                        } ) }
+                                    </div>
+                                    <div className="contact-section">
+                                        <div className="item-contact">
+                                            <img src={ locationIcon } />
+                                            <span>{ item.address }</span>
+                                        </div>
+                                        <div className="item-contact">
+                                            <img src={ phone } />
+                                            <span>{ item.phoneNumber }</span>
+                                        </div>
+                                    </div>
+
                                 </div>
 
-                            </div>
-                            <span className="category">Cotton Fabric</span>
-                            <div className="labels">
-                                <span>
-                                    male closing
-                                </span>
-                                <span>female closing</span>
-
-                            </div>
-                            <div className="contact-section">
-                                <div className="item-contact">
-                                    <img src={ locationIcon } />
-                                    <span>350 Seaview Gardens, Kingston 11</span>
-                                </div>
-                                <div className="item-contact">
-                                    <img src={ phone } />
-                                    <span> 834-4811</span>
-                                </div>
-                            </div>
-
-                        </div>
+                            } )
+                        }
                         <div className="list-item">
                             <div className="item-header">
                                 <span className="title">Richard James Robinson</span>
