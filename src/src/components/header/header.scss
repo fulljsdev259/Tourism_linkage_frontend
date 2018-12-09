@@ -38,6 +38,9 @@
             font-size: 18px;
             font-weight: 600;
             font-weight: "semi-bold";
+            a{
+              color: black;
+            }
           }
           .getStarted {
             text-align: center;
@@ -127,6 +130,12 @@
           font-weight: 700;
           padding: 7px 15px;
           background-color: blue;
+          a{
+            color: white;
+          }
+        }
+        a{
+          color: black;
         }
       }
     }
@@ -189,6 +198,9 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      a{
+        color: black;
+      }
     }
   }
 }

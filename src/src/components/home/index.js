@@ -68,7 +68,6 @@ export default class Home extends React.Component {
         this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
         this.toggleListing = this.toggleListing.bind(this);
         this.toggleMap = this.toggleMap.bind(this);
-        this.updateDimensions = this.updateDimensions.bind(this);
     }
 
     toggleMobileMenu = () => {
@@ -103,18 +102,6 @@ export default class Home extends React.Component {
         this.setState({
             showMap: this.state.showMap
         })
-    }
-    updateDimensions = () => {
-        this.setState({ width: window.innerWidth, height: window.innerHeight, windowResized: true });
-    }
-    componentWillMount = () => {
-        this.updateDimensions();
-    }
-    componentDidMount = () => {
-        window.addEventListener("resize", this.updateDimensions);
-    }
-    componentWillUnmount = () => {
-        window.removeEventListener("resize", this.updateDimensions);
     }
     render() {
         return (

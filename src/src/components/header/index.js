@@ -81,16 +81,16 @@ export default class Header extends React.Component {
                         <div className="upper-section">
                             <div className="item" onClick={() => {
                                 oThis.props.modalStateHandler(true, false, false, false, false, false, true)
-                            }}>ABOUT</div>
+                            }}><a>ABOUT</a></div>
                             {/* <div className="item">News</div>
                         <div className="item">Events</div> */}
                             <div className="item" onClick={() => {
                                 oThis.props.modalStateHandler(false, true, false, false, false, false, true)
-                            }}>CONTACT US</div>
+                            }}><a>CONTACT US</a></div>
                             <div className="getStarted" onClick={() => {
 
                                 oThis.props.modalStateHandler(false, false, false, true, false, false, true)
-                            }}>GET COMPANY LISTED</div>
+                            }}><a>GET COMPANY LISTED</a></div>
                         </div>
 
 
@@ -112,7 +112,7 @@ export default class Header extends React.Component {
                     <div className="item">
                         <div className="normal" onClick={() => {
                             oThis.props.modalStateHandler(true, false, false, false, false, false, true)
-                        }}>ABOUT</div>
+                        }}><a>ABOUT</a></div>
                         {/* <div className="normal" onClick={() => {
                             oThis.props.modalStateHandler(false,false,false,false,true,false,true)
                         }}>NEWS</div>
@@ -121,11 +121,11 @@ export default class Header extends React.Component {
                         }}>EVENT</div> */}
                         <div className="normal" onClick={() => {
                             oThis.props.modalStateHandler(false, true, false, false, false, false, true)
-                        }}>CONTACT US</div>
+                        }}><a>CONTACT US</a></div>
                         <div className="getStarted" onClick={() => {
 
                             oThis.props.modalStateHandler(false, false, false, true, false, false, true)
-                        }}>GET COMPANY LISTED</div>
+                        }}><a>GET COMPANY LISTED</a></div>
 
                     </div>
                 </div>
@@ -133,7 +133,7 @@ export default class Header extends React.Component {
                     onClick={() => {
                         oThis.props.modalStateHandler(false, false, false, false, false, true, true)
                     }}
-                >REGISTER / LOGIN</div>
+                ><a>REGISTER / LOGIN</a></div>
                 {/* <div className="profileDiv">
                     <div class="dropdown">
                     <img  class="dropbtn" src={profile}/>
