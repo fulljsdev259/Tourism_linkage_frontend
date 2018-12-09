@@ -209,10 +209,24 @@
         }
       }
     }
+    .fade {
+    height: 100%;
+     min-width: 29vw;
+    position:absolute;
+    z-index: 1;
+    background: 
+      -webkit-linear-gradient(top, 
+        rgba(0,0,0,0.85) 0%, 
+        rgba(0,0,0,0) 50%,
+        rgba(0,0,0,0) 80%,
+        rgba(0,0,0,0.85) 100%
+      );
+    }
     .divBanner {
       @media screen and(min-width:576px) and (max-width: 750px) {
         min-height: 29vh;
         min-height: 29vh;
+        position: relative;
       }
       @media all and(max-width:576px) {
         min-height: 100vh;
@@ -221,6 +235,7 @@
       .slider {
         height: 100% !important;
         min-width: 29vw;
+      
         @media (max-width: 576px) {
           min-height: 100vh;
           min-width: 29vw;
@@ -241,6 +256,9 @@
           text-transform: capitalize;
           padding: 20px;
           font-weight: 700;
+          position: absolute;
+          top: 20px;
+          z-index: 1000000;
 
         }
       }

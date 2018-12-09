@@ -200,8 +200,9 @@ class Index extends React.Component {
 
         return <div>
             <div className="home">
-
+                <div class="fade"></div>
                 <div className="divBanner">
+
 
 
                     <Slider>
