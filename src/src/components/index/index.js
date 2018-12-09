@@ -22,7 +22,7 @@ import locationIcon from '../../images/icon/location.svg';
 import phone from '../../images/icon/phone.svg';
 import rating from '../../images/icon/rating.svg'
 import norating from '../../images/icon/norating.svg'
-import ReactMapboxGl, { Layer, Marker, Feature, Popup, GeoJSONLayer } from "react-mapbox-gl";
+import ReactMapboxGl, { Layer, Marker, Feature, ZoomControl, Popup, GeoJSONLayer } from "react-mapbox-gl";
 import Slider from 'react-animated-slider';
 import 'react-animated-slider/build/horizontal.css';
 
@@ -283,8 +283,13 @@ class Index extends React.Component {
                     </Slider>
                 </div>
                 <div className="divMiddle">
+<<<<<<< HEAD
                     <h3>Find local manufactures in Jamaica</h3> <span class="jamaicalove"><img width="20" src={JamaicaLove} /></span>
                     <select onChange={(e) => this.setState({ region: e.target.value })}>
+=======
+                    <h3>Discover local manufactures</h3>
+                    <select onChange={ ( e ) => this.setState( { region: e.target.value } ) }>
+>>>>>>> 7920432a7c46c02075461e185b540ee8770d7ee8
                         <option value="Western Jamica" value="all">All Jamaica</option>
                         <option value="Western Jamica" value="Western Jamaica">Western Jamaica</option>
                         <option value="Central Jamaica" value="Central Jamaica">Central Jamaica</option>
@@ -349,17 +354,29 @@ class Index extends React.Component {
 
 
                 </div>
+
                 <div className="map-section" name="map-listing">
                     <div className="toggler">
                         <button className={!this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn"} onClick={this.props.toggleListing}>Map</button>
                         <button className={this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn"} onClick={this.props.toggleListing}>List</button>
                     </div>
+<<<<<<< HEAD
                     <div className={this.props.showListing ? "hide" : "divMap"}>
                         <Map
                             style="mapbox://styles/mapbox/streets-v9"
                             className="map"
                             center={[-77.319222, 18]}
                             zoom={[7.5]}
+=======
+                    <div className={ this.props.showListing ? "hide" : "divMap" }>
+
+                        <Map
+                            style="mapbox://styles/mapbox/streets-v9"
+                            className="map"
+                            scrollZoom={ false }
+                            center={ [-77.319222, 18] }
+                            zoom={ [7.5] }
+>>>>>>> 7920432a7c46c02075461e185b540ee8770d7ee8
                         >
 
                             <Layer type="symbol" id="marker" layout={{ "icon-image": "rail-metro" }}>
@@ -375,8 +392,16 @@ class Index extends React.Component {
                                         />
                                     ))}
                             </Layer>
+<<<<<<< HEAD
                             {location && (
                                 <Popup onClick={this.closePopup} key={location.id} coordinates={[location.longitude, location.latitude]}>
+=======
+
+
+                            <ZoomControl style={ { position: 'relative', bottom: '0px', top: '85%', left: 0, border: 'none', marginLeft: 10, boxShadow: ' rgba(0, 0, 0, 0.0) 0px 1px 4px' } } />
+                            { location && (
+                                <Popup onClick={ this.closePopup } key={ location.id } coordinates={ [location.longitude, location.latitude] }>
+>>>>>>> 7920432a7c46c02075461e185b540ee8770d7ee8
                                     <div className="popup">
                                         <div className="popup-content">
 
@@ -412,7 +437,12 @@ class Index extends React.Component {
                                         </div>
                                     </div>
                                 </Popup>
+<<<<<<< HEAD
                             )}
+=======
+                            ) }
+
+>>>>>>> 7920432a7c46c02075461e185b540ee8770d7ee8
                         </Map>
                     </div>
                     <div className={this.props.showListing ? "list-section" : "hide"}>
