@@ -133,7 +133,8 @@ export default class Header extends React.Component {
                     onClick={() => {
                         oThis.props.modalStateHandler(false, false, false, false, false, true, true)
                     }}
-                ><a>REGISTER / LOGIN</a></div>
+                ><a>REGISTER / LOGIN</a>
+                </div>
                 {/* <div className="profileDiv">
                     <div class="dropdown">
                     <img  class="dropbtn" src={profile}/>
@@ -144,6 +145,8 @@ export default class Header extends React.Component {
                         </div>
                     </div>
                 </div> */}
+
+
             </div>
 
         </div >

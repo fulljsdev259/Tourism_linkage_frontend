@@ -287,7 +287,17 @@ class Index extends React.Component {
                         <h3>Find local manufactures in Jamaica</h3> <span className="jamaicalove"><img width="20" src={JamaicaLove} /></span>
 
                     </div>
-
+                    <ul id="menu">
+                        <li>
+                            <input id="check02" type="checkbox" name="menu" />
+                            <label for="check02">All Jamaica</label>
+                            <ul class="submenu">
+                                <li><a href="#">Western Jamaica</a></li>
+                                <li><a href="#">Central Jamaica</a></li>
+                                <li><a href="#">Eastern Jamaica</a></li>
+                            </ul>
+                        </li>
+                    </ul>
 
                     <select onChange={(e) => this.setState({ region: e.target.value })}>
                         <option value="Western Jamica" value="all">All Jamaica</option>
