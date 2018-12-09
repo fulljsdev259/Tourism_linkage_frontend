@@ -1,14 +1,16 @@
 import React from 'react';
 import './index.scss'
 import Pic from '../../images/picture.png'
-import slider1 from '../../images/picture.png'
-import slider2 from '../../images/slider2.png'
-import slider3 from '../../images/slider3.png'
-import slider4 from '../../images/slider4.png'
-import slider5 from '../../images/slider5.png'
+import slider1 from '../../images/IMG_6421_1_.jpg'
+import slider2 from '../../images/coffee-3531904_1280.jpg'
+import slider3 from '../../images/DJI_Antillean_Charm_2018_Collection_20181119_0033.jpg'
+import slider4 from '../../images/food-84530_1280.jpg'
+import slider5 from '../../images/DJI_Antillean_Charm_2018_Collection_20181119_0055.jpg'
+import slider6 from '../../images/jamaica-1353644_1280.jpg'
 import Logo from '../../images/Tourism_Linkages_Network_Logo.gif'
 import Menu from '../../images/icon/menu.svg'
 import Printing from '../../images/icon/printing.svg'
+import JamaicaLove from '../../images/jamaicalove.svg'
 import Printing2 from '../../images/icon/printing2.svg'
 import Metal from '../../images/icon/metal.svg'
 import Electricity from '../../images/icon/electicity.svg'
@@ -143,22 +145,24 @@ const geojson = {
 }
 const sliderImages = [{
     url: slider1,
-    title: "Fostering joy through Jamaica Made products.",
-}, {
-    url: slider1,
-    title: "Keeping money in the local economy.",
+    title: "Creating links between Suppliers & Buyers",
 }, {
     url: slider2,
+    title: "Keeping money in the local economy.",
+},
+{
+    url: slider6,
+    title: "Fostering smiles through locally sourced goods and service",
+},
+{
+    url: slider3,
     title: "Creating and supporting community jobs",
 }, {
-    url: slider3,
+    url: slider4,
     title: "Regenerating Jamaica's most valuable resources. You!",
 }, {
-    url: slider4,
-    title: "Building vibrant and creative communities",
-}, {
     url: slider5,
-    title: "Regenerating Jamaica’s most valuable resources. You!",
+    title: "Building vibrant and creative communities",
 },
 
 ]
@@ -215,7 +219,7 @@ class Index extends React.Component {
                     </Slider>
                 </div>
                 <div className="divMiddle">
-                    <h3>Discover local manufactures</h3>
+                    <h3>Find local manufactures in Jamaica</h3> <span class="jamaicalove"><img width="20" src={JamaicaLove} /></span>
                     <select onChange={(e) => this.setState({ region: e.target.value })}>
                         <option value="Western Jamica" value="all">All Jamaica</option>
                         <option value="Western Jamica" value="Western Jamaica">Western Jamaica</option>
