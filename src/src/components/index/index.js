@@ -157,7 +157,7 @@ const sliderImages = [{
 },
 {
     url: slider6,
-    title: "Fostering smiles through locally sourced goods and service",
+    title: "Fostering smiles throughout Jamaica",
 },
 {
     url: slider3,
@@ -202,6 +202,7 @@ class Index extends React.Component {
 
 
     render() {
+
         const { location } = this.state;
         const { data } = this.props;
         if ( data.loading ) {
@@ -284,7 +285,7 @@ class Index extends React.Component {
                     </Slider>
                 </div>
                 <div className="divMiddle">
-                    <h3>Discover local manufactures</h3>
+                    <h3>Find local manufactures in Jamaica</h3> <span class="jamaicalove"><img width="20" src={ JamaicaLove } /></span>
                     <select onChange={ ( e ) => this.setState( { region: e.target.value } ) }>
                         <option value="Western Jamica" value="all">All Jamaica</option>
                         <option value="Western Jamica" value="Western Jamaica">Western Jamaica</option>
@@ -357,11 +358,9 @@ class Index extends React.Component {
                         <button className={ this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn" } onClick={ this.props.toggleListing }>List</button>
                     </div>
                     <div className={ this.props.showListing ? "hide" : "divMap" }>
-
                         <Map
                             style="mapbox://styles/mapbox/streets-v9"
                             className="map"
-                            scrollZoom={ false }
                             center={ [-77.319222, 18] }
                             zoom={ [7.5] }
                         >
@@ -379,8 +378,6 @@ class Index extends React.Component {
                                         />
                                     ) ) }
                             </Layer>
-
-
                             <ZoomControl style={ { position: 'relative', bottom: '0px', top: '85%', left: 0, border: 'none', marginLeft: 10, boxShadow: ' rgba(0, 0, 0, 0.0) 0px 1px 4px' } } />
                             { location && (
                                 <Popup onClick={ this.closePopup } key={ location.id } coordinates={ [location.longitude, location.latitude] }>
@@ -420,7 +417,6 @@ class Index extends React.Component {
                                     </div>
                                 </Popup>
                             ) }
-
                         </Map>
                     </div>
                     <div className={ this.props.showListing ? "list-section" : "hide" }>
