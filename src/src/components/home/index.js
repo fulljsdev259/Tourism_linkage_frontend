@@ -12,6 +12,7 @@ import Event from '../events';
 import GetListed from '../getListed';
 import News from '../news'
 import Register from '../register';
+import MobileMap from '../mobileMap';
 
 const customStyles = {
     content: {
@@ -110,6 +111,7 @@ export default class Home extends React.Component {
                 <Switch>
                     <Route exact path="/" render={props => (<Index toggleListing={this.toggleListing} toggleMap={this.toggleMap} {...this.state} />)} />
                     <Route {...this.state} path="/detail" component={ItemDetail} />
+                    <Route path="/mobilemap" render={props => (<MobileMap toggleListing={this.toggleListing} toggleMap={this.toggleMap} {...this.state} />)}/>
                 </Switch>
                 <Modal
                     isOpen={this.state.modalIsOpen}
