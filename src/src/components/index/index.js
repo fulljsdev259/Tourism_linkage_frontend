@@ -226,43 +226,6 @@ class Index extends React.Component {
         }
 
         console.log( geoJson )
-
-
-
-        // const geoJson = [];
-
-        // data.party.map( ( item, i ) => {
-        //     console.log( item )
-        //     if ( item === undefined || item == null || item <= 0 ) {
-        //         console.log( '*******' + item )
-        //     }
-        //     else {
-        //         geoJson.push( {
-        //             "type": "Feature",
-        //             "properties": {
-        //                 "name": "Pentagon",
-        //                 "marker-color": "#0000ff",
-        //                 "marker-symbol": "rail-metro",
-        //                 "line": "blue"
-        //             },
-        //             "geometry": {
-        //                 "type": "Point",
-        //                 "coordinates": [
-        //                     parseFloat( item.latitude ),
-        //                     parseFloat( item.longitude )
-        //                 ]
-        //             },
-        //             "obj": {
-        //                 "id": i,
-        //                 "title": item.name ? item.name : '',
-        //                 "desc": " This is Test description for poup 2"
-        //             }
-        //         } )
-        //     }
-
-        // } )
-
-        // console.log( geoJson )
         console.log( this.state.subMenu )
 
         return <div>

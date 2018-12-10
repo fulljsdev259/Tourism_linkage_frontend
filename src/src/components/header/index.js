@@ -135,20 +135,6 @@ export default class Header extends React.Component {
                     <img className="logo" src={Logo} />
                 </div>
                 <div className="itemDiv">
-                    <button class="menu-toggle" onClick={this.ToggleBody}></button>
-                    <nav>
-                        <ul class="menu">
-                            <li data-text="ABOUT" onClick={() => {
-                                oThis.props.modalStateHandler(true, false, false, false, false, false, true)
-                            }}>ABOUT</li>
-                            <li data-text="CONTACT" onClick={() => {
-                                oThis.props.modalStateHandler(false, true, false, false, false, false, true)
-                            }}>Contact</li>
-                            <li data-text="GET COMPANY LISTED" onClick={() => {
-                                oThis.props.modalStateHandler(false, false, false, true, false, false, true)
-                            }}>GET COMPANY LISTED</li>
-                        </ul>
-                    </nav>
                     <div className="item">
                         <div className="normal" onClick={() => {
                             oThis.props.modalStateHandler(true, false, false, false, false, false, true)
