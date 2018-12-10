@@ -89,7 +89,7 @@ export default class ItemDetail extends React.Component {
     }
     render() {
         return <div>
-            <div className="home">
+            <div className="detail">
                 <div className="itemDetail-Map">
                     <Map
                         style="mapbox://styles/mapbox/streets-v8"

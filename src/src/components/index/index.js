@@ -288,12 +288,11 @@ class Index extends React.Component {
                 <div className="divMiddle">
                     <div className="header">
                         <h3>Find local manufactures in Jamaica</h3> <span className="jamaicalove"><img width="20" src={ JamaicaLove } /></span>
-
                     </div>
                     <ul id="menu">
                         <li>
                             <input onClick={ () => this.setState( { subMenu: true } ) } id="check02" type="checkbox" name="menu" />
-                            <label for="check02">All Jamaica { this.state.region }</label>
+                            <label htmlFor="check02">All Jamaica { this.state.region }</label>
                             { this.state.subMenu ?
                                 <ul class="submenu">
                                     <li onClick={ ( e ) => this.setState( { region: "Western Jamaica", subMenu: !this.state.subMenu } ) }><a href="#">Western Jamaica</a></li>

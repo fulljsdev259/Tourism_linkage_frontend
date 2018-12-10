@@ -235,7 +235,7 @@ class Index extends React.Component {
                     <ul id="menu">
                         <li>
                             <input id="Jamaica" type="checkbox" name="menu" />
-                            <label for="Jamaica">All Jamaica</label>
+                            <label htmlFor="Jamaica">All Jamaica</label>
                             <ul class="submenu">
                                 <li><a href="#">Western Jamaica</a></li>
                                 <li><a href="#">Central Jamaica</a></li>
@@ -247,7 +247,7 @@ class Index extends React.Component {
                     <ul id="menu">
                         <li>
                             <input id="Category" type="checkbox" name="menu" />
-                            <label for="Category"> <img src={Printing} />Food & Agro </label>
+                            <label htmlFor="Category"> <img src={Printing} />Food & Agro </label>
                             <ul class="submenu">
                                 <li><a href="#"><div className="icon"><img src={Printing2} />Printing & Packaging</div></a></li>
                                 <li><a href="#"><div className="icon"><img src={Metal} />Minerals & Metals</div></a></li>

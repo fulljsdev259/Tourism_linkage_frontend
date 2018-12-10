@@ -22,6 +22,7 @@
        box-shadow: 0 8px 25px 6px rgba(223, 223, 223, 0.5);
   
         .map-toggle-btn {
+          cursor: pointer;
           min-width: 60px;
           border: none;
           padding: 5px;
@@ -131,7 +132,7 @@
       .list-section {
         margin-top: 15px;
         width: 41vw;
-       max-height: 85vh;
+       max-height: 92vh;
         overflow: auto;
         padding: 0px 20px 0px 20px;
         color: #5165ff;
@@ -176,11 +177,10 @@
             font-family: "Open Sans";
             font-size: 10px;
             color: #929292;
-            text-transform: uppercase;
+            text-transform:capitalize;
           }
           .labels {
-            display: flex;
-            flex-direction: row;
+         
             margin-top: 15px;
             span {
               margin-right: 10px;
@@ -191,6 +191,12 @@
               font-size: 12px;
               color: #a4afd0;
               font-family: "Open Sans";
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+              width: 90px !important;
+              min-width: 30px !important;
+              display: inline-block;
             }
           }
           .contact-section {

@@ -10,7 +10,7 @@ export default () => {
 
         <div className="remember-me">
             <input type="checkbox" id="RememberMe" name="RememberMe" value="Remember Me" />
-            <label for="RememberMe">Remember Me</label>
+            <label htmlFor="RememberMe">Remember Me</label>
         </div>
         <button className="button" >
             Login

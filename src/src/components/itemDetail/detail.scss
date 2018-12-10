@@ -1,9 +1,10 @@
 .App {
-  .home {
+  .detail {
+    display: flex;
     margin-left: 0px !important;
-    margin-right: 50px;
-    overflow-x: hidden;
+    margin-right: 0px !important;
     @media screen and(max-width:750px) {
+      flex-direction: column;
       margin-left: 0px;
       margin-right: 0px;
     }
@@ -11,14 +12,14 @@
   @media (max-width: 576px) {
     height: 40vh;
     width: 100%;
-    .home > :nth-child(1) {
-      order: 2;
+    .detail > :nth-child(1) {
+      order: 2 !important;
     }
-    .home > :nth-child(2) {
-      order: 1;
+    .detail > :nth-child(2) {
+      order: 1 !important;
     }
-    .home > :nth-child(3) {
-      order: 3;
+    .detail > :nth-child(3) {
+      order: 3 !important;
     }
   }
   .itemDetail-Map {
@@ -86,6 +87,7 @@
           font-size: 14px;
           height: 30px;
           color: #929292;
+        
 
           .seperator {
             border-right: 1px solid #929292;
@@ -145,6 +147,7 @@
         border: 1px solid #ebebeb;
       }
       .review-section {
+        margin-bottom: 25px;
         h3 {
           margin: 30px 0px 20px 0px !important;
           font-size: 18px;

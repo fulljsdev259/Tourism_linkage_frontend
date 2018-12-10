@@ -81,19 +81,24 @@ export default class Header extends React.Component {
                     <img className="logo" src={Logo} />
                 </div>
                 <div className="itemDiv">
-                    <button class="menu-toggle" onClick={this.ToggleBody}></button>
+                    <button className="menu-toggle" onClick={this.ToggleBody}></button>
                     <nav>
-                        <ul class="menu">
+                        <img className="logo" src={Logo} />
+                        <ul className="menu">
+
                             <li data-text="ABOUT" onClick={() => {
                                 oThis.props.modalStateHandler(true, false, false, false, false, false, true)
                             }}>ABOUT</li>
                             <li data-text="CONTACT" onClick={() => {
                                 oThis.props.modalStateHandler(false, true, false, false, false, false, true)
                             }}>CONTACT</li>
-                            <li data-text="GET COMPANY LISTED" className="blueBtn" onClick={() => {
+                          
+                            <li style={{
+                                marginTop:"10px"
+                            }} data-text="GET COMPANY LISTED" onClick={() => {
                                 oThis.props.modalStateHandler(false, false, false, true, false, false, true)
-                            }}>GET COMPANY LISTED</li>
-                            <li className="registerLi" onClick={() => {
+                            }}><span className="blueBtn">GET COMPANY LISTED </span></li>
+                            <li data-text="GET COMPANY LISTED" className="registerLi" onClick={() => {
                                 oThis.props.modalStateHandler(false, false, false, false, false, true, true)
                             }}>
                                 <div className="lower-section" >
@@ -102,7 +107,6 @@ export default class Header extends React.Component {
                                     >REGISTER / LOGIN
                                      </div>
                                 </div>
-
                             </li>
                         </ul>
                     </nav>
