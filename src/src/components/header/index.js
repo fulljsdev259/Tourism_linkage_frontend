@@ -81,6 +81,7 @@ export default class Header extends React.Component {
                     <img className="logo" src={Logo} />
                 </div>
                 <div className="itemDiv">
+                    
                     <button className="menu-toggle" onClick={this.ToggleBody}></button>
                     <nav>
                         <img className="logo" src={Logo} />

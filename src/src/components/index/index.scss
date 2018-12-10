@@ -91,6 +91,12 @@
                   color: #a4afd0;
                   font-family: "Open Sans";
                   text-transform: lowercase;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  width: 90px !important;
+                  min-width: 30px !important;
+                  display: inline-block;
                 }
               }
               .contact-section {

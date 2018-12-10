@@ -12,10 +12,11 @@ export default () => {
             <input type="checkbox" id="RememberMe" name="RememberMe" value="Remember Me" />
             <label htmlFor="RememberMe">Remember Me</label>
         </div>
-        <button className="button" >
-            Login
+        <div className="remeber-section">
+            <button className="button" >
+                Login
         </button>
-        <div>
+
             <span className="forgot-password">Forgot Password?</span>
         </div>
     </div>

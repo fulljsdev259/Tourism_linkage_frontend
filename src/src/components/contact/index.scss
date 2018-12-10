@@ -1,5 +1,11 @@
 .contact{
-    margin:50px 75px;
+    margin:30px 75px;
+    @media (max-width:576px) {
+        margin:30px 20px;
+    }
+    @media (min-width:576px)and (max-width:992px) {
+        margin:30px 20px;
+    }
     .header{
         display:flex;
         justify-content: space-between;
@@ -10,9 +16,10 @@
             
             }
             hr{
-                background-color: blue;
+                background-color: #5165ff;
                 margin-top:2px;
-                height:2px;
+                height: 4px;
+                border: 0px;
             }
         }
         img{

@@ -1,7 +1,10 @@
 .register {
-  margin: 30px 75px;
-  @media all and(max-width:576px) {
-    margin: 30px 0px 0px 0px;
+  margin:30px 75px;
+  @media (max-width:576px) {
+      margin:30px 20px;
+  }
+  @media (min-width:576px)and (max-width:992px) {
+      margin:30px 20px;
   }
   .header {
     display: flex;
@@ -15,7 +18,8 @@
       hr {
         background-color: #a4afd0;
         margin-top: 2px;
-        height: 2px;
+        height: 4px;
+        border: 0px;
       }
     }
     img {
