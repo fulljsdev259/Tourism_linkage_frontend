@@ -46,6 +46,46 @@ const query = gql`
 `
 
 
+const foodIcon = new Image( 20.20 );
+foodIcon.src = Printing;
+const food = ['food', foodIcon]
+
+
+
+const printIcon = new Image( 20.20 );
+printIcon.src = Printing2;
+const printing1 = ['printing', printIcon]
+
+
+
+
+
+const metalIcon = new Image( 20.20 );
+metalIcon.src = Metal;
+const metal = ['metal', metalIcon]
+
+
+const electricityIcon = new Image( 20.20 );
+electricityIcon.src = Electricity;
+const electricity = ['electricity', electricityIcon]
+
+
+
+const chemical1Icon = new Image( 20.20 );
+chemical1Icon.src = chemical;
+const chemical1 = ['chemical', chemical1Icon]
+
+const furniture2Icon = new Image( 20.20 );
+furniture2Icon.src = furniture2;
+const furniture3 = ['furniture', furniture2Icon]
+
+const textileIcon = new Image( 20.20 );
+textileIcon.src = Textile;
+const textile1 = ['textile', textileIcon]
+
+
+
+
 
 const customStyles = {
     content: {
@@ -225,8 +265,6 @@ class Index extends React.Component {
             geoJson = data.party.filter( item => item.categories === this.state.category && item.region === this.state.region )
         }
 
-        console.log( geoJson )
-        console.log( this.state.subMenu )
 
         return <div>
             <div className="home">
@@ -338,7 +376,24 @@ class Index extends React.Component {
                             zoom={ [7.5] }
                         >
 
-                            <Layer type="symbol" id="marker" layout={ { "icon-image": "rail-metro" } }>
+                            <Layer type="symbol" id="marker"
+
+                                layout={ {
+                                    "icon-image": this.state.category === 'FOOD and AGRO' ? "food" :
+                                        this.state.category === 'PRINTING, PACKAGING and PAPER' ? 'printing' :
+                                            this.state.category === 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE' ? 'electricity' :
+                                                this.state.category === 'CHEMICALS, COSMETICS and PHARMACEUTICALS' ? 'chemical' :
+                                                    this.state.category === 'FURNITURE, WOODEN and BEDDING' ? 'furniture' :
+                                                        this.state.category === 'TEXTILE and SEWN' ? 'textile' :
+
+
+                                                            this.state.category === 'MINERALS and METAL' ? 'metal' :
+                                                                "rail-metro"
+                                } }
+                                images={ [food, printing1, metal, electricity, chemical1, furniture3, textile1] }
+
+
+                            >
                                 { data.party.filter( item => this.state.region === 'all' ? item
                                     : item.region === this.state.region )
                                     .filter( item => this.state.category === 'all' ? item
