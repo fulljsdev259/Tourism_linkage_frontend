@@ -250,8 +250,11 @@ class Index extends React.Component {
                             <label for="Category"> <img src={Printing} />Food & Agro </label>
                             <ul class="submenu">
                                 <li><a href="#"><div className="icon"><img src={Printing2} />Printing & Packaging</div></a></li>
-                                <li><a href="#"><img src={Metal} />Minerals & Metals</a></li>
-                                <li><a href="#"><img src={Electricity} />Electrical,Electronics & automative</a></li>
+                                <li><a href="#"><div className="icon"><img src={Metal} />Minerals & Metals</div></a></li>
+                                <li><a href="#"><div className="icon"><img src={Electricity} />Electrical,Electronics & automative</div></a></li>
+                                <li><a href="#"><div className="icon"><img src={chemical} /> Chemical, Cosmetics &Pharmaceuticals</div></a></li>
+                                <li><a href="#"><div className="icon"><img src={furniture2} />Furniture, Wooden & Bedding</div></a></li>
+                                <li><a href="#"><div className="icon"><img src={Textile} />Textile & Sewn</div></a></li>
                             </ul>
                         </li>
                     </ul>

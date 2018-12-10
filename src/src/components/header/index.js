@@ -59,6 +59,7 @@ export default class Header extends React.Component {
             openClass: ''
         }
         this.ToggleBody = () => {
+            //this.props.setMobileMenu();
             var currentClass = document.getElementsByTagName('body')[0];
             var isAlreadyOpened = currentClass.classList.contains('open');
 
@@ -88,13 +89,23 @@ export default class Header extends React.Component {
                             }}>ABOUT</li>
                             <li data-text="CONTACT" onClick={() => {
                                 oThis.props.modalStateHandler(false, true, false, false, false, false, true)
-                            }}>Contact</li>
-                            <li data-text="GET COMPANY LISTED" onClick={() => {
+                            }}>CONTACT</li>
+                            <li data-text="GET COMPANY LISTED" className="blueBtn" onClick={() => {
                                 oThis.props.modalStateHandler(false, false, false, true, false, false, true)
                             }}>GET COMPANY LISTED</li>
+                            <li className="registerLi" onClick={() => {
+                                oThis.props.modalStateHandler(false, false, false, false, false, true, true)
+                            }}>
+                                <div className="lower-section" >
+                                    <div className="registerDiv"
+
+                                    >REGISTER / LOGIN
+                                     </div>
+                                </div>
+
+                            </li>
                         </ul>
                     </nav>
-                    <img onClick={this.props.setMobileMenu} className="logo" src={Menu} />
                 </div>
             </div>
             {
