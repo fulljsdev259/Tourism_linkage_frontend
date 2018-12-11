@@ -4,7 +4,7 @@ import Logo from '../../images/Tourism_Linkages_Network_Logo.gif'
 import Menu from '../../images/icon/menu.svg'
 import profile from '../../images/oval.png'
 import Close from '../../images/icon/cross.svg';
-
+import { Link } from 'react-router-dom';
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 
 
@@ -77,14 +77,15 @@ export default class Header extends React.Component {
         const oThis = this;
         return <div style={{ borderBottom: "1px solid #ebebeb" }}>
             <div className="menuMobile">
-                <div className="logoDiv">
+                <Link to="/"><div className="logoDiv">
                     <img className="logo" src={Logo} />
                 </div>
+                </Link>
                 <div className="itemDiv">
-                    
+
                     <button className="menu-toggle" onClick={this.ToggleBody}></button>
                     <nav>
-                        <img className="logo" src={Logo} />
+                        <Link to="/"> <img onClick={this.ToggleBody} className="logo" src={Logo} /></Link>
                         <ul className="menu">
 
                             <li data-text="ABOUT" onClick={() => {
@@ -93,9 +94,9 @@ export default class Header extends React.Component {
                             <li data-text="CONTACT" onClick={() => {
                                 oThis.props.modalStateHandler(false, true, false, false, false, false, true)
                             }}>CONTACT</li>
-                          
+
                             <li style={{
-                                marginTop:"10px"
+                                marginTop: "10px"
                             }} data-text="GET COMPANY LISTED" onClick={() => {
                                 oThis.props.modalStateHandler(false, false, false, true, false, false, true)
                             }}><span className="blueBtn">GET COMPANY LISTED </span></li>
@@ -147,37 +148,38 @@ export default class Header extends React.Component {
                 </div>
             }
             <div className="menu">
-                <div className="logoDiv">
+                <Link to="/"> <div className="logoDiv">
                     <img className="logo" src={Logo} />
                 </div>
-                <div className="itemDiv">
-                    <div className="item">
-                        <div className="normal" onClick={() => {
-                            oThis.props.modalStateHandler(true, false, false, false, false, false, true)
-                        }}><a>ABOUT</a></div>
-                        {/* <div className="normal" onClick={() => {
+                    </Link>
+                        <div className="itemDiv">
+                            <div className="item">
+                                <div className="normal" onClick={() => {
+                                    oThis.props.modalStateHandler(true, false, false, false, false, false, true)
+                                }}><a>ABOUT</a></div>
+                                {/* <div className="normal" onClick={() => {
                             oThis.props.modalStateHandler(false,false,false,false,true,false,true)
                         }}>NEWS</div>
                         <div className="normal" onClick={() => {
                             oThis.props.modalStateHandler(false,false,true,false,false,false,true)
                         }}>EVENT</div> */}
-                        <div className="normal" onClick={() => {
-                            oThis.props.modalStateHandler(false, true, false, false, false, false, true)
-                        }}><a>CONTACT US</a></div>
-                        <div className="getStarted" onClick={() => {
+                                <div className="normal" onClick={() => {
+                                    oThis.props.modalStateHandler(false, true, false, false, false, false, true)
+                                }}><a>CONTACT US</a></div>
+                                <div className="getStarted" onClick={() => {
 
-                            oThis.props.modalStateHandler(false, false, false, true, false, false, true)
-                        }}><a>GET COMPANY LISTED</a></div>
+                                    oThis.props.modalStateHandler(false, false, false, true, false, false, true)
+                                }}><a>GET COMPANY LISTED</a></div>
 
-                    </div>
-                </div>
-                {/* <div className="registerDiv"
+                            </div>
+                        </div>
+                        {/* <div className="registerDiv"
                     onClick={() => {
                         oThis.props.modalStateHandler(false, false, false, false, false, true, true)
                     }}
                 ><a>REGISTER / LOGIN</a>
                 </div> */}
-                {/* <div className="profileDiv">
+                        {/* <div className="profileDiv">
                     <div class="dropdown">
                     <img  class="dropbtn" src={profile}/>
                         <div class="dropdown-content">
@@ -189,5 +191,5 @@ export default class Header extends React.Component {
                 </div> */}
             </div>
         </div >
-    }
+                }
 }
