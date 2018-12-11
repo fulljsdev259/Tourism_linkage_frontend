@@ -121,7 +121,7 @@
         button {
           opacity: 0.6;
           background-color: transparent;
-          position: fixed;
+          position: absolute;
           z-index: 12;
           top: 24px;
           right: 20px;
@@ -213,7 +213,7 @@
           display: flex;
           flex-direction: column;
           position: fixed;
-          top: 55%;
+          top: 40%;
           left: 55%;
           transform: translate3d(-50%,-50%,0);
           backface-visibility: hidden;

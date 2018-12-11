@@ -99,7 +99,7 @@ export default class Header extends React.Component {
                             }} data-text="GET COMPANY LISTED" onClick={() => {
                                 oThis.props.modalStateHandler(false, false, false, true, false, false, true)
                             }}><span className="blueBtn">GET COMPANY LISTED </span></li>
-                            <li data-text="GET COMPANY LISTED" className="registerLi" onClick={() => {
+                            {/* <li data-text="GET COMPANY LISTED" className="registerLi" onClick={() => {
                                 oThis.props.modalStateHandler(false, false, false, false, false, true, true)
                             }}>
                                 <div className="lower-section" >
@@ -108,7 +108,7 @@ export default class Header extends React.Component {
                                     >REGISTER / LOGIN
                                      </div>
                                 </div>
-                            </li>
+                            </li> */}
                         </ul>
                     </nav>
                 </div>
@@ -171,12 +171,12 @@ export default class Header extends React.Component {
 
                     </div>
                 </div>
-                <div className="registerDiv"
+                {/* <div className="registerDiv"
                     onClick={() => {
                         oThis.props.modalStateHandler(false, false, false, false, false, true, true)
                     }}
                 ><a>REGISTER / LOGIN</a>
-                </div>
+                </div> */}
                 {/* <div className="profileDiv">
                     <div class="dropdown">
                     <img  class="dropbtn" src={profile}/>
