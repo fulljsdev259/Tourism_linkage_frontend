@@ -3,7 +3,8 @@
     display: flex;
     margin-left: 0px !important;
     margin-right: 0px !important;
-    @media screen and(max-width:750px) {
+    overflow-x:hidden; 
+    @media screen and(max-width:768px) {
       flex-direction: column;
       margin-left: 0px;
       margin-right: 0px;
@@ -108,6 +109,7 @@
           display: flex;
           flex-direction: row;
           margin-top: 15px;
+          
           span {
             margin-right: 10px;
             padding: 5px 10px 5px 10px;
@@ -115,6 +117,22 @@
 
             border-radius: 140px;
             background-color: #f8f9ff;
+            @media screen and(min-width:750px) and(max-width:996px) {
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+              width: 90px !important;
+              min-width: 30px !important;
+              display: inline-block;
+            }
+            @media all and(max-width: 576px){
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+              width: 19% !important;
+              display: inline-block;
+            }
+           
           }
         }
         .item-description {
@@ -187,6 +205,9 @@
     min-width: 25vw;
     max-width: 25vw;
     overflow-x: hidden;
+    @media screen and(min-width:576px) and(max-width:768px) {
+     min-width: 100% !important;
+    }
 
     @media screen and(max-width:750px) {
       min-width: 100vw;
@@ -219,6 +240,7 @@
       padding-bottom: 20px;
       .schedule {
         display: flex;
+        flex-direction: row;
         font-size: 14px;
         line-height: 2;
         .day {
@@ -226,6 +248,9 @@
         }
         .time {
           padding: 0px;
+        }
+        @media screen and(min-width:769px) and(max-width:876px) {
+          flex-direction: column;
         }
       }
     }
