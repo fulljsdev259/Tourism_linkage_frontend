@@ -2,6 +2,9 @@
    
     .header{
     margin:20px 50px;
+    @media screen and(max-width:576px) {
+        margin:20px 0px;
+    }
         display:flex;
         justify-content: space-between;
         div{
@@ -30,11 +33,17 @@
             margin:15px 50px;
             font-size: 30px;
             color:#5165FF;
+            @media screen and(max-width:576px) {
+                margin: 15px 0px;
+            }
         }
         p{
-                 margin:15px 50px;
+            margin:15px 50px;
             color:#929292;
-            font-size: 16;
+            font-size: 16px;
+            @media screen and(max-width:576px) {
+                margin: 15px 0px;
+            }
         }
         .formDiv1{
             width:80%;
@@ -42,6 +51,9 @@
             background-color: #F8F9FF;
             .header{
                 margin:15px 65px;
+                @media screen and(max-width:576px) {
+                    margin:20px 20px;
+                }
                 display: flex;
                 font-size: 16px;
                 .number{

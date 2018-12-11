@@ -9,36 +9,38 @@ const WizardFormFirstPage = props => {
     return (
         <div>
             <div className="form">
-                <div className="header">
-                    <div className="number">1</div>
-                    <div className="subHeading">General information</div>
-                </div>
-                <form onSubmit={ handleSubmit }>
-                    <Field
-                        name="firstName"
-                        type="text"
-                        component={ renderField }
-                        label="Your name"
-                    />
-                    <Field
-                        name="lastName"
-                        type="text"
-                        component={ renderField }
-                        label="Company Name"
-                    />
-                    <Field
-                        name="email"
-                        type="text"
-                        component={ renderField }
-                        label="email"
-                    />
-                    <div>
-                        <button type="submit" className="next">
-                            Continue
-        </button>
+                <div className="form-1">
+                    <div className="form-header">
+                        <div className="number">1</div>
+                        <div className="subHeading">General information</div>
                     </div>
-                </form>
-
+                    <form onSubmit={handleSubmit}>
+                        <Field
+                            name="fullname"
+                            type="text"
+                            component={renderField}
+                            label="Your full name"
+                        />
+                        <Field
+                            name="companyname"
+                            type="text"
+                            component={renderField}
+                            label="Your company name"
+                            placeholder=""
+                        />
+                        <Field
+                            name="email"
+                            type="email"
+                            component={renderField}
+                            label="Email"
+                        />
+                        <div>
+                            <button type="submit" className="next">
+                            CONTINUE
+                     </button>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div className="inActiveHeader">
                 <div className="number">2</div>
@@ -52,9 +54,9 @@ const WizardFormFirstPage = props => {
     )
 }
 
-export default reduxForm( {
+export default reduxForm({
     form: 'wizard', // <------ same form name
     destroyOnUnmount: false, // <------ preserve form data
     forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
     validate
-} )( WizardFormFirstPage )
+})(WizardFormFirstPage)

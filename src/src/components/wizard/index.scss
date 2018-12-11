@@ -1,10 +1,15 @@
 .form{
     background-color:#F8F9FF;
     padding:10px;
-    margin-left:-20px;
-    margin-right:50px;
-         .header{
-                margin:15px 65px;
+    margin-left: -30px;
+    margin-right: -20px;
+  
+    .form-1{
+        margin:20px 65px;
+        @media screen and(max-width:576px) {
+            margin: 20px 20px;
+        }
+         .form-header{
                 display: flex;
                 font-size: 16px;
                 .number{
@@ -19,28 +24,53 @@
                     background-color:#5165FF;
                     color: #fff;
                     border-radius: 50%;
-
+                    @media screen and(max-width:576px) {
+                        margin: 0px 5px 5px 0px;
+                    }
+                    
                 }
                 .subHeading{
                     flex:3;
-                    margin:5px 5px 5px 20px;
+                    margin-left: 2vw;
                     display: flex;
                   flex-direction: column;
                   justify-content: center;
                 }
             }
-                        form{
-                 margin:15px 9vw;
+            form{
+                margin-left:5vw;
+                @media all and(max-width:576px) {
+                    margin-left: 0vw;
+                    
+                }
+                @media all and(min-width:577px) and(max-width:767px) {
+                    margin-left: 7vw;
+                    
+                }
+                @media all and(min-width:768px) and(max-width:996px) {
+                    margin-left: 6vw;
+                    
+                }
             }
+
+        }
 
 }
 
 
  .inActiveHeader{
-                 background-color: #fff;
-                margin:15px 65px;
+                border-radius: 4px;
+                box-shadow: 0 4px 15px 3px rgba(223, 223, 223, 0.5);
+                background-color: #ffffff;
+                margin: 15px 35px;
                 display: flex;
+                padding: 10px;
+                width: 65%;                
                 font-size: 16px;
+                @media screen and(max-width: 576px){
+                    margin: 15px 0px;  
+                    width: 100%;                  
+                }
                 .number{
                   text-align: center;
                   vertical-align: middle;
@@ -50,8 +80,8 @@
                     margin:5px;
                      height: 30px;
                     width: 30px;
-                    background-color:#5165FF;
-                    color: #fff;
+                    background-color:#f8f9ff;;
+                    color: #5165ff;
                     border-radius: 50%;
 
                 }
@@ -69,10 +99,9 @@
 
 .renderField{
     label{
-        font-size: 9px;
+        font-size: 12px;
         color:#B0B0B0;
          margin-top:5px;
-        font-weight:bold;
     }
     .input{
       outline:none;
@@ -83,6 +112,22 @@
         min-height:25px;
         padding:10px;
         font-size:12px;
+        @media screen and(max-width: 576px){
+            width: 80vw;                  
+        }
+    }
+    .textArea{
+        outline:none;
+        border:none;
+          border-radius:5px;
+          height: 200px; 
+          min-width:25vw;
+          margin-top:5px;
+          padding:10px;
+          font-size:12px;
+          @media screen and(max-width: 576px){
+            width: 80vw;                  
+        }
     }
     span{
         margin-left:15px;
@@ -96,8 +141,20 @@
 .renderSelect{
     display: flex;
     flex-direction: column;
+    .ant-select-selection--single {
+        width: 25vw;
+        @media screen and(max-width: 576px){
+            width: 80vw;                  
+        }
+    }
+    .ant-select-selection--multiple {
+        width: 25vw;
+        @media screen and(max-width: 576px){
+            width: 80vw;                  
+        }
+    }
    label{
-        font-size: 9px;
+        font-size: 12px;
         color:#B0B0B0;
          margin-top:5px;
         font-weight:bold;
@@ -111,16 +168,28 @@
         height:20px;
         padding:10px;
         font-size:12px;
+        @media screen and(max-width: 576px){
+            width: 80vw;                  
+        }
     }
     span{
         margin-left:15px;
-        color:red;
+        color:#000000;
         font-size:12px
     }
 }
 
 .next{
-        margin-top:10px;
+        margin-top:30px;
+        padding:5px 25px;
+        border:none;
+        border-radius: .2em;
+        color:#fff;
+        font-size:14px;
+        background-color: #5165FF;
+    }
+    .previous{
+        margin-top:30px;
         padding:5px 25px;
         border:none;
         border-radius: .2em;
