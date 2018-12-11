@@ -13,7 +13,7 @@
             span{
             font-family: Helvetica;
             font-size: 18px;
-            
+            font-weight: bold;
             }
             hr{
                 background-color: #5165ff;
@@ -42,6 +42,10 @@
             p{
                 font-size:15px;
                 color:#6A6A6A;
+                img{
+                    width: 16px;
+                    height: 16px;
+                }
             }   
             }
          .input{
@@ -50,15 +54,17 @@
             .heading{
                 height:15%;
                 font-size: 18px;
-                font-weight:'semi-bold';
+                font-weight: 600;
+                
             }
             .inputBox{
-                margin-top:20px;
-                height:42%;
-                width:98%;
-                textarea{
-                      border:1px solid red;
-                }
+                border: 1px solid #ebebeb;
+                margin-top: 20px;
+                height: 200px;
+                width:100%;
+                padding: 10px 0px 0px 10px;
+                color:#929292;
+                border-radius: 4px;
                 
             }
             .button{
@@ -69,7 +75,8 @@
                     padding:7px 20px;
                     border-radius: 5px;
                     font-size:13px;
-                    font-weight: 'semi-bold'
+                    font-weight: 'semi-bold';
+                    margin-top: 20px;
                 }
             }
     }

@@ -304,6 +304,9 @@
       h3 {
         color: #5165ff;
         font-weight: bold;
+        @media all and(min-width:768px) and(max-width:996px) {
+          padding: 0px 20px 0px 20px;
+        }
       }
 
       /*Style for the first level menu bar*/

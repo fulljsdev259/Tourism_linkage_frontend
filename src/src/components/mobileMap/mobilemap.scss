@@ -36,13 +36,20 @@
               .map {
                 height: 100%;
                 width: 100%;
+                .mapboxgl-popup{
+                  width: 55%;
+                }
                 .mapboxgl-popup-content {
+                  width: 100%;
+                  
                   padding: 0px !important;
                   border-radius: 10px;
                   box-shadow: 0 8px 25px 6px rgba(223, 223, 223, 0.5);
+                
+             
                 }
                 .popup {
-                  width: auto;
+                  width: 100%;
                   height: auto;
                   padding: 0px !important;
                   .popup-content {
@@ -52,8 +59,14 @@
                     box-shadow: 0 8px 25px 6px rgba(223, 223, 223, 0.5);
                     background-color: #ffffff;
                     border-bottom: 1px solid #ebebeb;
-                    @media screen and(max-width:750px) {
-                      width: 100%;
+                    img{
+                      position: relative;
+                      height: 14px;
+                      float: right;
+                      cursor: pointer;
+                    }
+                    @media screen and(min-width:350px) and(max-width:996px) {
+                      width:100%;
                     }
                     .popup-header {
                       .title {
@@ -62,12 +75,20 @@
                         font-weight: 600;
                         color: #000000;
                         width: 70%;
+                        @media screen and(min-width:350px) and(max-width:996px) {
+                          width:100%;
+                          font-size: 14px;
+                        }
                       }
                     }
                     .category {
                       font-family: "Open Sans";
                       font-size: 14px;
                       color: #929292;
+                      @media screen and(min-width:350px) and(max-width:996px) {
+                        
+                        font-size: 10px;
+                      }
                     }
                     .labels {
                       display: flex;
@@ -83,6 +104,12 @@
                         color: #a4afd0;
                         font-family: "Open Sans";
                         text-transform: lowercase;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        width: 90px !important;
+                        min-width: 30px !important;
+                        
                       }
                     }
                     .contact-section {
@@ -100,6 +127,9 @@
                         span {
                           padding-left: 10px;
                           font-size: 13px;
+                          @media screen and(min-width:350px) and(max-width:996px) {
+                            font-size: 10px;
+                          }
                         }
                       }
                     }
@@ -108,10 +138,19 @@
                       display: flex;
                       .rating {
                         height: 16px;
+                        @media screen and(min-width:350px) and(max-width:996px) {
+                          height: 12px;
+                        }
                       }
                       .reviews {
                         height: 16px;
                         margin-left: 15px;
+
+                        @media screen and(min-width:350px) and(max-width:996px) {
+                          position: relative;
+                          bottom: 3px;
+                        }
+
                       }
                     }
                   }
@@ -143,7 +182,7 @@
                 margin-top: 30px;
                 width: 100%;
                 border-bottom: 1px solid #ebebeb;
-                @media screen and(max-width:750px) {
+                @media screen and(min-width:750px) {
                   width: 100%;
                 }
                 .item-header {
@@ -216,7 +255,7 @@
             align-items: center;
             position: relative;
       
-            @media screen and(min-width:751px) and (max-width: 1251px) {
+            @media screen and(min-width:751px) and (min-width: 1251px) {
               min-width: 30vw;
             }
             .header{

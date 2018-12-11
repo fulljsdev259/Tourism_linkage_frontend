@@ -16,6 +16,7 @@ import Metal from '../../images/icon/metal.svg'
 import Electricity from '../../images/icon/electicity.svg'
 import chemical from '../../images/icon/furniture3.svg'
 import furniture2 from '../../images/icon/furniture2.svg'
+import furniture from '../../images/icon/furniture.svg'
 import Textile from '../../images/icon/textile.svg'
 import Close from '../../images/icon/cross.svg';
 import locationIcon from '../../images/icon/location.svg';
@@ -344,7 +345,7 @@ class Index extends React.Component {
                                 && item.region === this.state.region ).length }</div>
                     </div>
                     <div onClick={ () => this.setState( { category: 'FURNITURE, WOODEN and BEDDING' } ) } className="contentItems">
-                        <div className="icon"><img src={ furniture2 } /></div>
+                        <div className="icon"><img src={ furniture } /></div>
                         <div className="content">Furniture, Wooden & <br />Bedding</div>
                         <div className="value">{ this.state.region === 'all' ?
                             this.props.data.party.filter( ( item ) => item.categories === 'FURNITURE, WOODEN and BEDDING' ).length :

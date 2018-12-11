@@ -15,7 +15,7 @@ import Printing2 from '../../images/icon/printing2.svg'
 import Metal from '../../images/icon/metal.svg'
 import Electricity from '../../images/icon/electicity.svg'
 import chemical from '../../images/icon/furniture3.svg'
-import furniture2 from '../../images/icon/furniture2.svg'
+import furniture from '../../images/icon/furniture.svg'
 import Textile from '../../images/icon/textile.svg'
 import Close from '../../images/icon/cross.svg';
 import locationIcon from '../../images/icon/location.svg';
@@ -253,7 +253,7 @@ class Index extends React.Component {
                                 <li><a href="#"><div className="icon"><img src={Metal} />Minerals & Metals</div></a></li>
                                 <li><a href="#"><div className="icon"><img src={Electricity} />Electrical,Electronics & automative</div></a></li>
                                 <li><a href="#"><div className="icon"><img src={chemical} /> Chemical, Cosmetics &Pharmaceuticals</div></a></li>
-                                <li><a href="#"><div className="icon"><img src={furniture2} />Furniture, Wooden & Bedding</div></a></li>
+                                <li><a href="#"><div className="icon"><img src={furniture} />Furniture, Wooden & Bedding</div></a></li>
                                 <li><a href="#"><div className="icon"><img src={Textile} />Textile & Sewn</div></a></li>
                             </ul>
                         </li>
@@ -289,10 +289,10 @@ class Index extends React.Component {
                             </Layer>
                             <ZoomControl style={{ position: 'relative', bottom: '0px', top: '85%', left: 0, border: 'none', marginLeft: 10, boxShadow: ' rgba(0, 0, 0, 0.0) 0px 1px 4px' }} />
                             {location && (
-                                <Popup onClick={this.closePopup} key={location.id} coordinates={[location.longitude, location.latitude]}>
+                                <Popup  key={location.id} coordinates={[location.longitude, location.latitude]}>
                                     <div className="popup">
                                         <div className="popup-content">
-
+                                            <img onClick={this.closePopup} src={Close} />
                                             <p>{location.name}</p>
                                             <div className="popup-header">
                                                 <span className="title">{location.name}</span>
