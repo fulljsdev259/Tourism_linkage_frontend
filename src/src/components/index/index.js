@@ -46,7 +46,7 @@ const query = gql`
 `
 
 
-const foodIcon = new Image( 20.20 );
+const foodIcon = new Image( 10, 10 );
 foodIcon.src = Printing;
 const food = ['food', foodIcon]
 
