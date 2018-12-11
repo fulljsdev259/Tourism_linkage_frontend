@@ -51,7 +51,7 @@
             font-size: 14px;
             font-weight: 600;
             color: #ffffff;
-            font-weight: 700;
+            font-weight: 600;
             padding: 9px 15px;
             border-radius: 4px;
             box-shadow: 0 6px 8px 0 rgba(211, 207, 207, 0.5);
@@ -371,12 +371,12 @@
         display: flex;
         .normal {
           margin: 0px 10px;
-          font-size: 10px;
+          font-size: 14px;
           padding: 7px;
         }
         .getStarted {
           margin: 0px 10px;
-          font-size: 10px;
+          font-size: 14px;
           border-radius: 3px;
           color: #fff;
           font-weight: 700;
@@ -395,7 +395,7 @@
       flex: 1;
       display: flex;
       justify-content: center;
-      font-size: 10px;
+      font-size: 14px;
       .dropbtn {
         margin-top: 7px;
       }

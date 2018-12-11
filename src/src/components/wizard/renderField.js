@@ -6,11 +6,20 @@ import './antdCustom.scss';
 
 const Option = Select.Option;
 
-export const renderField = ( { input, label, type, meta: { touched, error } } ) => (
+export const renderField = ( { input, label,placeholder, type, meta: { touched, error } } ) => (
     <div className="renderField">
         <label>{ label }</label>
         <div>
-            <input { ...input } placeholder={ label } type={ type } className="input" />
+            <input { ...input } placeholder={ placeholder } type={ type } className="input" />
+            { touched && error && <span><sup>*</sup>{ error }</span> }
+        </div>
+    </div>
+)
+export const renderTextarea = ( { input, label,placeholder, type, meta: { touched, error } } ) => (
+    <div className="renderField">
+        <label>{ label }</label>
+        <div>
+            <input { ...input } placeholder={ placeholder } type={ type } className="textArea" />
             { touched && error && <span><sup>*</sup>{ error }</span> }
         </div>
     </div>
@@ -49,10 +58,11 @@ export const renderTag = ( { input, label, type, meta: { touched, error } } ) =>
             <Select
                 mode="tags"
                 style={ { width: '100%' } }
+                
                 placeholder="Please select"
                 defaultValue={ ['a10', 'c12'] }
                 onChange={ () => console.log() }
-            >
+            >   
                 { children }
             </Select>
             <div>
