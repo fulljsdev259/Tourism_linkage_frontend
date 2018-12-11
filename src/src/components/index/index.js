@@ -292,7 +292,7 @@ class Index extends React.Component {
                     <ul id="menu">
                         <li>
                             <input onClick={ () => this.setState( { subMenu: true } ) } id="check02" type="checkbox" name="menu" />
-                            <label htmlFor="check02">All Jamaica { this.state.region }</label>
+                            <label htmlFor="check02"> { this.state.region === 'all' ? 'All Jamaica' : this.state.region }</label>
                             { this.state.subMenu ?
                                 <ul class="submenu">
                                     <li onClick={ ( e ) => this.setState( { region: "Western Jamaica", subMenu: !this.state.subMenu } ) }><a href="#">Western Jamaica</a></li>
@@ -368,6 +368,8 @@ class Index extends React.Component {
                         <button className={ this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn" } onClick={ this.props.toggleListing }>List</button>
                     </div>
                     <div className={ this.props.showListing ? "hide" : "divMap" }>
+
+
                         <Map
                             style="mapbox://styles/mapbox/streets-v9"
                             className="map"
@@ -375,27 +377,13 @@ class Index extends React.Component {
                             zoom={ [7.5] }
                         >
 
-                            <Layer type="symbol" id="marker"
 
-                                layout={ {
-                                    "icon-image": this.state.category === 'FOOD and AGRO' ? "food" :
-                                        this.state.category === 'PRINTING, PACKAGING and PAPER' ? 'printing' :
-                                            this.state.category === 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE' ? 'electricity' :
-                                                this.state.category === 'CHEMICALS, COSMETICS and PHARMACEUTICALS' ? 'chemical' :
-                                                    this.state.category === 'FURNITURE, WOODEN and BEDDING' ? 'furniture' :
-                                                        this.state.category === 'TEXTILE and SEWN' ? 'textile' :
-
-
-                                                            this.state.category === 'MINERALS and METAL' ? 'metal' :
-                                                                "rail-metro"
-                                } }
-                                images={ [food, printing1, metal, electricity, chemical1, furniture3, textile1] }
-
-
+                            <Layer type="symbol" id={ "marker1" } layout={ { "icon-image": "food", 'icon-allow-overlap': true } }
+                                images={ food }
                             >
-                                { data.party.filter( item => this.state.region === 'all' ? item
+                                { data.party.filter( item => this.state.region === 'all' ? item.categories === 'FOOD and AGRO'
                                     : item.region === this.state.region )
-                                    .filter( item => this.state.category === 'all' ? item
+                                    .filter( item => this.state.category === 'all' ? item.categories === 'FOOD and AGRO'
                                         : item.categories === this.state.category )
                                     .map( ( item, index ) => (
                                         <Feature
@@ -404,7 +392,117 @@ class Index extends React.Component {
                                             coordinates={ [item.longitude, item.latitude] }
                                         />
                                     ) ) }
+
                             </Layer>
+
+                            <Layer type="symbol" id={ "marker2" } layout={ { "icon-image": "printing", 'icon-allow-overlap': true } }
+                                images={ printing1 }
+                            >
+                                { data.party.filter( item => this.state.region === 'all' ? item.categories === 'PRINTING, PACKAGING and PAPER'
+
+                                    : item.region === this.state.region )
+                                    .filter( item => this.state.category === 'all' ? item.categories === 'PRINTING, PACKAGING and PAPER'
+                                        : item.categories === this.state.category )
+                                    .map( ( item, index ) => (
+                                        <Feature
+                                            key={ index }
+                                            onClick={ this.markerClick.bind( this, item ) }
+                                            coordinates={ [item.longitude, item.latitude] }
+                                        />
+                                    ) ) }
+
+                            </Layer>
+
+
+                            <Layer type="symbol" id={ "marker3" } layout={ { "icon-image": "electricity", 'icon-allow-overlap': true } }
+                                images={ electricity }
+                            >
+                                { data.party.filter( item => this.state.region === 'all' ? item.categories === 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE'
+                                    : item.region === this.state.region )
+                                    .filter( item => this.state.category === 'all' ? item.categories === 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE'
+                                        : item.categories === this.state.category )
+                                    .map( ( item, index ) => (
+                                        <Feature
+                                            key={ index }
+                                            onClick={ this.markerClick.bind( this, item ) }
+                                            coordinates={ [item.longitude, item.latitude] }
+                                        />
+                                    ) ) }
+
+                            </Layer>
+
+                            <Layer type="symbol" id={ "marker4" } layout={ { "icon-image": "chemical", 'icon-allow-overlap': true } }
+                                images={ chemical1 }
+                            >
+                                { data.party.filter( item => this.state.region === 'all' ? item.categories === 'CHEMICALS, COSMETICS and PHARMACEUTICALS'
+                                    : item.region === this.state.region )
+                                    .filter( item => this.state.category === 'all' ? item.categories === 'CHEMICALS, COSMETICS and PHARMACEUTICALS'
+                                        : item.categories === this.state.category )
+                                    .map( ( item, index ) => (
+                                        <Feature
+                                            key={ index }
+                                            onClick={ this.markerClick.bind( this, item ) }
+                                            coordinates={ [item.longitude, item.latitude] }
+                                        />
+                                    ) ) }
+
+                            </Layer>
+
+                            <Layer type="symbol" id={ "marker5" } layout={ { "icon-image": "furniture", 'icon-allow-overlap': true } }
+                                images={ furniture3 }
+                            >
+                                { data.party.filter( item => this.state.region === 'all' ? item.categories === 'FURNITURE, WOODEN and BEDDING'
+                                    : item.region === this.state.region )
+                                    .filter( item => this.state.category === 'all' ? item.categories === 'FURNITURE, WOODEN and BEDDING'
+                                        : item.categories === this.state.category )
+                                    .map( ( item, index ) => (
+                                        <Feature
+                                            key={ index }
+                                            onClick={ this.markerClick.bind( this, item ) }
+                                            coordinates={ [item.longitude, item.latitude] }
+                                        />
+                                    ) ) }
+
+                            </Layer>
+
+                            <Layer type="symbol" id={ "marker6" } layout={ { "icon-image": "metal", 'icon-allow-overlap': true } }
+                                images={ metal }
+                            >
+                                { data.party.filter( item => this.state.region === 'all' ? item.categories === 'MINERALS and METAL'
+                                    : item.region === this.state.region )
+                                    .filter( item => this.state.category === 'all' ? item.categories === 'MINERALS and METAL'
+                                        : item.categories === this.state.category )
+                                    .map( ( item, index ) => (
+                                        <Feature
+                                            key={ index }
+                                            onClick={ this.markerClick.bind( this, item ) }
+                                            coordinates={ [item.longitude, item.latitude] }
+                                        />
+                                    ) ) }
+
+                            </Layer>
+
+
+
+                            <Layer type="symbol" id={ "marker7" } layout={ { "icon-image": "textile", 'icon-allow-overlap': true } }
+                                images={ textile1 }
+                            >
+                                { data.party.filter( item => this.state.region === 'all' ? item.categories === 'TEXTILE and SEWN'
+                                    : item.region === this.state.region )
+                                    .filter( item => this.state.category === 'all' ? item.categories === 'TEXTILE and SEWN'
+                                        : item.categories === this.state.category )
+                                    .map( ( item, index ) => (
+                                        <Feature
+                                            key={ index }
+                                            onClick={ this.markerClick.bind( this, item ) }
+                                            coordinates={ [item.longitude, item.latitude] }
+                                        />
+                                    ) ) }
+
+                            </Layer>
+
+
+
                             <ZoomControl style={ { position: 'relative', bottom: '0px', top: '85%', left: 0, border: 'none', marginLeft: 10, boxShadow: ' rgba(0, 0, 0, 0.0) 0px 1px 4px' } } />
                             { location && (
                                 <Popup onClick={ this.closePopup } key={ location.id } coordinates={ [location.longitude, location.latitude] }>
@@ -445,6 +543,20 @@ class Index extends React.Component {
                                 </Popup>
                             ) }
                         </Map>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </div>
                     <div className={ this.props.showListing ? "list-section" : "hide" }>
                         <div className="category">
