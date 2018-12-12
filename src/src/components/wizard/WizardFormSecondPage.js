@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import validate from './validate'
-import { renderField, renderSelect,renderTextarea, renderTag } from './renderField'
+import { renderField, renderSelect, renderTextarea, renderTag } from './renderField'
 import './index.scss';
 import checkMark from '../../images/icon/checkmark-green.svg'
 
@@ -32,8 +32,8 @@ const WizardFormSecondPage = props => {
                         <Field name="email" type="email" component={renderTag} label="Email" />
                         <a href>Add Photo</a>
                         <div>
-                            <button type="submit" className="next">
-                            CONTINUE
+                            <button type="submit" className="nextsignup">
+                                CONTINUE
                             </button>
                         </div>
                     </form>

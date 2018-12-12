@@ -15,7 +15,7 @@ import Printing2 from '../../images/icon/printing2.svg'
 import Metal from '../../images/icon/metal.svg'
 import Electricity from '../../images/icon/electicity.svg'
 import chemical from '../../images/icon/furniture3.svg'
-import furniture2 from '../../images/icon/furniture2.svg'
+import furniture2 from '../../images/icon/furniture.svg'
 import furniture from '../../images/icon/furniture.svg'
 import Textile from '../../images/icon/textile.svg'
 import Close from '../../images/icon/cross.svg';

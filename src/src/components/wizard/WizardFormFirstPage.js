@@ -35,8 +35,8 @@ const WizardFormFirstPage = props => {
                             label="Email"
                         />
                         <div>
-                            <button type="submit" className="next">
-                            CONTINUE
+                            <button type="submit" className="nextsignup">
+                                CONTINUE
                      </button>
                         </div>
                     </form>
