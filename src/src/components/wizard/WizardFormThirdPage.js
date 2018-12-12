@@ -9,7 +9,7 @@ const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet']
 
 const renderColorSelector = ({ input, meta: { touched, error } }) => (
     <div>
-        <select { ...input }>
+        <select {...input}>
             <option value="">Select a color...</option>
             {colors.map(val => (
                 <option value={val} key={val}>
@@ -67,7 +67,7 @@ const WizardFormThirdPage = props => {
                         />
                         <Field name="hours" type="textarea" component={renderTextarea} label="Open hours" />
 
-                        <button type="submit" className="next" disabled={pristine || submitting}>
+                        <button type="submit" className="nextsignup" disabled={pristine || submitting}>
                             CONTINUE
                              </button>
 
