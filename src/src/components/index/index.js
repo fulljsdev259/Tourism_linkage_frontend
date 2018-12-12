@@ -272,7 +272,7 @@ class Index extends React.Component {
 
                 <div className="divBanner">
                     <div className="fade"></div>
-                    <Slider>
+                    <Slider autoplay={2000}>
                         {sliderImages.map((item, index) => (
 
                             <div
@@ -375,7 +375,7 @@ class Index extends React.Component {
                             style="mapbox://styles/kechealexprt2/cjpgcspcd5mmw2snw4ihxarw2"
                             className="map"
                             center={[-77.319222, 18]}
-                            zoom={[7.6]}
+                            zoom={[7.3]}
                         >
 
 
