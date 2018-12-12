@@ -191,24 +191,24 @@ const geojson = {
 }
 const sliderImages = [{
     url: slider1,
-    title: "Creating links between Suppliers & Buyers",
+    title: "Connecting Suppliers & Buyers",
 }, {
     url: slider2,
     title: "Keeping money in the local economy.",
 },
 {
     url: slider6,
-    title: "Fostering smiles throughout Jamaica",
+    title: "Fostering smiles all over",
 },
 {
     url: slider3,
-    title: "Creating and supporting community jobs",
+    title: "Supporting community jobs",
 }, {
     url: slider4,
-    title: "Regenerating Jamaica's most valuable resources. You!",
+    title: "most valuable resources. You!",
 }, {
     url: slider5,
-    title: "Building vibrant and creative communities",
+    title: "Building creative communities",
 },
 
 ]
