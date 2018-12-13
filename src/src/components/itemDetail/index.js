@@ -159,7 +159,7 @@ class ItemDetail extends React.Component {
                                     data.singleParty.tags.split( ',' ).map( ( data, i ) => {
                                         if ( i < 4 ) {
 
-                                            return <span>{ data }</span>
+                                            return <span key={ i }>{ data }</span>
                                         }
                                     } )
                                 }

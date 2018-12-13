@@ -380,7 +380,7 @@ class Index extends React.Component {
                         >
 
 
-                            <Layer type="symbol" id={ "marker1" } layout={ { "icon-image": "food", 'icon-allow-overlap': true } }
+                            <Layer type="symbol" id={ "marker1" } layout={ { "icon-image": this.state.category == 'all' || this.state.category == 'FOOD and AGRO' ? "food" : '', 'icon-allow-overlap': true } }
                                 images={ food }
                             >
                                 { data.party.filter( item => this.state.region === 'all' ? item.categories === 'FOOD and AGRO'
@@ -397,7 +397,7 @@ class Index extends React.Component {
 
                             </Layer>
 
-                            <Layer type="symbol" id={ "marker2" } layout={ { "icon-image": "printing", 'icon-allow-overlap': true } }
+                            <Layer type="symbol" id={ "marker2" } layout={ { "icon-image": this.state.category == 'all' || this.state.category == 'PRINTING, PACKAGING and PAPER' ? "printing" : '', 'icon-allow-overlap': true } }
                                 images={ printing1 }
                             >
                                 { data.party.filter( item => this.state.region === 'all' ? item.categories === 'PRINTING, PACKAGING and PAPER'
@@ -416,7 +416,7 @@ class Index extends React.Component {
                             </Layer>
 
 
-                            <Layer type="symbol" id={ "marker3" } layout={ { "icon-image": "electricity", 'icon-allow-overlap': true } }
+                            <Layer type="symbol" id={ "marker3" } layout={ { "icon-image": this.state.category == 'all' || this.state.category == 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE' ? "electricity" : '', 'icon-allow-overlap': true } }
                                 images={ electricity }
                             >
                                 { data.party.filter( item => this.state.region === 'all' ? item.categories === 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE'
@@ -433,7 +433,7 @@ class Index extends React.Component {
 
                             </Layer>
 
-                            <Layer type="symbol" id={ "marker4" } layout={ { "icon-image": "chemical", 'icon-allow-overlap': true } }
+                            <Layer type="symbol" id={ "marker4" } layout={ { "icon-image": this.state.category == 'all' || this.state.category == 'CHEMICALS, COSMETICS and PHARMACEUTICALS' ? "chemical" : '', 'icon-allow-overlap': true } }
                                 images={ chemical1 }
                             >
                                 { data.party.filter( item => this.state.region === 'all' ? item.categories === 'CHEMICALS, COSMETICS and PHARMACEUTICALS'
@@ -450,7 +450,7 @@ class Index extends React.Component {
 
                             </Layer>
 
-                            <Layer type="symbol" id={ "marker5" } layout={ { "icon-image": "furniture", 'icon-allow-overlap': true } }
+                            <Layer type="symbol" id={ "marker5" } layout={ { "icon-image": this.state.category == 'all' || this.state.category == 'FURNITURE, WOODEN and BEDDING' ? "furniture" : '', 'icon-allow-overlap': true } }
                                 images={ furniture3 }
                             >
                                 { data.party.filter( item => this.state.region === 'all' ? item.categories === 'FURNITURE, WOODEN and BEDDING'
@@ -467,7 +467,7 @@ class Index extends React.Component {
 
                             </Layer>
 
-                            <Layer type="symbol" id={ "marker6" } layout={ { "icon-image": "metal", 'icon-allow-overlap': true } }
+                            <Layer type="symbol" id={ "marker6" } layout={ { "icon-image": this.state.category == 'all' || this.state.category == 'MINERALS and METAL' ? "metal" : '', 'icon-allow-overlap': true } }
                                 images={ metal }
                             >
                                 { data.party.filter( item => this.state.region === 'all' ? item.categories === 'MINERALS and METAL'
@@ -477,6 +477,7 @@ class Index extends React.Component {
                                     .map( ( item, index ) => (
                                         <Feature
                                             key={ index }
+
                                             onClick={ this.markerClick.bind( this, item ) }
                                             coordinates={ [item.longitude, item.latitude] }
                                         />
@@ -485,8 +486,7 @@ class Index extends React.Component {
                             </Layer>
 
 
-
-                            <Layer type="symbol" id={ "marker7" } layout={ { "icon-image": "textile", 'icon-allow-overlap': true } }
+                            <Layer type="symbol" id={ "marker7" } layout={ { "icon-image": this.state.category == 'all' || this.state.category == 'TEXTILE and SEWN' ? "textile" : '', 'icon-allow-overlap': true } }
                                 images={ textile1 }
                             >
                                 { data.party.filter( item => this.state.region === 'all' ? item.categories === 'TEXTILE and SEWN'
@@ -502,8 +502,6 @@ class Index extends React.Component {
                                     ) ) }
 
                             </Layer>
-
-
 
                             <ZoomControl style={ { position: 'relative', bottom: '0px', top: '85%', left: 0, border: 'none', marginLeft: 10, boxShadow: ' rgba(0, 0, 0, 0.0) 0px 1px 4px' } } />
                             { location && (
