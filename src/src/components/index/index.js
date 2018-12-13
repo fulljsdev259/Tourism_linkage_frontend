@@ -48,13 +48,13 @@ const query = gql`
 `
 
 
-const foodIcon = new Image( 20.20 );
+const foodIcon = new Image( 16, 16 );
 foodIcon.src = Printing;
 const food = ['food', foodIcon]
 
 
 
-const printIcon = new Image( 20.20 );
+const printIcon = new Image( 16, 16 );
 printIcon.src = Printing2;
 const printing1 = ['printing', printIcon]
 
@@ -62,26 +62,26 @@ const printing1 = ['printing', printIcon]
 
 
 
-const metalIcon = new Image( 20.20 );
+const metalIcon = new Image( 16, 16 );
 metalIcon.src = Metal;
 const metal = ['metal', metalIcon]
 
 
-const electricityIcon = new Image( 20.20 );
+const electricityIcon = new Image( 16, 16 );
 electricityIcon.src = Electricity;
 const electricity = ['electricity', electricityIcon]
 
 
 
-const chemical1Icon = new Image( 20.20 );
+const chemical1Icon = new Image( 16, 16 );
 chemical1Icon.src = chemical;
 const chemical1 = ['chemical', chemical1Icon]
 
-const furniture2Icon = new Image( 20.20 );
+const furniture2Icon = new Image( 16, 16 );
 furniture2Icon.src = furniture2;
 const furniture3 = ['furniture', furniture2Icon]
 
-const textileIcon = new Image( 20.20 );
+const textileIcon = new Image( 16, 16 );
 textileIcon.src = Textile;
 const textile1 = ['textile', textileIcon]
 
