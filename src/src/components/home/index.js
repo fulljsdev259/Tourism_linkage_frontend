@@ -45,11 +45,11 @@ const customStylesRegister = {
 };
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement('#root')
+Modal.setAppElement( '#root' )
 
-const Map = ReactMapboxGl({
+const Map = ReactMapboxGl( {
     accessToken: "pk.eyJ1Ijoia2VjaGVhbGV4cHJ0MiIsImEiOiJjam94azh4OHcyODByM3FqeHd1Nm43NWl6In0.0w8_b3fwLMXf8a1zSGgC2w"
-});
+} );
 
 export default class Home extends React.Component {
     constructor() {
@@ -62,21 +62,21 @@ export default class Home extends React.Component {
             windowResized: false
         };
 
-        this.openModal = this.openModal.bind(this);
-        this.afterOpenModal = this.afterOpenModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
-        this.handleModalState = this.handleModalState.bind(this);
-        this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
-        this.toggleListing = this.toggleListing.bind(this);
-        this.toggleMap = this.toggleMap.bind(this);
+        this.openModal = this.openModal.bind( this );
+        this.afterOpenModal = this.afterOpenModal.bind( this );
+        this.closeModal = this.closeModal.bind( this );
+        this.handleModalState = this.handleModalState.bind( this );
+        this.toggleMobileMenu = this.toggleMobileMenu.bind( this );
+        this.toggleListing = this.toggleListing.bind( this );
+        this.toggleMap = this.toggleMap.bind( this );
     }
 
     toggleMobileMenu = () => {
-        this.setState({ mobileMenu: !this.state.mobileMenu })
+        this.setState( { mobileMenu: !this.state.mobileMenu } )
     }
 
     openModal() {
-        this.setState({ modalIsOpen: true });
+        this.setState( { modalIsOpen: true } );
     }
 
     afterOpenModal() {
@@ -84,52 +84,52 @@ export default class Home extends React.Component {
         //        this.subtitle.style.color = '#f00';
     }
 
-    handleModalState(about, contact, event, getListed, news, register, modalIsOpen = true) {
-        this.setState({
+    handleModalState( about, contact, event, getListed, news, register, modalIsOpen = true ) {
+        this.setState( {
             about, contact, event, getListed,
             news, register, modalIsOpen
-        })
+        } )
     }
 
     closeModal() {
-        this.setState({ modalIsOpen: false });
+        this.setState( { modalIsOpen: false } );
     }
     toggleListing = () => {
-        this.setState({
+        this.setState( {
             showListing: !this.state.showListing
-        });
+        } );
     }
     toggleMap = () => {
-        this.setState({
+        this.setState( {
             showMap: this.state.showMap
-        })
+        } )
     }
     render() {
         return (
             <div className="App">
-                <Header {...this.state} setMobileMenu={this.toggleMobileMenu} modalStateHandler={this.handleModalState} />
+                <Header { ...this.state } setMobileMenu={ this.toggleMobileMenu } modalStateHandler={ this.handleModalState } />
                 <Switch>
-                    <Route exact path="/" render={props => (<Index toggleListing={this.toggleListing} toggleMap={this.toggleMap} {...this.state} />)} />
-                    <Route {...this.state} path="/detail" component={ItemDetail} />
-                    <Route path="/mobilemap" render={props => (<MobileMap toggleListing={this.toggleListing} toggleMap={this.toggleMap} {...this.state} />)}/>
+                    <Route exact path="/" render={ props => ( <Index toggleListing={ this.toggleListing } toggleMap={ this.toggleMap } { ...this.state } /> ) } />
+                    <Route { ...this.state } path="/detail/:name" component={ ItemDetail } />
+                    <Route path="/mobilemap" render={ props => ( <MobileMap toggleListing={ this.toggleListing } toggleMap={ this.toggleMap } { ...this.state } /> ) } />
                 </Switch>
                 <Modal
-                    isOpen={this.state.modalIsOpen}
-                    onAfterOpen={this.afterOpenModal}
-                    onRequestClose={this.closeModal}
-                    style={this.state.register ? customStylesRegister : customStyles}
+                    isOpen={ this.state.modalIsOpen }
+                    onAfterOpen={ this.afterOpenModal }
+                    onRequestClose={ this.closeModal }
+                    style={ this.state.register ? customStylesRegister : customStyles }
                     contentLabel="Example Modal"
                     overlayClassName="Overlay"
 
 
                 >
 
-                    {this.state.about ? <About closeModal={() => this.closeModal()} /> : ''}
-                    {this.state.contact ? <Contact closeModal={() => this.closeModal()} /> : ''}
-                    {this.state.event ? <Event closeModal={() => this.closeModal()} /> : ''}
-                    {this.state.getListed ? <GetListed closeModal={() => this.closeModal()} /> : ''}
-                    {this.state.news ? <News closeModal={() => this.closeModal()} /> : ''}
-                    {this.state.register ? <Register closeModal={() => this.closeModal()} /> : ''}
+                    { this.state.about ? <About closeModal={ () => this.closeModal() } /> : '' }
+                    { this.state.contact ? <Contact closeModal={ () => this.closeModal() } /> : '' }
+                    { this.state.event ? <Event closeModal={ () => this.closeModal() } /> : '' }
+                    { this.state.getListed ? <GetListed closeModal={ () => this.closeModal() } /> : '' }
+                    { this.state.news ? <News closeModal={ () => this.closeModal() } /> : '' }
+                    { this.state.register ? <Register closeModal={ () => this.closeModal() } /> : '' }
 
                 </Modal>
                 <Footer />

@@ -26,6 +26,7 @@ import norating from '../../images/icon/norating.svg'
 import ReactMapboxGl, { Layer, Marker, Feature, ZoomControl, Popup, GeoJSONLayer } from "react-mapbox-gl";
 import Slider from 'react-animated-slider';
 import 'react-animated-slider/build/horizontal.css';
+import { withRouter } from 'react-router-dom';
 
 import Modal from 'react-modal';
 import { graphql } from 'react-apollo';
@@ -246,7 +247,7 @@ class Index extends React.Component {
     render() {
 
         const { location } = this.state;
-        const { data } = this.props;
+        const { data, history } = this.props;
         if ( data.loading ) {
             return <span>Loading</span>
         }
@@ -572,7 +573,7 @@ class Index extends React.Component {
                                 : item.categories === this.state.category )
                             .map( ( item, i ) => {
 
-                                return <div key={ i } className="list-item">
+                                return <div key={ i } onClick={ () => history.push( `/detail/${ item.name }` ) } className="list-item">
                                     <div className="item-header">
                                         <span className="title">{ item.name }</span>
 
@@ -705,4 +706,4 @@ class Index extends React.Component {
 
 
 
-export default graphql( query )( Index );
+export default withRouter( graphql( query )( Index ) );

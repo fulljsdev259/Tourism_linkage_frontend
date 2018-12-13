@@ -158,6 +158,7 @@
         .list-item {
           margin-top: 30px;
           width: 100%;
+          cursor: pointer;
           border-bottom: 1px solid #ebebeb;
           @media screen and(max-width:750px) {
             width: 100%;

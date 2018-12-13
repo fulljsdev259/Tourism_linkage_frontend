@@ -52,7 +52,7 @@
     flex-direction: row;
     .back-arrow {
       min-width: 4vw;
-
+      cursor: pointer;
       img {
         float: right;
         margin: 12px 0px 0px 0px;
@@ -76,6 +76,7 @@
         .back-link {
           width: 71px;
           height: 19px;
+          cursor: pointer;
           font-family: "Open Sans";
           font-size: 14px;
           color: #a4afd0;
