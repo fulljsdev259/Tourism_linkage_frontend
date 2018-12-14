@@ -48,13 +48,13 @@ const query = gql`
 `
 
 
-const foodIcon = new Image( 16, 16 );
+const foodIcon = new Image(16, 16);
 foodIcon.src = Printing;
 const food = ['food', foodIcon]
 
 
 
-const printIcon = new Image( 16, 16 );
+const printIcon = new Image(16, 16);
 printIcon.src = Printing2;
 const printing1 = ['printing', printIcon]
 
@@ -62,26 +62,26 @@ const printing1 = ['printing', printIcon]
 
 
 
-const metalIcon = new Image( 16, 16 );
+const metalIcon = new Image(16, 16);
 metalIcon.src = Metal;
 const metal = ['metal', metalIcon]
 
 
-const electricityIcon = new Image( 16, 16 );
+const electricityIcon = new Image(16, 16);
 electricityIcon.src = Electricity;
 const electricity = ['electricity', electricityIcon]
 
 
 
-const chemical1Icon = new Image( 16, 16 );
+const chemical1Icon = new Image(16, 16);
 chemical1Icon.src = chemical;
 const chemical1 = ['chemical', chemical1Icon]
 
-const furniture2Icon = new Image( 16, 16 );
+const furniture2Icon = new Image(16, 16);
 furniture2Icon.src = furniture2;
 const furniture3 = ['furniture', furniture2Icon]
 
-const textileIcon = new Image( 16, 16 );
+const textileIcon = new Image(16, 16);
 textileIcon.src = Textile;
 const textile1 = ['textile', textileIcon]
 
@@ -192,36 +192,36 @@ const geojson = {
 }
 const sliderImages = [{
     url: slider1,
-    title: "Connecting Suppliers & Buyers",
+    title: "Connecting suppliers and buyers.",
 }, {
     url: slider2,
     title: "Keeping money in the local economy.",
 },
 {
     url: slider6,
-    title: "Fostering smiles all over",
+    title: "fostering community pride.",
 },
 {
     url: slider3,
-    title: "Supporting community jobs",
+    title: "creating demand for jobs",
 }, {
     url: slider4,
-    title: "most valuable resources. You!",
+    title: "building valuable resources",
 }, {
     url: slider5,
-    title: "Building creative communities",
+    title: "local businesses thrives, everyone wins ",
 },
 
 ]
 
 
-const Map = ReactMapboxGl( {
+const Map = ReactMapboxGl({
     accessToken: "pk.eyJ1Ijoia2VjaGVhbGV4cHJ0MiIsImEiOiJjam94azh4OHcyODByM3FqeHd1Nm43NWl6In0.0w8_b3fwLMXf8a1zSGgC2w"
-} );
+});
 
 class Index extends React.Component {
-    constructor( props ) {
-        super( props );
+    constructor(props) {
+        super(props);
         this.state = {
             location: null,
             region: 'all',
@@ -234,12 +234,12 @@ class Index extends React.Component {
 
     }
 
-    markerClick = ( station ) => {
-        this.setState( { location: station } );
+    markerClick = (station) => {
+        this.setState({ location: station });
     };
 
     closePopup = () => {
-        this.setState( { location: null } );
+        this.setState({ location: null });
     }
 
 
@@ -248,23 +248,23 @@ class Index extends React.Component {
 
         const { location } = this.state;
         const { data, history } = this.props;
-        if ( data.loading ) {
+        if (data.loading) {
             return <span>Loading</span>
         }
         let geoJson = null;
 
 
-        if ( this.state.category === 'all' && this.state.region === 'all' ) {
+        if (this.state.category === 'all' && this.state.region === 'all') {
             geoJson = data.party;
         }
-        if ( !this.state.region === 'all' && this.state.category === 'all' ) {
-            geoJson = data.party.filter( item => item.region === this.state.region )
+        if (!this.state.region === 'all' && this.state.category === 'all') {
+            geoJson = data.party.filter(item => item.region === this.state.region)
         }
-        if ( this.state.region === 'all' && !this.state.category === 'all' ) {
-            geoJson = data.party.filter( item => item.categories === this.state.category )
+        if (this.state.region === 'all' && !this.state.category === 'all') {
+            geoJson = data.party.filter(item => item.categories === this.state.category)
         }
-        if ( !this.state.region === 'all' && !this.state.category === 'all' ) {
-            geoJson = data.party.filter( item => item.categories === this.state.category && item.region === this.state.region )
+        if (!this.state.region === 'all' && !this.state.category === 'all') {
+            geoJson = data.party.filter(item => item.categories === this.state.category && item.region === this.state.region)
         }
 
 
@@ -273,267 +273,267 @@ class Index extends React.Component {
 
                 <div className="divBanner">
                     <div className="fade"></div>
-                    <Slider autoplay={ 2000 }>
-                        { sliderImages.map( ( item, index ) => (
+                    <Slider autoplay={2000}>
+                        {sliderImages.map((item, index) => (
 
                             <div
-                                key={ index }
-                                style={ { background: `url('${ item.url }') no-repeat`, backgroundSize: 'cover' } }
+                                key={index}
+                                style={{ background: `url('${item.url}') no-repeat`, backgroundSize: 'cover' }}
                             >
                                 <div className="slider-title">
-                                    <h1>{ item.title }</h1>
+                                    <h1>{item.title}</h1>
                                 </div>
                             </div>
-                        ) ) }
+                        ))}
                     </Slider>
                 </div>
                 <div className="divMiddle">
                     <div className="header">
-                        <h3>Find local manufactures in Jamaica</h3> <span className="jamaicalove"><img width="20" src={ JamaicaLove } /></span>
+                        <h3>Find local manufactures in Jamaica</h3> <span className="jamaicalove"><img width="20" src={JamaicaLove} /></span>
                     </div>
                     <ul id="menu">
                         <li>
-                            <input onClick={ () => this.setState( { subMenu: true } ) } id="check02" type="checkbox" name="menu" />
-                            <label htmlFor="check02"> { this.state.region === 'all' ? 'All Jamaica' : this.state.region }</label>
-                            { this.state.subMenu ?
+                            <input onClick={() => this.setState({ subMenu: true })} id="check02" type="checkbox" name="menu" />
+                            <label htmlFor="check02"> {this.state.region === 'all' ? 'All Jamaica' : this.state.region}</label>
+                            {this.state.subMenu ?
                                 <ul class="submenu">
-                                    <li onClick={ ( e ) => this.setState( { region: "Western Jamaica", subMenu: !this.state.subMenu } ) }><a href="#">Western Jamaica</a></li>
-                                    <li onClick={ ( e ) => this.setState( { region: "Central Jamaica", subMenu: !this.state.subMenu } ) }><a href="#">Central Jamaica</a></li>
-                                    <li onClick={ ( e ) => this.setState( { region: "Eastern Jamaica", subMenu: !this.state.subMenu } ) }><a href="#">Eastern Jamaica</a></li>
+                                    <li onClick={(e) => this.setState({ region: "Western Jamaica", subMenu: !this.state.subMenu })}><a href="#">Western Jamaica</a></li>
+                                    <li onClick={(e) => this.setState({ region: "Central Jamaica", subMenu: !this.state.subMenu })}><a href="#">Central Jamaica</a></li>
+                                    <li onClick={(e) => this.setState({ region: "Eastern Jamaica", subMenu: !this.state.subMenu })}><a href="#">Eastern Jamaica</a></li>
                                 </ul>
-                                : '' }
+                                : ''}
                         </li>
                     </ul>
 
-                    <div onClick={ () => this.setState( { category: 'FOOD and AGRO' } ) } className="contentItems">
-                        <div className="icon"><img src={ Printing } /></div>
+                    <div onClick={() => this.setState({ category: 'FOOD and AGRO' })} className="contentItems">
+                        <div className="icon"><img src={Printing} /></div>
                         <div className="content">Food & Agro</div>
-                        <div className="value">{ this.state.region === 'all' ?
-                            this.props.data.party.filter( ( item ) => item.categories === 'FOOD and AGRO' ).length :
-                            data.party.filter( ( item ) => item.categories === 'FOOD and AGRO'
-                                && item.region === this.state.region ).length }</div>
+                        <div className="value">{this.state.region === 'all' ?
+                            this.props.data.party.filter((item) => item.categories === 'FOOD and AGRO').length :
+                            data.party.filter((item) => item.categories === 'FOOD and AGRO'
+                                && item.region === this.state.region).length}</div>
                     </div>
-                    <div onClick={ () => this.setState( { category: 'PRINTING, PACKAGING and PAPER' } ) } className="contentItems">
-                        <div className="icon"><img src={ Printing2 } /></div>
+                    <div onClick={() => this.setState({ category: 'PRINTING, PACKAGING and PAPER' })} className="contentItems">
+                        <div className="icon"><img src={Printing2} /></div>
                         <div className="content">Printing & Packaging</div>
-                        <div className="value">{ this.state.region === 'all' ?
-                            this.props.data.party.filter( ( item ) => item.categories === 'PRINTING, PACKAGING and PAPER' ).length :
-                            data.party.filter( ( item ) => item.categories === 'PRINTING, PACKAGING and PAPER'
-                                && item.region === this.state.region ).length }</div>
+                        <div className="value">{this.state.region === 'all' ?
+                            this.props.data.party.filter((item) => item.categories === 'PRINTING, PACKAGING and PAPER').length :
+                            data.party.filter((item) => item.categories === 'PRINTING, PACKAGING and PAPER'
+                                && item.region === this.state.region).length}</div>
                     </div>
-                    <div onClick={ () => this.setState( { category: 'MINERALS and METAL' } ) } className="contentItems">
-                        <div className="icon"><img src={ Metal } /></div>
+                    <div onClick={() => this.setState({ category: 'MINERALS and METAL' })} className="contentItems">
+                        <div className="icon"><img src={Metal} /></div>
                         <div className="content">Minerals & Metals</div>
-                        <div className="value">{ this.state.region === 'all' ?
-                            this.props.data.party.filter( ( item ) => item.categories === 'MINERALS and METAL' ).length :
-                            data.party.filter( ( item ) => item.categories === 'MINERALS and METAL'
-                                && item.region === this.state.region ).length }</div>
+                        <div className="value">{this.state.region === 'all' ?
+                            this.props.data.party.filter((item) => item.categories === 'MINERALS and METAL').length :
+                            data.party.filter((item) => item.categories === 'MINERALS and METAL'
+                                && item.region === this.state.region).length}</div>
                     </div>
-                    <div onClick={ () => this.setState( { category: 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE' } ) } className="contentItems">
-                        <div className="icon"><img src={ Electricity } /></div>
+                    <div onClick={() => this.setState({ category: 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE' })} className="contentItems">
+                        <div className="icon"><img src={Electricity} /></div>
                         <div className="content">Electrical,Electronics & <br />automative</div>
-                        <div className="value">{ this.state.region === 'all' ?
-                            this.props.data.party.filter( ( item ) => item.categories === 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE' ).length :
-                            data.party.filter( ( item ) => item.categories === 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE'
-                                && item.region === this.state.region ).length }</div>
+                        <div className="value">{this.state.region === 'all' ?
+                            this.props.data.party.filter((item) => item.categories === 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE').length :
+                            data.party.filter((item) => item.categories === 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE'
+                                && item.region === this.state.region).length}</div>
                     </div>
-                    <div onClick={ () => this.setState( { category: 'CHEMICALS, COSMETICS and PHARMACEUTICALS' } ) } className="contentItems">
-                        <div className="icon"><img src={ chemical } /></div>
+                    <div onClick={() => this.setState({ category: 'CHEMICALS, COSMETICS and PHARMACEUTICALS' })} className="contentItems">
+                        <div className="icon"><img src={chemical} /></div>
                         <div className="content">Chemical, Cosmetics & <br />Pharmaceuticals</div>
-                        <div className="value">{ this.state.region === 'all' ?
-                            this.props.data.party.filter( ( item ) => item.categories === 'CHEMICALS, COSMETICS and PHARMACEUTICALS' ).length :
-                            data.party.filter( ( item ) => item.categories === 'CHEMICALS, COSMETICS and PHARMACEUTICALS'
-                                && item.region === this.state.region ).length }</div>
+                        <div className="value">{this.state.region === 'all' ?
+                            this.props.data.party.filter((item) => item.categories === 'CHEMICALS, COSMETICS and PHARMACEUTICALS').length :
+                            data.party.filter((item) => item.categories === 'CHEMICALS, COSMETICS and PHARMACEUTICALS'
+                                && item.region === this.state.region).length}</div>
                     </div>
-                    <div onClick={ () => this.setState( { category: 'FURNITURE, WOODEN and BEDDING' } ) } className="contentItems">
-                        <div className="icon"><img src={ furniture } /></div>
+                    <div onClick={() => this.setState({ category: 'FURNITURE, WOODEN and BEDDING' })} className="contentItems">
+                        <div className="icon"><img src={furniture} /></div>
                         <div className="content">Furniture, Wooden & <br />Bedding</div>
-                        <div className="value">{ this.state.region === 'all' ?
-                            this.props.data.party.filter( ( item ) => item.categories === 'FURNITURE, WOODEN and BEDDING' ).length :
-                            data.party.filter( ( item ) => item.categories === 'FURNITURE, WOODEN and BEDDING'
-                                && item.region === this.state.region ).length }</div>
+                        <div className="value">{this.state.region === 'all' ?
+                            this.props.data.party.filter((item) => item.categories === 'FURNITURE, WOODEN and BEDDING').length :
+                            data.party.filter((item) => item.categories === 'FURNITURE, WOODEN and BEDDING'
+                                && item.region === this.state.region).length}</div>
                     </div>
-                    <div onClick={ () => this.setState( { category: 'TEXTILE and SEWN' } ) } className="contentItems">
-                        <div className="icon"><img src={ Textile } /></div>
+                    <div onClick={() => this.setState({ category: 'TEXTILE and SEWN' })} className="contentItems">
+                        <div className="icon"><img src={Textile} /></div>
                         <div className="content">Textile & Sewn</div>
-                        <div className="value">{ this.state.region === 'all' ?
-                            this.props.data.party.filter( ( item ) => item.categories === 'TEXTILE and SEWN' ).length :
-                            data.party.filter( ( item ) => item.categories === 'TEXTILE and SEWN'
-                                && item.region === this.state.region ).length }</div>
+                        <div className="value">{this.state.region === 'all' ?
+                            this.props.data.party.filter((item) => item.categories === 'TEXTILE and SEWN').length :
+                            data.party.filter((item) => item.categories === 'TEXTILE and SEWN'
+                                && item.region === this.state.region).length}</div>
                     </div>
 
 
                 </div>
                 <div className="map-section" name="map-listing">
                     <div className="toggler">
-                        <button className={ !this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn" } onClick={ this.props.toggleListing }>Map</button>
-                        <button className={ this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn" } onClick={ this.props.toggleListing }>List</button>
+                        <button className={!this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn"} onClick={this.props.toggleListing}>Map</button>
+                        <button className={this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn"} onClick={this.props.toggleListing}>List</button>
                     </div>
-                    <div className={ this.props.showListing ? "hide" : "divMap" }>
+                    <div className={this.props.showListing ? "hide" : "divMap"}>
 
 
                         <Map
                             style="mapbox://styles/kechealexprt2/cjpgcspcd5mmw2snw4ihxarw2"
                             className="map"
-                            center={ [-77.319222, 18] }
-                            zoom={ [7.3] }
+                            center={[-77.319222, 18]}
+                            zoom={[7.3]}
                         >
 
 
-                            <Layer type="symbol" id={ "marker1" } layout={ { "icon-image": this.state.category == 'all' || this.state.category == 'FOOD and AGRO' ? "food" : '', 'icon-allow-overlap': true } }
-                                images={ food }
+                            <Layer type="symbol" id={"marker1"} layout={{ "icon-image": this.state.category == 'all' || this.state.category == 'FOOD and AGRO' ? "food" : '', 'icon-allow-overlap': true }}
+                                images={food}
                             >
-                                { data.party.filter( item => this.state.region === 'all' ? item.categories === 'FOOD and AGRO'
-                                    : item.region === this.state.region )
-                                    .filter( item => this.state.category === 'all' ? item.categories === 'FOOD and AGRO'
-                                        : item.categories === this.state.category )
-                                    .map( ( item, index ) => (
+                                {data.party.filter(item => this.state.region === 'all' ? item.categories === 'FOOD and AGRO'
+                                    : item.region === this.state.region)
+                                    .filter(item => this.state.category === 'all' ? item.categories === 'FOOD and AGRO'
+                                        : item.categories === this.state.category)
+                                    .map((item, index) => (
                                         <Feature
-                                            key={ index }
-                                            onClick={ this.markerClick.bind( this, item ) }
-                                            coordinates={ [item.longitude, item.latitude] }
+                                            key={index}
+                                            onClick={this.markerClick.bind(this, item)}
+                                            coordinates={[item.longitude, item.latitude]}
                                         />
-                                    ) ) }
+                                    ))}
 
                             </Layer>
 
-                            <Layer type="symbol" id={ "marker2" } layout={ { "icon-image": this.state.category == 'all' || this.state.category == 'PRINTING, PACKAGING and PAPER' ? "printing" : '', 'icon-allow-overlap': true } }
-                                images={ printing1 }
+                            <Layer type="symbol" id={"marker2"} layout={{ "icon-image": this.state.category == 'all' || this.state.category == 'PRINTING, PACKAGING and PAPER' ? "printing" : '', 'icon-allow-overlap': true }}
+                                images={printing1}
                             >
-                                { data.party.filter( item => this.state.region === 'all' ? item.categories === 'PRINTING, PACKAGING and PAPER'
+                                {data.party.filter(item => this.state.region === 'all' ? item.categories === 'PRINTING, PACKAGING and PAPER'
 
-                                    : item.region === this.state.region )
-                                    .filter( item => this.state.category === 'all' ? item.categories === 'PRINTING, PACKAGING and PAPER'
-                                        : item.categories === this.state.category )
-                                    .map( ( item, index ) => (
+                                    : item.region === this.state.region)
+                                    .filter(item => this.state.category === 'all' ? item.categories === 'PRINTING, PACKAGING and PAPER'
+                                        : item.categories === this.state.category)
+                                    .map((item, index) => (
                                         <Feature
-                                            key={ index }
-                                            onClick={ this.markerClick.bind( this, item ) }
-                                            coordinates={ [item.longitude, item.latitude] }
+                                            key={index}
+                                            onClick={this.markerClick.bind(this, item)}
+                                            coordinates={[item.longitude, item.latitude]}
                                         />
-                                    ) ) }
-
-                            </Layer>
-
-
-                            <Layer type="symbol" id={ "marker3" } layout={ { "icon-image": this.state.category == 'all' || this.state.category == 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE' ? "electricity" : '', 'icon-allow-overlap': true } }
-                                images={ electricity }
-                            >
-                                { data.party.filter( item => this.state.region === 'all' ? item.categories === 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE'
-                                    : item.region === this.state.region )
-                                    .filter( item => this.state.category === 'all' ? item.categories === 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE'
-                                        : item.categories === this.state.category )
-                                    .map( ( item, index ) => (
-                                        <Feature
-                                            key={ index }
-                                            onClick={ this.markerClick.bind( this, item ) }
-                                            coordinates={ [item.longitude, item.latitude] }
-                                        />
-                                    ) ) }
-
-                            </Layer>
-
-                            <Layer type="symbol" id={ "marker4" } layout={ { "icon-image": this.state.category == 'all' || this.state.category == 'CHEMICALS, COSMETICS and PHARMACEUTICALS' ? "chemical" : '', 'icon-allow-overlap': true } }
-                                images={ chemical1 }
-                            >
-                                { data.party.filter( item => this.state.region === 'all' ? item.categories === 'CHEMICALS, COSMETICS and PHARMACEUTICALS'
-                                    : item.region === this.state.region )
-                                    .filter( item => this.state.category === 'all' ? item.categories === 'CHEMICALS, COSMETICS and PHARMACEUTICALS'
-                                        : item.categories === this.state.category )
-                                    .map( ( item, index ) => (
-                                        <Feature
-                                            key={ index }
-                                            onClick={ this.markerClick.bind( this, item ) }
-                                            coordinates={ [item.longitude, item.latitude] }
-                                        />
-                                    ) ) }
-
-                            </Layer>
-
-                            <Layer type="symbol" id={ "marker5" } layout={ { "icon-image": this.state.category == 'all' || this.state.category == 'FURNITURE, WOODEN and BEDDING' ? "furniture" : '', 'icon-allow-overlap': true } }
-                                images={ furniture3 }
-                            >
-                                { data.party.filter( item => this.state.region === 'all' ? item.categories === 'FURNITURE, WOODEN and BEDDING'
-                                    : item.region === this.state.region )
-                                    .filter( item => this.state.category === 'all' ? item.categories === 'FURNITURE, WOODEN and BEDDING'
-                                        : item.categories === this.state.category )
-                                    .map( ( item, index ) => (
-                                        <Feature
-                                            key={ index }
-                                            onClick={ this.markerClick.bind( this, item ) }
-                                            coordinates={ [item.longitude, item.latitude] }
-                                        />
-                                    ) ) }
-
-                            </Layer>
-
-                            <Layer type="symbol" id={ "marker6" } layout={ { "icon-image": this.state.category == 'all' || this.state.category == 'MINERALS and METAL' ? "metal" : '', 'icon-allow-overlap': true } }
-                                images={ metal }
-                            >
-                                { data.party.filter( item => this.state.region === 'all' ? item.categories === 'MINERALS and METAL'
-                                    : item.region === this.state.region )
-                                    .filter( item => this.state.category === 'all' ? item.categories === 'MINERALS and METAL'
-                                        : item.categories === this.state.category )
-                                    .map( ( item, index ) => (
-                                        <Feature
-                                            key={ index }
-
-                                            onClick={ this.markerClick.bind( this, item ) }
-                                            coordinates={ [item.longitude, item.latitude] }
-                                        />
-                                    ) ) }
+                                    ))}
 
                             </Layer>
 
 
-                            <Layer type="symbol" id={ "marker7" } layout={ { "icon-image": this.state.category == 'all' || this.state.category == 'TEXTILE and SEWN' ? "textile" : '', 'icon-allow-overlap': true } }
-                                images={ textile1 }
+                            <Layer type="symbol" id={"marker3"} layout={{ "icon-image": this.state.category == 'all' || this.state.category == 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE' ? "electricity" : '', 'icon-allow-overlap': true }}
+                                images={electricity}
                             >
-                                { data.party.filter( item => this.state.region === 'all' ? item.categories === 'TEXTILE and SEWN'
-                                    : item.region === this.state.region )
-                                    .filter( item => this.state.category === 'all' ? item.categories === 'TEXTILE and SEWN'
-                                        : item.categories === this.state.category )
-                                    .map( ( item, index ) => (
+                                {data.party.filter(item => this.state.region === 'all' ? item.categories === 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE'
+                                    : item.region === this.state.region)
+                                    .filter(item => this.state.category === 'all' ? item.categories === 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE'
+                                        : item.categories === this.state.category)
+                                    .map((item, index) => (
                                         <Feature
-                                            key={ index }
-                                            onClick={ this.markerClick.bind( this, item ) }
-                                            coordinates={ [item.longitude, item.latitude] }
+                                            key={index}
+                                            onClick={this.markerClick.bind(this, item)}
+                                            coordinates={[item.longitude, item.latitude]}
                                         />
-                                    ) ) }
+                                    ))}
 
                             </Layer>
 
-                            <ZoomControl style={ { position: 'relative', bottom: '0px', top: '85%', left: 0, border: 'none', marginLeft: 10, boxShadow: ' rgba(0, 0, 0, 0.0) 0px 1px 4px' } } />
-                            { location && (
-                                <Popup onClick={ this.closePopup } key={ location.id } coordinates={ [location.longitude, location.latitude] }>
+                            <Layer type="symbol" id={"marker4"} layout={{ "icon-image": this.state.category == 'all' || this.state.category == 'CHEMICALS, COSMETICS and PHARMACEUTICALS' ? "chemical" : '', 'icon-allow-overlap': true }}
+                                images={chemical1}
+                            >
+                                {data.party.filter(item => this.state.region === 'all' ? item.categories === 'CHEMICALS, COSMETICS and PHARMACEUTICALS'
+                                    : item.region === this.state.region)
+                                    .filter(item => this.state.category === 'all' ? item.categories === 'CHEMICALS, COSMETICS and PHARMACEUTICALS'
+                                        : item.categories === this.state.category)
+                                    .map((item, index) => (
+                                        <Feature
+                                            key={index}
+                                            onClick={this.markerClick.bind(this, item)}
+                                            coordinates={[item.longitude, item.latitude]}
+                                        />
+                                    ))}
+
+                            </Layer>
+
+                            <Layer type="symbol" id={"marker5"} layout={{ "icon-image": this.state.category == 'all' || this.state.category == 'FURNITURE, WOODEN and BEDDING' ? "furniture" : '', 'icon-allow-overlap': true }}
+                                images={furniture3}
+                            >
+                                {data.party.filter(item => this.state.region === 'all' ? item.categories === 'FURNITURE, WOODEN and BEDDING'
+                                    : item.region === this.state.region)
+                                    .filter(item => this.state.category === 'all' ? item.categories === 'FURNITURE, WOODEN and BEDDING'
+                                        : item.categories === this.state.category)
+                                    .map((item, index) => (
+                                        <Feature
+                                            key={index}
+                                            onClick={this.markerClick.bind(this, item)}
+                                            coordinates={[item.longitude, item.latitude]}
+                                        />
+                                    ))}
+
+                            </Layer>
+
+                            <Layer type="symbol" id={"marker6"} layout={{ "icon-image": this.state.category == 'all' || this.state.category == 'MINERALS and METAL' ? "metal" : '', 'icon-allow-overlap': true }}
+                                images={metal}
+                            >
+                                {data.party.filter(item => this.state.region === 'all' ? item.categories === 'MINERALS and METAL'
+                                    : item.region === this.state.region)
+                                    .filter(item => this.state.category === 'all' ? item.categories === 'MINERALS and METAL'
+                                        : item.categories === this.state.category)
+                                    .map((item, index) => (
+                                        <Feature
+                                            key={index}
+
+                                            onClick={this.markerClick.bind(this, item)}
+                                            coordinates={[item.longitude, item.latitude]}
+                                        />
+                                    ))}
+
+                            </Layer>
+
+
+                            <Layer type="symbol" id={"marker7"} layout={{ "icon-image": this.state.category == 'all' || this.state.category == 'TEXTILE and SEWN' ? "textile" : '', 'icon-allow-overlap': true }}
+                                images={textile1}
+                            >
+                                {data.party.filter(item => this.state.region === 'all' ? item.categories === 'TEXTILE and SEWN'
+                                    : item.region === this.state.region)
+                                    .filter(item => this.state.category === 'all' ? item.categories === 'TEXTILE and SEWN'
+                                        : item.categories === this.state.category)
+                                    .map((item, index) => (
+                                        <Feature
+                                            key={index}
+                                            onClick={this.markerClick.bind(this, item)}
+                                            coordinates={[item.longitude, item.latitude]}
+                                        />
+                                    ))}
+
+                            </Layer>
+
+                            <ZoomControl style={{ position: 'relative', bottom: '0px', top: '85%', left: 0, border: 'none', marginLeft: 10, boxShadow: ' rgba(0, 0, 0, 0.0) 0px 1px 4px' }} />
+                            {location && (
+                                <Popup onClick={this.closePopup} key={location.id} coordinates={[location.longitude, location.latitude]}>
                                     <div className="popup">
                                         <div className="popup-content">
 
-                                            <p>{ location.name }</p>
+                                            <p>{location.name}</p>
                                             <div className="popup-header">
-                                                <span className="title">{ location.name }</span>
+                                                <span className="title">{location.name}</span>
                                             </div>
-                                            <span className="category">{ location.categories }</span>
+                                            <span className="category">{location.categories}</span>
                                             <div className="labels">
-                                                { location.tags.split( ',' ).map( ( data, i ) => {
-                                                    if ( i < 4 ) {
-                                                        return <span key={ i }>{ data }</span>
+                                                {location.tags.split(',').map((data, i) => {
+                                                    if (i < 4) {
+                                                        return <span key={i}>{data}</span>
                                                     }
-                                                } ) }
+                                                })}
 
                                             </div>
                                             <div className="contact-section">
                                                 <div className="item-contact">
-                                                    <img src={ locationIcon } />
-                                                    <span>{ location.address }</span>
+                                                    <img src={locationIcon} />
+                                                    <span>{location.address}</span>
                                                 </div>
                                                 <div className="item-contact">
-                                                    <img src={ phone } />
-                                                    <span>{ location.phoneNumber }</span>
+                                                    <img src={phone} />
+                                                    <span>{location.phoneNumber}</span>
                                                 </div>
                                             </div>
                                             <div className="reviews-section">
-                                                <img className="rating" src={ rating } />
+                                                <img className="rating" src={rating} />
                                                 <div className="reviews">
                                                     <span>9 Reviews</span>
                                                 </div>
@@ -541,7 +541,7 @@ class Index extends React.Component {
                                         </div>
                                     </div>
                                 </Popup>
-                            ) }
+                            )}
                         </Map>
 
 
@@ -558,57 +558,57 @@ class Index extends React.Component {
 
 
                     </div>
-                    <div className={ this.props.showListing ? "list-section" : "hide" }>
+                    <div className={this.props.showListing ? "list-section" : "hide"}>
                         <div className="category">
-                            <span>{ data.party.filter( item => this.state.region === 'all' ? item
-                                : item.region === this.state.region )
-                                .filter( item => this.state.category === 'all' ? item
-                                    : item.categories === this.state.category ).length }</span> { this.state.category.toUpperCase() }
+                            <span>{data.party.filter(item => this.state.region === 'all' ? item
+                                : item.region === this.state.region)
+                                .filter(item => this.state.category === 'all' ? item
+                                    : item.categories === this.state.category).length}</span> {this.state.category.toUpperCase()}
                         </div>
-                        { data.party.filter( item => this.state.region === 'all' ? item
-                            : item.region === this.state.region )
-                            .filter( item => this.state.category === 'all' ? item
-                                : item.categories === this.state.category )
-                            .map( ( item, i ) => {
+                        {data.party.filter(item => this.state.region === 'all' ? item
+                            : item.region === this.state.region)
+                            .filter(item => this.state.category === 'all' ? item
+                                : item.categories === this.state.category)
+                            .map((item, i) => {
 
-                                return <div key={ i } onClick={ () => history.push( `/detail/${ item.name }` ) } className="list-item">
+                                return <div key={i} onClick={() => history.push(`/detail/${item.name}`)} className="list-item">
                                     <div className="item-header">
-                                        <span className="title">{ item.name }</span>
+                                        <span className="title">{item.name}</span>
 
-                                        <img className="rating" src={ rating } />
+                                        <img className="rating" src={rating} />
                                         <div className="reviews">
                                             <span>9 Reviews</span>
                                         </div>
 
                                     </div>
-                                    <span className="category">{ item.categories }</span>
+                                    <span className="category">{item.categories}</span>
                                     <div className="labels">
-                                        { item.tags.split( ',' ).map( ( data, i ) => {
-                                            if ( i < 4 ) {
-                                                return <span key={ i }>{ data }</span>
+                                        {item.tags.split(',').map((data, i) => {
+                                            if (i < 4) {
+                                                return <span key={i}>{data}</span>
                                             }
-                                        } ) }
+                                        })}
                                     </div>
                                     <div className="contact-section">
                                         <div className="item-contact">
-                                            <img src={ locationIcon } />
-                                            <span>{ item.address }</span>
+                                            <img src={locationIcon} />
+                                            <span>{item.address}</span>
                                         </div>
                                         <div className="item-contact">
-                                            <img src={ phone } />
-                                            <span>{ item.phoneNumber }</span>
+                                            <img src={phone} />
+                                            <span>{item.phoneNumber}</span>
                                         </div>
                                     </div>
 
                                 </div>
 
-                            } )
+                            })
                         }
                         <div className="list-item">
                             <div className="item-header">
                                 <span className="title">Richard James Robinson</span>
 
-                                <img className="rating" src={ norating } />
+                                <img className="rating" src={norating} />
                                 <div className="reviews">
                                     <span>No Reviews</span>
                                 </div>
@@ -624,11 +624,11 @@ class Index extends React.Component {
                             </div>
                             <div className="contact-section">
                                 <div className="item-contact">
-                                    <img src={ locationIcon } />
+                                    <img src={locationIcon} />
                                     <span>350 Seaview Gardens, Kingston 11</span>
                                 </div>
                                 <div className="item-contact">
-                                    <img src={ phone } />
+                                    <img src={phone} />
                                     <span> 834-4811</span>
                                 </div>
                             </div>
@@ -638,7 +638,7 @@ class Index extends React.Component {
                             <div className="item-header">
                                 <span className="title">Richard James Robinson</span>
 
-                                <img className="rating" src={ rating } />
+                                <img className="rating" src={rating} />
                                 <div className="reviews">
                                     <span>2 Reviews</span>
                                 </div>
@@ -654,11 +654,11 @@ class Index extends React.Component {
                             </div>
                             <div className="contact-section">
                                 <div className="item-contact">
-                                    <img src={ locationIcon } />
+                                    <img src={locationIcon} />
                                     <span>350 Seaview Gardens, Kingston 11</span>
                                 </div>
                                 <div className="item-contact">
-                                    <img src={ phone } />
+                                    <img src={phone} />
                                     <span> 834-4811</span>
                                 </div>
                             </div>
@@ -668,7 +668,7 @@ class Index extends React.Component {
                             <div className="item-header">
                                 <span className="title">Richard James Robinson</span>
 
-                                <img className="rating" src={ rating } />
+                                <img className="rating" src={rating} />
                                 <div className="reviews">
                                     <span>1 Review</span>
                                 </div>
@@ -684,11 +684,11 @@ class Index extends React.Component {
                             </div>
                             <div className="contact-section">
                                 <div className="item-contact">
-                                    <img src={ locationIcon } />
+                                    <img src={locationIcon} />
                                     <span>350 Seaview Gardens, Kingston 11</span>
                                 </div>
                                 <div className="item-contact">
-                                    <img src={ phone } />
+                                    <img src={phone} />
                                     <span> 834-4811</span>
                                 </div>
                             </div>
@@ -704,4 +704,4 @@ class Index extends React.Component {
 
 
 
-export default withRouter( graphql( query )( Index ) );
+export default withRouter(graphql(query)(Index));

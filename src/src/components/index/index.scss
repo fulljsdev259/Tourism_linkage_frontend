@@ -275,13 +275,16 @@
         h1 {
           color: white;
           text-align: left;
-          text-transform: capitalize;
+          text-transform: lowercase;
           padding: 20px;
           font-weight: 700;
           position: absolute;
           top: 20px;
           z-index: 1;
           line-height:32px;
+          font-size:25px;
+          width: 100%;
+          text-align: center;
           
 
         }
