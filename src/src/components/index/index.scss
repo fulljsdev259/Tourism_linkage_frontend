@@ -86,8 +86,8 @@
                 }
                 .title {
                   font-family: "Open Sans";
-                  font-size: 18px;
-                  font-weight:'SemiBold';
+                  font-size: 13px;
+                  font-weight:700;
                   color: #000000;
                   width: 70%;
                 }
@@ -298,16 +298,16 @@
         h1 {
           color: white;
           text-align: left;
-          text-transform: lowercase;
+          text-transform:capitalize;
           padding: 20px;
           font-weight: 700;
           position: absolute;
           top: 20px;
           z-index: 1;
-          line-height:32px;
-          font-size:25px;
+          line-height:35px;
+          font-size:30px;
           width: 100%;
-          text-align: center;
+          
           
 
         }
@@ -342,6 +342,7 @@
               float:left;
               list-style-type:none;
               position:relative;
+              cursor: pointer;
             }
       
             label{
@@ -609,6 +610,7 @@
         margin-top: 15px;
         transition: width 1s;
         display: flex;
+        cursor: pointer;
         @media screen and(max-width:576px) {
           width: 80vw;
         }
