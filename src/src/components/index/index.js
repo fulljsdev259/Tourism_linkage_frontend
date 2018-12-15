@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.scss'
+import './slider.scss';
 import Pic from '../../images/picture.png'
 import slider1 from '../../images/IMG_6421_1_.jpg'
 import slider2 from '../../images/coffee-3531904_1280.jpg'
@@ -9,7 +10,7 @@ import slider5 from '../../images/DJI_Antillean_Charm_2018_Collection_20181119_0
 import slider6 from '../../images/jamaica-1353644_1280.jpg'
 import Logo from '../../images/Tourism_Linkages_Network_Logo.gif'
 import Menu from '../../images/icon/menu.svg'
-//import Close from '../../images/icon/croos-blue.svg'
+import CloseBlue from '../../images/icon/crossbluedark.svg'
 import Printing from '../../images/icon/printing.svg'
 import JamaicaLove from '../../images/jamaicalove.svg'
 import Printing2 from '../../images/icon/printing2.svg'
@@ -280,7 +281,7 @@ class Index extends React.Component {
 
                 <div className="divBanner">
                     <div className="fade"></div>
-                    <Slider autoplay={ 2000 }>
+                    <Slider autoplay={ 2000 } >
                         { sliderImages.map( ( item, index ) => (
 
                             <div
@@ -654,7 +655,7 @@ class Index extends React.Component {
                                         <div className="popup-content">
                                             <div className="popup-header">
                                                 <span className="title">{ location.name }</span>
-                                                <img className="img" onClick={ () => this.closePopup() } src={ Close } />
+                                                <img className="img" onClick={ () => this.closePopup() } src={ CloseBlue } />
                                             </div>
                                             <span className="category">{ location.categories }</span>
                                             <div className="labels">
