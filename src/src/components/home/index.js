@@ -14,6 +14,7 @@ import News from '../news'
 import Register from '../register';
 import MobileMap from '../mobileMap';
 
+
 const customStyles = {
     content: {
         top: '0%',
