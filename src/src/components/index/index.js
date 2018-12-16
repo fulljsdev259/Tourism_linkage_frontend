@@ -2,12 +2,12 @@ import React from 'react';
 import './index.scss'
 import './slider.scss';
 import Pic from '../../images/picture.png'
-import slider1 from '../../images/IMG_6421_1_.jpg'
-import slider2 from '../../images/coffee-3531904_1280.jpg'
-import slider3 from '../../images/DJI_Antillean_Charm_2018_Collection_20181119_0033.jpg'
+import slider1 from '../../images/Picture2.jpg'
+import slider2 from '../../images/2.jpg'
+import slider3 from '../../images/dfs_6909.jpg'
 import slider4 from '../../images/food-84530_1280.jpg'
 import slider5 from '../../images/DJI_Antillean_Charm_2018_Collection_20181119_0055.jpg'
-import slider6 from '../../images/jamaica-1353644_1280.jpg'
+import slider6 from '../../images/coffee-3531904_1280.jpg'
 import Logo from '../../images/Tourism_Linkages_Network_Logo.gif'
 import Menu from '../../images/icon/menu.svg'
 import CloseBlue from '../../images/icon/crossbluedark.svg'
@@ -204,14 +204,14 @@ const sliderImages = [{
 },
 {
     url: slider3,
-    title: "Fostering our community pride.",
+    title: " Keeping money in the local economy.",
 },
 {
     url: slider4,
-    title: "Creating a higher demand for jobs.",
+    title: "Buying locally creates and maintains jobs.",
 }, {
     url: slider5,
-    title: "Keeping money in the local economy. ",
+    title: "Creativity Fosters community pride.",
 }, {
     url: slider6,
     title: "When local businesses thrives, everyone wins. ",
@@ -281,7 +281,7 @@ class Index extends React.Component {
 
                 <div className="divBanner">
                     <div className="fade"></div>
-                    <Slider autoplay={3000} >
+                    <Slider autoplay={4000} >
                         {sliderImages.map((item, index) => (
 
                             <div
