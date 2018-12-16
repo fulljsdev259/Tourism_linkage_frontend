@@ -255,6 +255,8 @@
     .fade {
         height: 100%;
         width: 100%;
+         margin: auto;
+            top: 0; left: 0; bottom: 0; right: 0;
         position:absolute;
         z-index: 1;
         background: 
@@ -264,6 +266,7 @@
           rgba(0,0,0,0) 80%,
         //rgba(0,0,0,0.85) 100%
           );
+           
     }
     .divBanner {
       position: relative;
@@ -297,16 +300,19 @@
       .slider-title {
         h1 {
           color: white;
-          text-align: left;
+          text-align: center;
           text-transform:capitalize;
-          padding: 20px;
-          font-weight: 700;
+          padding: 10px;
+          font-weight:700;
           position: absolute;
           top: 20px;
           z-index: 1;
           line-height:35px;
-          font-size:30px;
+          font-size:25px !important;
           width: 100%;
+       
+        
+
           
           
 
@@ -452,7 +458,9 @@
       }
       h3 {
         color: #5165ff;
-        font-weight: bold;
+        font-weight:400;
+        font-size:20px;
+        
         @media all and(min-width:768px) and(max-width:996px) {
           padding: 0px 20px 0px 20px;
           
@@ -468,7 +476,9 @@
         border-radius: 10px;
         box-shadow: 0 8px 25px 6px rgba(223, 223, 223, 0.5);
         background-color: #ffffff;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
+        font-weight:200;
+        font-size:12px;
         @media (max-width:750px) {
           min-width:80vw;
         }

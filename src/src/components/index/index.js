@@ -197,24 +197,24 @@ const geojson = {
 }
 const sliderImages = [{
     url: slider1,
-    title: "A Linkage throughout productive industries.",
+    title: "Jamaican products online",
 }, {
     url: slider2,
-    title: "Connecting Jamaican suppliers and buyers.",
+    title: "linking suppliers & buyers ",
 },
 {
     url: slider3,
-    title: " Keeping money in the local economy.",
+    title: "your money kept locally ",
 },
 {
     url: slider4,
-    title: "Buying locally creates and maintains jobs.",
+    title: "creating more jobs",
 }, {
     url: slider5,
-    title: "Creativity Fosters community pride.",
+    title: "Creative Community joy ",
 }, {
     url: slider6,
-    title: "farm-to-table; homes and restaurants.",
+    title: "farm to table",
 },
 
 ]
@@ -297,7 +297,7 @@ class Index extends React.Component {
                 </div>
                 <div className="divMiddle">
                     <div className="header">
-                        <h3>Find local manufactures in Jamaica</h3> <span className="jamaicalove"><img width="20" src={JamaicaLove} /></span>
+                        <h3>Jamaica's manufactures </h3> <span className="jamaicalove"><img width="20" src={JamaicaLove} /></span>
                     </div>
 
 
