@@ -280,14 +280,14 @@
       @media all and(max-width:576px) {
         height: 100vh;
         min-width: 29vw;
-        max-height: 35em;
+        max-height: 30em;
       }
       .slider {
         height: 100% !important;
         min-width: 29vw;
       
         @media (max-width: 576px) {
-         height: 35em;
+         height: 30em;
           min-width: 29vw;
         }
         @media screen and(max-width:1251px) {
