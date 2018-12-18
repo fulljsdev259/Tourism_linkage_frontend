@@ -280,14 +280,14 @@
       @media all and(max-width:576px) {
         height: 100vh;
         min-width: 29vw;
-        max-height: 30em;
+        max-height: 28em;
       }
       .slider {
         height: 100% !important;
         min-width: 29vw;
       
         @media (max-width: 576px) {
-         height: 30em;
+         height: 28em;
           min-width: 29vw;
         }
         @media screen and(max-width:1251px) {
@@ -333,7 +333,7 @@
         display: none;
         padding: 6px;
         border-radius: 30px;
-        z-index: 11;
+        z-index: 2;
         @media all and(max-width:576px) {
           display:inline;
         }
@@ -479,9 +479,8 @@
       }
       h3 {
         color: #5165ff;
-        font-weight:400;
-        font-size:20px;
-        
+        font-weight: bolder;
+        font-size: 20px;
         @media all and(min-width:768px) and(max-width:996px) {
           padding: 0px 20px 0px 20px;
           

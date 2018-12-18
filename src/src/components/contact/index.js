@@ -3,7 +3,11 @@ import Close from '../../images/icon/cross.svg';
 import phone from '../../images/icon/phone.svg';
 import fax from '../../images/icon/fax.svg';
 import email from '../../images/icon/email.svg';
-import './index.scss'
+import './index.scss';
+import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
+const Map = ReactMapboxGl( {
+    accessToken: "pk.eyJ1Ijoia2VjaGVhbGV4cHJ0MiIsImEiOiJjam94azh4OHcyODByM3FqeHd1Nm43NWl6In0.0w8_b3fwLMXf8a1zSGgC2w"
+} );
 
 export default ( { closeModal } ) => {
     return <div className="contact">
@@ -26,6 +30,17 @@ export default ( { closeModal } ) => {
                     Kingston 5<br />
                     Jamaica W.I.<br />
                 </p>
+                <Map
+                        style="mapbox://styles/mapbox/streets-v8"
+                        className="map"
+                        >
+                        <Layer
+                            type="symbol"
+                            id="marker"
+                            layout={ { "icon-image": "marker-15" } }>
+                            <Feature coordinates={ [-0.481747846041145, 51.3233379650232] } />
+                        </Layer>
+                    </Map>
                 <p style={ { marginTop: 40 } }>
                     <img src={phone}/> (876) 920-4926-30<br />
                     <img src={fax}/> (876) 920-4944<br />

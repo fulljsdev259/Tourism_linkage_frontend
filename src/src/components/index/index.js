@@ -299,7 +299,7 @@ class Index extends React.Component {
                     <div className="img" onClick={
                         () => {
                             var elmnt = document.getElementById("scollDiv");
-                            elmnt.scrollIntoView({ behavior: "smooth" }); 
+                            elmnt.scrollIntoView({ behavior: "smooth" });
                         }
                     }>
                         <img src={arrowDown} />

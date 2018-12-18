@@ -93,7 +93,7 @@ export default class Header extends React.Component {
                             }}>ABOUT</li>
                             <li data-text="CONTACT" onClick={() => {
                                 oThis.props.modalStateHandler(false, true, false, false, false, false, true)
-                            }}>CONTACT</li>
+                            }}>CONTACT US</li>
 
                             <li style={{
                                 marginTop: "10px"
