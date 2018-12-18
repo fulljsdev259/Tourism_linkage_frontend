@@ -107,8 +107,7 @@
           display: flex;
         }
         .tags {
-          display: flex;
-          flex-direction: row;
+          
           margin-top: 15px;
           
           span {
@@ -130,7 +129,7 @@
               text-overflow: ellipsis;
               white-space: nowrap;
               overflow: hidden;
-              width: 19% !important;
+              width: 45% !important;
               display: inline-block;
             }
            
@@ -245,7 +244,10 @@
         font-size: 14px;
         line-height: 2;
         .day {
-          min-width: 5vw;
+          min-width: 7vw;
+          @media all and(max-width:576px) {
+            min-width:20vw;
+          }
         }
         .time {
           padding: 0px;

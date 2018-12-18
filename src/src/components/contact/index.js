@@ -5,18 +5,18 @@ import fax from '../../images/icon/fax.svg';
 import email from '../../images/icon/email.svg';
 import './index.scss';
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
-const Map = ReactMapboxGl( {
+const Map = ReactMapboxGl({
     accessToken: "pk.eyJ1Ijoia2VjaGVhbGV4cHJ0MiIsImEiOiJjam94azh4OHcyODByM3FqeHd1Nm43NWl6In0.0w8_b3fwLMXf8a1zSGgC2w"
-} );
+});
 
-export default ( { closeModal } ) => {
+export default ({ closeModal }) => {
     return <div className="contact">
         <div className="header">
             <div>
                 <span>CONTACT US</span>
                 <hr />
             </div>
-            <img src={ Close } onClick={ () => closeModal() } />
+            <img src={Close} onClick={() => closeModal()} />
         </div>
         <div className="content">
             <div className="contact1">
@@ -31,20 +31,20 @@ export default ( { closeModal } ) => {
                     Jamaica W.I.<br />
                 </p>
                 <Map
-                        style="mapbox://styles/mapbox/streets-v8"
-                        className="map"
-                        >
-                        <Layer
-                            type="symbol"
-                            id="marker"
-                            layout={ { "icon-image": "marker-15" } }>
-                            <Feature coordinates={ [-0.481747846041145, 51.3233379650232] } />
-                        </Layer>
-                    </Map>
-                <p style={ { marginTop: 40 } }>
-                    <img src={phone}/> (876) 920-4926-30<br />
-                    <img src={fax}/> (876) 920-4944<br />
-                    <img src={email}/> info@tourismlinkages.net<br />
+                    style="mapbox://styles/mapbox/streets-v8"
+                    className="mobile-map"
+                >
+                    <Layer
+                        type="symbol"
+                        id="marker"
+                        layout={{ "icon-image": "marker-15" }}>
+                        <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
+                    </Layer>
+                </Map>
+                <p style={{ marginTop: 40 }}>
+                    <img src={phone} /> (876) 920-4926-30<br />
+                    <img src={fax} /> (876) 920-4944<br />
+                    <img src={email} /> info@tourismlinkages.net<br />
                 </p>
 
             </div>
@@ -56,5 +56,16 @@ export default ( { closeModal } ) => {
                 <button className="button">Send</button>
             </div>
         </div>
+        <Map
+            style="mapbox://styles/mapbox/streets-v8"
+            className="desktop-map"
+        >
+            <Layer
+                type="symbol"
+                id="marker"
+                layout={{ "icon-image": "marker-15" }}>
+                <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
+            </Layer>
+        </Map>
     </div>
 }

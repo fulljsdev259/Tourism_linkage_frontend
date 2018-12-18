@@ -1,11 +1,11 @@
 .contact{
     
-    margin:30px 75px;
-    @media (max-width:576px) {
+    margin:30px 75px 0px 75px;
+    @media (max-width :576px) {
         margin:0px 0px;
     }
     @media (min-width:576px)and (max-width:992px) {
-        margin:30px 20px;
+        margin:30px 20px 0px 20px;
     }
     .header{
         display:flex;
@@ -47,12 +47,12 @@
                 color:#5165FF;
                 font-weight:bold;
             }
-            .map{
-                display: none;
+            .mobile-map{
+              display: none;
                 @media (max-width:576px) {
-                    width: 558px;
+                    width: 100vw;
                     height: 200px;
-                    margin-left: -40px !important;
+                    margin-left: -20px !important;
                    display: inline-block;
                    overflow: hidden;
                       }
@@ -100,4 +100,24 @@
                 }
             }
     }
+    .desktop-map{
+
+                margin-top: 70px;        
+              width: 63vw;
+              @media all and(max-width: 576px){
+                  display: none;
+              }
+              @media screen and(min-width:576px) and(max-width:768px) {
+                width: 73vw !important;
+              }
+              @media screen and(min-width:768px) and(max-width:996px) {
+                width: 71vw !important;
+              }
+              height: 300px;
+              margin-left: -97px !important;
+             display: inline-block;
+             overflow: hidden;
+                
+      }
+
 }
