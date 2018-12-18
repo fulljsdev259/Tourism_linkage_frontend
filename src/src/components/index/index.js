@@ -276,6 +276,7 @@ class Index extends React.Component {
         }
 
 
+        console.log( this.props.showListing )
         return <div>
             <div className="home">
 
@@ -425,7 +426,7 @@ class Index extends React.Component {
 
                             } }
                                 id="Category" type="checkbox" name="menu" />
-                            <label htmlFor="Category"> { this.state.category == 'all' ? 'All Categories' : this.state.category }</label>
+                            <label htmlFor="Category"> { this.state.category === 'all' ? 'All Categories' : this.state.category }</label>
                             { this.state.subMobileMenu ?
 
                                 <ul class="submenu">
@@ -495,35 +496,9 @@ class Index extends React.Component {
                             zoom={ [this.state.centerZoom] }
                         >
 
-                            {/* data.party
-                                .filter( item => this.state.region === 'all' ? item
-                                    : item.region === this.state.region )
-                                .filter( item => this.state.category === 'all' ? item
-                                    : item.categories === this.state.category )
-                                .map( ( item, index ) => {
-                                    if ( !isNaN( item.longitude ) && !isNaN( item.latitude ) )
-                                        return <Marker
-                                            key={ index }
-                                            onClick={ this.markerClick.bind( this, item ) }
-                                            coordinates={ [item.longitude, item.latitude] }
 
-                                            anchor="bottom">
-                                            <div
-                                                style={ {
-                                                    width: 8, height: 8, borderRadius: 4, backgroundColor:
-                                                        item.categories === 'FOOD and AGRO' ? "#27ae60" :
-                                                            item.categories === 'PRINTING, PACKAGING and PAPER' ? "#2980b9" :
-                                                                item.categories === 'MINERALS and METAL' ? "#34495e" :
-                                                                    item.categories === 'ELECTRICAL, ELECTRONICS and AUTOMOTIVE' ? "#9b59b6" :
-                                                                        item.categories === 'CHEMICALS, COSMETICS and PHARMACEUTICALS' ? "#3498db" :
-                                                                            item.categories === 'FURNITURE, WOODEN and BEDDING' ? "#f39c12" :
-                                                                                item.categories === 'TEXTILE and SEWN' ? "#bdc3c7" : ''
 
-                                                } }>
-                                            </div>
-                                        </Marker>
-
-                                } ) */}
+                            } ) */}
 
                             <Layer
                                 type="symbol"
@@ -713,7 +688,9 @@ class Index extends React.Component {
                             <span>{ data.party.filter( item => this.state.region === 'all' ? item
                                 : item.region === this.state.region )
                                 .filter( item => this.state.category === 'all' ? item
-                                    : item.categories === this.state.category ).length }</span> { this.state.category.toUpperCase() }
+                                    : item.categories === this.state.category ).length }</span> { this.state.category === 'all' ? 'All Categories' : this.state.category.toUpperCase() }
+                            <br />
+                            <span style={ { color: 'grey', fontSize: 12, marginTop: 10 } }>{ this.state.region == "all" ? "All Jamica" : ( this.state.region ).toUpperCase() }</span>
                         </div>
                         { data.party.filter( item => this.state.region === 'all' ? item
                             : item.region === this.state.region )
