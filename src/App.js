@@ -8,7 +8,7 @@ import { store } from './src/config/store'
 import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { client } from './src/config/apolloClient'
-import Demo from './army/armyDemo';
+
 
 class App extends Component {
   render() {
@@ -17,7 +17,6 @@ class App extends Component {
         <Provider store={ store }>
           <Router>
             <div className="App">
-              {/*<Demo />*/ }
               <Home />
             </div>
           </Router>
