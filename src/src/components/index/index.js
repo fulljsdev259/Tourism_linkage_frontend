@@ -307,7 +307,7 @@ class Index extends React.Component {
                 </div>
                 <div className="divMiddle">
                     <div className="header">
-                        <h3>Jamaica's manufactures </h3> <span className="jamaicalove"><img width="20" src={JamaicaLove} /></span>
+                        <h3>Jamaica's manufactures </h3> <span className="jamaicalove"><img width="35" src={JamaicaLove} /></span>
                     </div>
 
 
