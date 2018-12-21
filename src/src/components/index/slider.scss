@@ -22,11 +22,15 @@
 			&:not(.disabled):hover {
 				transform: translateY(-50%) scale(1.25);
 				cursor: pointer;
+				
 			}
 
 			& svg {
 				& polygon {
 					fill: #fff;
+				}
+				@media all and(max-width:768px) {
+					height: 20px;
 				}
 			}
 		}

@@ -277,7 +277,7 @@ class Index extends React.Component {
         }
 
 
-        console.log(this.props.showListing)
+     
         return <div>
             <div className="home">
 
@@ -392,7 +392,9 @@ class Index extends React.Component {
                 </div>
 
                 <div className="divMiddleMobileOnly" id="scollDiv">
-
+                    <div className="header">
+                        <h3>Jamaica's manufactures </h3> <span className="jamaicalove"><img width="35" src={JamaicaLove} /></span>
+                    </div>
                     <ul id="menu">
                         <li>
                             <input onClick={(e) => {
@@ -493,7 +495,7 @@ class Index extends React.Component {
                 <div className="map-section" name="map-listing">
                     <div className="toggler">
                         <button className={!this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn"} onClick={this.props.toggleListing}>Map</button>
-                        <button className={this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn"} onClick={this.props.toggleListing}>List</button>
+                        <button className={this.props.showListing ? "list-toggle-btn active" : "list-toggle-btn"} onClick={this.props.toggleListing}>List</button>
                     </div>
                     <div className={this.props.showListing ? "hide" : "divMap"}>
 
@@ -698,9 +700,10 @@ class Index extends React.Component {
                             <span>{data.party.filter(item => this.state.region === 'all' ? item
                                 : item.region === this.state.region)
                                 .filter(item => this.state.category === 'all' ? item
-                                    : item.categories === this.state.category).length}</span> {this.state.category === 'all' ? 'All Categories' : this.state.category.toUpperCase()}
+                                    : item.categories === this.state.category).length}</span> {this.state.category === 'all' ? 'All Categories' : this.state.category }
                             <br />
-                            <span style={{ color: 'grey', fontSize: 12, marginTop: 10 }}>{this.state.region == "all" ? "All Jamica" : (this.state.region).toUpperCase()}</span>
+                          
+                            {/* <span style={{ color: 'grey', fontSize: 12, marginTop: 10 }}>{this.state.region == "all" ? "All Jamica" : (this.state.region)}</span> */}
                         </div>
                         {data.party.filter(item => this.state.region === 'all' ? item
                             : item.region === this.state.region)
@@ -711,12 +714,10 @@ class Index extends React.Component {
                                 return <div key={i} onClick={() => history.push(`/detail/${item.name}`)} className="list-item">
                                     <div className="item-header">
                                         <span className="title">{item.name}</span>
-
-                                        <img className="rating" src={rating} />
-                                        <div className="reviews">
-                                            <span>9 Reviews</span>
+                                        <div className="rating">
+                                            <img src={rating} />
+                                            <span className="reviews">9 Reviews</span>
                                         </div>
-
                                     </div>
                                     <span className="category">{item.categories}</span>
                                     <div className="labels">
