@@ -5,9 +5,10 @@ import Pic from '../../images/picture.png'
 import slider1 from '../../images/Picture2.jpg'
 import slider2 from '../../images/2.jpg'
 import slider3 from '../../images/dfs_6909.jpg'
-import slider4 from '../../images/coffee-3531904_1280.jpg'
+import slider4 from '../../images/pexels-photo-345135.jpg'
 import slider5 from '../../images/DJI_Antillean_Charm_2018_Collection_20181119_0055.jpg'
 import slider6 from '../../images/vegetables-1363034.jpg'
+import slider7 from '../../images/46352636478840.jpg'
 import Logo from '../../images/Tourism_Linkages_Network_Logo.gif'
 import Menu from '../../images/icon/menu.svg'
 import CloseBlue from '../../images/icon/crossbluedark.svg'
@@ -198,25 +199,33 @@ const geojson = {
 }
 const sliderImages = [{
     url: slider1,
-    title: "Jamaican products online",
-}, {
+    title: "our products online",
+},
+
+{
+    url: slider7,
+    title: "cultivating dreams",
+},
+
+{
     url: slider2,
-    title: "linking suppliers & buyers ",
+    title: "suppliers & buyers ",
 },
 {
     url: slider3,
-    title: "your money kept locally ",
+    title: "money kept locally ",
 },
 {
     url: slider4,
-    title: "creating more jobs",
+    title: "adding more jobs",
 }, {
     url: slider5,
-    title: "Creative Community joy ",
+    title: "creative people",
 }, {
     url: slider6,
     title: "farm to table",
 },
+
 
 ]
 
@@ -277,7 +286,7 @@ class Index extends React.Component {
         }
 
 
-     
+
         return <div>
             <div className="home">
 
@@ -700,9 +709,9 @@ class Index extends React.Component {
                             <span>{data.party.filter(item => this.state.region === 'all' ? item
                                 : item.region === this.state.region)
                                 .filter(item => this.state.category === 'all' ? item
-                                    : item.categories === this.state.category).length}</span> {this.state.category === 'all' ? 'All Categories' : this.state.category }
+                                    : item.categories === this.state.category).length}</span> {this.state.category === 'all' ? 'All Categories' : this.state.category}
                             <br />
-                          
+
                             {/* <span style={{ color: 'grey', fontSize: 12, marginTop: 10 }}>{this.state.region == "all" ? "All Jamica" : (this.state.region)}</span> */}
                         </div>
                         {data.party.filter(item => this.state.region === 'all' ? item
