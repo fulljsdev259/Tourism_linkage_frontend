@@ -14,6 +14,7 @@ import Menu from '../../images/icon/menu.svg'
 import CloseBlue from '../../images/icon/crossbluedark.svg'
 import Printing from '../../images/icon/printing.svg'
 import JamaicaLove from '../../images/jamaicalove.svg'
+import Loader from '../../images/loader.gif'
 import Printing2 from '../../images/icon/printing2.svg'
 import Metal from '../../images/icon/metal.svg'
 import arrowDown from '../../images/icon/white.svg'
@@ -245,7 +246,7 @@ class Index extends React.Component {
             subMobileMenu: false,
             centerLang: -77.319222,
             centerLat: 18,
-            centerZoom: 7.3,
+            centerZoom: 8.5,
 
         };
 
@@ -266,7 +267,7 @@ class Index extends React.Component {
         const { location } = this.state;
         const { data, history } = this.props;
         if ( data.loading ) {
-            return <span>Loading</span>
+            return <div className="load"><img width="35" src={ Loader } /></div>
         }
         let geoJson = null;
 
@@ -503,8 +504,8 @@ class Index extends React.Component {
 
                 <div className="map-section" name="map-listing">
                     <div className="toggler">
-                        <button className={ !this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn" } onClick={ this.props.toggleListing }>Map</button>
-                        <button className={ this.props.showListing ? "list-toggle-btn active" : "list-toggle-btn" } onClick={ this.props.toggleListing }>List</button>
+                        <button className={ !this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn" } onClick={ this.props.toggleListing }>Map View</button>
+                        <button className={ this.props.showListing ? "list-toggle-btn active" : "list-toggle-btn" } onClick={ this.props.toggleListing }>List View</button>
                     </div>
                     <div className={ this.props.showListing ? "hide" : "divMap" }>
 
