@@ -504,8 +504,8 @@ class Index extends React.Component {
 
                 <div className="map-section" name="map-listing">
                     <div className="toggler">
-                        <button className={!this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn"} onClick={this.props.toggleListing}>Map</button>
-                        <button className={this.props.showListing ? "list-toggle-btn active" : "list-toggle-btn"} onClick={this.props.toggleListing}>List</button>
+                        <button className={!this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn"} onClick={this.props.toggleListing}>Map View</button>
+                        <button className={this.props.showListing ? "list-toggle-btn active" : "list-toggle-btn"} onClick={this.props.toggleListing}>List View</button>
                     </div>
                     <div className={this.props.showListing ? "hide" : "divMap"}>
 
