@@ -657,7 +657,7 @@ class Index extends React.Component {
                                     ) ) }
 
                             </Layer>
-                            <ZoomControl style={ { position: 'relative', top: '2%', left: 0, border: 'none', marginLeft: 10, boxShadow: ' rgba(0, 0, 0, 0.0) 0px 1px 4px' } } />
+                            <ZoomControl style={ { position: 'relative', top: '-10px', left: 0, border: 'none', marginLeft: 10, boxShadow: ' rgba(0, 0, 0, 0.0) 0px 1px 4px' } } />
                             { location && (
                                 <Popup key={ location.id } coordinates={ [location.longitude, location.latitude] }>
                                     <div className="popup">
