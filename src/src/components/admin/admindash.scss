@@ -1,0 +1,22 @@
+.adminDash{
+    display: flex;
+    height: 80vh;
+    .sidebar{
+        flex:1;
+        padding:10px;
+        border-right:1px solid grey;
+        .item{
+            cursor: pointer;
+            border-bottom: 1px solid grey;
+            padding:5px;
+            &:hover{
+                color:#fff;
+                background-color:#34495e
+            }
+        }
+    }
+    .content{
+        flex:5;
+        padding:10px;
+    }
+}

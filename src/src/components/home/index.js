@@ -13,6 +13,8 @@ import GetListed from '../getListed';
 import News from '../news'
 import Register from '../register';
 import MobileMap from '../mobileMap';
+import Admin from '../admin/adminDash';
+import { withRouter } from 'react-router'
 
 
 const customStyles = {
@@ -52,7 +54,7 @@ const Map = ReactMapboxGl( {
     accessToken: "pk.eyJ1Ijoia2VjaGVhbGV4cHJ0MiIsImEiOiJjam94azh4OHcyODByM3FqeHd1Nm43NWl6In0.0w8_b3fwLMXf8a1zSGgC2w"
 } );
 
-export default class Home extends React.Component {
+class Home extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -106,6 +108,8 @@ export default class Home extends React.Component {
         } )
     }
     render() {
+        const { match } = this.props;
+        console.log( match )
         return (
             <div className="App">
                 <Header { ...this.state } setMobileMenu={ this.toggleMobileMenu } modalStateHandler={ this.handleModalState } />
@@ -113,6 +117,9 @@ export default class Home extends React.Component {
                     <Route exact path="/" render={ props => ( <Index toggleListing={ this.toggleListing } toggleMap={ this.toggleMap } { ...this.state } /> ) } />
                     <Route { ...this.state } path="/detail/:name" component={ ItemDetail } />
                     <Route path="/mobilemap" render={ props => ( <MobileMap toggleListing={ this.toggleListing } toggleMap={ this.toggleMap } { ...this.state } /> ) } />
+                    <Route path="/admin" component={ Admin } />
+
+
                 </Switch>
                 <Modal
                     isOpen={ this.state.modalIsOpen }
@@ -138,3 +145,7 @@ export default class Home extends React.Component {
         );
     }
 }
+
+
+
+export default withRouter( Home );
