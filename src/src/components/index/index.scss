@@ -1,3 +1,6 @@
+*{
+  font-family: 'Open Sans';
+}
 .App {
   .home {
     display: flex;
@@ -17,7 +20,7 @@
       .toggler {
         position: absolute;
         top: 10px;
-        z-index: 1;
+        z-index: 11;
         right: 40px;
         @media all and(max-width:768px) {
           right: 20px;
@@ -148,7 +151,7 @@
                 }
               }
               .contact-section {
-                margin: 10px 0px 5px 0px;
+                margin: 10px 0px 10px 0px;
 
                 .item-contact {
                   display: flex;
@@ -174,6 +177,7 @@
                 .reviews {
                   height: 16px;
                   margin-left: 15px;
+                  color:#929292;
                 }
               }
             }
@@ -235,6 +239,7 @@
             .reviews {
               height: 18px;
               text-align: right;
+              color: #929292;
             }
           }
           .category {
@@ -264,7 +269,7 @@
             }
           }
           .contact-section {
-            margin: 5px 0px 5px 0px;
+            margin: 10px 0px 10px 0px;
 
             .item-contact {
               display: flex;
