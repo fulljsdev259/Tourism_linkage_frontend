@@ -15,7 +15,7 @@ import Register from '../register';
 import MobileMap from '../mobileMap';
 import Admin from '../admin/adminDash';
 import { withRouter } from 'react-router'
-
+import requireAuth from '../../config/require_auth';
 
 const customStyles = {
     content: {
@@ -117,7 +117,7 @@ class Home extends React.Component {
                     <Route exact path="/" render={ props => ( <Index toggleListing={ this.toggleListing } toggleMap={ this.toggleMap } { ...this.state } /> ) } />
                     <Route { ...this.state } path="/detail/:name" component={ ItemDetail } />
                     <Route path="/mobilemap" render={ props => ( <MobileMap toggleListing={ this.toggleListing } toggleMap={ this.toggleMap } { ...this.state } /> ) } />
-                    <Route path="/admin" component={ Admin } />
+                    <Route path="/admin" component={ requireAuth( Admin ) } />
 
 
                 </Switch>

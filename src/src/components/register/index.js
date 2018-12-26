@@ -35,8 +35,8 @@ export default class Register extends React.Component {
                             style={ { color: this.state.login ? '#fff' : "#A4AFD0" } } >Login</span>
                     </div>
                     <div>
-                        { this.state.login ? <Login /> : '' }
-                        { this.state.register ? <Register1 /> : '' }
+                        { this.state.login ? <Login closeModal={ closeModal } /> : '' }
+                        { this.state.register ? <Register1 closeModal={ closeModal } /> : '' }
 
                     </div>
                 </div>
