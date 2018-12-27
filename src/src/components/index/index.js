@@ -341,7 +341,7 @@ class Index extends React.Component {
                     </ul>
 
 
-                    <div style={ { width: this.state.category === 'Food and AGRO' ? '22vw' : '20vw' } } onClick={ () => this.setState( { category: 'Food and Agro' } ) } className="contentItems">
+                    <div style={ { width: this.state.category === 'Food and AGRO' ? '24vw' : '22vw' } } onClick={ () => this.setState( { category: 'Food and Agro' } ) } className="contentItems">
                         <div className="icon"><img src={ Printing } /></div>
                         <div className="content">Food & Agro</div>
                         <div className="value">{ this.state.region === 'all' ?
@@ -349,7 +349,7 @@ class Index extends React.Component {
                             data.party.filter( ( item ) => item.categories === 'Food and Agro'
                                 && item.region === this.state.region ).length }</div>
                     </div>
-                    <div style={ { width: this.state.category === 'Printing, Packaging and Paper' ? '22vw' : '20vw' } } onClick={ () => this.setState( { category: 'Printing, Packaging and Paper' } ) } className="contentItems">
+                    <div style={ { width: this.state.category === 'Printing, Packaging and Paper' ? '24vw' : '22vw' } } onClick={ () => this.setState( { category: 'Printing, Packaging and Paper' } ) } className="contentItems">
                         <div className="icon"><img src={ Printing2 } /></div>
                         <div className="content">Printing & Packaging</div>
                         <div className="value">{ this.state.region === 'all' ?
@@ -357,7 +357,7 @@ class Index extends React.Component {
                             data.party.filter( ( item ) => item.categories === 'Printing, Packaging and Paper'
                                 && item.region === this.state.region ).length }</div>
                     </div>
-                    <div style={ { width: this.state.category === 'Minerals and Metal' ? '22vw' : '20vw' } } onClick={ () => this.setState( { category: 'Minerals and Metal' } ) } className="contentItems">
+                    <div style={ { width: this.state.category === 'Minerals and Metal' ? '24vw' : '22vw' } } onClick={ () => this.setState( { category: 'Minerals and Metal' } ) } className="contentItems">
                         <div className="icon"><img src={ Metal } /></div>
                         <div className="content">Minerals & Metals</div>
                         <div className="value">{ this.state.region === 'all' ?
@@ -365,7 +365,7 @@ class Index extends React.Component {
                             data.party.filter( ( item ) => item.categories === 'Minerals and Metal'
                                 && item.region === this.state.region ).length }</div>
                     </div>
-                    <div style={ { width: this.state.category === 'Electrical, Electronics and Automotive' ? '22vw' : '20vw' } } onClick={ () => this.setState( { category: 'Electrical, Electronics and Automotive' } ) } className="contentItems">
+                    <div style={ { width: this.state.category === 'Electrical, Electronics and Automotive' ? '24vw' : '22vw' } } onClick={ () => this.setState( { category: 'Electrical, Electronics and Automotive' } ) } className="contentItems">
                         <div className="icon"><img src={ Electricity } /></div>
                         <div className="content">Electrical,Electronics & <br />automative</div>
                         <div className="value">{ this.state.region === 'all' ?
@@ -373,7 +373,7 @@ class Index extends React.Component {
                             data.party.filter( ( item ) => item.categories === 'Electrical, Electronics and Automotive'
                                 && item.region === this.state.region ).length }</div>
                     </div>
-                    <div style={ { width: this.state.category === 'Chemicals, Cosmetics and Pharmaceuticals' ? '22vw' : '20vw' } } onClick={ () => this.setState( { category: 'Chemicals, Cosmetics and Pharmaceuticals' } ) } className="contentItems">
+                    <div style={ { width: this.state.category === 'Chemicals, Cosmetics and Pharmaceuticals' ? '24vw' : '22vw' } } onClick={ () => this.setState( { category: 'Chemicals, Cosmetics and Pharmaceuticals' } ) } className="contentItems">
                         <div className="icon"><img src={ chemical } /></div>
                         <div className="content">Chemical, Cosmetics & <br />Pharmaceuticals</div>
                         <div className="value">{ this.state.region === 'all' ?
@@ -381,7 +381,7 @@ class Index extends React.Component {
                             data.party.filter( ( item ) => item.categories === 'Chemicals, Cosmetics and Pharmaceuticals'
                                 && item.region === this.state.region ).length }</div>
                     </div>
-                    <div style={ { width: this.state.category === 'Furniture, Wooden and Bedding' ? '22vw' : '20vw' } } onClick={ () => this.setState( { category: 'Furniture, Wooden and Bedding' } ) } className="contentItems">
+                    <div style={ { width: this.state.category === 'Furniture, Wooden and Bedding' ? '24vw' : '22vw' } } onClick={ () => this.setState( { category: 'Furniture, Wooden and Bedding' } ) } className="contentItems">
                         <div className="icon"><img src={ furniture } /></div>
                         <div className="content">Furniture, Wooden & <br />Bedding</div>
                         <div className="value">{ this.state.region === 'all' ?
@@ -389,7 +389,7 @@ class Index extends React.Component {
                             data.party.filter( ( item ) => item.categories === 'Furniture, Wooden and Bedding'
                                 && item.region === this.state.region ).length }</div>
                     </div>
-                    <div style={ { width: this.state.category === 'Textile and Sewn' ? '22vw' : '20vw' } } onClick={ () => this.setState( { category: 'Textile and Sewn' } ) } className="contentItems">
+                    <div style={ { width: this.state.category === 'Textile and Sewn' ? '24vw' : '22vw' } } onClick={ () => this.setState( { category: 'Textile and Sewn' } ) } className="contentItems">
                         <div className="icon"><img src={ Textile } /></div>
                         <div className="content">Textile & Sewn</div>
                         <div className="value">{ this.state.region === 'all' ?
