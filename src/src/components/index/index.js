@@ -250,13 +250,14 @@ class Index extends React.Component {
 
         };
        
+       
     }
 
     markerClick = ( station ) => {
         this.setState( { location: station } );
         this.map.state.map.flyTo({ center: [station.longitude, station.latitude] });
         setTimeout(()=>{
-            this.map.state.map.zoomTo(15, {duration: 9000});
+            this.map.state.map.zoomTo(17, {duration: 2000});
         },1000)
         
     };
@@ -522,6 +523,27 @@ class Index extends React.Component {
                             center={ [this.state.centerLang, this.state.centerLat] }
                             zoom={ [this.state.centerZoom] }
                             ref={(e) => { this.map = e; }}
+                            onStyleLoad={map => {
+                                map.setPaintProperty('building', 'fill-color', [
+                                    "interpolate",
+                                    ["exponential", 0.5],
+                                    ["zoom"],
+                                    15,
+                                    "#e2714b",
+                                    22,
+                                    "#eee695"
+                                ]);
+                            
+                                map.setPaintProperty('building', 'fill-opacity', [
+                                    "interpolate",
+                                    ["exponential", 0.5],
+                                    ["zoom"],
+                                    15,
+                                    0,
+                                    22,
+                                    1
+                                ]);
+                            }}
                         >
 
 
