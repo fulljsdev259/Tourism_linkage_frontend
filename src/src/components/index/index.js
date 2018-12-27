@@ -229,8 +229,12 @@ const sliderImages = [{
 
 ]
 
+<<<<<<< Updated upstream
 
 const Map = ReactMapboxGl({
+=======
+const Map = ReactMapboxGl( {
+>>>>>>> Stashed changes
     accessToken: "pk.eyJ1Ijoia2VjaGVhbGV4cHJ0MiIsImEiOiJjam94azh4OHcyODByM3FqeHd1Nm43NWl6In0.0w8_b3fwLMXf8a1zSGgC2w"
 });
 
@@ -246,14 +250,30 @@ class Index extends React.Component {
             subMobileMenu: false,
             centerLang: -77.319222,
             centerLat: 18,
+<<<<<<< Updated upstream
             centerZoom: 7.5,
+=======
+            centerZoom: 8.5,
+            
+>>>>>>> Stashed changes
 
         };
-
+       
     }
 
+<<<<<<< Updated upstream
     markerClick = (station) => {
         this.setState({ location: station });
+=======
+    markerClick = ( station ) => {
+        this.setState( { location: station } );
+        console.log(this.map.state.map);
+        this.map.state.map.flyTo({ center: [station.longitude, station.latitude] });
+        setTimeout(()=>{
+            this.map.state.map.zoomTo(15, {duration: 9000});
+        },1000)
+        
+>>>>>>> Stashed changes
     };
 
     closePopup = () => {
@@ -514,8 +534,14 @@ class Index extends React.Component {
                             style="mapbox://styles/kechealexprt2/cjpgcspcd5mmw2snw4ihxarw2"
 
                             className="map"
+<<<<<<< Updated upstream
                             center={[this.state.centerLang, this.state.centerLat]}
                             zoom={[this.state.centerZoom]}
+=======
+                            center={ [this.state.centerLang, this.state.centerLat] }
+                            zoom={ [this.state.centerZoom] }
+                            ref={(e) => { this.map = e; }}
+>>>>>>> Stashed changes
                         >
 
 
