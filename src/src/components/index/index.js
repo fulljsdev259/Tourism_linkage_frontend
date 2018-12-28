@@ -229,7 +229,7 @@ const sliderImages = [{
 
 ]
 
-const Map = ReactMapboxGl( {
+const Map = ReactMapboxGl({
     accessToken: "pk.eyJ1Ijoia2VjaGVhbGV4cHJ0MiIsImEiOiJjam94azh4OHcyODByM3FqeHd1Nm43NWl6In0.0w8_b3fwLMXf8a1zSGgC2w"
 });
 
@@ -245,21 +245,22 @@ class Index extends React.Component {
             subMobileMenu: false,
             centerLang: -77.319222,
             centerLat: 18,
-            centerZoom: 8.5,
-            
+            centerZoom: 7.3,
+
 
         };
-       
-       
+
+
     }
 
-    markerClick = ( station ) => {
-        this.setState( { location: station } );
+
+    markerClick = (station) => {
+        this.setState({ location: station });
         this.map.state.map.flyTo({ center: [station.longitude, station.latitude] });
-        setTimeout(()=>{
-            this.map.state.map.zoomTo(17, {duration: 2000});
-        },1000)
-        
+        setTimeout(() => {
+            this.map.state.map.zoomTo(17, { duration: 2000 });
+        }, 1000)
+
     };
 
     closePopup = () => {
@@ -322,7 +323,7 @@ class Index extends React.Component {
                 </div>
                 <div className="divMiddle">
                     <div className="header">
-                        <h3>Jamaica's manufactures </h3> <span className="jamaicalove"><img width="35" src={JamaicaLove} /></span>
+                        <h3>Find Jamaica's Suppliers </h3> <span className="jamaicalove"><img width="35" src={JamaicaLove} /></span>
                     </div>
 
 
@@ -517,11 +518,14 @@ class Index extends React.Component {
 
 
                         <Map
-                            style="mapbox://styles/kechealexprt2/cjpgcspcd5mmw2snw4ihxarw2"
+
+
+
+                            style="mapbox://styles/kechealexprt2/cjq7f3fqf1h4q2rqdcz44o8j7"
 
                             className="map"
-                            center={ [this.state.centerLang, this.state.centerLat] }
-                            zoom={ [this.state.centerZoom] }
+                            center={[this.state.centerLang, this.state.centerLat]}
+                            zoom={[this.state.centerZoom]}
                             ref={(e) => { this.map = e; }}
                             onStyleLoad={map => {
                                 map.setPaintProperty('building', 'fill-color', [
@@ -533,7 +537,7 @@ class Index extends React.Component {
                                     22,
                                     "#eee695"
                                 ]);
-                            
+
                                 map.setPaintProperty('building', 'fill-opacity', [
                                     "interpolate",
                                     ["exponential", 0.5],
