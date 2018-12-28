@@ -42,6 +42,7 @@ import Print from './icons/print.svg';
 import MI from './icons/metal.svg';
 const query = gql`{
     party{
+        _id
         name
         region
         categories
@@ -727,7 +728,7 @@ class Index extends React.Component {
                                 : item.categories === this.state.category )
                             .map( ( item, i ) => {
 
-                                return <div key={ i } onClick={ () => history.push( `/detail/${ item.name }` ) } className="list-item">
+                                return <div key={ i } onClick={ () => history.push( `/detail/${ item._id }` ) } className="list-item">
                                     <div className="item-header">
                                         <span className="title">{ item.name }</span>
                                         <div className="rating">
@@ -758,101 +759,13 @@ class Index extends React.Component {
 
                             } )
                         }
-                        <div className="list-item">
-                            <div className="item-header">
-                                <span className="title">Richard James Robinson</span>
-
-                                <img className="rating" src={ norating } />
-                                <div className="reviews">
-                                    <span>No Reviews</span>
-                                </div>
-
-                            </div>
-                            <span className="category">Cotton Fabric</span>
-                            <div className="labels">
-                                <span>
-                                    male closing
-                                </span>
-                                <span>female closing</span>
-
-                            </div>
-                            <div className="contact-section">
-                                <div className="item-contact">
-                                    <img src={ locationIcon } />
-                                    <span>350 Seaview Gardens, Kingston 11</span>
-                                </div>
-                                <div className="item-contact">
-                                    <img src={ phone } />
-                                    <span> 834-4811</span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div className="list-item">
-                            <div className="item-header">
-                                <span className="title">Richard James Robinson</span>
-
-                                <img className="rating" src={ rating } />
-                                <div className="reviews">
-                                    <span>2 Reviews</span>
-                                </div>
-
-                            </div>
-                            <span className="category">Cotton Fabric</span>
-                            <div className="labels">
-                                <span>
-                                    male closing
-                                </span>
-                                <span>female closing</span>
-
-                            </div>
-                            <div className="contact-section">
-                                <div className="item-contact">
-                                    <img src={ locationIcon } />
-                                    <span>350 Seaview Gardens, Kingston 11</span>
-                                </div>
-                                <div className="item-contact">
-                                    <img src={ phone } />
-                                    <span> 834-4811</span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div className="list-item">
-                            <div className="item-header">
-                                <span className="title">Richard James Robinson</span>
-
-                                <img className="rating" src={ rating } />
-                                <div className="reviews">
-                                    <span>1 Review</span>
-                                </div>
-
-                            </div>
-                            <span className="category">Cotton Fabric</span>
-                            <div className="labels">
-                                <span>
-                                    male closing
-                                </span>
-                                <span>female closing</span>
-
-                            </div>
-                            <div className="contact-section">
-                                <div className="item-contact">
-                                    <img src={ locationIcon } />
-                                    <span>350 Seaview Gardens, Kingston 11</span>
-                                </div>
-                                <div className="item-contact">
-                                    <img src={ phone } />
-                                    <span> 834-4811</span>
-                                </div>
-                            </div>
-
-                        </div>
 
                     </div>
                 </div>
+
             </div>
-        </div >
+        </div>
+
     }
 }
 
