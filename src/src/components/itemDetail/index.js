@@ -116,12 +116,14 @@ class ItemDetail extends React.Component {
         if ( data.loading ) {
             return <span>loading</span>
         }
-        console.log( data )
+        //console.log( data )
 
         return <div>
             <div className="detail">
                 <div className="itemDetail-Map">
                     <Map
+                        center={ [data.singleParty.longitude, data.singleParty.latitude] }
+                        zoom={ [9] }
                         style="mapbox://styles/mapbox/streets-v8"
                         containerStyle={ {
                             height: "100%",
@@ -131,7 +133,7 @@ class ItemDetail extends React.Component {
                             type="symbol"
                             id="marker"
                             layout={ { "icon-image": "marker-15" } }>
-                            <Feature coordinates={ [-0.481747846041145, 51.3233379650232] } />
+                            <Feature coordinates={ [data.singleParty.longitude, data.singleParty.latitude] } />
                         </Layer>
                     </Map>
                 </div>
@@ -141,7 +143,7 @@ class ItemDetail extends React.Component {
                     </div>
                     <div className="content-section">
                         <div className="item-info">
-                          
+
 
                             <h3>{ data.singleParty.name }</h3>
                             <div className="item-reviews">
