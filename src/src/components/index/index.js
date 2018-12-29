@@ -696,7 +696,7 @@ class Index extends React.Component {
                                     <div className="popup">
                                         <div className="popup-content">
                                             <div className="popup-header">
-                                                <span className="title">{ location.name }</span>
+                                                <span style={ { cursor: 'pointer' } } className="title" onClick={ () => history.push( `/detail/${ location._id }` ) }>{ location.name }</span>
                                                 <img className="img" onClick={ () => this.closePopup() } src={ CloseBlue } />
                                             </div>
                                             <span className="category">{ location.categories }</span>
