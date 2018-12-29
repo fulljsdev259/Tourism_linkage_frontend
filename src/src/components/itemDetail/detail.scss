@@ -48,20 +48,29 @@
   }
 
   .item-detail {
-    display: flex;
-    flex-direction: row;
+  
     .back-arrow {
-      min-width: 4vw;
+      display: flex;
       cursor: pointer;
       img {
         float: right;
-        margin: 12px 0px 0px 0px;
+        margin: 12px 0px 0px 10px;        
         width: 16px;
         height: 16px;
         object-fit: contain;
       }
+      span{
+        position: relative;
+        top: 10px;
+        left: 10px;
+      }
     }
     .content-section {
+      padding-left: 20px;
+        @media all and(max-width:576px) {
+          padding-left: 0px;
+          
+      }
       .item-info {
         padding: 10px 10px 40px 10px;
         h3 {
@@ -166,6 +175,9 @@
       }
       .review-section {
         margin-bottom: 25px;
+        @media all and(max-width:576px) {
+          padding: 10px 10px 40px 10px;
+      }
         h3 {
           margin: 30px 0px 20px 0px !important;
           font-size: 18px;

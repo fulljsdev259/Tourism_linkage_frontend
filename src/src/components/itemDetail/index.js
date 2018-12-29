@@ -137,11 +137,11 @@ class ItemDetail extends React.Component {
                 </div>
                 <div className="item-detail">
                     <div className="back-arrow" onClick={ () => history.push( '/' ) }>
-                        <img src={ arrowBack } />
+                        <img src={ arrowBack } />   <span className="back-link" onClick={ () => history.push( '/' ) }>Back to list</span>
                     </div>
                     <div className="content-section">
                         <div className="item-info">
-                            <span className="back-link" onClick={ () => history.push( '/' ) }>Back to list</span>
+                          
 
                             <h3>{ data.singleParty.name }</h3>
                             <div className="item-reviews">
