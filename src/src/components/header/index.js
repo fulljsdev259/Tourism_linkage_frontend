@@ -92,7 +92,7 @@ class Header extends React.Component {
                         <Link to="/"> <img onClick={this.ToggleBody} className="logo" src={Logo} /></Link>
 
                         <ul className="menu">
-
+                            
                             <li data-text="ABOUT" onClick={() => {
                                 oThis.props.modalStateHandler(true, false, false, false, false, false, true)
                             }}>ABOUT</li>
