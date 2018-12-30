@@ -238,6 +238,7 @@ class Index extends React.Component {
     constructor( props ) {
         super( props );
         this.state = {
+            map: null,
             location: null,
             region: 'all',
             category: 'all',
@@ -254,6 +255,12 @@ class Index extends React.Component {
 
     }
 
+    componentDidUpdate( prevProps, prevState ) {
+        const { map } = this.state;
+        if ( map ) {
+            map.resize();
+        }
+    }
 
     markerClick = ( station ) => {
         this.setState( { location: station } );
@@ -529,6 +536,9 @@ class Index extends React.Component {
                             zoom={ [this.state.centerZoom] }
                             ref={ ( e ) => { this.map = e; } }
                             onStyleLoad={ map => {
+                                this.setState( {
+                                    map: map
+                                } );
                                 map.setPaintProperty( 'building', 'fill-color', [
                                     "interpolate",
                                     ["exponential", 0.5],

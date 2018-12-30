@@ -447,18 +447,17 @@
             }
       
             label:after{
-              content:url('../../images/angle-arrow-down.svg');
-              position:absolute;
-              display:block;
-              top:50%;
-              right:5px;
-              width:20px;
-              height:20px;
-              // border-top:4px solid #000000;
-              // border-bottom:0 solid #000000;
-              // border-left:4px solid transparent;
-              // border-right:4px solid transparent;
-              // transition:border-bottom .1s, border-top .1s .1s;
+              background-image: url(/static/media/angle-arrow-down.fbaea68e.svg);
+              background-repeat: no-repeat;
+              background-size: 20px 35px;
+              content: '';
+              position: absolute;
+              display: block;
+              top: 0%;
+              right: 0px;
+              width: 30px;
+              height: 30px;
+              transition: all .3s ease-in-out;
               }
       
             label:hover,
@@ -467,9 +466,7 @@
             }
       
             input:checked ~ label:after{
-              border-top:0 solid #000000;
-              border-bottom:4px solid #000000;
-              transition:border-top .1s, border-bottom .1s .1s;
+              transform: rotate(-180deg) translateX(10px) translateY(-5px);
             }
       
             /*hide the inputs*/
@@ -494,7 +491,7 @@
               position:absolute;
               min-width:100%;
               margin:5px 0px 0px 0px;
-              z-index: 2;
+              z-index: 12;
               .icon{
                   img{
                     width: 20px;
