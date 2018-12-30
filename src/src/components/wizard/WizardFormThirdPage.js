@@ -33,7 +33,7 @@ $facebook:String,$profile:String
         latitude:$latitude,longitude:$longitude,
         facebook:$facebook,profile:$profile
         instagram:$instagram,typeOfCompany:$typeOfCompany,fax:$fax,
-        email:$email,password:$password
+        email:$email,password:$password,photo:$photo
         
 
         

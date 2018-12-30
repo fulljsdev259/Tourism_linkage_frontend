@@ -88,7 +88,7 @@ const WizardFormSecondPage = props => {
                         <div className="number">2</div>
                         <div className="subHeading">About your comany</div>
                     </div>
-                    <form onSubmit={ handleSubmit }>
+                    <form onSubmit={ handleSubmit } >
                         <Field name="region" type="select" data={ ["Western Jamaica", "Central Jamaica", "Eastern Jamaica"] } component={ renderSelect } label="Select Category" />
                         <Field name="categories" type="select"
                             data={ ['Food and Agro', 'Printing, Packaging and Paper', 'Minerals and Metal',
@@ -102,6 +102,8 @@ const WizardFormSecondPage = props => {
                         <Field name="description" type="textarea" component={ renderTextarea } label="Describe your company" />
                         <Field name="tags" type="text" component={ renderTag } label="Tags" />
                         <FieldArray name="photo" component={ renderMembers } />
+                        {/*  <Field name="photo" type="file" component={ FileInput } label="Tags" />*/ }
+
                         <div>
                             <button type="submit" className="nextsignup">
                                 CONTINUE
