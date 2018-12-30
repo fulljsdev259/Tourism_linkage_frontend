@@ -2,8 +2,10 @@ import { ApolloClient } from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+
 import { url } from './constant';
-const httpLink = createHttpLink( {
+const { createUploadLink } = require( 'apollo-upload-client' )
+const httpLink = createUploadLink( {
     uri: `${ url }/graphql`,
 } );
 
