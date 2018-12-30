@@ -356,7 +356,7 @@ class Index extends React.Component {
                     </ul>
 
 
-                    <div style={ { width: this.state.category === 'Food and AGRO' ? '24vw' : '22vw' } } onClick={ () => this.setState( { category: 'Food and Agro' } ) } className="contentItems">
+                    <div style={ { width: this.state.category === 'Food and Agro' ? '24vw' : '22vw' } } onClick={ () => this.setState( { category: 'Food and Agro' } ) } className="contentItems">
                         <div className="icon"><img src={ Printing } /></div>
                         <div className="content">Food & Agro</div>
                         <div className="value">{ this.state.region === 'all' ?
