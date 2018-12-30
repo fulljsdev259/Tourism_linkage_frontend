@@ -463,7 +463,7 @@ class Index extends React.Component {
 
 
                                     <li onClick={ ( e ) => {
-                                        this.setState( { category: 'FOOD and AGRO', subMobileMenu: false } )
+                                        this.setState( { category: 'Food and Agro', subMobileMenu: false } )
                                         e.preventDefault();
                                     }
                                     } ><a href="#"><div className="icon"><img src={ Printing } />Food</div></a></li>
@@ -701,11 +701,11 @@ class Index extends React.Component {
                                             </div>
                                             <span className="category">{ location.categories }</span>
                                             <div className="labels">
-                                                { location.tags.split( ',' ).map( ( data, i ) => {
+                                                { location.tags && location.tags.length > 0 ? location.tags.split( ',' ).map( ( data, i ) => {
                                                     if ( i < 4 ) {
                                                         return <span key={ i }>{ data }</span>
                                                     }
-                                                } ) }
+                                                } ) : '' }
 
                                             </div>
                                             <div className="contact-section">
@@ -770,11 +770,11 @@ class Index extends React.Component {
                                     </div>
                                     <span className="category">{ item.categories }</span>
                                     <div className="labels">
-                                        { item.tags.split( ',' ).map( ( data, i ) => {
+                                        { item.length && item.tags.length > 0 ? item.tags.split( ',' ).map( ( data, i ) => {
                                             if ( i < 4 ) {
                                                 return <span key={ i }>{ data }</span>
                                             }
-                                        } ) }
+                                        } ) : '' }
                                     </div>
                                     <div className="contact-section">
                                         <div className="item-contact">

@@ -181,7 +181,7 @@ class EditRecord extends React.Component {
                 
             </Modal>
             <button className="buttonSave" onClick={ handleSubmit( async ( data ) => {
-                console.log( mutate )
+             //   console.log( mutate )
                 const editData = await mutate( {
                     variables: {
                         name: data.name, dataId: id, tags: data.tags, address: data.address, phoneNumber: data.phoneNumber,

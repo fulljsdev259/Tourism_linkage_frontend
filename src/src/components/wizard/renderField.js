@@ -6,7 +6,7 @@ import './antdCustom.scss';
 
 const Option = Select.Option;
 
-export const renderField = ( { input, label,placeholder, type, meta: { touched, error } } ) => (
+export const renderField = ( { input, label, placeholder, type, meta: { touched, error } } ) => (
     <div className="renderField">
         <label>{ label }</label>
         <div>
@@ -15,7 +15,7 @@ export const renderField = ( { input, label,placeholder, type, meta: { touched, 
         </div>
     </div>
 )
-export const renderTextarea = ( { input, label,placeholder, type, meta: { touched, error } } ) => (
+export const renderTextarea = ( { input, label, placeholder, type, meta: { touched, error } } ) => (
     <div className="renderField">
         <label>{ label }</label>
         <div>
@@ -27,14 +27,14 @@ export const renderTextarea = ( { input, label,placeholder, type, meta: { touche
 
 
 
-export const renderSelect = ( { input, label, type, meta: { touched, error } } ) => (
+export const renderSelect = ( { input, label, type, data, meta: { touched, error } } ) => (
     <div className="renderSelect">
         <label>{ label }</label>
-        <Select { ...input } defaultValue="lucy" style={ { width: 120 } } onChange={ ( data ) => console.log( data ) }>
-            <Option value="jack">Jack</Option>
-            <Option value="lucy">Lucy</Option>
-            <Option value="disabled" disabled>Disabled</Option>
-            <Option value="Yiminghe">yiminghe</Option>
+        <Select { ...input } defaultValue="lucy" style={ { width: 120 } }>
+            { data.map( ( d, i ) => {
+                return <Option key={ i } value={ d }>{ d }</Option>
+            } ) }
+
         </Select>
 
         <div>
@@ -54,15 +54,16 @@ export const renderTag = ( { input, label, type, meta: { touched, error } } ) =>
 
     return <div className="renderSelect">
         <label>{ label }</label>
-        <div style={ { ddisplay: 'flex', marginTop: 10 } }>
+        <div style={ { display: 'flex', marginTop: 10 } }>
             <Select
                 mode="tags"
                 style={ { width: '100%' } }
-                
+
                 placeholder="Please select"
-                defaultValue={ ['a10', 'c12'] }
-                onChange={ () => console.log() }
-            >   
+                //     defaultValue={ ['a10', 'c12'] }
+                //onChange={ () => console.log() }
+                { ...input }
+            >
                 { children }
             </Select>
             <div>

@@ -17,6 +17,7 @@
     "react-animated-slider": "^1.1.4",
     "react-apollo": "^2.3.2",
     "react-dom": "^16.6.3",
+    "react-geocode": "^0.1.2",
     "react-map-gl": "^4.0.2",
     "react-mapbox-gl": "^4.0.2",
     "react-modal": "^3.6.1",

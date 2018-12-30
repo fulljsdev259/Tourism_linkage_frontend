@@ -14,25 +14,31 @@ const WizardFormFirstPage = props => {
                         <div className="number">1</div>
                         <div className="subHeading">General information</div>
                     </div>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={ handleSubmit }>
                         <Field
-                            name="fullname"
+                            name="fullName"
                             type="text"
-                            component={renderField}
+                            component={ renderField }
                             label="Your full name"
                         />
                         <Field
-                            name="companyname"
+                            name="name"
                             type="text"
-                            component={renderField}
+                            component={ renderField }
                             label="Your company name"
                             placeholder=""
                         />
                         <Field
                             name="email"
                             type="email"
-                            component={renderField}
+                            component={ renderField }
                             label="Email"
+                        />
+                        <Field
+                            name="password"
+                            type="password"
+                            component={ renderField }
+                            label="Password"
                         />
                         <div>
                             <button type="submit" className="nextsignup">
@@ -54,9 +60,9 @@ const WizardFormFirstPage = props => {
     )
 }
 
-export default reduxForm({
+export default reduxForm( {
     form: 'wizard', // <------ same form name
     destroyOnUnmount: false, // <------ preserve form data
     forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
     validate
-})(WizardFormFirstPage)
+} )( WizardFormFirstPage )
