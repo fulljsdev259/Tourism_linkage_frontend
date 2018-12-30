@@ -58,13 +58,13 @@ const query = gql`{
 
 
 const foodIcon = new Image(13, 13);
-foodIcon.src = FP1;
+foodIcon.src = Printing;
 const food = ['food', foodIcon]
 
 
 
 const printIcon = new Image(10, 10);
-printIcon.src = Print;
+printIcon.src = Printing2;
 const printing1 = ['printing', printIcon]
 
 
@@ -72,7 +72,7 @@ const printing1 = ['printing', printIcon]
 
 
 const metalIcon = new Image(13, 13);
-metalIcon.src = MI;
+metalIcon.src = Metal;
 const metal = ['metal', metalIcon]
 
 
@@ -267,7 +267,7 @@ class Index extends React.Component {
         this.setState({ location: station });
         this.map.state.map.flyTo({ center: [station.longitude, station.latitude] });
         setTimeout(() => {
-            this.map.state.map.zoomTo(17, { duration: 2000 });
+            this.map.state.map.zoomTo(17, { duration: 500 });
         }, 1000)
 
     };
@@ -405,7 +405,8 @@ class Index extends React.Component {
                             data.party.filter((item) => item.categories === 'Furniture, Wooden and Bedding'
                                 && item.region === this.state.region).length}</div>
                     </div>
-                    <div style={{ width: this.state.category === 'Textile and Sewn' ? '24vw' : '22vw' }} onClick={() => this.setState({ category: 'Textile and Sewn' })} className="contentItems">
+                    <div style={{ width: this.state.category === 'Textile and Sewn' ? '24vw' : '22vw' }}
+                        onClick={() => this.setState({ category: 'Textile and Sewn' })} className="contentItems">
                         <div className="icon"><img src={Textile} /></div>
                         <div className="content">Textile & Sewn</div>
                         <div className="value">{this.state.region === 'all' ?
@@ -529,7 +530,7 @@ class Index extends React.Component {
                         <Map
 
 
-
+                            //style="mapbox://styles/mapbox/streets-v8"
                             style="mapbox://styles/kechealexprt2/cjq7f3fqf1h4q2rqdcz44o8j7"
 
                             className="map"
@@ -570,7 +571,7 @@ class Index extends React.Component {
                                 type="symbol"
                                 id={"marker1"}
                                 layout={{
-                                    "icon-image": this.state.category == 'all' || this.state.category == 'Food and Agro' ? "food" : '', 'icon-allow-overlap': true
+                                    "icon-image": this.state.category == 'all' || this.state.category == 'Food and Agro' ? "food" : '', 'icon-allow-overlap': false
                                 }}
                                 images={food}
 
@@ -608,6 +609,12 @@ class Index extends React.Component {
                                     ))}
 
                             </Layer>
+
+
+
+
+
+
 
 
                             <Layer type="symbol" id={"marker3"} layout={{ "icon-image": this.state.category == 'all' || this.state.category == 'Electrical, Electronics and Automotive' ? "electricity" : '', 'icon-allow-overlap': true }}
