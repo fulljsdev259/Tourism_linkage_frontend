@@ -12,22 +12,28 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
 const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet']
-const mutation = gql`mutation addVendor1($name:String,$fullName:String,$tags: String,
- $categories: String, $region: String, $description: String,$email:String,$password:String ,
-$address: String,$phoneNumber: String, $website: String,
+const mutation = gql`mutation addVendor1(
+    $name:String,$tags: String,
+, $categories: String, $region: String, $description: String, 
+$address: String,
+$phoneNumber: String, $website: String
+    $latitude:Float,$longitude:Float,
 
-$latitude:String,$longitude:String,
-   $facebook:String,
+$facebook:String,$profile:String
     $instagram:String,$typeOfCompany:String,$fax:String
-){
-        addVendor(name:$name,fullName:$fullName
-        categories:$categories,description:$description,phoneNumber:$phoneNumber,tags:$tags,
-    region:$region,website:$website,address:$address,
-email:$password,password:$password, 
-latitude:$latitude,longitude:$longitude,
-   facebook:$facebook,
-    instagram:$instagram,typeOfCompany:$typeOfCompany,fax:$fax
+    $email:String,$password:String,
 
+   
+){
+        addVendor(
+          name:$name,
+        categories:$categories,description:$description,phoneNumber:$phoneNumber,tags:$tags,
+        region:$region,website:$website,address:$address  
+        latitude:$latitude,longitude:$longitude,
+        facebook:$facebook,profile:$profile
+        instagram:$instagram,typeOfCompany:$typeOfCompany,fax:$fax,
+        email:$email,password:$password
+        
 
         
         ){
@@ -41,9 +47,6 @@ latitude:$latitude,longitude:$longitude,
     }
 
 `
-
-
-
 
 
 

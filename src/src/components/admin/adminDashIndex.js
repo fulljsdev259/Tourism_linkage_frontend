@@ -59,7 +59,7 @@ class AdminDash extends React.Component {
             refetchQueries: [{ query: query }]
         } )
 
-        //   this.props.history.push( '/admin' )
+           this.props.history.push( '/admin' )
     }
 
     handleCancel = ( e ) => {
