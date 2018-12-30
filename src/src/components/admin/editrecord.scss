@@ -1,5 +1,6 @@
 .editRecord{
-    
+    overflow: auto;
+    max-height:80vh;
     .row{
         display: flex;
         padding:10px;

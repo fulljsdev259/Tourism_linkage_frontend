@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import Index from './adminDashIndex';
 import EditParty from './editParty';
+import AddParty from './addParty';
 import { withRouter } from 'react-router'
 import './admindash.scss'
 
@@ -14,6 +15,7 @@ const AdminDash = ( { history } ) => {
         <div className="content">
             <Route exact path="/admin" render={ props => ( <Index /> ) } />
             <Route path="/admin/editSupplier/:name" component={ EditParty } />
+            <Route path="/admin/addSupplier" component={ AddParty } />
         </div>
 
 

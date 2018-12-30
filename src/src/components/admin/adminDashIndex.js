@@ -145,6 +145,12 @@ class AdminDash extends React.Component {
 
         return <div style={ { maxHeight: '100%', overflowY: "scroll" } }>
             <h2>Suppliers</h2>
+            <button onClick={ () => history.push( `${ match.url }/addSupplier` ) }
+                style={ {
+                    fontSize: 17, border: 'none', borderRadius: 5,
+                    backgroundColor: '#1289A7', color: '#fff', padding: "7px 15px"
+                } }>Add New Record</button>
+            
             <SpicyDatatable
                 tableKey="demo-table-genral"
                 // see below for prop documentation
