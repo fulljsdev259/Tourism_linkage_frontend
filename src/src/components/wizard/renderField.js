@@ -48,9 +48,9 @@ export const renderSelect = ( { input, label, type, data, meta: { touched, error
 
 export const renderTag = ( { input, label, type, meta: { touched, error } } ) => {
     const children = [];
-    for ( let i = 10; i < 36; i++ ) {
-        children.push( <Option key={ i.toString( 36 ) + i }>{ i.toString( 36 ) + i }</Option> );
-    }
+    // for ( let i = 10; i < 36; i++ ) {
+    //     children.push( <Option key={ i.toString( 36 ) + i }>{ i.toString( 36 ) + i }</Option> );
+    // }
 
     return <div className="renderSelect">
         <label>{ label }</label>
@@ -60,7 +60,7 @@ export const renderTag = ( { input, label, type, meta: { touched, error } } ) =>
                 style={ { width: '100%' } }
 
                 placeholder="Please select"
-                //     defaultValue={ ['a10', 'c12'] }
+                // defaultValue={ [] }
                 //onChange={ () => console.log() }
                 { ...input }
             >

@@ -18,6 +18,7 @@ const mutation = gql`mutation addVendor1(
 $address: String,
 $phoneNumber: String, $website: String
     $latitude:Float,$longitude:Float,
+$photo:[fileUpload],
 
 $facebook:String,$profile:String
     $instagram:String,$typeOfCompany:String,$fax:String
@@ -125,14 +126,14 @@ class WizardFormThirdPage extends React.Component {
                     <div className="subHeading">About your company</div>
                     <img src={ checkMark } />
                 </div>
-                <div className="form">
+                <div className="form" >
                     <div className="form-1">
                         <div className="form-header">
                             <div className="number">3</div>
                             <div className="subHeading">Contact information</div>
                         </div>
 
-                        <form onSubmit={ handleSubmit }>
+                        <form onSubmit={ handleSubmit } encType="multipart/form-data">
 
                             <Field
                                 name="address"
@@ -224,7 +225,7 @@ class WizardFormThirdPage extends React.Component {
                                             description: data.description,
                                             phoneNumber: data.phoneNumber,
                                             address: this.state.map,
-                                            tags: ( data.tags ).toString(),
+                                            tags: data.tags ? ( data.tags ).toString() : '',
                                             region: data.region,
                                             website: data.website,
                                             address: data.address,
@@ -233,7 +234,7 @@ class WizardFormThirdPage extends React.Component {
                                             latitude: this.state.lat,
                                             longitude: this.state.lng,
                                             facebook: data.facebook,
-
+                                            photo: data.photo,
                                             instagram: data.instagram,
                                             typeOfCompany: data.typeOfCompany,
                                             fax: data.fax
@@ -243,7 +244,7 @@ class WizardFormThirdPage extends React.Component {
                                         //   refetchQueries: [{ query: query1 }]
                                     } )
 
-                                    this.showModal();
+                                    //   this.showModal();
 
 
 
