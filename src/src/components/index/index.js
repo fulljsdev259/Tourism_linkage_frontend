@@ -58,13 +58,13 @@ const query = gql`{
 
 
 const foodIcon = new Image( 13, 13 );
-foodIcon.src = FP1;
+foodIcon.src = Printing;
 const food = ['food', foodIcon]
 
 
 
 const printIcon = new Image( 10, 10 );
-printIcon.src = Print;
+printIcon.src = Printing2;
 const printing1 = ['printing', printIcon]
 
 
@@ -72,7 +72,7 @@ const printing1 = ['printing', printIcon]
 
 
 const metalIcon = new Image( 13, 13 );
-metalIcon.src = MI;
+metalIcon.src = Metal;
 const metal = ['metal', metalIcon]
 
 
@@ -529,7 +529,7 @@ class Index extends React.Component {
                         <Map
 
 
-
+                            //style="mapbox://styles/mapbox/streets-v8"
                             style="mapbox://styles/kechealexprt2/cjq7f3fqf1h4q2rqdcz44o8j7"
 
                             className="map"
