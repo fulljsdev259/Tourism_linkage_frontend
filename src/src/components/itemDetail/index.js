@@ -16,6 +16,8 @@ import tweet from '../../images/tweet.png'
 import Textile from '../../images/icon/textile.svg'
 import Close from '../../images/icon/cross.svg';
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
+import { url } from '../../config/constant'
+
 
 import Modal from 'react-modal';
 import About from '../about';
@@ -42,6 +44,9 @@ const query = gql`query singleParty($name:String)
         longitude
         tags
         address
+        photo{
+            filename
+        }
         phoneNumber
     }
 }
@@ -116,7 +121,7 @@ class ItemDetail extends React.Component {
         if ( data.loading ) {
             return <span>loading</span>
         }
-        //console.log( data )
+        console.log( data )
 
         return <div>
             <div className="detail">
@@ -257,18 +262,21 @@ class ItemDetail extends React.Component {
                             <span>Closed </span>
                         </div>
                     </div>
-                    {/* <div className="image-section">
+                    <div className="image-section">
                         <div>
-                            <img className="img" src={ContactSectionPic1} />
+                            <img className="img" src={ ContactSectionPic1 } />
                         </div>
                         <div className="image-row">
-                            <img className="image" src={ContactSectionPic2} />
-                            <img className="image" src={ContactSectionPic3} />
-                            <img className="image" src={ContactSectionPic4} />
-                            <img className="image" src={ContactSectionPic} />
+                            { data.singleParty.photo.map( ( data, i ) => {
+                                return <img key={ i } className="image" src={ `${ url }/static/${ data.filename }` } />
+                            } ) }
+                            <img className="image" src={ ContactSectionPic2 } />
+                            <img className="image" src={ ContactSectionPic3 } />
+                            <img className="image" src={ ContactSectionPic4 } />
+                            <img className="image" src={ ContactSectionPic } />
 
                         </div>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </div>

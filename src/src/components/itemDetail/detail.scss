@@ -287,6 +287,8 @@
       .image-row {
         max-width: 25vw;
         display: flex;
+        flex-wrap: wrap;
+        
 
         @media screen and(max-width:750px) {
           min-width: 25vw;
@@ -297,7 +299,8 @@
 
         .image {
           max-height: 9vh;
-          width: 10vw;
+          width: 22%;
+          margin:2px;
           float: left;
           @media screen and(max-width:750px) {
             min-width: 25vw;
