@@ -149,7 +149,8 @@ class WizardFormThirdPage extends React.Component {
                                     <button onClick={ () => this.getLang() } style={ {
                                         marginLeft: 10, border: 'none',
                                         backgroundColor: "#5165FF",
-                                        color: "#fff", borderRadius: 5, padding: '4px 8px'
+                                        color: "#fff", borderRadius: 5, padding: '4px 8px',
+                                        cursor:'pointer'
                                     } } >Get Location</button>
                                 </div>
                             </div>
