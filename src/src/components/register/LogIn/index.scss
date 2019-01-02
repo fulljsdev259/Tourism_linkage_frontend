@@ -66,6 +66,7 @@
           padding: 12px;
           font-weight: "semi-bold";
           font-size: 16px;
+          cursor: pointer;
           @media all and(max-width:576px) {
             width: 100%;
           }
@@ -78,6 +79,7 @@
           font-family: "Open Sans";
           font-size: 16px;
           color: #a4afd0;
+          cursor: pointer;
         }
 }
   .remember-me {
@@ -92,6 +94,7 @@
 
     input[type="checkbox"] + label:before {
       content: "\2713";
+      cursor: pointer;
       border: 0.1em solid white;
       border-radius: 0.2em;
       display: inline-block;

@@ -30,9 +30,9 @@ export default class Register extends React.Component {
                     <div className="heading">Welcome to TLN</div>
                     <div className="subHead">
                         <span onClick={ () => this.setState( { login: false, register: true } ) }
-                            style={ { color: this.state.register ? '#fff' : "#A4AFD0" } }>Register</span>
+                            style={ { color: this.state.register ? '#fff' : "#A4AFD0", cursor:'pointer' } }>Register</span>
                         <span onClick={ () => this.setState( { login: true, register: false } ) }
-                            style={ { color: this.state.login ? '#fff' : "#A4AFD0" } } >Login</span>
+                            style={ { color: this.state.login ? '#fff' : "#A4AFD0", cursor:'pointer' } } >Login</span>
                     </div>
                     <div>
                         { this.state.login ? <Login closeModal={ closeModal } /> : '' }
