@@ -47,11 +47,34 @@ import { renderField, renderFieldTextArea } from '../admin/inputComponent'
 
 import { Modal as Modal1, Button } from 'antd';
 
-import { query as query1 } from '../index/index';
-
 import StarRatingComponent from 'react-star-rating-component';
+import { connect } from 'react-redux';
 
 
+const mutation = gql`mutation comment(
+  $rating:Int
+    $comment:String
+   
+    $partyId:String
+){
+        comment(
+          rating:$rating,
+    comment:$comment,
+    partyId:$partyId
+
+        
+        ){
+           comment{
+                name
+            }
+            errors
+
+                
+            
+        }
+    }
+
+`
 
 
 const form = reduxForm( {
@@ -64,13 +87,13 @@ const form = reduxForm( {
 
 
 export const renderFieldRating = ( { input: { onChange, value }, label, type, meta: { touched, error } } ) => (
-    <div style={ { display: 'flex', maxWidth: 140, flexDirection: 'column' } }>
+    <div style={ { display: 'flex', maxWidth: 70, flexDirection: 'column' } }>
 
         <StarRatingComponent
             name="rate2"
             editing={ true }
             //renderStarIcon={ () => <span></span> }
-            starCount={ 10 }
+            starCount={ 5 }
             value={ value ? value : 0 }
             onStarClick={ ( nextValue, prevValue, name ) => {
                 onChange( nextValue )
@@ -86,6 +109,7 @@ export const renderFieldRating = ( { input: { onChange, value }, label, type, me
 const query = gql`query singleParty($name:String)
 {
     singleParty(name:$name){
+        _id
         name
         region
         categories
@@ -94,6 +118,11 @@ const query = gql`query singleParty($name:String)
         description
         tags
         address
+        comment{
+            name
+            rating
+            comment
+        }
         photo{
             filename
         }
@@ -168,12 +197,12 @@ class ItemDetail extends React.Component {
         this.setState( { modalIsOpen: false } );
     }
     render() {
-        const { data, history, handleSubmit } = this.props;
+        const { data, history, handleSubmit, mutate, authenticated } = this.props;
         if ( data.loading ) {
             return <span>loading</span>
         }
         console.log( data )
-
+        const partyId = data.singleParty._id
         return <div>
             <div className="detail">
                 <div className="itemDetail-Map">
@@ -210,21 +239,22 @@ class ItemDetail extends React.Component {
                             </div>
                             <div className="item-category ">
                                 <img
-                                    style={ {marginRight:5,
+                                    style={ {
+                                        marginRight: 5,
                                         height: 22
-                                    } }    
+                                    } }
                                     src={ data.singleParty.categories === 'Food and Agro' ? Printing :
-                                    data.singleParty.categories === 'Printing, Packaging and Paper'?Printing2:
-                                        data.singleParty.categories === 'Minerals and Metal' ? Metal :
-                                            data.singleParty.categories === 'Food and Agro' ? Metal :
-                                                data.singleParty.categories === 'Electrical, Electronics and Automotive' ? Electricity :
-                                                    data.singleParty.categories === 'Chemicals, Cosmetics and Pharmaceuticals' ? chemical:
-                                                        data.singleParty.categories === 'Furniture, Wooden and Bedding'  ? furniture:
-                                                            data.singleParty.categories === 'Textile and Sewn' ?Textile:''
+                                        data.singleParty.categories === 'Printing, Packaging and Paper' ? Printing2 :
+                                            data.singleParty.categories === 'Minerals and Metal' ? Metal :
+                                                data.singleParty.categories === 'Food and Agro' ? Metal :
+                                                    data.singleParty.categories === 'Electrical, Electronics and Automotive' ? Electricity :
+                                                        data.singleParty.categories === 'Chemicals, Cosmetics and Pharmaceuticals' ? chemical :
+                                                            data.singleParty.categories === 'Furniture, Wooden and Bedding' ? furniture :
+                                                                data.singleParty.categories === 'Textile and Sewn' ? Textile : ''
 
 
-                        
-                        } />
+
+                                    } />
                                 <span>{ data.singleParty.categories }</span>
                             </div>
                             <div className="tags">
@@ -263,37 +293,52 @@ class ItemDetail extends React.Component {
                         </div>
                         <div className="review-section">
 
-                            { this.state.leaveReview ?
-                                <div style={ { padding: 10 } }>
-                                    <Field name='rating' component={ renderFieldRating } type="text" label="Full Name" />
-                                    <div style={ { display: 'flex', justifyContent: 'space-between' } }>
-                                        <Field name='name' component={ renderField } type="text" label="Full Name" />
-                                        <Field name='email' component={ renderField } type="text" label="Email" />
+                            { authenticated ?
+                                <div>
+                                    { this.state.leaveReview ?
+                                        <div style={ { padding: 10 } }>
+                                            <Field name='rating' component={ renderFieldRating } type="text" label="Full Name" />
+                                            <Field name='comment' component={ renderFieldTextArea } type="text" label="Comment" />
+                                            <button onClick={ handleSubmit( async ( data1 ) => {
+
+                                                const editData = await mutate( {
+                                                    variables: {
+                                                        rating: data1.rating ? data1.rating : 0,
+                                                        comment: data1.comment,
+                                                        partyId: partyId
+                                                    },
+                                                    refetchQueries: [{ query: query }]
+                                                } )
+
+                                                this.setState( { leaveReview: false } );
+
+                                            } ) }>Submit</button>
+                                        </div>
+                                        : '' }
+                                </div> : 'Please login to give review and comment' }
+                            { data.singleParty.comment ? data.singleParty.comment.map( ( data2, i ) => {
+
+                                return <div key={ i }>
+                                    <div className="user">
+                                        <span>{ data2.name }</span>
+
+                                        <StarRatingComponent
+                                            name="rate2"
+                                            editing={ false }
+                                            //renderStarIcon={ () => <span></span> }
+                                            starCount={ 5 }
+                                            value={ data2.rating }
+                                        />
 
                                     </div>
-                                    <Field name='comment' component={ renderFieldTextArea } type="text" label="Comment" />
-                                    <button onClick={ handleSubmit( ( data ) => {
-                                        //               console.log( data );
-                                        this.setState( { leaveReview: false } );
-                                    } ) }>Submit</button>
+                                    <div className="user-comments" >
+                                        <p>
+                                            { data2.comment }
+                                        </p>
+                                    </div>
                                 </div>
-                                : '' }
 
-
-                            <div className="user">
-                                <span>Sandra</span>
-                                <img src={ rating }></img>
-                            </div>
-                            <div className="user-comments" >
-                                <p>Exelent! We often order shirts for our hotel stuff here. Very good quality. Highly recommended. </p>
-                            </div>
-                            <div className="user">
-                                <span>Viktoria</span>
-                                <img src={ rating }></img>
-                            </div>
-                            <div className="user-comments" >
-                                <p>Love them. </p>
-                            </div>
+                            } ) : '' }
 
                         </div>
 
@@ -365,6 +410,10 @@ class ItemDetail extends React.Component {
 
 
 
-export default withRouter( graphql( query, {
+function mapStateToProps( state ) {
+    return { authenticated: state.auth.isAuthenticated }
+}
+
+export default withRouter( connect( mapStateToProps, null )( graphql( query, {
     options: ( { match } ) => ( { variables: { name: match.params.name } } )
-} )( form( ItemDetail ) ) )
+} )( form( graphql( mutation )( ItemDetail ) ) ) ) )
