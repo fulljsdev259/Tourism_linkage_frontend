@@ -13,11 +13,18 @@ import share from '../../images/icon/share.svg'
 import furniture3 from '../../images/icon/furniture3.svg'
 import facebook from '../../images/Bitmap.png'
 import tweet from '../../images/tweet.png'
+import Printing from '../../images/icon/printing.svg'
+import Printing2 from '../../images/icon/printing2.svg'
+import Metal from '../../images/icon/metal.svg'
+import arrowDown from '../../images/icon/white.svg'
+import Electricity from '../../images/icon/electicity.svg'
+import chemical from '../../images/icon/furniture3.svg'
+import furniture2 from '../../images/icon/furniture.svg'
+import furniture from '../../images/icon/furniture.svg'
 import Textile from '../../images/icon/textile.svg'
 import Close from '../../images/icon/cross.svg';
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import { url } from '../../config/constant'
-
 
 import Modal from 'react-modal';
 import About from '../about';
@@ -34,6 +41,48 @@ import { withRouter } from 'react-router-dom';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
+
+import { Field, reset, reduxForm } from 'redux-form';
+import { renderField, renderFieldTextArea } from '../admin/inputComponent'
+
+import { Modal as Modal1, Button } from 'antd';
+
+import { query as query1 } from '../index/index';
+
+import StarRatingComponent from 'react-star-rating-component';
+
+
+
+
+const form = reduxForm( {
+    form: 'addRating',
+    enableReinitialize: true,
+    //validate
+
+} )
+
+
+
+export const renderFieldRating = ( { input: { onChange, value }, label, type, meta: { touched, error } } ) => (
+    <div style={ { display: 'flex', maxWidth: 140, flexDirection: 'column' } }>
+
+        <StarRatingComponent
+            name="rate2"
+            editing={ true }
+            //renderStarIcon={ () => <span></span> }
+            starCount={ 10 }
+            value={ value ? value : 0 }
+            onStarClick={ ( nextValue, prevValue, name ) => {
+                onChange( nextValue )
+            }
+            }
+        />
+
+        <span style={ { color: 'red', texAlign: 'center' } }>{ touched && error && <span>{ error }</span> }</span>
+    </div>
+)
+
+
 const query = gql`query singleParty($name:String)
 {
     singleParty(name:$name){
@@ -42,6 +91,7 @@ const query = gql`query singleParty($name:String)
         categories
         latitude
         longitude
+        description
         tags
         address
         photo{
@@ -96,7 +146,8 @@ class ItemDetail extends React.Component {
         this.state = {
             modalIsOpen: false,
             about: false, contact: false, event: false, getListed: false,
-            news: false, register: false, itemDetail: false, mobileMenu: false
+            news: false, register: false, itemDetail: false, mobileMenu: false,
+            leaveReview: false
         };
 
         this.openModal = this.openModal.bind( this );
@@ -117,7 +168,7 @@ class ItemDetail extends React.Component {
         this.setState( { modalIsOpen: false } );
     }
     render() {
-        const { data, history } = this.props;
+        const { data, history, handleSubmit } = this.props;
         if ( data.loading ) {
             return <span>loading</span>
         }
@@ -158,7 +209,22 @@ class ItemDetail extends React.Component {
                                 <span>2 Reviews</span>
                             </div>
                             <div className="item-category ">
-                                <img src={ furniture3 } />
+                                <img
+                                    style={ {marginRight:5,
+                                        height: 22
+                                    } }    
+                                    src={ data.singleParty.categories === 'Food and Agro' ? Printing :
+                                    data.singleParty.categories === 'Printing, Packaging and Paper'?Printing2:
+                                        data.singleParty.categories === 'Minerals and Metal' ? Metal :
+                                            data.singleParty.categories === 'Food and Agro' ? Metal :
+                                                data.singleParty.categories === 'Electrical, Electronics and Automotive' ? Electricity :
+                                                    data.singleParty.categories === 'Chemicals, Cosmetics and Pharmaceuticals' ? chemical:
+                                                        data.singleParty.categories === 'Furniture, Wooden and Bedding'  ? furniture:
+                                                            data.singleParty.categories === 'Textile and Sewn' ?Textile:''
+
+
+                        
+                        } />
                                 <span>{ data.singleParty.categories }</span>
                             </div>
                             <div className="tags">
@@ -173,9 +239,10 @@ class ItemDetail extends React.Component {
                             </div>
                             <div className="item-description">
                                 <p>
-                                    Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molestie ut ipsum et, suscipit vehicula odio. Vestibulum interdum vestibulum felis ac molestie. Praesent aliquet quam et libero dictum, vitae dignissim leo eleifend. In in turpis turpis. Quisque justo turpis, vestibulum non enim nec, tempor mollis mi. Sed vel tristique quam.
-                            </p>
+                                    { data.singleParty.description }
+                                </p>
                             </div>
+                            {/*
                             <div className="social-icons">
                                 <div className="left">
                                     <img src={ facebook } />
@@ -185,12 +252,34 @@ class ItemDetail extends React.Component {
                                     <img src={ fav } />
                                     <img src={ share } />
                                 </div>
-                            </div>
+                            </div>*/}
+                        </div>
+                        <h3>Reviews</h3>
+
+                        <div onClick={ () => this.setState( { leaveReview: true } ) } className="Leave-review">
+                            <a href="#" onClick={ e => e.preventDefault() }>Leave review</a>
                         </div>
                         <div className="hr">
                         </div>
                         <div className="review-section">
-                            <h3>Reviews</h3>
+
+                            { this.state.leaveReview ?
+                                <div style={ { padding: 10 } }>
+                                    <Field name='rating' component={ renderFieldRating } type="text" label="Full Name" />
+                                    <div style={ { display: 'flex', justifyContent: 'space-between' } }>
+                                        <Field name='name' component={ renderField } type="text" label="Full Name" />
+                                        <Field name='email' component={ renderField } type="text" label="Email" />
+
+                                    </div>
+                                    <Field name='comment' component={ renderFieldTextArea } type="text" label="Comment" />
+                                    <button onClick={ handleSubmit( ( data ) => {
+                                        //               console.log( data );
+                                        this.setState( { leaveReview: false } );
+                                    } ) }>Submit</button>
+                                </div>
+                                : '' }
+
+
                             <div className="user">
                                 <span>Sandra</span>
                                 <img src={ rating }></img>
@@ -204,9 +293,6 @@ class ItemDetail extends React.Component {
                             </div>
                             <div className="user-comments" >
                                 <p>Love them. </p>
-                            </div>
-                            <div className="Leave-review">
-                                <a href="#">Leave review</a>
                             </div>
 
                         </div>
@@ -263,17 +349,11 @@ class ItemDetail extends React.Component {
                         </div>
                     </div>
                     <div className="image-section">
-                        <div>
-                            <img className="img" src={ ContactSectionPic1 } />
-                        </div>
+
                         <div className="image-row">
-                            { data.singleParty.photo.map( ( data, i ) => {
+                            { data.singleParty.photo ? data.singleParty.photo.map( ( data, i ) => {
                                 return <img key={ i } className="image" src={ `${ url }/static/${ data.filename }` } />
-                            } ) }
-                            <img className="image" src={ ContactSectionPic2 } />
-                            <img className="image" src={ ContactSectionPic3 } />
-                            <img className="image" src={ ContactSectionPic4 } />
-                            <img className="image" src={ ContactSectionPic } />
+                            } ) : '' }
 
                         </div>
                     </div>
@@ -287,4 +367,4 @@ class ItemDetail extends React.Component {
 
 export default withRouter( graphql( query, {
     options: ( { match } ) => ( { variables: { name: match.params.name } } )
-} )( ItemDetail ) )
+} )( form( ItemDetail ) ) )

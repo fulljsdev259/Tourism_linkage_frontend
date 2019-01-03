@@ -12,9 +12,11 @@ import slider7 from '../../images/46352636478840.jpg'
 import Logo from '../../images/Tourism_Linkages_Network_Logo.gif'
 import Menu from '../../images/icon/menu.svg'
 import CloseBlue from '../../images/icon/crossbluedark.svg'
-import Printing from '../../images/icon/printing.svg'
+
 import JamaicaLove from '../../images/jamaicalove.svg'
 import Loader from '../../images/loader.gif'
+
+import Printing from '../../images/icon/printing.svg'
 import Printing2 from '../../images/icon/printing2.svg'
 import Metal from '../../images/icon/metal.svg'
 import arrowDown from '../../images/icon/white.svg'
@@ -283,7 +285,7 @@ class Index extends React.Component {
         const { location } = this.state;
         const { data, history } = this.props;
         if ( data.loading ) {
-            return <div className="load"><img width="35" src={ Loader } /></div>
+            return <div className="load"><img width="50" src={ Loader } /></div>
         }
         let geoJson = null;
 
@@ -711,7 +713,7 @@ class Index extends React.Component {
                                     <div className="popup">
                                         <div className="popup-content">
                                             <div className="popup-header">
-                                                <span style={ { cursor: 'pointer' } } className="title" onClick={ () => history.push( `/detail/${ location._id }` ) }>{ location.name } <span><img width="8" src={ forward } /></span></span>
+                                                <span style={ { cursor: 'pointer' } } className="title" onClick={ () => history.push( `/supplier/${ location._id }` ) }>{ location.name } <span><img width="8" src={ forward } /></span></span>
                                                 <img className="img" onClick={ () => this.closePopup() } src={ CloseBlue } />
                                             </div>
                                             <span className="category">{ location.categories }</span>
@@ -775,7 +777,7 @@ class Index extends React.Component {
                                 : item.categories === this.state.category )
                             .map( ( item, i ) => {
 
-                                return <div key={ i } onClick={ () => history.push( `/detail/${ item._id }` ) } className="list-item">
+                                return <div key={ i } onClick={ () => history.push( `/supplier/${ item._id }` ) } className="list-item">
                                     <div className="item-header">
                                         <span className="title">{ item.name }</span>
                                         <div className="rating">

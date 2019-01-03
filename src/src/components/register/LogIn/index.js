@@ -117,7 +117,10 @@ class Login extends React.Component {
                                 //     alert( 'Registration has been closed' )
                                 //     this.setState( { loading: false } )
                                 // }
-                                history.push( `/user` )
+                                receiveLogin();
+                                history.push( `/` )
+                                this.setState( { loading: false } )
+                                this.props.closeModal();
                                 //this.setState( { loading: false } )
 
                             }
