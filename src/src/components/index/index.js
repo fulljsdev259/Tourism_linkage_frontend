@@ -350,9 +350,21 @@ class Index extends React.Component {
                                         centerZoom: 7.3,
                                         region: "all", subMenu: !this.state.subMenu
                                     } ) }><a href="#">All Jamaica</a></li>
-                                    <li onClick={ ( e ) => this.setState( { centerLang: -77.8939, centerLat: 17.9762, centerZoom: 8.5, region: "Western Jamaica", subMenu: !this.state.subMenu } ) }><a href="#">Western Jamaica</a></li>
-                                    <li onClick={ ( e ) => this.setState( { centerLang: -77.1939, centerLat: 17.9762, centerZoom: 8.5, region: "Central Jamaica", subMenu: !this.state.subMenu } ) }><a href="#">Central Jamaica</a></li>
-                                    <li onClick={ ( e ) => this.setState( { centerLang: -76.54864, centerLat: 17.91184, centerZoom: 8.5, centerZoom: 8.5, region: "Eastern Jamaica", subMenu: !this.state.subMenu } ) }><a href="#">Eastern Jamaica</a></li>
+                                    <li onClick={ ( e ) => {
+                                         document.getElementById("check02").checked = false;
+                                        this.setState( { centerLang: -77.8939, centerLat: 17.9762, centerZoom: 8.5, region: "Western Jamaica", subMenu: !this.state.subMenu } )
+                                         }}><a href="#">Western Jamaica</a></li>
+                                    <li onClick={
+                                         ( e ) => {
+                                            document.getElementById("check02").checked = false;
+                                             this.setState( { centerLang: -77.1939, centerLat: 17.9762, centerZoom: 8.5, region: "Central Jamaica", subMenu: !this.state.subMenu } )
+                                              }}><a href="#">Central Jamaica</a></li>
+                                    <li onClick={ 
+                                       
+                                        ( e ) => {
+                                            document.getElementById("check02").checked = false;
+                                            this.setState( { centerLang: -76.54864, centerLat: 17.91184, centerZoom: 8.5, centerZoom: 8.5, region: "Eastern Jamaica", subMenu: !this.state.subMenu } )
+                                         }}><a href="#">Eastern Jamaica</a></li>
                                 </ul>
                                 : '' }
                         </li>
@@ -436,17 +448,20 @@ class Index extends React.Component {
                                 <ul class="submenu">
                                     <li onClick={ ( e ) => {
                                         e.preventDefault();
+                                        document.getElementById("Jamaica").checked = false;
                                         this.setState( { region: "Western Jamaica", subMenu: !this.state.subMenu } )
 
                                     } }><a href="#">Western Jamaica</a></li>
                                     <li onClick={ ( e ) => {
                                         e.preventDefault();
+                                        document.getElementById("Jamaica").checked = false;
                                         this.setState( { region: "Central Jamaica", subMenu: !this.state.subMenu } )
 
                                     }
                                     }><a href="#">Central Jamaica</a></li>
                                     <li onClick={ ( e ) => {
                                         e.preventDefault();
+                                        document.getElementById("Jamaica").checked = false;
                                         this.setState( { region: "Eastern Jamaica", subMenu: !this.state.subMenu } )
                                     }
                                     }><a href="#">Eastern Jamaica</a></li>
@@ -473,6 +488,7 @@ class Index extends React.Component {
 
 
                                     <li onClick={ ( e ) => {
+                                         document.getElementById("Category").checked = false;
                                         this.setState( { category: 'Food and Agro', subMobileMenu: false } )
                                         e.preventDefault();
                                     }
@@ -480,32 +496,38 @@ class Index extends React.Component {
 
 
                                     <li onClick={ ( e ) => {
+                                         document.getElementById("Category").checked = false;                                         
                                         this.setState( { category: 'Printing, Packaging and Paper', subMobileMenu: false } )
                                         e.preventDefault();
                                     }
                                     }><a href="#"><div className="icon"><img src={ Printing2 } />Printing & Packaging</div></a></li>
 
                                     <li onClick={ ( e ) => {
+                                         document.getElementById("Category").checked = false;                                         
                                         this.setState( { category: 'Minerals and Metal', subMobileMenu: false } )
                                         e.preventDefault();
                                     }
                                     }><a href="#"><div className="icon"><img src={ Metal } />Minerals & Metals</div></a></li>
                                     <li onClick={ ( e ) => {
+                                         document.getElementById("Category").checked = false;                                         
                                         this.setState( { category: 'Electrical, Electronics and Automotive', subMobileMenu: false } )
                                         e.preventDefault();
                                     }
                                     }><a href="#"><div className="icon"><img src={ Electricity } />Electrical,Electronics & automative</div></a></li>
-                                    <li onClick={ ( e ) => {
+                                    <li onClick={ ( e ) => {                                        
+                                        document.getElementById("Category").checked = false;                                         
                                         this.setState( { category: 'Chemicals, Cosmetics and Pharmaceuticals', subMobileMenu: false } )
                                         e.preventDefault();
                                     }
                                     } ><a href="#"><div className="icon"><img src={ chemical } /> Chemical, Cosmetics &Pharmaceuticals</div></a></li>
                                     <li onClick={ ( e ) => {
+                                         document.getElementById("Category").checked = false;                                                                                  
                                         this.setState( { category: 'Furniture, Wooden and Bedding', subMobileMenu: false } )
                                         e.preventDefault();
                                     }
                                     } ><a href="#"><div className="icon"><img src={ furniture } />Furniture, Wooden & Bedding</div></a></li>
                                     <li onClick={ ( e ) => {
+                                         document.getElementById("Category").checked = false;                                                                                  
                                         this.setState( { category: 'Textile and Sewn', subMobileMenu: false } )
                                         e.preventDefault();
                                     }
