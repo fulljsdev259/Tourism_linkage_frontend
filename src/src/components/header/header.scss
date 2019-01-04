@@ -103,6 +103,19 @@
         $color-bg: #fcfcf4;
         $color-dark: darken($color, 10%);
         $color-lite: lighten($color, 10%);
+        .menu-text{
+          position: relative;
+          top: 22px;
+          font-size: 20px;
+          right: 10px;
+          cursor: pointer;
+          opacity: 1;
+          transition: opacity 0.2s ease-out;
+          .open & {
+            opacity: 0;
+          }
+
+        }
         
         @mixin position-center {
           position: absolute;
@@ -126,11 +139,12 @@
           background-color: transparent;
           position: absolute;
           z-index: 13;
-          top: 24px;
+          top: 30px !important;
+          margin-right: 50px;
+          height: 15px;
           right: 20px;
           border: none;
           width: 30px;
-          height: 24px;
           outline: none;
           @media (max-width: 768px) {
             top: 20px;
@@ -150,18 +164,19 @@
               $color 80%, $color 100%
             );
             transition: opacity 0.2s ease-out,
-                        width 0.2s 0.2s ease-out;
+            width 0.2s 0.2s ease-out;
           }
           &:after {
             opacity: 0;
-            content: '×';
+            content: 'XCLOSE';
             color: #000000;
             position: absolute;
             top: 16px;
-            left: -4px;
+            left: -70px;
             font-family: Arial, sans-serif;
-            font-size: 50px;
+            font-size: 24px;
             line-height: 0;
+            width: 220px;
             transition: opacity 0.4s ease-out;
           }
           &:active {
@@ -211,6 +226,13 @@
             &:before {
               animation: menu-animation 0.8s ease-out forwards;
             }
+          }
+          .close-text{
+            position: relative;
+            top: 22px;
+            font-size: 20px;
+            right: 10px;
+            cursor: pointer;
           }
         }
         
