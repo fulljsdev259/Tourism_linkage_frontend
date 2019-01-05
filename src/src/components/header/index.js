@@ -88,7 +88,6 @@ class Header extends React.Component {
                 <div className="itemDiv">
 
                     <button className="menu-toggle" onClick={this.ToggleBody}></button>
-                    <span className="menu-text" onClick={this.ToggleBody}>MENU</span>
                     <nav>
                         <Link to="/"> <img onClick={this.ToggleBody} className="logo" src={Logo} /></Link>
 
