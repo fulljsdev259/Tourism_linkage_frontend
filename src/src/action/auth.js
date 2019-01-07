@@ -1,6 +1,6 @@
 import {
     LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_REQUEST, LOGOUT_SUCCESS,
-    SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAILURE, COMMON_ERROR, CLEAR_ERROR
+    SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAILURE, COMMON_ERROR, CLEAR_ERROR, GET_CATEGORY, GET_REGION
 } from './types.js';
 //import {url} from '../config.js';
 
@@ -22,10 +22,34 @@ export function requestLogin( creds ) {
 
 export function receiveLogin() {
 
+
     return {
         type: LOGIN_SUCCESS,
         isFetching: false,
         isAuthenticated: true,
+        //token: user.token
+    }
+}
+
+
+export function region( data ) {
+
+
+    return {
+        type: GET_REGION,
+        region: data
+
+    }
+}
+
+
+
+export function category( data ) {
+
+
+    return {
+        type: GET_CATEGORY,
+        category: data
         //token: user.token
     }
 }

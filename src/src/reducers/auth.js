@@ -1,6 +1,6 @@
 import {
     LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS,
-    SIGNUP_SUCCESS, SIGNUP_REQUEST, SIGNUP_FAILURE, COMMON_ERROR, CLEAR_ERROR
+    SIGNUP_SUCCESS, SIGNUP_REQUEST, SIGNUP_FAILURE, COMMON_ERROR, CLEAR_ERROR, GET_CATEGORY, GET_REGION
 } from '../action/types';
 
 // The auth reducer. The starting state sets authentication
@@ -11,9 +11,20 @@ export default ( state = {
     isAuthenticated: localStorage.getItem( 'token' ) ? true : false,
     token: '',
     errorMessage: [],
-    modalState: false
+    modalState: false,
+    region: 'all',
+    category: 'all'
 }, action ) => {
     switch ( action.type ) {
+        case GET_REGION:
+            return Object.assign( {}, state, {
+                region: action.region,
+            } )
+        case GET_CATEGORY:
+            return Object.assign( {}, state, {
+                region: action.category,
+            } )
+
         case LOGIN_REQUEST:
             return Object.assign( {}, state, {
                 isFetching: true,

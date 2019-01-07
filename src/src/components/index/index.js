@@ -42,6 +42,8 @@ import Modal from 'react-modal';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
+import { region, category } from '../../action/auth';
+import { connect } from 'react-redux';
 import FP1 from './icons/fi.svg'
 import Print from './icons/print.svg';
 import MI from './icons/metal.svg';
@@ -277,24 +279,24 @@ class Index extends React.Component {
     render() {
 
         const { location } = this.state;
-        const { data, history } = this.props;
+        const { data, history, regionData, categoryData, region, category } = this.props;
         if ( data.loading ) {
             return <Loader />
         }
         let geoJson = null;
 
 
-        if ( this.state.category === 'all' && this.state.region === 'all' ) {
+        if ( categoryData === 'all' && regionData === 'all' ) {
             geoJson = data.party;
         }
-        if ( !this.state.region === 'all' && this.state.category === 'all' ) {
-            geoJson = data.party.filter( item => item.region === this.state.region )
+        if ( !regionData === 'all' && categoryData === 'all' ) {
+            geoJson = data.party.filter( item => item.region === regionData )
         }
-        if ( this.state.region === 'all' && !this.state.category === 'all' ) {
-            geoJson = data.party.filter( item => item.categories === this.state.category )
+        if ( regionData === 'all' && !categoryData === 'all' ) {
+            geoJson = data.party.filter( item => item.categories === categoryData )
         }
-        if ( !this.state.region === 'all' && !this.state.category === 'all' ) {
-            geoJson = data.party.filter( item => item.categories === this.state.category && item.region === this.state.region )
+        if ( !regionData === 'all' && !categoryData === 'all' ) {
+            geoJson = data.party.filter( item => item.categories === categoryData && item.region === regionData )
         }
 
 
@@ -336,7 +338,7 @@ class Index extends React.Component {
                     <ul id="menu">
                         <li>
                             <input onClick={ () => this.setState( { subMenu: true } ) } id="check02" type="checkbox" name="menu" />
-                            <label htmlFor="check02"> { this.state.region === 'all' ? 'All Jamaica' : this.state.region }</label>
+                            <label htmlFor="check02"> { regionData === 'all' ? 'All Jamaica' : regionData }</label>
                             { this.state.subMenu ?
                                 <ul class="submenu">
                                     <li onClick={ ( e ) => this.setState( {
@@ -348,17 +350,20 @@ class Index extends React.Component {
                                     <li onClick={ ( e ) => {
                                         document.getElementById( "check02" ).checked = false;
                                         this.setState( { centerLang: -77.8939, centerLat: 17.9762, centerZoom: 8.5, region: "Western Jamaica", subMenu: !this.state.subMenu } )
+                                        region( "Western Jamaica" )
                                     } }><a href="#">Western Jamaica</a></li>
                                     <li onClick={
                                         ( e ) => {
                                             document.getElementById( "check02" ).checked = false;
                                             this.setState( { centerLang: -77.1939, centerLat: 17.9762, centerZoom: 8.5, region: "Central Jamaica", subMenu: !this.state.subMenu } )
+                                            region( "Central Jamaica" )
                                         } }><a href="#">Central Jamaica</a></li>
                                     <li onClick={
 
                                         ( e ) => {
                                             document.getElementById( "check02" ).checked = false;
                                             this.setState( { centerLang: -76.54864, centerLat: 17.91184, centerZoom: 8.5, centerZoom: 8.5, region: "Eastern Jamaica", subMenu: !this.state.subMenu } )
+                                            region( "Eastern Jamaica" )
                                         } }><a href="#">Eastern Jamaica</a></li>
                                 </ul>
                                 : '' }
@@ -366,61 +371,62 @@ class Index extends React.Component {
                     </ul>
 
 
-                    <div style={ { width: this.state.category === 'Food and Agro' ? '24vw' : '22vw' } } onClick={ () => this.setState( { category: 'Food and Agro' } ) } className="contentItems">
+                    <div style={ { width: categoryData === 'Food and Agro' ? '24vw' : '22vw' } }
+                        onClick={ () => category( 'Food and Agro' ) } className="contentItems">
                         <div className="icon"><img src={ Printing } /></div>
                         <div className="content">Food & Agro</div>
-                        <div className="value">{ this.state.region === 'all' ?
+                        <div className="value">{ regionData === 'all' ?
                             this.props.data.party.filter( ( item ) => item.categories === 'Food and Agro' ).length :
                             data.party.filter( ( item ) => item.categories === 'Food and Agro'
-                                && item.region === this.state.region ).length }</div>
+                                && item.region === regionData ).length }</div>
                     </div>
-                    <div style={ { width: this.state.category === 'Printing, Packaging and Paper' ? '24vw' : '22vw' } } onClick={ () => this.setState( { category: 'Printing, Packaging and Paper' } ) } className="contentItems">
+                    <div style={ { width: categoryData === 'Printing, Packaging and Paper' ? '24vw' : '22vw' } } onClick={ () => category( 'Printing, Packaging and Paper' ) } className="contentItems">
                         <div className="icon"><img src={ Printing2 } /></div>
                         <div className="content">Printing & Packaging</div>
-                        <div className="value">{ this.state.region === 'all' ?
+                        <div className="value">{ regionData === 'all' ?
                             this.props.data.party.filter( ( item ) => item.categories === 'Printing, Packaging and Paper' ).length :
                             data.party.filter( ( item ) => item.categories === 'Printing, Packaging and Paper'
-                                && item.region === this.state.region ).length }</div>
+                                && item.region === regionData ).length }</div>
                     </div>
-                    <div style={ { width: this.state.category === 'Minerals and Metal' ? '24vw' : '22vw' } } onClick={ () => this.setState( { category: 'Minerals and Metal' } ) } className="contentItems">
+                    <div style={ { width: categoryData === 'Minerals and Metal' ? '24vw' : '22vw' } } onClick={ () => category( 'Minerals and Metal' ) } className="contentItems">
                         <div className="icon"><img src={ Metal } /></div>
                         <div className="content">Minerals & Metals</div>
-                        <div className="value">{ this.state.region === 'all' ?
+                        <div className="value">{ regionData === 'all' ?
                             this.props.data.party.filter( ( item ) => item.categories === 'Minerals and Metal' ).length :
                             data.party.filter( ( item ) => item.categories === 'Minerals and Metal'
-                                && item.region === this.state.region ).length }</div>
+                                && item.region === regionData ).length }</div>
                     </div>
-                    <div style={ { width: this.state.category === 'Electrical, Electronics and Automotive' ? '24vw' : '22vw' } } onClick={ () => this.setState( { category: 'Electrical, Electronics and Automotive' } ) } className="contentItems">
+                    <div style={ { width: categoryData === 'Electrical, Electronics and Automotive' ? '24vw' : '22vw' } } onClick={ () => category( 'Electrical, Electronics and Automotive' ) } className="contentItems">
                         <div className="icon"><img src={ Electricity } /></div>
                         <div className="content">Electrical,Electronics & <br />automative</div>
-                        <div className="value">{ this.state.region === 'all' ?
+                        <div className="value">{ regionData === 'all' ?
                             this.props.data.party.filter( ( item ) => item.categories === 'Electrical, Electronics and Automotive' ).length :
                             data.party.filter( ( item ) => item.categories === 'Electrical, Electronics and Automotive'
-                                && item.region === this.state.region ).length }</div>
+                                && item.region === regionData ).length }</div>
                     </div>
-                    <div style={ { width: this.state.category === 'Chemicals, Cosmetics and Pharmaceuticals' ? '24vw' : '22vw' } } onClick={ () => this.setState( { category: 'Chemicals, Cosmetics and Pharmaceuticals' } ) } className="contentItems">
+                    <div style={ { width: categoryData === 'Chemicals, Cosmetics and Pharmaceuticals' ? '24vw' : '22vw' } } onClick={ () => category( 'Chemicals, Cosmetics and Pharmaceuticals' ) } className="contentItems">
                         <div className="icon"><img src={ chemical } /></div>
                         <div className="content">Chemical, Cosmetics & <br />Pharmaceuticals</div>
-                        <div className="value">{ this.state.region === 'all' ?
+                        <div className="value">{ regionData === 'all' ?
                             this.props.data.party.filter( ( item ) => item.categories === 'Chemicals, Cosmetics and Pharmaceuticals' ).length :
                             data.party.filter( ( item ) => item.categories === 'Chemicals, Cosmetics and Pharmaceuticals'
-                                && item.region === this.state.region ).length }</div>
+                                && item.region === regionData ).length }</div>
                     </div>
-                    <div style={ { width: this.state.category === 'Furniture, Wooden and Bedding' ? '24vw' : '22vw' } } onClick={ () => this.setState( { category: 'Furniture, Wooden and Bedding' } ) } className="contentItems">
+                    <div style={ { width: categoryData === 'Furniture, Wooden and Bedding' ? '24vw' : '22vw' } } onClick={ () => category( 'Furniture, Wooden and Bedding' ) } className="contentItems">
                         <div className="icon"><img src={ furniture } /></div>
                         <div className="content">Furniture, Wooden & <br />Bedding</div>
-                        <div className="value">{ this.state.region === 'all' ?
+                        <div className="value">{ regionData === 'all' ?
                             this.props.data.party.filter( ( item ) => item.categories === 'Furniture, Wooden and Bedding' ).length :
                             data.party.filter( ( item ) => item.categories === 'Furniture, Wooden and Bedding'
-                                && item.region === this.state.region ).length }</div>
+                                && item.region === regionData ).length }</div>
                     </div>
-                    <div style={ { width: this.state.category === 'Textile and Sewn' ? '24vw' : '22vw' } } onClick={ () => this.setState( { category: 'Textile and Sewn' } ) } className="contentItems">
+                    <div style={ { width: categoryData === 'Textile and Sewn' ? '24vw' : '22vw' } } onClick={ () => category( 'Textile and Sewn' ) } className="contentItems">
                         <div className="icon"><img src={ Textile } /></div>
                         <div className="content">Textile & Sewn</div>
-                        <div className="value">{ this.state.region === 'all' ?
+                        <div className="value">{ regionData === 'all' ?
                             this.props.data.party.filter( ( item ) => item.categories === 'Textile and Sewn' ).length :
                             data.party.filter( ( item ) => item.categories === 'Textile and Sewn'
-                                && item.region === this.state.region ).length }</div>
+                                && item.region === regionData ).length }</div>
                     </div>
 
 
@@ -438,26 +444,28 @@ class Index extends React.Component {
                                 //  e.preventDefault();
 
                             } } id="Jamaica" type="checkbox" name="menu" />
-                            <label htmlFor="Jamaica">{ this.state.region === 'all' ? 'All Jamaica' : this.state.region }</label>
+                            <label htmlFor="Jamaica">{ regionData === 'all' ? 'All Jamaica' : regionData }</label>
                             { this.state.subMenu ?
                                 <ul class="submenu">
                                     <li onClick={ ( e ) => {
                                         e.preventDefault();
                                         document.getElementById( "Jamaica" ).checked = false;
                                         this.setState( { region: "Western Jamaica", subMenu: !this.state.subMenu } )
-
+                                        region( "Western Jamaica" )
                                     } }><a href="#">Western Jamaica</a></li>
                                     <li onClick={ ( e ) => {
                                         e.preventDefault();
                                         document.getElementById( "Jamaica" ).checked = false;
                                         this.setState( { region: "Central Jamaica", subMenu: !this.state.subMenu } )
-
+                                        region( "Central Jamaica" )
                                     }
                                     }><a href="#">Central Jamaica</a></li>
                                     <li onClick={ ( e ) => {
                                         e.preventDefault();
                                         document.getElementById( "Jamaica" ).checked = false;
                                         this.setState( { region: "Eastern Jamaica", subMenu: !this.state.subMenu } )
+                                        region( "Eastern Jamaica" )
+
                                     }
                                     }><a href="#">Eastern Jamaica</a></li>
 
@@ -475,7 +483,7 @@ class Index extends React.Component {
 
                             } }
                                 id="Category" type="checkbox" name="menu" />
-                            <label htmlFor="Category"> { this.state.category === 'all' ? 'All Categories' : this.state.category }</label>
+                            <label htmlFor="Category"> { categoryData === 'all' ? 'All Categories' : categoryData }</label>
                             { this.state.subMobileMenu ?
 
                                 <ul class="submenu">
@@ -485,6 +493,7 @@ class Index extends React.Component {
                                     <li onClick={ ( e ) => {
                                         document.getElementById( "Category" ).checked = false;
                                         this.setState( { category: 'Food and Agro', subMobileMenu: false } )
+                                        category( 'Food and Agro' )
                                         e.preventDefault();
                                     }
                                     } ><a href="#"><div className="icon"><img src={ Printing } />Food</div></a></li>
@@ -493,6 +502,7 @@ class Index extends React.Component {
                                     <li onClick={ ( e ) => {
                                         document.getElementById( "Category" ).checked = false;
                                         this.setState( { category: 'Printing, Packaging and Paper', subMobileMenu: false } )
+                                        category( 'Printing, Packaging and Paper' )
                                         e.preventDefault();
                                     }
                                     }><a href="#"><div className="icon"><img src={ Printing2 } />Printing & Packaging</div></a></li>
@@ -500,30 +510,36 @@ class Index extends React.Component {
                                     <li onClick={ ( e ) => {
                                         document.getElementById( "Category" ).checked = false;
                                         this.setState( { category: 'Minerals and Metal', subMobileMenu: false } )
+                                        category( 'Minerals and Metal' )
                                         e.preventDefault();
                                     }
                                     }><a href="#"><div className="icon"><img src={ Metal } />Minerals & Metals</div></a></li>
                                     <li onClick={ ( e ) => {
                                         document.getElementById( "Category" ).checked = false;
                                         this.setState( { category: 'Electrical, Electronics and Automotive', subMobileMenu: false } )
+                                        category( 'Electrical, Electronics and Automotive' )
                                         e.preventDefault();
                                     }
                                     }><a href="#"><div className="icon"><img src={ Electricity } />Electrical,Electronics & automative</div></a></li>
                                     <li onClick={ ( e ) => {
                                         document.getElementById( "Category" ).checked = false;
                                         this.setState( { category: 'Chemicals, Cosmetics and Pharmaceuticals', subMobileMenu: false } )
+                                        category( 'Chemicals, Cosmetics and Pharmaceuticals' )
+
                                         e.preventDefault();
                                     }
                                     } ><a href="#"><div className="icon"><img src={ chemical } /> Chemical, Cosmetics &Pharmaceuticals</div></a></li>
                                     <li onClick={ ( e ) => {
                                         document.getElementById( "Category" ).checked = false;
                                         this.setState( { category: 'Furniture, Wooden and Bedding', subMobileMenu: false } )
+                                        category( 'Furniture, Wooden and Bedding' )
                                         e.preventDefault();
                                     }
                                     } ><a href="#"><div className="icon"><img src={ furniture } />Furniture, Wooden & Bedding</div></a></li>
                                     <li onClick={ ( e ) => {
                                         document.getElementById( "Category" ).checked = false;
                                         this.setState( { category: 'Textile and Sewn', subMobileMenu: false } )
+                                        category( 'Textile and Sewn' )
                                         e.preventDefault();
                                     }
                                     }><a href="#"><div className="icon"><img src={ Textile } />Textile & Sewn</div></a></li>
@@ -593,16 +609,16 @@ class Index extends React.Component {
                                 type="symbol"
                                 id={ "marker1" }
                                 layout={ {
-                                    "icon-image": this.state.category == 'all' || this.state.category == 'Food and Agro' ? "food" : '', 'icon-allow-overlap': true
+                                    "icon-image": categoryData == 'all' || categoryData == 'Food and Agro' ? "food" : '', 'icon-allow-overlap': true
                                 } }
                                 images={ food }
 
                             //type="circle" radius={ 20 } color={ '#27ae60' } fillColor='#27ae60' fillOpacity={ 1 }
                             >
-                                { data.party.filter( item => this.state.region === 'all' ? item.categories === 'Food and Agro'
-                                    : item.region === this.state.region )
-                                    .filter( item => this.state.category === 'all' ? item.categories === 'Food and Agro'
-                                        : item.categories === this.state.category )
+                                { data.party.filter( item => regionData === 'all' ? item.categories === 'Food and Agro'
+                                    : item.region === regionData )
+                                    .filter( item => categoryData === 'all' ? item.categories === 'Food and Agro'
+                                        : item.categories === categoryData )
                                     .map( ( item, index ) => (
                                         <Feature
                                             key={ index }
@@ -614,14 +630,14 @@ class Index extends React.Component {
                             </Layer>
 
 
-                            <Layer type="symbol" id={ "marker2" } layout={ { "icon-image": this.state.category == 'all' || this.state.category == 'Printing, Packaging and Paper' ? "printing" : '', 'icon-allow-overlap': true } }
+                            <Layer type="symbol" id={ "marker2" } layout={ { "icon-image": categoryData == 'all' || categoryData == 'Printing, Packaging and Paper' ? "printing" : '', 'icon-allow-overlap': true } }
                                 images={ printing1 }
                             >
-                                { data.party.filter( item => this.state.region === 'all' ? item.categories === 'Printing, Packaging and Paper'
+                                { data.party.filter( item => regionData === 'all' ? item.categories === 'Printing, Packaging and Paper'
 
-                                    : item.region === this.state.region )
-                                    .filter( item => this.state.category === 'all' ? item.categories === 'Printing, Packaging and Paper'
-                                        : item.categories === this.state.category )
+                                    : item.region === regionData )
+                                    .filter( item => categoryData === 'all' ? item.categories === 'Printing, Packaging and Paper'
+                                        : item.categories === categoryData )
                                     .map( ( item, index ) => (
                                         <Feature
                                             key={ index }
@@ -633,13 +649,13 @@ class Index extends React.Component {
                             </Layer>
 
 
-                            <Layer type="symbol" id={ "marker3" } layout={ { "icon-image": this.state.category == 'all' || this.state.category == 'Electrical, Electronics and Automotive' ? "electricity" : '', 'icon-allow-overlap': true } }
+                            <Layer type="symbol" id={ "marker3" } layout={ { "icon-image": categoryData == 'all' || categoryData == 'Electrical, Electronics and Automotive' ? "electricity" : '', 'icon-allow-overlap': true } }
                                 images={ electricity }
                             >
-                                { data.party.filter( item => this.state.region === 'all' ? item.categories === 'Electrical, Electronics and Automotive'
-                                    : item.region === this.state.region )
-                                    .filter( item => this.state.category === 'all' ? item.categories === 'Electrical, Electronics and Automotive'
-                                        : item.categories === this.state.category )
+                                { data.party.filter( item => regionData === 'all' ? item.categories === 'Electrical, Electronics and Automotive'
+                                    : item.region === regionData )
+                                    .filter( item => categoryData === 'all' ? item.categories === 'Electrical, Electronics and Automotive'
+                                        : item.categories === categoryData )
                                     .map( ( item, index ) => (
                                         <Feature
                                             key={ index }
@@ -652,13 +668,13 @@ class Index extends React.Component {
 
 
 
-                            <Layer type="symbol" id={ "marker4" } layout={ { "icon-image": this.state.category == 'all' || this.state.category == 'Chemicals, Cosmetics and Pharmaceuticals' ? "chemical" : '', 'icon-allow-overlap': true } }
+                            <Layer type="symbol" id={ "marker4" } layout={ { "icon-image": categoryData == 'all' || categoryData == 'Chemicals, Cosmetics and Pharmaceuticals' ? "chemical" : '', 'icon-allow-overlap': true } }
                                 images={ chemical1 }
                             >
-                                { data.party.filter( item => this.state.region === 'all' ? item.categories === 'Chemicals, Cosmetics and Pharmaceuticals'
-                                    : item.region === this.state.region )
-                                    .filter( item => this.state.category === 'all' ? item.categories === 'Chemicals, Cosmetics and Pharmaceuticals'
-                                        : item.categories === this.state.category )
+                                { data.party.filter( item => regionData === 'all' ? item.categories === 'Chemicals, Cosmetics and Pharmaceuticals'
+                                    : item.region === regionData )
+                                    .filter( item => categoryData === 'all' ? item.categories === 'Chemicals, Cosmetics and Pharmaceuticals'
+                                        : item.categories === categoryData )
                                     .map( ( item, index ) => (
                                         <Feature
                                             key={ index }
@@ -672,13 +688,13 @@ class Index extends React.Component {
 
 
 
-                            <Layer type="symbol" id={ "marker5" } layout={ { "icon-image": this.state.category == 'all' || this.state.category == 'Furniture, Wooden and Bedding' ? "furniture" : '', 'icon-allow-overlap': true } }
+                            <Layer type="symbol" id={ "marker5" } layout={ { "icon-image": categoryData == 'all' || categoryData == 'Furniture, Wooden and Bedding' ? "furniture" : '', 'icon-allow-overlap': true } }
                                 images={ furniture3 }
                             >
-                                { data.party.filter( item => this.state.region === 'all' ? item.categories === 'Furniture, Wooden and Bedding'
-                                    : item.region === this.state.region )
-                                    .filter( item => this.state.category === 'all' ? item.categories === 'Furniture, Wooden and Bedding'
-                                        : item.categories === this.state.category )
+                                { data.party.filter( item => regionData === 'all' ? item.categories === 'Furniture, Wooden and Bedding'
+                                    : item.region === regionData )
+                                    .filter( item => categoryData === 'all' ? item.categories === 'Furniture, Wooden and Bedding'
+                                        : item.categories === categoryData )
                                     .map( ( item, index ) => (
                                         <Feature
                                             key={ index }
@@ -689,13 +705,13 @@ class Index extends React.Component {
 
                             </Layer>
 
-                            <Layer type="symbol" id={ "marker6" } layout={ { "icon-image": this.state.category == 'all' || this.state.category == 'Minerals and Metal' ? "metal" : '', 'icon-allow-overlap': true } }
+                            <Layer type="symbol" id={ "marker6" } layout={ { "icon-image": categoryData == 'all' || categoryData == 'Minerals and Metal' ? "metal" : '', 'icon-allow-overlap': true } }
                                 images={ metal }
                             >
-                                { data.party.filter( item => this.state.region === 'all' ? item.categories === 'Minerals and Metal'
-                                    : item.region === this.state.region )
-                                    .filter( item => this.state.category === 'all' ? item.categories === 'Minerals and Metal'
-                                        : item.categories === this.state.category )
+                                { data.party.filter( item => regionData === 'all' ? item.categories === 'Minerals and Metal'
+                                    : item.region === regionData )
+                                    .filter( item => categoryData === 'all' ? item.categories === 'Minerals and Metal'
+                                        : item.categories === categoryData )
                                     .map( ( item, index ) => (
                                         <Feature
                                             key={ index }
@@ -708,13 +724,13 @@ class Index extends React.Component {
                             </Layer>
 
 
-                            <Layer type="symbol" id={ "marker7" } layout={ { "icon-image": this.state.category == 'all' || this.state.category == 'Textile and Sewn' ? "textile" : '', 'icon-allow-overlap': true } }
+                            <Layer type="symbol" id={ "marker7" } layout={ { "icon-image": categoryData == 'all' || categoryData == 'Textile and Sewn' ? "textile" : '', 'icon-allow-overlap': true } }
                                 images={ textile1 }
                             >
-                                { data.party.filter( item => this.state.region === 'all' ? item.categories === 'Textile and Sewn'
-                                    : item.region === this.state.region )
-                                    .filter( item => this.state.category === 'all' ? item.categories === 'Textile and Sewn'
-                                        : item.categories === this.state.category )
+                                { data.party.filter( item => regionData === 'all' ? item.categories === 'Textile and Sewn'
+                                    : item.region === regionData )
+                                    .filter( item => categoryData === 'all' ? item.categories === 'Textile and Sewn'
+                                        : item.categories === categoryData )
                                     .map( ( item, index ) => (
                                         <Feature
                                             key={ index }
@@ -780,18 +796,18 @@ class Index extends React.Component {
                     </div>
                     <div className={ this.props.showListing ? "list-section" : "hide" }>
                         <div className="category">
-                            <span>{ data.party.filter( item => this.state.region === 'all' ? item
-                                : item.region === this.state.region )
-                                .filter( item => this.state.category === 'all' ? item
-                                    : item.categories === this.state.category ).length }</span> { this.state.category === 'all' ? 'All Categories' : this.state.category }
+                            <span>{ data.party.filter( item => regionData === 'all' ? item
+                                : item.region === regionData )
+                                .filter( item => categoryData === 'all' ? item
+                                    : item.categories === categoryData ).length }</span> { categoryData === 'all' ? 'All Categories' : categoryData }
                             <br />
 
-                            {/* <span style={{ color: 'grey', fontSize: 12, marginTop: 10 }}>{this.state.region == "all" ? "All Jamica" : (this.state.region)}</span> */ }
+                            {/* <span style={{ color: 'grey', fontSize: 12, marginTop: 10 }}>{regionData == "all" ? "All Jamica" : (regionData)}</span> */ }
                         </div>
-                        { data.party.filter( item => this.state.region === 'all' ? item
-                            : item.region === this.state.region )
-                            .filter( item => this.state.category === 'all' ? item
-                                : item.categories === this.state.category )
+                        { data.party.filter( item => regionData === 'all' ? item
+                            : item.region === regionData )
+                            .filter( item => categoryData === 'all' ? item
+                                : item.categories === categoryData )
                             .map( ( item, i ) => {
 
                                 return <div key={ i } onClick={ () => history.push( `/supplier/${ item._id }` ) } className="list-item">
@@ -830,11 +846,14 @@ class Index extends React.Component {
                 </div>
 
             </div>
-        </div>
+        </div >
 
     }
 }
 
+const mpStateToProps = ( state ) => ( {
+    regionData: state.auth.region,
+    categoryData: state.auth.category
+} )
 
-
-export default withRouter( graphql( query )( Index ) );
+export default withRouter( connect( mpStateToProps, { region, category } )( graphql( query )( Index ) ) );

@@ -67,3 +67,10 @@ export const Change_Section = 'Change_Section';
 export const Change_Section_Id = 'Change_Section_Id';
 
 export const Edit_Correct_Answer = 'Edit_Correct_Answer';
+
+
+
+export const GET_REGION = 'GET_REGION';
+
+
+export const GET_CATEGORY = 'GET_CATEGORY';
