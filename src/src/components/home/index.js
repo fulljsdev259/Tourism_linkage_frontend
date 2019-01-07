@@ -17,6 +17,8 @@ import Admin from '../admin/adminDash';
 import { withRouter } from 'react-router'
 import requireAuth from '../../config/require_auth';
 
+import Loader from '../loader';
+
 const customStyles = {
     content: {
         top: '0%',
@@ -62,7 +64,7 @@ class Home extends React.Component {
             about: false, contact: false, event: false, getListed: false,
             news: false, register: false, mobileMenu: false, showListing: true, showMap: true, width: 0,
             height: 0,
-            windowResized: false
+            windowResized: false, loader: false
         };
 
         this.openModal = this.openModal.bind( this );
@@ -107,9 +109,13 @@ class Home extends React.Component {
             showMap: this.state.showMap
         } )
     }
+    toggleLoader = ( value ) => {
+        this.setState( {
+            loader: value
+        } )
+    }
     render() {
         const { match } = this.props;
-        console.log( match )
         return (
             <div className="App">
                 <Header { ...this.state } setMobileMenu={ this.toggleMobileMenu } modalStateHandler={ this.handleModalState } />
@@ -138,6 +144,7 @@ class Home extends React.Component {
                     { this.state.getListed ? <GetListed closeModal={ () => this.closeModal() } /> : '' }
                     { this.state.news ? <News closeModal={ () => this.closeModal() } /> : '' }
                     { this.state.register ? <Register closeModal={ () => this.closeModal() } /> : '' }
+
 
                 </Modal>
                 <Footer />

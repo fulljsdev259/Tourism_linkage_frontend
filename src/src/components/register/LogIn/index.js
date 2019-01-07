@@ -7,6 +7,7 @@ import { Field, reset, reduxForm } from 'redux-form';
 import { receiveLogin } from '../../../action/auth';
 
 import { Modal as Modal1, Button } from 'antd';
+import Loader from '../../loader';
 
 
 const form = reduxForm( {
@@ -41,7 +42,7 @@ const mutation = gql`mutation login($email:String,$password:String){
 
 
 class Login extends React.Component {
-    state = { visible: false, errors: [] }
+    state = { visible: false, errors: [], apiCall: false }
 
     showModal = () => {
         this.setState( {
@@ -71,6 +72,7 @@ class Login extends React.Component {
         const { mutate, history, handleSubmit } = this.props;
 
         return <div className="login">
+            { this.state.apiCall ? <Loader /> : '' }
             <div className="arrow-up"></div>
 
 
@@ -86,12 +88,13 @@ class Login extends React.Component {
                 <button className="button" onClick={ handleSubmit( async ( data ) => {
 
                     try {
+                        this.setState( { apiCall: true } );
                         const result = await mutate( {
                             variables: {
                                 email: data.email, password: data.password,
                             }
                         } )
-
+                        this.setState( { apiCall: false } );
                         if ( result.data.login.errors.length > 0 ) {
 
                             this.setState( { errors: result.data.login.errors, } )

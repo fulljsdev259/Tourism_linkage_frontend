@@ -6,7 +6,7 @@ import './index.scss';
 import checkMark from '../../images/icon/checkmark-green.svg'
 import Geocode from "react-geocode";
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
-
+import Loader from '../loader';
 
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -84,7 +84,8 @@ class WizardFormThirdPage extends React.Component {
             lat: -77.319222,
             lng: 18,
             zoom: 7,
-            map: ''
+            map: '',
+            apiCall:false
         }
 
     }
@@ -116,6 +117,7 @@ class WizardFormThirdPage extends React.Component {
 
         return (
             <div>
+                { this.state.apiCall ? <Loader /> : '' }
                 <div className="inActiveHeader">
                     <div className="number">1</div>
                     <div className="subHeading">General information</div>
@@ -216,8 +218,7 @@ class WizardFormThirdPage extends React.Component {
 
                             <button type="button"
                                 onClick={ handleSubmit( async ( data ) => {
-                                    console.log( data )
-
+                                    this.setState( { apiCall: true } );
                                     const editData = await mutate( {
                                         variables: {
                                             name: data.name,
@@ -242,9 +243,10 @@ class WizardFormThirdPage extends React.Component {
 
 
                                         },
+                                        
                                         //   refetchQueries: [{ query: query1 }]
                                     } )
-
+                                    this.setState( { apiCall: false } );
                                     //   this.showModal();
 
 
