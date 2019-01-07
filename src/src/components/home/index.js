@@ -16,7 +16,7 @@ import MobileMap from '../mobileMap';
 import Admin from '../admin/adminDash';
 import { withRouter } from 'react-router'
 import requireAuth from '../../config/require_auth';
-
+import { connect } from 'react-redux';
 import Loader from '../loader';
 
 const customStyles = {
@@ -118,7 +118,7 @@ class Home extends React.Component {
         const { match } = this.props;
         return (
             <div className="App">
-                <Header { ...this.state } setMobileMenu={ this.toggleMobileMenu } modalStateHandler={ this.handleModalState } />
+                <Header authenticated={ this.props.authenticated } { ...this.state } setMobileMenu={ this.toggleMobileMenu } modalStateHandler={ this.handleModalState } />
                 <Switch>
                     <Route exact path="/" render={ props => ( <Index toggleListing={ this.toggleListing } toggleMap={ this.toggleMap } { ...this.state } /> ) } />
                     <Route { ...this.state } path="/supplier/:name" component={ ItemDetail } />
@@ -154,5 +154,9 @@ class Home extends React.Component {
 }
 
 
+function mapStateToProps( state ) {
+    return { authenticated: state.auth.isAuthenticated }
+}
 
-export default withRouter( Home );
+
+export default withRouter( connect( mapStateToProps, null )( Home ) );

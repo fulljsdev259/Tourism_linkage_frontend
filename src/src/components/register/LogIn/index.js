@@ -5,9 +5,11 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Field, reset, reduxForm } from 'redux-form';
 import { receiveLogin } from '../../../action/auth';
+import { connect } from 'react-redux';
 
 import { Modal as Modal1, Button } from 'antd';
 import Loader from '../../loader';
+import { query } from '../../index/index';
 
 
 const form = reduxForm( {
@@ -69,7 +71,7 @@ class Login extends React.Component {
     }
 
     render() {
-        const { mutate, history, handleSubmit } = this.props;
+        const { mutate, history, handleSubmit, receiveLogin } = this.props;
 
         return <div className="login">
             { this.state.apiCall ? <Loader /> : '' }
@@ -92,7 +94,8 @@ class Login extends React.Component {
                         const result = await mutate( {
                             variables: {
                                 email: data.email, password: data.password,
-                            }
+                            },
+                            refetchQueries: () => [{ query: query }]
                         } )
                         this.setState( { apiCall: false } );
                         if ( result.data.login.errors.length > 0 ) {
@@ -105,9 +108,10 @@ class Login extends React.Component {
                             localStorage.setItem( "token", result.data.login.token )
                             receiveLogin();
                             if ( result.data.login.user.role === 'admin' ) {
-                                history.push( '/admin' )
                                 this.setState( { loading: false } )
                                 this.props.closeModal();
+                                history.push( '/admin' )
+
                             }
                             else {
                                 // if ( result.data.login.user.submit ) {
@@ -121,9 +125,10 @@ class Login extends React.Component {
                                 //     this.setState( { loading: false } )
                                 // }
                                 receiveLogin();
-                                history.push( `/` )
                                 this.setState( { loading: false } )
                                 this.props.closeModal();
+                                history.push( `/` )
+
                                 //this.setState( { loading: false } )
 
                             }
@@ -159,4 +164,4 @@ class Login extends React.Component {
 }
 
 
-export default withRouter( form( graphql( mutation )( Login ) ) )
+export default withRouter( connect( null, { receiveLogin } )( form( graphql( mutation )( Login ) ) ) )

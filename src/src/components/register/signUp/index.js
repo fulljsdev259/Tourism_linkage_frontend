@@ -6,6 +6,7 @@ import gql from 'graphql-tag';
 import { Field, reset, reduxForm } from 'redux-form';
 import { receiveLogin } from '../../../action/auth';
 import { validate } from '../validate';
+import { query } from '../../index/index';
 
 import { Modal as Modal1, Button } from 'antd';
 import Loader from '../../loader';
@@ -102,7 +103,8 @@ class Signup extends React.Component {
                         const result = await mutate( {
                             variables: {
                                 email: data.email, password: data.password, name: data.name
-                            }
+                            },
+                            refetchQueries: () => [{ query: query }]
                         } )
                         this.setState( { apiCall: false } );
 

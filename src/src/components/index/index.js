@@ -45,7 +45,7 @@ import gql from 'graphql-tag';
 import FP1 from './icons/fi.svg'
 import Print from './icons/print.svg';
 import MI from './icons/metal.svg';
-const query = gql`{
+export const query = gql`{
     party{
         _id
         name
@@ -300,6 +300,7 @@ class Index extends React.Component {
 
         var layers = ['country-label-lg', 'country-label-md', 'country-label-sm'];
         return <div>
+
             <div className="home">
 
                 <div className="divBanner">

@@ -15,7 +15,7 @@ export function requestLogin( creds ) {
     return {
         type: LOGIN_REQUEST,
         isFetching: true,
-        isAuthenticated: false,
+        isAuthenticated: true,
         creds
     }
 }
