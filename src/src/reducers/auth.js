@@ -22,7 +22,7 @@ export default ( state = {
             } )
         case GET_CATEGORY:
             return Object.assign( {}, state, {
-                region: action.category,
+                category: action.category,
             } )
 
         case LOGIN_REQUEST:

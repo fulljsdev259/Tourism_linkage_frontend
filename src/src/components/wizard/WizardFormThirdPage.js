@@ -85,7 +85,7 @@ class WizardFormThirdPage extends React.Component {
             lng: 18,
             zoom: 7,
             map: '',
-            apiCall:false
+            apiCall: false
         }
 
     }
@@ -152,7 +152,7 @@ class WizardFormThirdPage extends React.Component {
                                         marginLeft: 10, border: 'none',
                                         backgroundColor: "#5165FF",
                                         color: "#fff", borderRadius: 5, padding: '4px 8px',
-                                        cursor:'pointer'
+                                        cursor: 'pointer'
                                     } } >Get Location</button>
                                 </div>
                             </div>
@@ -243,7 +243,7 @@ class WizardFormThirdPage extends React.Component {
 
 
                                         },
-                                        
+
                                         //   refetchQueries: [{ query: query1 }]
                                     } )
                                     this.setState( { apiCall: false } );

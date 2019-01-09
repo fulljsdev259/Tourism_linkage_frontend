@@ -285,7 +285,7 @@ class Index extends React.Component {
         }
         let geoJson = null;
 
-
+        console.log( regionData, categoryData )
         if ( categoryData === 'all' && regionData === 'all' ) {
             geoJson = data.party;
         }
@@ -380,7 +380,8 @@ class Index extends React.Component {
                             data.party.filter( ( item ) => item.categories === 'Food and Agro'
                                 && item.region === regionData ).length }</div>
                     </div>
-                    <div style={ { width: categoryData === 'Printing, Packaging and Paper' ? '24vw' : '22vw' } } onClick={ () => category( 'Printing, Packaging and Paper' ) } className="contentItems">
+                    <div style={ { width: categoryData === 'Printing, Packaging and Paper' ? '24vw' : '22vw' } }
+                        onClick={ () => category( 'Printing, Packaging and Paper' ) } className="contentItems">
                         <div className="icon"><img src={ Printing2 } /></div>
                         <div className="content">Printing & Packaging</div>
                         <div className="value">{ regionData === 'all' ?

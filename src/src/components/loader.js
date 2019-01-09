@@ -2,7 +2,7 @@ import React from 'react';
 import './loader.scss';
 import Modal from 'react-modal';
 import Loader from '../images/loader.gif'
-
+import LoaderBackImage from './loaderBackground.png';
 
 
 const customStyles = {
@@ -16,7 +16,9 @@ const customStyles = {
         alignItems: 'center',
         justifyContent: 'center',
         border: 'none',
-        backgroundColor: 'rgba(255,255,255,0.4)',
+
+        backgroundImage: `url(${ LoaderBackImage })`,
+        zIndex: 1100,
         transform: 'translate(0%, 0%)'
     }
 };

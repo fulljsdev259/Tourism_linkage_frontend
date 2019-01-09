@@ -10,22 +10,22 @@ import { connect } from 'react-redux';
 import { Modal as Modal1, Button } from 'antd';
 import Loader from '../../loader';
 import { query } from '../../index/index';
-
+import { validate } from '../validate';
 
 const form = reduxForm( {
     form: 'login',
     enableReinitialize: true,
-    //validate
+    validate
 
 } )
 
 
 
 export const renderField = ( { input, label, type, meta: { touched, error } } ) => (
-    <div style={ { display: 'flex', flexDirection: 'column' } }>
+    <div style={ { display: 'flex', } }>
         <input { ...input } placeholder={ label } type={ type } />
 
-        <span style={ { color: 'red', texAlign: 'center' } }>{ touched && error && <span>{ error }</span> }</span>
+        <span style={ { color: '#fff', padding: 10, texAlign: 'center' } }>{ touched && error && <span>{ error }</span> }</span>
     </div>
 )
 
