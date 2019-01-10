@@ -6,7 +6,7 @@ import Home from './src/components/home';
 import { Provider } from 'react-redux';
 import { store } from './src/config/store'
 import { ApolloProvider } from 'react-apollo';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import { client } from './src/config/apolloClient'
 
 
