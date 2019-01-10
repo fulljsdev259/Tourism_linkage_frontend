@@ -48,7 +48,8 @@
   }
 
   .item-detail {
-  min-height:80vh;
+    min-height:80vh;
+    min-width: 50vw;
     .back-arrow {
       display: flex;
       cursor: pointer;
@@ -72,7 +73,7 @@
           
       }
       .item-info {
-        padding: 10px 10px 40px 10px;
+        padding: 10px 10px 10px 10px;
         h3 {
           font-family: "Open Sans";
           font-size: 30px;
