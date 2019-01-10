@@ -319,8 +319,7 @@ class ItemDetail extends React.Component {
                             { data.singleParty.comment ? data.singleParty.comment.map( ( data2, i ) => {
 
                                 return <div key={ i }>
-                                    <div className="user">
-                                        <span>{ data2.name }</span>
+                                    <div className="user">                                        
 
                                         <StarRatingComponent
                                             name="rate2"
@@ -329,6 +328,8 @@ class ItemDetail extends React.Component {
                                             starCount={ 5 }
                                             value={ data2.rating }
                                         />
+
+                                        <span style={{marginLeft:'5px'}}>{ data2.name }</span>
 
                                     </div>
                                     <div className="user-comments" >

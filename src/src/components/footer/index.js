@@ -21,6 +21,8 @@ export default class Footer extends React.Component {
 
     render() {
         const oThis = this;
+        let d = new Date();
+        let currentYear = d.getFullYear();
         return <footer className="footer">
             <div>
                 <img src={footer1} />
@@ -30,7 +32,7 @@ export default class Footer extends React.Component {
                 <img src={footer5} />
             </div>
             <div className="copyright">
-                <span>Copyright © 2018. Developed By Jamaica Ministry of Tourism & Powered By The Jamaica Tourism Linkages Network</span>
+                <span>Copyright © {currentYear}. Developed By Jamaica Ministry of Tourism & Powered By The Jamaica Tourism Linkages Network</span>
                 <div className="social-icons">
                     <img src={fb} />
                     <img src={twitter} />
