@@ -796,7 +796,7 @@ class Index extends React.Component {
 
                     </div>
                     <div className={ this.props.showListing ? "list-section" : "hide" }>
-                        <div className="category">
+                        <div className="category category-sticky">
                             <span>{ data.party.filter( item => regionData === 'all' ? item
                                 : item.region === regionData )
                                 .filter( item => categoryData === 'all' ? item
