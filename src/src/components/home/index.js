@@ -121,7 +121,7 @@ class Home extends React.Component {
                 <Header authenticated={ this.props.authenticated } { ...this.state } setMobileMenu={ this.toggleMobileMenu } modalStateHandler={ this.handleModalState } />
                 <Switch>
                     <Route exact path="/" render={ props => ( <Index toggleListing={ this.toggleListing } toggleMap={ this.toggleMap } { ...this.state } /> ) } />
-                    <Route { ...this.state } path="/supplier/:name" component={ ItemDetail } />
+                    <Route { ...this.state } path="/supplier/:name" render={ props => ( <ItemDetail { ...this.state } modalStateHandler={ this.handleModalState } /> ) }  />
                     <Route path="/mobilemap" render={ props => ( <MobileMap toggleListing={ this.toggleListing } toggleMap={ this.toggleMap } { ...this.state } /> ) } />
                     <Route path="/admin" component={ requireAuth( Admin ) } />
 

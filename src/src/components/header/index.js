@@ -88,7 +88,6 @@ class Header extends React.Component {
 
     render() {
         const oThis = this;
-        console.log( oThis.props.authenticated )
         let { loggedUserData } = this.props;
         return <div style={ { borderBottom: "1px solid #ebebeb" } }>
         { this.state.apiCall ? <Loader /> : '' }
