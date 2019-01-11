@@ -201,7 +201,6 @@ class ItemDetail extends React.Component {
         if ( data.loading ) {
             return <span>loading</span>
         }
-        console.log( data )
         const partyId = data.singleParty._id
         return <div>
             <div className="detail">
@@ -286,7 +285,11 @@ class ItemDetail extends React.Component {
                         </div>
                         <h3>Reviews</h3>
 
-                        <div onClick={ () => this.setState( { leaveReview: true } ) } className="Leave-review">
+                        <div onClick={ () => this.setState( { leaveReview: true },() => {
+                            if( !authenticated ){
+                                this.props.modalStateHandler( false, false, false, false, false, true, true )    
+                            }
+                        }) } className="Leave-review">
                             <a href="#" onClick={ e => e.preventDefault() }>Leave review</a>
                         </div>
                         <div className="hr">
