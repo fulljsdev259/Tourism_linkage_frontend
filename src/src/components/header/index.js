@@ -8,6 +8,7 @@ import { Link, withRouter } from 'react-router-dom';
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import { connect } from 'react-redux';
 import { receiveLogout } from '../../action/auth'
+import Loader from '../loader';
 
 
 
@@ -60,7 +61,8 @@ class Header extends React.Component {
         super( props );
         this.state = {
             openClass: '',
-            auth: false
+            auth: false,
+            showLoading: false,
         }
         this.ToggleBody = () => {
             //this.props.setMobileMenu();
@@ -87,7 +89,9 @@ class Header extends React.Component {
     render() {
         const oThis = this;
         console.log( oThis.props.authenticated )
+        let { loggedUserData } = this.props;
         return <div style={ { borderBottom: "1px solid #ebebeb" } }>
+        { this.state.apiCall ? <Loader /> : '' }
             <div className="menuMobile">
                 <Link to="/">
                     <div className="logoDiv">
@@ -190,13 +194,27 @@ class Header extends React.Component {
                 { oThis.props.authenticated ?
                     <div className="registerDiv"
                         onClick={ () => {
+                            this.setState({
+                                apiCall: true
+                            })
                             oThis.props.modalStateHandler( false, false, false, false, false, false, false )
                             localStorage.removeItem( 'token' )
+                            localStorage.removeItem( 'token_user' )
                             oThis.props.receiveLogout()
 
                             oThis.props.history.push( '/' )
+                            setTimeout(() => {
+                                this.setState({
+                                    apiCall: false
+                                })
+                            },1000)
+                            
                         } }
-                    ><a>Logout</a>
+                    >
+                        <span className="user-name">
+                        {loggedUserData && loggedUserData.name ? loggedUserData.name +', ' : null }
+                        <a>LOGOUT</a>
+                        </span>
                     </div>
                     :
                     <div className="registerDiv"
@@ -225,7 +243,7 @@ class Header extends React.Component {
 
 
 function mapStateToProps( state ) {
-    return { authenticated: state.auth.isAuthenticated }
+    return { authenticated: state.auth.isAuthenticated, loggedUserData: state.auth.loggedUserData }
 }
 
 

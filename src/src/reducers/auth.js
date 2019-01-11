@@ -9,6 +9,7 @@ import {
 export default ( state = {
     isFetching: false,
     isAuthenticated: localStorage.getItem( 'token' ) ? true : false,
+    loggedUserData: localStorage.getItem( 'token_user' ) ? JSON.parse(localStorage.getItem( 'token_user' )) : null,
     token: '',
     errorMessage: [],
     modalState: false,
@@ -31,11 +32,12 @@ export default ( state = {
                 isAuthenticated: false,
             } )
         case LOGIN_SUCCESS:
-            //console.log(action)
+            // console.log(action)
             return Object.assign( {}, state, {
                 isFetching: false,
                 isAuthenticated: true,
-                errorMessage: ''
+                errorMessage: '',
+                loggedUserData: localStorage.getItem( 'token_user' ) ? JSON.parse(localStorage.getItem( 'token_user' )) : null,
 
             } )
         case LOGIN_FAILURE:
