@@ -36,6 +36,7 @@ const mutation = gql`mutation login($email:String,$password:String){
         user{
             email
             role
+            name
         }
         errors
         token
@@ -106,6 +107,7 @@ class Login extends React.Component {
                         }
                         else {
                             localStorage.setItem( "token", result.data.login.token )
+                            localStorage.setItem( "token_user", JSON.stringify(result.data.login.user))
                             receiveLogin();
                             if ( result.data.login.user.role === 'admin' ) {
                                 this.setState( { loading: false } )
