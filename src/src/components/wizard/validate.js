@@ -31,17 +31,20 @@ const validate = values => {
     if ( !values.region ) {
         errors.region = 'Region is required'
     }
+    if ( !values.categories ) {
+        errors.categories = 'Manufacturer Type is required'
+    }
     if ( !values.category ) {
         errors.category = 'Category is required'
     }
 
-    if ( !values.typeOfCompany ) {
-        errors.typeOfCompany = 'Type of Company is required'
-    }
+    // if ( !values.typeOfCompany ) {
+    //     errors.typeOfCompany = 'Type of Company is required'
+    // }
 
-    if ( !values.description ) {
-        errors.description = 'description is required'
-    }
+    // if ( !values.description ) {
+    //     errors.description = 'description is required'
+    // }
 
     if ( !values.address ) {
         errors.address = 'Address is required'

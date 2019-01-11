@@ -340,7 +340,7 @@ class Index extends React.Component {
                             <input onClick={ () => this.setState( { subMenu: true } ) } id="check02" type="checkbox" name="menu" />
                             <label htmlFor="check02"> { regionData === 'all' ? 'All Jamaica' : regionData }</label>
                             { this.state.subMenu ?
-                                <ul class="submenu">
+                                <ul className="submenu">
                                     <li onClick={ ( e ) => this.setState( {
                                         centerLang: -77.319222,
                                         centerLat: 18,
@@ -447,7 +447,7 @@ class Index extends React.Component {
                             } } id="Jamaica" type="checkbox" name="menu" />
                             <label htmlFor="Jamaica">{ regionData === 'all' ? 'All Jamaica' : regionData }</label>
                             { this.state.subMenu ?
-                                <ul class="submenu">
+                                <ul className="submenu">
                                     <li onClick={ ( e ) => {
                                         e.preventDefault();
                                         document.getElementById( "Jamaica" ).checked = false;
@@ -487,7 +487,7 @@ class Index extends React.Component {
                             <label htmlFor="Category"> { categoryData === 'all' ? 'All Categories' : categoryData }</label>
                             { this.state.subMobileMenu ?
 
-                                <ul class="submenu">
+                                <ul className="submenu">
 
 
 
@@ -800,7 +800,7 @@ class Index extends React.Component {
                             <span>{ data.party.filter( item => regionData === 'all' ? item
                                 : item.region === regionData )
                                 .filter( item => categoryData === 'all' ? item
-                                    : item.categories === categoryData ).length }</span> { categoryData === 'all' ? 'All Categories' : categoryData }
+                                    : item.categories === categoryData ).length }</span> { categoryData === 'all' ? 'All Categories' : categoryData } { regionData === 'all' ? '' : ' in ' + regionData }
                             <br />
 
                             {/* <span style={{ color: 'grey', fontSize: 12, marginTop: 10 }}>{regionData == "all" ? "All Jamica" : (regionData)}</span> */ }

@@ -24,7 +24,7 @@ export const renderField = ( { input, label, type, meta: { touched, error } } ) 
     <div style={ { display: 'flex', flexDirection: 'column' } }>
         <input { ...input } placeholder={ label } type={ type } />
 
-        <span style={ { color: '#fff', texAlign: 'center' } }>{ touched && error && <span>{ error }</span> }</span>
+        <span style={ { color: '#fff', texAlign: 'center', marginTop: '-15px', marginBottom: '15px' } }>{ touched && error && <span>{ error }</span> }</span>
     </div>
 )
 

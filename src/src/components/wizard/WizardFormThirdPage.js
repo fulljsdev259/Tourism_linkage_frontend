@@ -21,7 +21,7 @@ $phoneNumber: String, $website: String
 $photo:[fileUpload],
 
 $facebook:String,$profile:String
-    $instagram:String,$typeOfCompany:String,$fax:String
+    $instagram:String,$fax:String
     $email:String,$password:String,
 
    
@@ -32,7 +32,7 @@ $facebook:String,$profile:String
         region:$region,website:$website,address:$address  
         latitude:$latitude,longitude:$longitude,
         facebook:$facebook,profile:$profile
-        instagram:$instagram,typeOfCompany:$typeOfCompany,fax:$fax,
+        instagram:$instagram,fax:$fax,
         email:$email,password:$password,photo:$photo
         
 
@@ -238,7 +238,6 @@ class WizardFormThirdPage extends React.Component {
                                             facebook: data.facebook,
                                             photo: data.photo,
                                             instagram: data.instagram,
-                                            typeOfCompany: data.typeOfCompany,
                                             fax: data.fax
 
 
