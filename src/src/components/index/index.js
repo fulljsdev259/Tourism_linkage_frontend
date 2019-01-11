@@ -814,10 +814,12 @@ class Index extends React.Component {
                                 return <div key={ i } onClick={ () => history.push( `/supplier/${ item._id }` ) } className="list-item">
                                     <div className="item-header">
                                         <span className="title">{ item.name }</span>
+                                        {/*
                                         <div className="rating">
                                             <img src={ rating } />
                                             <span className="reviews">9 Reviews</span>
                                         </div>
+                                        */}
                                     </div>
                                     <span className="category">{ item.categories }</span>
                                     <div className="labels">
