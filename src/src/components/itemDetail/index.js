@@ -234,7 +234,7 @@ class ItemDetail extends React.Component {
                             <div className="item-reviews">
                                 <span>Fabric</span>
                                 <span className="seperator"></span>
-                                <img src={ rating }></img>
+                                {/*<img src={ rating }></img>*/}
                                 <span>2 Reviews</span>
                             </div>
                             <div className="item-category ">

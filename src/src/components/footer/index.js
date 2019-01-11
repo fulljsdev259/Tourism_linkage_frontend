@@ -25,18 +25,36 @@ export default class Footer extends React.Component {
         let currentYear = d.getFullYear();
         return <footer className="footer">
             <div>
-                <img src={footer1} />
-                <img src={footer2} />
-                <img src={footer3} />
-                <img src={footer4} />
-                <img src={footer5} />
+                <a href="https://www.mot.gov.jm/" target="_BLANK">
+                    <img src={footer1} />
+                </a>
+                <a href="https://www.instagram.com/thejmea_/" target="_BLANK">
+                    <img src={footer2} />
+                </a>
+                <a href="https://www.jbdc.net/" target="_BLANK">
+                    <img src={footer3} />
+                </a>
+                <a href="https://www.mot.gov.jm/agency/tourism-enhancement-fund" target="_BLANK">
+                    <img src={footer4} />
+                </a>
+                <a href="http://www.jhta.org/" target="_BLANK">
+                    <img src={footer5} />
+                </a>
             </div>
             <div className="copyright">
                 <span>Copyright © {currentYear}. Developed By Jamaica Ministry of Tourism & Powered By The Jamaica Tourism Linkages Network</span>
                 <div className="social-icons">
-                    <img src={fb} />
-                    <img src={twitter} />
-                    <img src={insta} />
+                    <a href="https://www.facebook.com/tefjamaica/" target="_BLANK">
+                        <img src={fb} />
+                    </a>
+                    {/*
+                        <a href="https://www.mot.gov.jm/" target="_BLANK">
+                            <img src={twitter} />
+                        </a>
+                    */}
+                    <a href="https://www.instagram.com/tourismenhancementfundja/" target="_BLANK">
+                        <img src={insta} />
+                    </a>
                 </div>
             </div>
         </footer>
