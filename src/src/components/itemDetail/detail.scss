@@ -52,6 +52,9 @@
     min-width: 50vw;
     .back-arrow {
       padding-left: 20px;
+      @media (max-width: 576px) {
+        padding-left: 1px;
+      }
       display: flex;
       cursor: pointer;
       img {
