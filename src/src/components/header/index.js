@@ -118,7 +118,7 @@ class Header extends React.Component {
                                 oThis.props.modalStateHandler( false, false, false, true, false, false, true )
                             } }><span className="blueBtn">GET COMPANY LISTED </span></li>
                             <li data-text="GET COMPANY LISTED" className="registerLi" onClick={ () => {
-                                oThis.props.modalStateHandler( false, false, false, false, false, false, true )
+                                oThis.props.modalStateHandler( false, false, false, false, false, true, true )
                             } }>
                                 <div className="lower-section" >
                                     <div className="registerDiv"
