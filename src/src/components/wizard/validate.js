@@ -55,7 +55,7 @@ const validate = values => {
     }
 
     if ( !values.website ) {
-        errors.website = 'Phone Number is required'
+        errors.website = 'Website is required'
     }
 
 

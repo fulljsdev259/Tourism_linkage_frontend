@@ -218,6 +218,25 @@
             color: #5165ff;
           }
         }
+        .inputBox{
+          border: 1px solid #ebebeb;
+          height: 200px;
+          width:100%;
+          padding: 10px 0px 0px 20px;
+          color:#929292;
+          border-radius: 4px;            
+        }
+        .button{
+          text-decoration: none;
+          background-color: #5165FF;
+          color:#fff;
+          border:none;
+          padding:7px 25px;
+          border-radius: 5px;
+          font-size:13px;
+          font-weight: 'semi-bold';
+          box-shadow: 0 8px 25px 6px rgba(223, 223, 223, 0.5);
+        }
       }
     }
   }
