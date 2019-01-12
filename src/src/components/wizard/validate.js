@@ -5,7 +5,7 @@ const validate = values => {
         errors.fullName = 'Name is  Required'
     }
     if ( !values.name ) {
-        errors.name = 'Conmpany Name Required'
+        errors.name = 'Company Name Required'
     }
     if ( !values.password ) {
         errors.password = ' Password Required'
