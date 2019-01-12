@@ -11,9 +11,19 @@ export default class Register extends React.Component {
         super();
         this.state = {
             register: false,
-            login: true
+            login: true,
+            registerationSuccess: false
         }
     }
+
+    onSuccessRegister = () => {
+        this.setState({
+            registerationSuccess: true,
+            login: true,
+            register: false
+        })
+    }
+
     render() {
 
         const { closeModal } = this.props;
@@ -27,16 +37,21 @@ export default class Register extends React.Component {
                     <img src={ crossWhite } onClick={ () => closeModal() } />
                 </div>
                 <div className="content">
+                    {
+                        this.state.registerationSuccess ? <div className="register-success-message"> You have Register Successfully. You can login now!</div> : null
+                    }
                     <div className="heading">Welcome to TLN</div>
+                    
                     <div className="subHead">
                         <span onClick={ () => this.setState( { login: false, register: true } ) }
                             style={ { color: this.state.register ? '#fff' : "#A4AFD0", cursor:'pointer' } }>Register</span>
                         <span onClick={ () => this.setState( { login: true, register: false } ) }
                             style={ { color: this.state.login ? '#fff' : "#A4AFD0", cursor:'pointer' } } >Login</span>
                     </div>
+
                     <div>
                         { this.state.login ? <Login closeModal={ closeModal } /> : '' }
-                        { this.state.register ? <Register1 closeModal={ closeModal } /> : '' }
+                        { this.state.register ? <Register1 closeModal={ closeModal } onSuccessRegister={this.onSuccessRegister} /> : '' }
 
                     </div>
                 </div>
