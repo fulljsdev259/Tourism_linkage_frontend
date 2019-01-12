@@ -40,6 +40,8 @@ $facebook:String,$profile:String
         ){
             party{
                 name
+                region
+                categories
             }
             errors
                 
@@ -85,7 +87,8 @@ class WizardFormThirdPage extends React.Component {
             lng: 18,
             zoom: 7,
             map: '',
-            apiCall: false
+            apiCall: false,
+            errors: []
         }
 
     }
@@ -107,6 +110,20 @@ class WizardFormThirdPage extends React.Component {
             }
         );
 
+    }
+
+    renderErrors = () => {
+        if( this.state.errors.length > 0 ){
+            return (
+                <div className="company-list-error-message">
+                    {
+                        this.state.errors.map((error, i ) => {
+                            return ( <div key={i}>*{error}</div>)
+                        })
+                    }
+                </div>
+            )
+        }
     }
 
     render() {
@@ -216,6 +233,8 @@ class WizardFormThirdPage extends React.Component {
                             />
                             <Field name="hours" type="textarea" component={ renderTextarea } label="Open hours" />
 
+                            {this.renderErrors()}
+
                             <button type="button"
                                 onClick={ handleSubmit( async ( data ) => {
                                     this.setState( { apiCall: true } );
@@ -231,7 +250,7 @@ class WizardFormThirdPage extends React.Component {
                                             region: data.region,
                                             website: data.website,
                                             address: data.address,
-                                            email: data.password,
+                                            email: data.email,
                                             password: data.password,
                                             latitude: this.state.lat,
                                             longitude: this.state.lng,
@@ -247,6 +266,18 @@ class WizardFormThirdPage extends React.Component {
                                     } )
                                     this.setState( { apiCall: false } );
                                     //   this.showModal();
+
+                                    if ( editData.data.addVendor.errors === null ) {
+                                        this.props.onSuccessCompanyListed();
+                                        // this.setState( { errors: result.data.signUp.errors, } )
+                                        // this.showModal()
+                                        //commonError()
+                                    }
+                                    else {
+                                        this.setState( { errors: editData.data.addVendor.errors } )
+                                        // this.showModal()
+                                        // this.props.onSuccessRegister();
+                                    }
 
 
 

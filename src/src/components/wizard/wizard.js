@@ -43,6 +43,7 @@ class WizardForm extends Component {
                     <WizardFormThirdPage
                         previousPage={ this.previousPage }
                         onSubmit={ onSubmit }
+                        onSuccessCompanyListed={this.props.onSuccessCompanyListed}
                     />
                 ) }
             </div>
