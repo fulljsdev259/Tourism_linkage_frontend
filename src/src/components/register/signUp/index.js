@@ -70,6 +70,20 @@ class Signup extends React.Component {
         //        this.props.history.push( '/admin' )
     }
 
+    renderErrors = () => {
+        if( this.state.errors.length > 0 ){
+            return (
+                <div className="register-login-error-message">
+                    {
+                        this.state.errors.map((error, i ) => {
+                            return ( <div key={i}>*{error}</div>)
+                        })
+                    }
+                </div>
+            )
+        }
+    }
+
     render() {
         const { mutate, history, handleSubmit } = this.props;
 
@@ -94,6 +108,7 @@ class Signup extends React.Component {
 
 
             <Field name='retype' component={ renderField } type="password" label="Retype password" />
+            {this.renderErrors()}
             <button className="button"
 
                 onClick={ handleSubmit( async ( data ) => {
@@ -111,14 +126,15 @@ class Signup extends React.Component {
                         if ( result.data.signUp.errors.length > 0 ) {
 
                             this.setState( { errors: result.data.signUp.errors, } )
-                            this.showModal()
+                            // this.showModal()
                             //commonError()
                         }
                         else {
 
 
                             this.setState( { errors: ["You have successfully regitered"] } )
-                            this.showModal()
+                            // this.showModal()
+                            this.props.onSuccessRegister();
                         }
                     }
                     catch ( err ) {

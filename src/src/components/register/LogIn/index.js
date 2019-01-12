@@ -53,10 +53,7 @@ class Login extends React.Component {
         } );
     }
 
-
-
     handleOk = ( e ) => {
-        console.log( e );
         this.setState( {
             visible: false,
         } );
@@ -64,16 +61,28 @@ class Login extends React.Component {
     }
 
     handleCancel = ( e ) => {
-        console.log( e );
         this.setState( {
             visible: false,
         } );
         this.props.history.push( '/admin' )
     }
 
+    renderErrors = () => {
+        if( this.state.errors.length > 0 ){
+            return (
+                <div className="register-login-error-message">
+                    {
+                        this.state.errors.map((error, i ) => {
+                            return ( <div key={i}>*{error}</div>)
+                        })
+                    }
+                </div>
+            )
+        }
+    }
+
     render() {
         const { mutate, history, handleSubmit, receiveLogin } = this.props;
-
         return <div className="login">
             { this.state.apiCall ? <Loader /> : '' }
             <div className="arrow-up"></div>
@@ -87,6 +96,7 @@ class Login extends React.Component {
                 <input type="checkbox" id="RememberMe" name="RememberMe" value="Remember Me" />
                 <label htmlFor="RememberMe">Remember Me</label>
             </div>
+            {this.renderErrors()}
             <div className="remeber-section">
                 <button className="button" onClick={ handleSubmit( async ( data ) => {
 
@@ -102,7 +112,7 @@ class Login extends React.Component {
                         if ( result.data.login.errors.length > 0 ) {
 
                             this.setState( { errors: result.data.login.errors, } )
-                            this.showModal()
+                            // this.showModal()
                             //commonError()
                         }
                         else {
