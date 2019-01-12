@@ -129,9 +129,9 @@ export const renderField = ( { input, label, type, meta: { touched, error } } ) 
 )
 
 
-export const renderFieldTextArea = ( { input, label, type, meta: { touched, error } } ) => (
+export const renderFieldTextArea = ( { input, label, type, className, meta: { touched, error } } ) => (
     <div style={ { display: 'flex', flexDirection: 'column', width: '100%', } }>
-        <textarea style={ { width: '100%', height: 100 } } { ...input } placeholder={ label } type={ type } />
+        <textarea style={ { width: '100%', height: 100 } } { ...input } placeholder={ label } type={ type } className={className} />
 
         <span style={ { color: 'red', texAlign: 'center' } }>{ touched && error && <span>{ error }</span> }</span>
     </div>

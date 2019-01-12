@@ -301,8 +301,8 @@ class ItemDetail extends React.Component {
                                     { this.state.leaveReview ?
                                         <div style={ { padding: 10 } }>
                                             <Field name='rating' component={ renderFieldRating } type="text" label="Full Name" />
-                                            <Field name='comment' component={ renderFieldTextArea } type="text" label="Comment" />
-                                            <button onClick={ handleSubmit( async ( data1 ) => {
+                                            <Field name='comment' component={ renderFieldTextArea } type="text" label="Comment" className="inputBox" />
+                                            <button className="button" onClick={ handleSubmit( async ( data1 ) => {
 
                                                 const editData = await mutate( {
                                                     variables: {
