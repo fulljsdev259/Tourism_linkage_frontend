@@ -129,7 +129,7 @@ class Login extends React.Component {
                                 receiveLogin();
                                 this.setState( { loading: false } )
                                 this.props.closeModal();
-                                history.push( `/` )
+                                // history.push( `/` ) // no need to push, now logged user will remain on the same page after login
 
                                 //this.setState( { loading: false } )
 
