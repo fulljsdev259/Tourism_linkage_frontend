@@ -62,9 +62,10 @@ class Home extends React.Component {
         this.state = {
             modalIsOpen: false,
             about: false, contact: false, event: false, getListed: false,
-            news: false, register: false, mobileMenu: false, showListing: true, showMap: true, width: 0,
+            news: false, register: false, mobileMenu: false, showListing: false, showMap: true, width: 0,
             height: 0,
-            windowResized: false, loader: false
+            windowResized: false, loader: false,
+            isMobileScreen: false 
         };
 
         this.openModal = this.openModal.bind( this );
@@ -74,6 +75,26 @@ class Home extends React.Component {
         this.toggleMobileMenu = this.toggleMobileMenu.bind( this );
         this.toggleListing = this.toggleListing.bind( this );
         this.toggleMap = this.toggleMap.bind( this );
+    }
+
+    componentDidMount() {
+        window.addEventListener("resize", this.resize.bind(this));
+        this.resize();
+    }
+    resize() {
+        if( window.innerWidth < 576 ){
+            this.setState({
+                isMobileScreen: true,
+                showMap: false,
+                showListing: true
+            })    
+        } else {
+            this.setState({
+                isMobileScreen: false,
+                showMap: true,
+                showListing: false
+            })    
+        }
     }
 
     toggleMobileMenu = () => {
