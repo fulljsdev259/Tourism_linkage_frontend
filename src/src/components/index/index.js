@@ -568,7 +568,7 @@ class Index extends React.Component {
                 </div>
 
                 <div className="map-section" name="map-listing">
-                    <div className="toggler">
+                    <div className="toggler check1">
                         <button className={!this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn"} onClick={this.props.toggleListing}>Map View</button>
                         <button className={this.props.showListing ? "list-toggle-btn active" : "list-toggle-btn"} onClick={this.props.toggleListing}>List View</button>
                     </div>
@@ -810,11 +810,16 @@ class Index extends React.Component {
                     </div>
                     <div className={this.props.showListing ? "list-section" : "hide"}>
                         <div className="category category-sticky">
-                            <span>{data.party.filter(item => regionData === 'all' ? item
-                                : item.region === regionData)
-                                .filter(item => categoryData === 'all' ? item
-                                    : item.categories === categoryData).length}</span> {categoryData === 'all' ? 'All Categories' : categoryData} {regionData === 'all' ? '' : ' in ' + regionData}
-                            <br />
+                            <div>
+                                <span style={{marginRight:'5px'}}>{data.party.filter(item => regionData === 'all' ? item
+                                    : item.region === regionData)
+                                    .filter(item => categoryData === 'all' ? item
+                                        : item.categories === categoryData).length}</span> 
+                                {categoryData === 'all' ? 'All Categories' : categoryData} 
+                            </div>
+                            <div>
+                                {regionData === 'all' ? '' : ' in ' + regionData}
+                            </div>
 
                             {/* <span style={{ color: 'grey', fontSize: 12, marginTop: 10 }}>{regionData == "all" ? "All Jamica" : (regionData)}</span> */}
                         </div>
@@ -824,7 +829,7 @@ class Index extends React.Component {
                                 : item.categories === categoryData)
                             .map((item, i) => {
 
-                                return <div key={i} onClick={() => history.push(`/supplier/${item._id}`)} className="list-item">
+                                return <div key={i} onClick={() => history.push(`/supplier/${item._id}`)} className={"list-item" + (i==0 ? ' first-item' : '')}>
                                     <div className="item-header">
                                         <span className="title">{item.name}</span>
                                         {/*
