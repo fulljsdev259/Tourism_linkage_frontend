@@ -112,6 +112,10 @@ class Header extends React.Component {
                                 oThis.props.modalStateHandler( false, true, false, false, false, false, true )
                             } }>CONTACT US</li>
 
+                            <li data-text="Christmas in July" onClick={ () => {
+                                oThis.props.modalStateHandler( false, false, false, false, false, false, true, true )
+                            } }>CHRISTMAS IN JULY</li>
+
                             <li style={ {
                                 marginTop: "10px"
                             } } data-text="GET COMPANY LISTED" onClick={ () => {
@@ -183,6 +187,11 @@ class Header extends React.Component {
                         <div className="normal" onClick={ () => {
                             oThis.props.modalStateHandler( false, true, false, false, false, false, true )
                         } }><a>CONTACT US</a></div>
+
+                        <div className="normal" onClick={ () => {
+                            oThis.props.modalStateHandler( false, false, false, false, false, false, true, true )
+                        } }><a>CHRISTMAS IN JULY</a></div>
+
                         <div className="getStarted" onClick={ () => {
 
                             oThis.props.modalStateHandler( false, false, false, true, false, false, true )

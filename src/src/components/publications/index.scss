@@ -1,0 +1,9 @@
+.publications{
+	.iframe {
+		width: 100%;
+		height: 500px;
+		@media all and(max-width:576px) {
+    	height: 400px;
+  	}
+	}
+}
