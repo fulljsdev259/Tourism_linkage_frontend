@@ -37,6 +37,10 @@ const mutation = gql`mutation login($email:String,$password:String){
             email
             role
             name
+            _id
+            userParties {
+                _id
+            }
         }
         errors
         token

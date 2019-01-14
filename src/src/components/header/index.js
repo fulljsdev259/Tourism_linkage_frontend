@@ -200,30 +200,38 @@ class Header extends React.Component {
                     </div>
                 </div>
                 { oThis.props.authenticated ?
-                    <div className="registerDiv"
-                        onClick={ () => {
-                            this.setState({
-                                apiCall: true
-                            })
-                            oThis.props.modalStateHandler( false, false, false, false, false, false, false )
-                            localStorage.removeItem( 'token' )
-                            localStorage.removeItem( 'token_user' )
-                            oThis.props.receiveLogout()
 
-                            oThis.props.history.push( '/' )
-                            setTimeout(() => {
-                                this.setState({
-                                    apiCall: false
-                                })
-                            },1000)
-                            
-                        } }
-                    >
-                        <span className="user-name">
-                        {loggedUserData && loggedUserData.name ? loggedUserData.name +', ' : null }
-                        <a>LOGOUT</a>
+                        
+                        <div className="registerDiv">
+                        
+                            <span className="user-name" >
+                            <span style={{marginRight:'20px'}}>
+                            <Link to="/admin">
+                                My Dashboard
+                            </Link>
                         </span>
-                    </div>
+
+                            {loggedUserData && loggedUserData.name ? loggedUserData.name +', ' : null }
+                            <a onClick={ () => {
+                                this.setState({
+                                    apiCall: true
+                                })
+                                oThis.props.modalStateHandler( false, false, false, false, false, false, false )
+                                localStorage.removeItem( 'token' )
+                                localStorage.removeItem( 'token_user' )
+                                oThis.props.receiveLogout()
+
+                                oThis.props.history.push( '/' )
+                                setTimeout(() => {
+                                    this.setState({
+                                        apiCall: false
+                                    })
+                                },1000)
+                                
+                            } }>LOGOUT</a>
+                            </span>
+                        </div>
+                    
                     :
                     <div className="registerDiv"
                         onClick={ () => {
