@@ -18,6 +18,7 @@ import { withRouter } from 'react-router'
 import requireAuth from '../../config/require_auth';
 import { connect } from 'react-redux';
 import Loader from '../loader';
+import Publications from '../publications';
 
 const customStyles = {
     content: {
@@ -65,7 +66,8 @@ class Home extends React.Component {
             news: false, register: false, mobileMenu: false, showListing: false, showMap: true, width: 0,
             height: 0,
             windowResized: false, loader: false,
-            isMobileScreen: false 
+            isMobileScreen: false,
+            modalPublications: false
         };
 
         this.openModal = this.openModal.bind( this );
@@ -110,10 +112,10 @@ class Home extends React.Component {
         //        this.subtitle.style.color = '#f00';
     }
 
-    handleModalState( about, contact, event, getListed, news, register, modalIsOpen = true ) {
+    handleModalState( about, contact, event, getListed, news, register, modalIsOpen = true, modalPublications = false ) {
         this.setState( {
             about, contact, event, getListed,
-            news, register, modalIsOpen
+            news, register, modalIsOpen, modalPublications
         } )
     }
 
@@ -165,6 +167,7 @@ class Home extends React.Component {
                     { this.state.getListed ? <GetListed closeModal={ () => this.closeModal() } /> : '' }
                     { this.state.news ? <News closeModal={ () => this.closeModal() } /> : '' }
                     { this.state.register ? <Register closeModal={ () => this.closeModal() } /> : '' }
+                    { this.state.modalPublications ? <Publications closeModal={ () => this.closeModal() } /> : '' }
 
 
                 </Modal>
