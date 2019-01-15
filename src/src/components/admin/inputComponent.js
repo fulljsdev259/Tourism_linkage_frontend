@@ -138,8 +138,8 @@ export const renderFieldTextArea = ( { input, label, type, className, meta: { to
 )
 
 export const renderSelectBox = ( { input, label, type, data, title, meta: { touched, error } } ) => (
-    <div style={ { display: 'flex', flexDirection: 'column', alignItems: 'center' } }>
-        <Select { ...input } >
+    <div style={ { display: 'flex', flexDirection: 'column' } }>
+        <Select { ...input } style={{width:'76%', margin:'0px', marginLeft:'2px'}} >
             <option value="" disabled="disabled">Select { title }</option>
             { data.map( ( data, i ) => {
                 return <option key={ i } value={ data }>{ data }</option>

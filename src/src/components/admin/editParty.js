@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Field, reset, reduxForm } from 'redux-form';
-import { renderField, renderFieldTextArea } from './inputComponent'
+import { renderField, renderFieldTextArea, renderSelectBox } from './inputComponent'
 import './editrecord.scss'
 
 import { Modal, Button } from 'antd';
@@ -117,7 +117,12 @@ class EditRecord extends React.Component {
                 <div className="col2">
                     <div className="label">Region</div>
                     <div className="input">
-                        <Field name='region' component={ renderField } type="text" label="Region" />
+                        {/*<Field name='region' component={ renderField } type="text" label="Region" />*/}
+                        <Field 
+                            name="region" 
+                            type="select" 
+                            data={ ["Western Jamaica", "Central Jamaica", "Eastern Jamaica"] } 
+                            component={ renderSelectBox } label="Select Region" />
 
                     </div>
                 </div>
@@ -126,7 +131,15 @@ class EditRecord extends React.Component {
                 <div className="col1">
                     <div className="label">Category</div>
                     <div className="input">
-                        <Field name='categories' component={ renderField } type="text" label="Category" />
+                        {/*<Field name='categories' component={ renderField } type="text" label="Category" />*/}
+                        <Field name="categories" type="select"
+                            data={ ['Food and Agro', 'Printing, Packaging and Paper', 'Minerals and Metal',
+                                'Electrical, Electronics and Automotive', 'Chemicals, Cosmetics and Pharmaceuticals',
+                                'Furniture, Wooden and Bedding', 'Textile and Sewn'] }
+
+
+
+                            component={ renderSelectBox } label="Select Manufacturer Type" />
 
                     </div>
                 </div>
