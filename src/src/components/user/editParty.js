@@ -8,7 +8,7 @@ import './editrecord.scss'
 
 import { Modal, Button } from 'antd';
 
-import { query as query1} from './adminDashIndex';
+import { query as query1} from './userDashIndex';
 
 const form = reduxForm( {
     form: 'editSupplier',
@@ -90,7 +90,7 @@ class EditRecord extends React.Component {
         this.setState( {
             visible: false,
         } );
-        this.props.history.push('/admin')
+        this.props.history.push('/user')
     }
 
     handleCancel = ( e ) => {
@@ -98,7 +98,7 @@ class EditRecord extends React.Component {
         this.setState( {
             visible: false,
         } );
-        this.props.history.push( '/admin' )
+        this.props.history.push( '/user' )
     }
     render() {
         const { match, mutate, handleSubmit, id } = this.props;
@@ -194,7 +194,7 @@ class EditRecord extends React.Component {
 
 
             } ) }>Save</button>
-            {/*<button className="buttonBack">Back</button>*/}
+            
 
 
 

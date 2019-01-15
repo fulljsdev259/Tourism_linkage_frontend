@@ -14,8 +14,10 @@ import News from '../news'
 import Register from '../register';
 import MobileMap from '../mobileMap';
 import Admin from '../admin/adminDash';
+import User from '../user/userDash';
 import { withRouter } from 'react-router'
 import requireAuth from '../../config/require_auth';
+import requireAdminAuth from '../../config/require_admin_auth';
 import { connect } from 'react-redux';
 import Loader from '../loader';
 import Publications from '../publications';
@@ -146,7 +148,8 @@ class Home extends React.Component {
                     <Route exact path="/" render={ props => ( <Index toggleListing={ this.toggleListing } toggleMap={ this.toggleMap } { ...this.state } /> ) } />
                     <Route { ...this.state } path="/supplier/:name" render={ props => ( <ItemDetail { ...this.state } modalStateHandler={ this.handleModalState } /> ) }  />
                     <Route path="/mobilemap" render={ props => ( <MobileMap toggleListing={ this.toggleListing } toggleMap={ this.toggleMap } { ...this.state } /> ) } />
-                    <Route path="/admin" component={ requireAuth( Admin ) } />
+                    <Route path="/admin" component={ requireAdminAuth( Admin ) } />
+                    <Route path="/user" component={ requireAuth( User ) } />
 
 
                 </Switch>
