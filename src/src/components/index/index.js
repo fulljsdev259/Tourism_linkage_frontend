@@ -10,7 +10,7 @@ import slider5 from '../../images/DJI_Antillean_Charm_2018_Collection_20181119_0
 import slider6 from '../../images/vegetables-1363034.jpg'
 import slider7 from '../../images/46352636478840.jpg'
 import slider8 from '../../images/IMG_0161.jpg'
-import slider9 from '../../images/furniture.jpg'
+import slider9 from '../../images/coffee.jpg'
 
 import Logo from '../../images/Tourism_Linkages_Network_Logo.gif'
 import Menu from '../../images/icon/menu.svg'
@@ -196,48 +196,44 @@ const geojson = {
 }
 const sliderImages = [{
     url: slider1,
-    title: "an online presence",
+    title: "Online presence for our products",
 },
 
 {
     url: slider3,
-    title: "money kept locally",
+    title: "Keeping money in Jamaica",
 },
 
 {
     url: slider7,
-    title: "cultivating dreams",
+    title: "Cultivating dreams & talent",
 },
 
 {
     url: slider8,
-    title: "locally made goods",
+    title: "Discovering the taste of Jamaica",
 },
 
 {
     url: slider5,
-    title: "a creative culture",
+    title: "Creating a creative culture",
 },
 
-/*{
-    url: slider2,
-    title: "suppliers & buyers ",
-},*/
 
 {
     url: slider9,
-    title: "suppliers & buyers",
+    title: "Linking our suppliers with buyers",
 },
 
 
 {
     url: slider4,
-    title: "adding more jobs",
+    title: "Adding more jobs to our economy",
 },
 
 {
     url: slider6,
-    title: "farm to table",
+    title: "Farm to Table: serving local food",
 },
 
 ]
@@ -359,7 +355,7 @@ class Index extends React.Component {
                                             centerLang: -77.319222,
                                             centerLat: 18,
                                             centerZoom: 7.3,
-                                            region: "all", 
+                                            region: "all",
                                             subMenu: !this.state.subMenu
                                         })
                                         region("all")
@@ -815,11 +811,11 @@ class Index extends React.Component {
                     <div className={this.props.showListing ? "list-section" : "hide"}>
                         <div className="category category-sticky">
                             <div>
-                                <span style={{marginRight:'5px'}}>{data.party.filter(item => regionData === 'all' ? item
+                                <span style={{ marginRight: '5px' }}>{data.party.filter(item => regionData === 'all' ? item
                                     : item.region === regionData)
                                     .filter(item => categoryData === 'all' ? item
-                                        : item.categories === categoryData).length}</span> 
-                                {categoryData === 'all' ? 'All Categories' : categoryData} 
+                                        : item.categories === categoryData).length}</span>
+                                {categoryData === 'all' ? 'All Categories' : categoryData}
                             </div>
                             <div>
                                 {regionData === 'all' ? '' : ' in ' + regionData}
@@ -833,7 +829,7 @@ class Index extends React.Component {
                                 : item.categories === categoryData)
                             .map((item, i) => {
 
-                                return <div key={i} onClick={() => history.push(`/supplier/${item._id}`)} className={"list-item" + (i==0 ? ' first-item' : '')}>
+                                return <div key={i} onClick={() => history.push(`/supplier/${item._id}`)} className={"list-item" + (i == 0 ? ' first-item' : '')}>
                                     <div className="item-header">
                                         <span className="title">{item.name}</span>
                                         {/*

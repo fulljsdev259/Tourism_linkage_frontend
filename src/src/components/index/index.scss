@@ -386,14 +386,14 @@
         h1 {
           color: white;
           text-align: center;
-          text-transform:capitalize;
+          text-transform:none;
           padding: 10px;
           font-weight:700;
           position: absolute;
           top: 20px;
           z-index: 1;
-          line-height:35px;
-          font-size:35px !important;
+          line-height:34px;
+          font-size:30px !important;
           width: 100%;
           @media all and(max-width:768px) {
             font-size:20px !important;
