@@ -29,7 +29,6 @@ import { connect } from 'react-redux';
 class AdminDash extends React.Component {
     render() {
         let { history, loggedUserData} = this.props 
-        console.log( this.props )
         return (
             <div className="adminDash">
                 <div className="sidebar">
@@ -37,7 +36,18 @@ class AdminDash extends React.Component {
                 </div>
                 <div className="content">
                     <Route exact path="/user" render={ props => ( <Index parties={loggedUserData.userParties || []} /> ) } />
-                    <Route path="/user/editSupplier/:name" component={ EditParty } />
+                    <Route path="/user/editSupplier/:name" render={ props => {
+                        let isUserParty = false;
+                        loggedUserData.userParties.map((i) => {
+                            if(i._id == props.match.params.name){
+                                isUserParty = true;
+                            }
+                        }))
+                        if( !isUserParty ){
+                            props.history.push('/user')
+                        }
+                        return ( <EditParty parties={loggedUserData.userParties || []} /> ) }
+                    } />
                     <Route path="/user/addSupplier" component={ AddParty } />
                 </div>
             </div>
