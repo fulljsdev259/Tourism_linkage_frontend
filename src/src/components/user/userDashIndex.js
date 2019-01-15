@@ -73,13 +73,10 @@ class AdminDash extends React.Component {
     render() {
         const { data, match, history, parties } = this.props;
 
-        console.log('-----parties')
-        console.log( parties )
 
         if ( data.loading ) {
             return <span>Loading ..</span>
         }
-        console.log( data )
         let row1 = [];
         parties.map( ( data, i ) => {
             //const c=data.passPercentage;
