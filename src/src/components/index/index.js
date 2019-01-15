@@ -293,12 +293,12 @@ class Index extends React.Component {
 
         const { location } = this.state;
         const { data, history, regionData, categoryData, region, category } = this.props;
+
         if (data.loading) {
             return <Loader />
         }
         let geoJson = null;
 
-        console.log(regionData, categoryData)
         if (categoryData === 'all' && regionData === 'all') {
             geoJson = data.party;
         }
@@ -354,12 +354,16 @@ class Index extends React.Component {
                             <label htmlFor="check02"> {regionData === 'all' ? 'All Jamaica' : regionData}</label>
                             {this.state.subMenu ?
                                 <ul className="submenu">
-                                    <li onClick={(e) => this.setState({
-                                        centerLang: -77.319222,
-                                        centerLat: 18,
-                                        centerZoom: 7.3,
-                                        region: "all", subMenu: !this.state.subMenu
-                                    })}><a href="#">All Jamaica</a></li>
+                                    <li onClick={(e) => {
+                                        this.setState({
+                                            centerLang: -77.319222,
+                                            centerLat: 18,
+                                            centerZoom: 7.3,
+                                            region: "all", 
+                                            subMenu: !this.state.subMenu
+                                        })
+                                        region("all")
+                                    }}><a href="#">All Jamaica</a></li>
                                     <li onClick={(e) => {
                                         document.getElementById("check02").checked = false;
                                         this.setState({ centerLang: -77.8939, centerLat: 17.9762, centerZoom: 8.5, region: "Western Jamaica", subMenu: !this.state.subMenu })
