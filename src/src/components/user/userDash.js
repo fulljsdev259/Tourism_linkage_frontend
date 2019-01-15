@@ -42,7 +42,7 @@ class AdminDash extends React.Component {
                             if(i._id == props.match.params.name){
                                 isUserParty = true;
                             }
-                        }))
+                        })
                         if( !isUserParty ){
                             props.history.push('/user')
                         }
