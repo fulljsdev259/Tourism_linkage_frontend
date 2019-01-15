@@ -28,6 +28,8 @@ const query = gql` query singleParty($name:String){
              phoneNumber
              website
              tags
+             latitude
+             longitude
         }
         
    
@@ -46,11 +48,11 @@ categories:$categories,description:$description,phoneNumber:$phoneNumber,tags:$t
 const mutation = gql`mutation editVendor1($dataId:String,$name:String,$tags: String,
 , $categories: String, $region: String, $description: String, 
 $address: String,
-$phoneNumber: String, $website: String
+$phoneNumber: String, $website: String, $latitude:String, $longitude:String
 ){
         editVendor(name:$name,dataId:$dataId,
         categories:$categories,description:$description,phoneNumber:$phoneNumber,tags:$tags,
-    region:$region,website:$website,address:$address
+    region:$region,website:$website,address:$address, latitude:$latitude, longitude:$longitude
         
         ){
             party{
@@ -169,6 +171,22 @@ class EditRecord extends React.Component {
             </div>
             <div className="row">
                 <div className="col1">
+                    <div className="label">Latitude</div>
+                    <div className="input">
+                        <Field name='latitude' component={ renderField } type="text" label="Latitude" />
+
+                    </div>
+                </div>
+                <div className="col2">
+                    <div className="label">Longitude</div>
+                    <div className="input">
+                        <Field name='longitude' component={ renderField } type="text" label="Longitude" />
+
+                    </div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col1">
                     <div className="label">Description</div>
                     <div className="input">
                         <Field name='description' component={ renderFieldTextArea } type="text" label="Description" />
@@ -198,7 +216,8 @@ class EditRecord extends React.Component {
                 const editData = await mutate( {
                     variables: {
                         name: data.name, dataId: id, tags: data.tags, address: data.address, phoneNumber: data.phoneNumber,
-                        region: data.region, categories: data.categories, website: data.website, description: data.description
+                        region: data.region, categories: data.categories, website: data.website, description: data.description,
+                        latitude: data.latitude, longitude:data.longitude
                     },
                     refetchQueries: [{query:query1}]
                 } )
@@ -223,7 +242,8 @@ const EditRecordWrapper = ( {  data,history } ) => {
     const initialValues = {
         name: data.singleParty.name, categories: data.singleParty.categories, address: data.singleParty.address,
         region: data.singleParty.region, phoneNumber: data.singleParty.phoneNumber, website: data.singleParty.website,
-        description: data.singleParty.description, tags: data.singleParty.tags
+        description: data.singleParty.description, tags: data.singleParty.tags,
+        latitude: data.singleParty.latitude, longitude: data.singleParty.longitude
     }
     console.log( data )
     return <EditRecordForm initialValues={ initialValues } id={ data.singleParty._id } history={ history} />

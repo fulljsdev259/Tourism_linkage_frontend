@@ -28,6 +28,8 @@ const query = gql` query singleParty($name:String){
              phoneNumber
              website
              tags
+             latitude
+             longitude
         }
         
    
@@ -86,7 +88,6 @@ class EditRecord extends React.Component {
 
 
     handleOk = ( e ) => {
-        console.log( e );
         this.setState( {
             visible: false,
         } );
@@ -94,14 +95,15 @@ class EditRecord extends React.Component {
     }
 
     handleCancel = ( e ) => {
-        console.log( e );
         this.setState( {
             visible: false,
         } );
         this.props.history.push( '/user' )
     }
     render() {
-        const { match, mutate, handleSubmit, id } = this.props;
+        const { match, mutate, handleSubmit, id, initialValues } = this.props;
+
+
         return <div className="editRecord">
 
             <h2>Edit Record</h2>
@@ -156,6 +158,20 @@ class EditRecord extends React.Component {
             </div>
             <div className="row">
                 <div className="col1">
+                    <div className="label">Latitude</div>
+                    <div className="input" style={{fontWeight:'bold'}}>
+                        {initialValues.latitude || '--'}
+                    </div>
+                </div>
+                <div className="col2">
+                    <div className="label">Longitude</div>
+                    <div className="input" style={{fontWeight:'bold'}}>
+                        {initialValues.longitude || '--'}
+                    </div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col1">
                     <div className="label">Phone Number</div>
                     <div className="input">
                         <Field name='phoneNumber' component={ renderField } type="text" label="Phone Number" />
@@ -197,7 +213,6 @@ class EditRecord extends React.Component {
                 
             </Modal>
             <button className="buttonSave" onClick={ handleSubmit( async ( data ) => {
-             //   console.log( mutate )
                 const editData = await mutate( {
                     variables: {
                         name: data.name, dataId: id, tags: data.tags, address: data.address, phoneNumber: data.phoneNumber,
@@ -226,9 +241,9 @@ const EditRecordWrapper = ( {  data,history } ) => {
     const initialValues = {
         name: data.singleParty.name, categories: data.singleParty.categories, address: data.singleParty.address,
         region: data.singleParty.region, phoneNumber: data.singleParty.phoneNumber, website: data.singleParty.website,
-        description: data.singleParty.description, tags: data.singleParty.tags
+        description: data.singleParty.description, tags: data.singleParty.tags, 
+        latitude: data.singleParty.latitude, longitude: data.singleParty.longitude
     }
-    console.log( data )
     return <EditRecordForm initialValues={ initialValues } id={ data.singleParty._id } history={ history} />
 
 
