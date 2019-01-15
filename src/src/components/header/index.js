@@ -89,6 +89,12 @@ class Header extends React.Component {
     render() {
         const oThis = this;
         let { loggedUserData } = this.props;
+
+        let linkDashboard = "/admin";
+        if( loggedUserData && loggedUserData.role !== 'admin' ){            
+            linkDashboard = "/user";            
+        }
+
         return <div style={ { borderBottom: "1px solid #ebebeb" } }>
         { this.state.apiCall ? <Loader /> : '' }
             <div className="menuMobile">
@@ -206,7 +212,7 @@ class Header extends React.Component {
                         
                             <span className="user-name" >
                             <span style={{marginRight:'20px'}}>
-                            <Link to="/admin">
+                            <Link to={linkDashboard}>
                                 My Dashboard
                             </Link>
                         </span>

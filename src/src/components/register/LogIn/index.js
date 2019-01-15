@@ -40,6 +40,9 @@ const mutation = gql`mutation login($email:String,$password:String){
             _id
             userParties {
                 _id
+                name
+                region
+                categories
             }
         }
         errors

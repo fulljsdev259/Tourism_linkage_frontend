@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import Index from './adminDashIndex';
+import Index from './userDashIndex';
 import EditParty from './editParty';
 import AddParty from './addParty';
 import { withRouter } from 'react-router'
-import './admindash.scss'
+import './userdash.scss'
 import { connect } from 'react-redux';
 
 // const AdminDash = ( { history } ) => {
@@ -28,17 +28,17 @@ import { connect } from 'react-redux';
 
 class AdminDash extends React.Component {
     render() {
-        let { history } = this.props 
+        let { history, loggedUserData} = this.props 
         console.log( this.props )
         return (
             <div className="adminDash">
                 <div className="sidebar">
-                    <div className="item" onClick={ () => history.push( '/admin' ) }>Dashboard</div>
+                    <div className="item" onClick={ () => history.push( '/user' ) }>Dashboard</div>
                 </div>
                 <div className="content">
-                    <Route exact path="/admin" render={ props => ( <Index /> ) } />
-                    <Route path="/admin/editSupplier/:name" component={ EditParty } />
-                    <Route path="/admin/addSupplier" component={ AddParty } />
+                    <Route exact path="/user" render={ props => ( <Index parties={loggedUserData.userParties || []} /> ) } />
+                    <Route path="/user/editSupplier/:name" component={ EditParty } />
+                    <Route path="/user/addSupplier" component={ AddParty } />
                 </div>
             </div>
         )
@@ -48,7 +48,7 @@ class AdminDash extends React.Component {
 // export default withRouter( AdminDash );
 
 function mapStateToProps( state ) {
-    return { loggedUserData: state.auth.loggedUserData }
+    return { loggedUserData: state.auth.loggedUserData, loggedUserData: state.auth.loggedUserData }
 }
 
 
