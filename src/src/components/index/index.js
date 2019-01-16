@@ -49,19 +49,20 @@ import { connect } from 'react-redux';
 import FP1 from './icons/fi.svg'
 import Print from './icons/print.svg';
 import MI from './icons/metal.svg';
-export const query = gql`{
-    party{
-        _id
-        name
-        region
-        categories
-        latitude
-        longitude
-        tags
-        address
-        phoneNumber
+export const query = gql` query party($status:String){
+        party(status:$status){
+            _id
+            name
+            region
+            categories
+            latitude
+            longitude
+            tags
+            address
+            phoneNumber
+        }
     }
-}
+
 `
 
 
@@ -261,6 +262,10 @@ class Index extends React.Component {
         };
 
 
+    }
+
+    componentDidMount() {
+        this.props.data.refetch()
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -877,4 +882,10 @@ const mpStateToProps = (state) => ({
     categoryData: state.auth.category
 })
 
-export default withRouter(connect(mpStateToProps, { region, category })(graphql(query)(Index)));
+export default withRouter(connect(mpStateToProps, { region, category })(graphql(query,{
+    options: () => {
+        return { variables : {
+            status: 'Published'
+        }}
+    }
+})(Index)));
