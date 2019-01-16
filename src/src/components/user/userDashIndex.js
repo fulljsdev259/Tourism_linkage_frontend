@@ -40,6 +40,10 @@ export const mutation = gql` mutation deleteVendor($dataId:String){
 class AdminDash extends React.Component {
     state = { visible: false, dataId: '' }
 
+    componentDidMount(){
+        // this.props.data.refetch()
+    }
+
     showModal = () => {
 
         this.setState( {
@@ -50,7 +54,6 @@ class AdminDash extends React.Component {
 
 
     handleOk = async ( e ) => {
-        console.log( e );
         this.setState( {
             visible: false,
         } );
@@ -63,7 +66,6 @@ class AdminDash extends React.Component {
     }
 
     handleCancel = ( e ) => {
-        console.log( e );
         this.setState( {
             visible: false,
         } );
@@ -71,14 +73,29 @@ class AdminDash extends React.Component {
     }
 
     render() {
+
         const { data, match, history, parties } = this.props;
+
+        let dbParties = this.props.data.party || [];
+
+        let partiesToShow = [];
+        if( dbParties.length > 0 && parties.length > 0 ){
+            dbParties.map(i => {
+                parties.map(j => {
+                    if( i._id == j._id ){
+                        partiesToShow.push( i )
+                    }
+                })
+            })
+        }
+
 
 
         if ( data.loading ) {
             return <span>Loading ..</span>
         }
         let row1 = [];
-        parties.map( ( data, i ) => {
+        partiesToShow.map( ( data, i ) => {
             //const c=data.passPercentage;
             //console.log( data )
 
