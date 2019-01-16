@@ -121,4 +121,47 @@
                 
       }
 
+
+
+       .renderField{
+    label{
+        font-size: 12px;
+        color:#B0B0B0;
+         margin-top:5px;
+         
+    }
+    .input{
+      outline:none;
+      border: 1px solid #ebebeb;
+        border-radius:5px; 
+        min-width:25vw;
+        margin-top:5px;
+        min-height:25px;
+        padding:10px;
+        font-size:12px;
+        @media screen and(max-width: 576px){
+            width: 80vw;                  
+        }
+    }
+    .textArea{
+        outline:none;
+        border: 1px solid #ebebeb;
+          border-radius:5px;
+          height: 200px; 
+          min-width:25vw;
+          margin-top:5px;
+          padding:10px;
+          font-size:12px;
+          @media screen and(max-width: 576px){
+            width: 80vw;                  
+        }
+    }
+    span{
+        color:red;
+        font-size:12px;
+        margin-bottom: 5px;
+    }
+    
+}
+
 }
