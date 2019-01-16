@@ -17,7 +17,7 @@ const mutation = gql`mutation addVendor1(
 , $categories: String, $region: String, $description: String, 
 $address: String,
 $phoneNumber: String, $website: String
-    $latitude:Float,$longitude:Float,
+    $latitude:String,$longitude:String,
 $photo:[fileUpload],
 
 $facebook:String,$profile:String
@@ -252,8 +252,8 @@ class WizardFormThirdPage extends React.Component {
                                             address: data.address,
                                             email: data.email,
                                             password: data.password,
-                                            latitude: this.state.lat,
-                                            longitude: this.state.lng,
+                                            latitude: this.state.lat.toString(),
+                                            longitude: this.state.lng.toString,
                                             facebook: data.facebook,
                                             photo: data.photo,
                                             instagram: data.instagram,

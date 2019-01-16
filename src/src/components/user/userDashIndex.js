@@ -41,7 +41,7 @@ class AdminDash extends React.Component {
     state = { visible: false, dataId: '' }
 
     componentDidMount(){
-        // this.props.data.refetch()
+        this.props.data.refetch()
     }
 
     showModal = () => {
