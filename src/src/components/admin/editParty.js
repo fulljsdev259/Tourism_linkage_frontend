@@ -30,6 +30,7 @@ const query = gql` query singleParty($name:String){
              tags
              latitude
              longitude
+             status
         }
         
    
@@ -48,11 +49,12 @@ categories:$categories,description:$description,phoneNumber:$phoneNumber,tags:$t
 const mutation = gql`mutation editVendor1($dataId:String,$name:String,$tags: String,
 , $categories: String, $region: String, $description: String, 
 $address: String,
-$phoneNumber: String, $website: String, $latitude:String, $longitude:String
+$phoneNumber: String, $website: String, $latitude:String, $longitude:String, $status: String
 ){
         editVendor(name:$name,dataId:$dataId,
         categories:$categories,description:$description,phoneNumber:$phoneNumber,tags:$tags,
-    region:$region,website:$website,address:$address, latitude:$latitude, longitude:$longitude
+    region:$region,website:$website,address:$address, latitude:$latitude, longitude:$longitude,
+    status:$status
         
         ){
             party{
@@ -107,6 +109,23 @@ class EditRecord extends React.Component {
         return <div className="editRecord">
 
             <h2>Edit Record</h2>
+
+            <div className="row">
+                <div className="col1">
+                    <div className="label">Status</div>
+                    <div className="input">
+                        <Field 
+                            name="status" 
+                            type="select" 
+                            data={ ["Published", "Unpublished"] } 
+                            component={ renderSelectBox } label="Set Status" 
+                        />
+                    </div>
+                </div>
+                <div className="col2">
+                    
+                </div>
+            </div>
 
             <div className="row">
                 <div className="col1">
@@ -217,7 +236,8 @@ class EditRecord extends React.Component {
                     variables: {
                         name: data.name, dataId: id, tags: data.tags, address: data.address, phoneNumber: data.phoneNumber,
                         region: data.region, categories: data.categories, website: data.website, description: data.description,
-                        latitude: data.latitude, longitude:data.longitude
+                        latitude: data.latitude, longitude:data.longitude,
+                        status: data.status
                     },
                     refetchQueries: [{query:query1}]
                 } )
@@ -243,7 +263,8 @@ const EditRecordWrapper = ( {  data,history } ) => {
         name: data.singleParty.name, categories: data.singleParty.categories, address: data.singleParty.address,
         region: data.singleParty.region, phoneNumber: data.singleParty.phoneNumber, website: data.singleParty.website,
         description: data.singleParty.description, tags: data.singleParty.tags,
-        latitude: data.singleParty.latitude, longitude: data.singleParty.longitude
+        latitude: data.singleParty.latitude, longitude: data.singleParty.longitude,
+        status: data.singleParty.status
     }
     console.log( data )
     return <EditRecordForm initialValues={ initialValues } id={ data.singleParty._id } history={ history} />
