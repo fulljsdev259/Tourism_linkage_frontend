@@ -172,15 +172,8 @@ class ContactUs extends React.Component {
 const contactForm = reduxForm( {
     form: 'contactus',
     enableReinitialize: true,
-    // validate
+    validate
 
 } )
 
 export default withRouter( ( contactForm( graphql( mutation )( ContactUs ) ) ) )
-
-// export default reduxForm( {
-//     form: 'contactus', // <------ same form name
-//     // destroyOnUnmount: false, // <------ preserve form data
-//     // forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
-//     validate
-// } )( ContactUs )
