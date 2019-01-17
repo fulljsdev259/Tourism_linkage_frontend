@@ -83,8 +83,8 @@ class WizardFormThirdPage extends React.Component {
     constructor() {
         super()
         this.state = {
-            lat: -77.319222,
-            lng: 18,
+            lat: "",
+            lng: "",
             zoom: 7,
             map: '',
             apiCall: false,
@@ -160,6 +160,7 @@ class WizardFormThirdPage extends React.Component {
                                 component={ renderField }
                                 label="Full address"
                             />
+                            {/*
 
                             <div style={ { display: 'flex', width: '100%', marginTop: 25, } }>
                                 <div className="renderField" style={ { flex: 2, width: '100%' } }>
@@ -199,6 +200,7 @@ class WizardFormThirdPage extends React.Component {
                                 </Map1>
 
                             </div>
+                        */}
 
                             <Field
                                 name="phoneNumber"
