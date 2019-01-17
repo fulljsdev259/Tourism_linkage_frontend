@@ -201,41 +201,41 @@ const sliderImages = [
 
 
         url: slider9,
-        title: "Linking our suppliers with buyers",
+        title: "suppliers & buyers",
     },
     {
         url: slider1,
-        title: "Online presence for our products",
+        title: "our products Online",
     },
 
     {
         url: slider3,
-        title: "Keeping money in Jamaica",
+        title: "Money Kept Locally",
     },
 
     {
         url: slider7,
-        title: "Cultivating dreams & talent",
+        title: "Cultivating dreams ",
     },
 
     {
         url: slider8,
-        title: "Discovering the taste of Jamaica",
+        title: "taste of Jamaica",
     },
 
     {
         url: slider5,
-        title: "Creating a creative culture",
+        title: "a creative culture",
     },
 
     {
         url: slider4,
-        title: "Adding more jobs to our economy",
+        title: "Adding more jobs",
     },
 
     {
         url: slider6,
-        title: "Farm to Table: serving local food",
+        title: "Farm to Table",
     },
 
 ]

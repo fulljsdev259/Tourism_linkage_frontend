@@ -386,18 +386,18 @@
       .slider-title {
         h1 {
           color: white;
-          text-align: left;
-          text-transform:none;
-          padding: 10px 0 0 20px;
+          text-align: center;
+          text-transform:capitalize;
+          padding: 10px 10px 0 10px;
           font-weight:700;
           position: absolute;
-          top: 20px;
+          top: 5px;
           z-index: 1;
           line-height:29px;
-          font-size:28px !important;
-          width: 90%;
+          font-size:30px !important;
+          width: 100%;
           @media all and(max-width:768px) {
-            font-size:20px !important;
+            font-size:23px !important;
             line-height:20px;
              text-align: center !important;
           }

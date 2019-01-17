@@ -77,31 +77,31 @@ const mutation = gql`mutation comment(
 `
 
 
-const form = reduxForm( {
+const form = reduxForm({
     form: 'addRating',
     enableReinitialize: true,
     //validate
 
-} )
+})
 
 
 
-export const renderFieldRating = ( { input: { onChange, value }, label, type, meta: { touched, error } } ) => (
-    <div style={ { display: 'flex', maxWidth: 70, flexDirection: 'column' } }>
+export const renderFieldRating = ({ input: { onChange, value }, label, type, meta: { touched, error } }) => (
+    <div style={{ display: 'flex', maxWidth: 70, flexDirection: 'column' }}>
 
         <StarRatingComponent
             name="rate2"
-            editing={ true }
+            editing={true}
             //renderStarIcon={ () => <span></span> }
-            starCount={ 5 }
-            value={ value ? value : 0 }
-            onStarClick={ ( nextValue, prevValue, name ) => {
-                onChange( nextValue )
+            starCount={5}
+            value={value ? value : 0}
+            onStarClick={(nextValue, prevValue, name) => {
+                onChange(nextValue)
             }
             }
         />
 
-        <span style={ { color: 'red', texAlign: 'center' } }>{ touched && error && <span>{ error }</span> }</span>
+        <span style={{ color: 'red', texAlign: 'center' }}>{touched && error && <span>{error}</span>}</span>
     </div>
 )
 
@@ -163,10 +163,10 @@ const customStylesRegister = {
 };
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement( '#root' )
-const Map = ReactMapboxGl( {
+Modal.setAppElement('#root')
+const Map = ReactMapboxGl({
     accessToken: "pk.eyJ1Ijoia2VjaGVhbGV4cHJ0MiIsImEiOiJjam94azh4OHcyODByM3FqeHd1Nm43NWl6In0.0w8_b3fwLMXf8a1zSGgC2w"
-} );
+});
 
 class ItemDetail extends React.Component {
     constructor() {
@@ -179,13 +179,13 @@ class ItemDetail extends React.Component {
             leaveReview: false
         };
 
-        this.openModal = this.openModal.bind( this );
-        this.afterOpenModal = this.afterOpenModal.bind( this );
-        this.closeModal = this.closeModal.bind( this );
+        this.openModal = this.openModal.bind(this);
+        this.afterOpenModal = this.afterOpenModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     openModal() {
-        this.setState( { modalIsOpen: true } );
+        this.setState({ modalIsOpen: true });
     }
 
     afterOpenModal() {
@@ -194,11 +194,11 @@ class ItemDetail extends React.Component {
     }
 
     closeModal() {
-        this.setState( { modalIsOpen: false } );
+        this.setState({ modalIsOpen: false });
     }
     render() {
         const { data, history, handleSubmit, mutate, authenticated } = this.props;
-        if ( data.loading ) {
+        if (data.loading) {
             return <span>loading</span>
         }
         const partyId = data.singleParty._id
@@ -206,43 +206,43 @@ class ItemDetail extends React.Component {
             <div className="detail">
                 <div className="itemDetail-Map">
                     <Map
-                        center={ [data.singleParty.longitude, data.singleParty.latitude] }
-                        zoom={ [9] }
-                        style="mapbox://styles/mapbox/streets-v8"
-                        containerStyle={ {
+                        center={[data.singleParty.longitude, data.singleParty.latitude]}
+                        zoom={[16]}
+                        style="mapbox://styles/kechealexprt2/cjq7f3fqf1h4q2rqdcz44o8j7"
+                        containerStyle={{
                             height: "100%",
                             width: "100%"
-                        } } >
+                        }} >
                         <Layer
                             type="symbol"
                             id="marker"
-                            layout={ { "icon-image": "marker-15" } }>
-                            <Feature coordinates={ [data.singleParty.longitude, data.singleParty.latitude] } />
+                            layout={{ "icon-image": "marker-15" }}>
+                            <Feature coordinates={[data.singleParty.longitude, data.singleParty.latitude]} />
                         </Layer>
                     </Map>
                 </div>
                 <div className="item-detail">
-                    <div className="back-arrow" onClick={ () => history.push( '/' ) }>
-                        <img src={ arrowBack } />   <span className="back-link" onClick={ () => history.push( '/' ) }>Back to list</span>
+                    <div className="back-arrow" onClick={() => history.push('/')}>
+                        <img src={arrowBack} />   <span className="back-link" onClick={() => history.push('/')}>Back to list</span>
                     </div>
                     <div className="content-section">
                         <div className="item-info">
 
 
-                            <h3>{ data.singleParty.name }</h3>
-                            <div className="item-reviews">
+                            <h3>{data.singleParty.name}</h3>
+                            {/*<div className="item-reviews">
                                 <span>Fabric</span>
                                 <span className="seperator"></span>
-                                {/*<img src={ rating }></img>*/}
-                                <span>2 Reviews</span>
-                            </div>
+                                <img src={ rating }></img>
+                                 <span>2 Reviews</span>
+                        </div>*/}
                             <div className="item-category ">
                                 <img
-                                    style={ {
+                                    style={{
                                         marginRight: 5,
                                         height: 22
-                                    } }
-                                    src={ data.singleParty.categories === 'Food and Agro' ? Printing :
+                                    }}
+                                    src={data.singleParty.categories === 'Food and Agro' ? Printing :
                                         data.singleParty.categories === 'Printing, Packaging and Paper' ? Printing2 :
                                             data.singleParty.categories === 'Minerals and Metal' ? Metal :
                                                 data.singleParty.categories === 'Food and Agro' ? Metal :
@@ -254,21 +254,21 @@ class ItemDetail extends React.Component {
 
 
                                     } />
-                                <span>{ data.singleParty.categories }</span>
+                                <span>{data.singleParty.categories}</span>
                             </div>
                             <div className="tags">
                                 {
-                                    data.singleParty.tags && data.singleParty.tags.length > 0 ? data.singleParty.tags.split( ',' ).map( ( data, i ) => {
-                                        if ( i < 4 ) {
+                                    data.singleParty.tags && data.singleParty.tags.length > 0 ? data.singleParty.tags.split(',').map((data, i) => {
+                                        if (i < 4) {
 
-                                            return <span key={ i }>{ data }</span>
+                                            return <span key={i}>{data}</span>
                                         }
-                                    } )
-                                        : '' }
+                                    })
+                                        : ''}
                             </div>
                             <div className="item-description">
                                 <p>
-                                    { data.singleParty.description }
+                                    {data.singleParty.description}
                                 </p>
                             </div>
                             {/*
@@ -282,67 +282,69 @@ class ItemDetail extends React.Component {
                                     <img src={ share } />
                                 </div>
                             </div>*/}
-                        </div>
-                        <h3>Reviews</h3>
 
-                        <div onClick={ () => this.setState( { leaveReview: true },() => {
-                            if( !authenticated ){
-                                this.props.modalStateHandler( false, false, false, false, false, true, true )    
-                            }
-                        }) } className="Leave-review">
-                            <a href="#" onClick={ e => e.preventDefault() }>Leave review</a>
+                            <h3>Reviews</h3>
+
+                            <div onClick={() => this.setState({ leaveReview: true }, () => {
+                                if (!authenticated) {
+                                    this.props.modalStateHandler(false, false, false, false, false, true, true)
+                                }
+                            })} className="Leave-review">
+                                <a href="#" onClick={e => e.preventDefault()}>Leave review</a>
+                            </div>
                         </div>
+
                         <div className="hr">
                         </div>
                         <div className="review-section">
 
-                            { authenticated ?
+                            {authenticated ?
                                 <div>
-                                    { this.state.leaveReview ?
-                                        <div style={ { padding: 10 } }>
-                                            <Field name='rating' component={ renderFieldRating } type="text" label="Full Name" />
-                                            <Field name='comment' component={ renderFieldTextArea } type="text" label="Comment" className="inputBox" />
-                                            <button className="button" onClick={ handleSubmit( async ( data1 ) => {
+                                    {this.state.leaveReview ?
+                                        <div style={{ padding: 10 }}>
+                                            <Field name='rating' component={renderFieldRating} type="text" label="Full Name" />
+                                            <Field name='comment' component={renderFieldTextArea} type="text" label="Comment" className="inputBox" />
+                                            <button className="button" onClick={handleSubmit(async (data1) => {
 
-                                                const editData = await mutate( {
+                                                const editData = await mutate({
                                                     variables: {
                                                         rating: data1.rating ? data1.rating : 0,
                                                         comment: data1.comment,
                                                         partyId: partyId
                                                     },
                                                     refetchQueries: [{ query: query }]
-                                                } )
+                                                })
 
-                                                this.setState( { leaveReview: false } );
+                                                this.setState({ leaveReview: false });
 
-                                            } ) }>Submit</button>
+                                            })}>Submit</button>
                                         </div>
-                                        : '' }
-                                </div> : 'Please login to give review and comment' }
-                            { data.singleParty.comment ? data.singleParty.comment.map( ( data2, i ) => {
+                                        : ''}
+                                </div> : 'Please login to give review and comment'}
+                            {data.singleParty.comment ? data.singleParty.comment.map((data2, i) => {
 
-                                return <div key={ i }>
-                                    <div className="user">                                        
+                                return <div key={i}>
+                                    <div className="user">
 
                                         <StarRatingComponent
                                             name="rate2"
-                                            editing={ false }
+                                            editing={false}
                                             //renderStarIcon={ () => <span></span> }
-                                            starCount={ 5 }
-                                            value={ data2.rating }
+                                            starCount={5}
+                                            value={data2.rating}
                                         />
 
-                                        <span style={{marginLeft:'5px'}}>{ data2.name }</span>
+                                        <span style={{ marginLeft: '5px' }}>{data2.name}</span>
 
                                     </div>
                                     <div className="user-comments" >
                                         <p>
-                                            { data2.comment }
+                                            {data2.comment}
                                         </p>
                                     </div>
                                 </div>
 
-                            } ) : '' }
+                            }) : ''}
 
                         </div>
 
@@ -358,12 +360,12 @@ class ItemDetail extends React.Component {
                         </h4>
 
                         <div className="item-contact">
-                            <img src={ location } />
-                            <span>{ data.singleParty.address }</span>
+                            <img src={location} />
+                            <span>{data.singleParty.address}</span>
                         </div>
                         <div className="item-contact">
-                            <img src={ phone } />
-                            <span>{ data.singleParty.phoneNumber }</span>
+                            <img src={phone} />
+                            <span>{data.singleParty.phoneNumber}</span>
                         </div>
                     </div>
                     <div className="open-hour">
@@ -400,9 +402,9 @@ class ItemDetail extends React.Component {
                     <div className="image-section">
 
                         <div className="image-row">
-                            { data.singleParty.photo ? data.singleParty.photo.map( ( data, i ) => {
-                                return <img key={ i } className="image" src={ `${ url }/static/${ data.filename }` } />
-                            } ) : '' }
+                            {data.singleParty.photo ? data.singleParty.photo.map((data, i) => {
+                                return <img key={i} className="image" src={`${url}/static/${data.filename}`} />
+                            }) : ''}
 
                         </div>
                     </div>
@@ -414,10 +416,10 @@ class ItemDetail extends React.Component {
 
 
 
-function mapStateToProps( state ) {
+function mapStateToProps(state) {
     return { authenticated: state.auth.isAuthenticated }
 }
 
-export default withRouter( connect( mapStateToProps, null )( graphql( query, {
-    options: ( { match } ) => ( { variables: { name: match.params.name } } )
-} )( form( graphql( mutation )( ItemDetail ) ) ) ) )
+export default withRouter(connect(mapStateToProps, null)(graphql(query, {
+    options: ({ match }) => ({ variables: { name: match.params.name } })
+})(form(graphql(mutation)(ItemDetail)))))

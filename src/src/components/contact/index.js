@@ -14,24 +14,24 @@ const Map = ReactMapboxGl({
     accessToken: "pk.eyJ1Ijoia2VjaGVhbGV4cHJ0MiIsImEiOiJjam94azh4OHcyODByM3FqeHd1Nm43NWl6In0.0w8_b3fwLMXf8a1zSGgC2w"
 });
 
-export const renderField = ( { input, label, placeholder, type, meta: { touched, error } } ) => (
+export const renderField = ({ input, label, placeholder, type, meta: { touched, error } }) => (
     <div className="renderField">
-        <label>{ label }</label>
+        <label>{label}</label>
         <div>
-            <input { ...input } placeholder={ placeholder } type={ type } className="input" />
+            <input {...input} placeholder={placeholder} type={type} className="input" />
         </div>
         <div>
-            { touched && error && <span><sup>*</sup>{ error }</span> }
+            {touched && error && <span><sup>*</sup>{error}</span>}
         </div>
     </div>
 )
 
-export const renderTextarea = ( { input, label, placeholder, type, meta: { touched, error } } ) => (
+export const renderTextarea = ({ input, label, placeholder, type, meta: { touched, error } }) => (
     <div className="renderField">
-        <label>{ label }</label>
+        <label>{label}</label>
         <div>
-            <input { ...input } placeholder={ placeholder } type={ type } className="textArea" />
-            { touched && error && <span><sup>*</sup>{ error }</span> }
+            <input {...input} placeholder={placeholder} type={type} className="textArea" />
+            {touched && error && <span><sup>*</sup>{error}</span>}
         </div>
     </div>
 )
@@ -39,15 +39,15 @@ export const renderTextarea = ( { input, label, placeholder, type, meta: { touch
 const validate = values => {
     const errors = {}
 
-    if ( !values.name ) {
+    if (!values.name) {
         errors.name = 'Required'
     }
-    if ( !values.email ) {
+    if (!values.email) {
         errors.email = 'Required'
-    } else if ( !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test( values.email ) ) {
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
         errors.email = 'Invalid email address'
     }
-    if ( !values.message ) {
+    if (!values.message) {
         errors.message = 'Required'
     }
     return errors
@@ -60,10 +60,10 @@ const mutation = gql`mutation sendEmail($name:String,$email:String,$message:Stri
 }`
 
 class ContactUs extends React.Component {
-    
+
     state = { errors: [], showMessage: false }
 
-    render(){
+    render() {
         return <div className="contact">
             <div className="header">
                 <div>
@@ -84,7 +84,7 @@ class ContactUs extends React.Component {
                         Kingston 5<br />
                         Jamaica W.I.<br />
                     </p>
-                    <Map
+                    {/* <Map
                         style="mapbox://styles/mapbox/streets-v8"
                         className="mobile-map"
                     >
@@ -94,7 +94,7 @@ class ContactUs extends React.Component {
                             layout={{ "icon-image": "marker-15" }}>
                             <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
                         </Layer>
-                    </Map>
+                    </Map>*/}
                     <p style={{ marginTop: 40 }}>
                         <img src={phone} /> (876) 920-4926-30<br />
                         <img src={fax} /> (876) 920-4944<br />
@@ -110,40 +110,40 @@ class ContactUs extends React.Component {
                         Leave us message
                     </div>
 
-                    <form onSubmit={() => {return false}} >
+                    <form onSubmit={() => { return false }} >
                         <Field
                             name="name"
                             type="text"
-                            component={ renderField }
+                            component={renderField}
                             label="Your full name"
                         />
                         <Field
                             name="email"
                             type="email"
-                            component={ renderField }
+                            component={renderField}
                             label="Email Address"
                             placeholder=""
                         />
-                        <Field 
-                            name="message" 
+                        <Field
+                            name="message"
                             type="textarea"
-                            component={ renderTextarea } 
-                            label="Message Box" 
+                            component={renderTextarea}
+                            label="Message Box"
                         />
                         {
-                            this.state.showMessage ? <div> Message sent!!</div> : null 
+                            this.state.showMessage ? <div> Message sent!!</div> : null
                         }
                         <div>
-                            <button className="button" onClick={ this.props.handleSubmit( async(data) => {
+                            <button className="button" onClick={this.props.handleSubmit(async (data) => {
 
-                                const result = await this.props.mutate( {
+                                const result = await this.props.mutate({
                                     variables: {
-                                        name: data.name, 
+                                        name: data.name,
                                         email: data.email,
                                         message: data.message,
                                     },
                                     // refetchQueries: () => [{ query: query }]
-                                } )
+                                })
 
                                 this.setState({
                                     showMessage: true
@@ -154,26 +154,25 @@ class ContactUs extends React.Component {
                     </form>
                 </div>
             </div>
-            <Map
-                style="mapbox://styles/mapbox/streets-v8"
-                className="desktop-map"
-            >
+            {/* <Map
+                style="mapbox://styles/kechealexprt2/cjq7f3fqf1h4q2rqdcz44o8j7"
+                className="desktop-map">
                 <Layer
                     type="symbol"
                     id="marker"
                     layout={{ "icon-image": "marker-15" }}>
-                    <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
+                    <Feature coordinates={[-76.7897505, 18.0064986]} />
                 </Layer>
-            </Map>
+            </Map> */}
         </div>
     }
 }
 
-const contactForm = reduxForm( {
+const contactForm = reduxForm({
     form: 'contactus',
     enableReinitialize: true,
     validate
 
-} )
+})
 
-export default withRouter( ( contactForm( graphql( mutation )( ContactUs ) ) ) )
+export default withRouter((contactForm(graphql(mutation)(ContactUs))))
