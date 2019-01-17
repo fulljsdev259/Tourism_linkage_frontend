@@ -195,47 +195,48 @@ const geojson = {
         }
     ]
 }
-const sliderImages = [{
-    url: slider1,
-    title: "Online presence for our products",
-},
+const sliderImages = [
 
-{
-    url: slider3,
-    title: "Keeping money in Jamaica",
-},
-
-{
-    url: slider7,
-    title: "Cultivating dreams & talent",
-},
-
-{
-    url: slider8,
-    title: "Discovering the taste of Jamaica",
-},
-
-{
-    url: slider5,
-    title: "Creating a creative culture",
-},
+    {
 
 
-{
-    url: slider9,
-    title: "Linking our suppliers with buyers",
-},
+        url: slider9,
+        title: "Linking our suppliers with buyers",
+    },
+    {
+        url: slider1,
+        title: "Online presence for our products",
+    },
 
+    {
+        url: slider3,
+        title: "Keeping money in Jamaica",
+    },
 
-{
-    url: slider4,
-    title: "Adding more jobs to our economy",
-},
+    {
+        url: slider7,
+        title: "Cultivating dreams & talent",
+    },
 
-{
-    url: slider6,
-    title: "Farm to Table: serving local food",
-},
+    {
+        url: slider8,
+        title: "Discovering the taste of Jamaica",
+    },
+
+    {
+        url: slider5,
+        title: "Creating a creative culture",
+    },
+
+    {
+        url: slider4,
+        title: "Adding more jobs to our economy",
+    },
+
+    {
+        url: slider6,
+        title: "Farm to Table: serving local food",
+    },
 
 ]
 
@@ -345,7 +346,7 @@ class Index extends React.Component {
                 </div>
                 <div className="divMiddle">
                     <div className="header">
-                        <h3>Find Jamaica's Suppliers </h3> <span className="jamaicalove"><img width="35" src={JamaicaLove} /></span>
+                        <h3>Find Jamaica's Tourism Suppliers </h3>
                     </div>
 
 
@@ -453,351 +454,352 @@ class Index extends React.Component {
 
                 <div className="divMiddleMobileOnly" id="scollDiv">
                     <div className="header">
-                        <h3>Jamaica's manufactures </h3> <span className="jamaicalove"><img width="35" src={JamaicaLove} /></span>
+                        <h3>Find Jamaica's Tourism Suppliers</h3> 
                     </div>
-                    <ul id="menu">
-                        <li>
-                            <input onClick={(e) => {
+                        <ul id="menu">
+                            <li>
+                                <input onClick={(e) => {
 
-                                this.setState({ subMenu: true })
-                                //  e.preventDefault();
+                                    this.setState({ subMenu: true })
+                                    //  e.preventDefault();
 
-                            }} id="Jamaica" type="checkbox" name="menu" />
-                            <label htmlFor="Jamaica">{regionData === 'all' ? 'All Jamaica' : regionData}</label>
-                            {this.state.subMenu ?
-                                <ul className="submenu">
-                                    <li onClick={(e) => {
-                                        e.preventDefault();
-                                        document.getElementById("Jamaica").checked = false;
-                                        this.setState({ region: "Western Jamaica", subMenu: !this.state.subMenu })
-                                        region("Western Jamaica")
-                                    }}><a href="#">Western Jamaica</a></li>
-                                    <li onClick={(e) => {
-                                        e.preventDefault();
-                                        document.getElementById("Jamaica").checked = false;
-                                        this.setState({ region: "Central Jamaica", subMenu: !this.state.subMenu })
-                                        region("Central Jamaica")
-                                    }
-                                    }><a href="#">Central Jamaica</a></li>
-                                    <li onClick={(e) => {
-                                        e.preventDefault();
-                                        document.getElementById("Jamaica").checked = false;
-                                        this.setState({ region: "Eastern Jamaica", subMenu: !this.state.subMenu })
-                                        region("Eastern Jamaica")
+                                }} id="Jamaica" type="checkbox" name="menu" />
+                                <label htmlFor="Jamaica">{regionData === 'all' ? 'All Jamaica' : regionData}</label>
+                                {this.state.subMenu ?
+                                    <ul className="submenu">
+                                        <li onClick={(e) => {
+                                            e.preventDefault();
+                                            document.getElementById("Jamaica").checked = false;
+                                            this.setState({ region: "Western Jamaica", subMenu: !this.state.subMenu })
+                                            region("Western Jamaica")
+                                        }}><a href="#">Western Jamaica</a></li>
+                                        <li onClick={(e) => {
+                                            e.preventDefault();
+                                            document.getElementById("Jamaica").checked = false;
+                                            this.setState({ region: "Central Jamaica", subMenu: !this.state.subMenu })
+                                            region("Central Jamaica")
+                                        }
+                                        }><a href="#">Central Jamaica</a></li>
+                                        <li onClick={(e) => {
+                                            e.preventDefault();
+                                            document.getElementById("Jamaica").checked = false;
+                                            this.setState({ region: "Eastern Jamaica", subMenu: !this.state.subMenu })
+                                            region("Eastern Jamaica")
 
-                                    }
-                                    }><a href="#">Eastern Jamaica</a></li>
+                                        }
+                                        }><a href="#">Eastern Jamaica</a></li>
 
-                                </ul>
-                                : ''}
-                        </li>
-                    </ul>
+                                    </ul>
+                                    : ''}
+                            </li>
+                        </ul>
 
-                    <ul id="menu">
-                        <li>
-                            <input onClick={(e) => {
+                        <ul id="menu">
+                            <li>
 
-                                this.setState({ subMobileMenu: true })
-                                //  e.preventDefault();
+                                <input onClick={(e) => {
 
-                            }}
-                                id="Category" type="checkbox" name="menu" />
-                            <label htmlFor="Category"> {categoryData === 'all' ? 'All Categories' : categoryData}</label>
-                            {this.state.subMobileMenu ?
+                                    this.setState({ subMobileMenu: true })
+                                    //  e.preventDefault();
 
-                                <ul className="submenu">
-
-
-
-                                    <li onClick={(e) => {
-                                        document.getElementById("Category").checked = false;
-                                        this.setState({ category: 'Food and Agro', subMobileMenu: false })
-                                        category('Food and Agro')
-                                        e.preventDefault();
-                                    }
-                                    } ><a href="#"><div className="icon"><img src={Printing} />Food</div></a></li>
-
-
-                                    <li onClick={(e) => {
-                                        document.getElementById("Category").checked = false;
-                                        this.setState({ category: 'Printing, Packaging and Paper', subMobileMenu: false })
-                                        category('Printing, Packaging and Paper')
-                                        e.preventDefault();
-                                    }
-                                    }><a href="#"><div className="icon"><img src={Printing2} />Printing & Packaging</div></a></li>
-
-                                    <li onClick={(e) => {
-                                        document.getElementById("Category").checked = false;
-                                        this.setState({ category: 'Minerals and Metal', subMobileMenu: false })
-                                        category('Minerals and Metal')
-                                        e.preventDefault();
-                                    }
-                                    }><a href="#"><div className="icon"><img src={Metal} />Minerals & Metals</div></a></li>
-                                    <li onClick={(e) => {
-                                        document.getElementById("Category").checked = false;
-                                        this.setState({ category: 'Electrical, Electronics and Automotive', subMobileMenu: false })
-                                        category('Electrical, Electronics and Automotive')
-                                        e.preventDefault();
-                                    }
-                                    }><a href="#"><div className="icon"><img src={Electricity} />Electrical,Electronics & automative</div></a></li>
-                                    <li onClick={(e) => {
-                                        document.getElementById("Category").checked = false;
-                                        this.setState({ category: 'Chemicals, Cosmetics and Pharmaceuticals', subMobileMenu: false })
-                                        category('Chemicals, Cosmetics and Pharmaceuticals')
-
-                                        e.preventDefault();
-                                    }
-                                    } ><a href="#"><div className="icon"><img src={chemical} /> Chemical, Cosmetics &Pharmaceuticals</div></a></li>
-                                    <li onClick={(e) => {
-                                        document.getElementById("Category").checked = false;
-                                        this.setState({ category: 'Furniture, Wooden and Bedding', subMobileMenu: false })
-                                        category('Furniture, Wooden and Bedding')
-                                        e.preventDefault();
-                                    }
-                                    } ><a href="#"><div className="icon"><img src={furniture} />Furniture, Wooden & Bedding</div></a></li>
-                                    <li onClick={(e) => {
-                                        document.getElementById("Category").checked = false;
-                                        this.setState({ category: 'Textile and Sewn', subMobileMenu: false })
-                                        category('Textile and Sewn')
-                                        e.preventDefault();
-                                    }
-                                    }><a href="#"><div className="icon"><img src={Textile} />Textile & Sewn</div></a></li>
-                                </ul>
-                                : ''}
-                        </li>
-                    </ul>
-
-
-
-
-                </div>
-
-                <div className="map-section" name="map-listing">
-                    <div className="toggler check1">
-                        <button className={!this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn"} onClick={this.props.toggleListing}>Map View</button>
-                        <button className={this.props.showListing ? "list-toggle-btn active" : "list-toggle-btn"} onClick={this.props.toggleListing}>List View</button>
-                    </div>
-                    <div className={this.props.showListing ? "hide" : "divMap"}>
-
-
-                        <Map
-
-
-                            //style="mapbox://styles/mapbox/streets-v8"
-                            style="mapbox://styles/kechealexprt2/cjq7f3fqf1h4q2rqdcz44o8j7"
-
-                            className="map"
-                            center={[this.state.centerLang, this.state.centerLat]}
-                            zoom={[this.state.centerZoom]}
-                            ref={(e) => { this.map = e; }}
-                            onStyleLoad={map => {
-                                this.setState({
-                                    map: map
-                                });
-                                map.setPaintProperty('building', 'fill-color', [
-                                    "interpolate",
-                                    ["exponential", 0.5],
-                                    ["zoom"],
-                                    15,
-                                    "#e2714b",
-                                    22,
-                                    "#eee695"
-                                ]);
-
-                                map.setPaintProperty('building', 'fill-opacity', [
-                                    "interpolate",
-                                    ["exponential", 0.5],
-                                    ["zoom"],
-                                    15,
-                                    0,
-                                    22,
-                                    1
-                                ]);
-                            }}
-                        >
-
-
-
-                            } ) */}
-
-
-
-
-
-                            <Layer
-                                type="symbol"
-                                id={"marker1"}
-                                layout={{
-                                    "icon-image": categoryData == 'all' || categoryData == 'Food and Agro' ? "food" : '', 'icon-allow-overlap': true
                                 }}
-                                images={food}
+                                    id="Category" type="checkbox" name="menu" />
+                                <label htmlFor="Category"> {categoryData === 'all' ? 'All Categories' : categoryData}</label>
+                                {this.state.subMobileMenu ?
 
-                            //type="circle" radius={ 20 } color={ '#27ae60' } fillColor='#27ae60' fillOpacity={ 1 }
+                                    <ul className="submenu">
+
+
+
+                                        <li onClick={(e) => {
+                                            document.getElementById("Category").checked = false;
+                                            this.setState({ category: 'Food and Agro', subMobileMenu: false })
+                                            category('Food and Agro')
+                                            e.preventDefault();
+                                        }
+                                        } ><a href="#"><div className="icon"><img src={Printing} />Food</div></a></li>
+
+
+                                        <li onClick={(e) => {
+                                            document.getElementById("Category").checked = false;
+                                            this.setState({ category: 'Printing, Packaging and Paper', subMobileMenu: false })
+                                            category('Printing, Packaging and Paper')
+                                            e.preventDefault();
+                                        }
+                                        }><a href="#"><div className="icon"><img src={Printing2} />Printing & Packaging</div></a></li>
+
+                                        <li onClick={(e) => {
+                                            document.getElementById("Category").checked = false;
+                                            this.setState({ category: 'Minerals and Metal', subMobileMenu: false })
+                                            category('Minerals and Metal')
+                                            e.preventDefault();
+                                        }
+                                        }><a href="#"><div className="icon"><img src={Metal} />Minerals & Metals</div></a></li>
+                                        <li onClick={(e) => {
+                                            document.getElementById("Category").checked = false;
+                                            this.setState({ category: 'Electrical, Electronics and Automotive', subMobileMenu: false })
+                                            category('Electrical, Electronics and Automotive')
+                                            e.preventDefault();
+                                        }
+                                        }><a href="#"><div className="icon"><img src={Electricity} />Electrical,Electronics & automative</div></a></li>
+                                        <li onClick={(e) => {
+                                            document.getElementById("Category").checked = false;
+                                            this.setState({ category: 'Chemicals, Cosmetics and Pharmaceuticals', subMobileMenu: false })
+                                            category('Chemicals, Cosmetics and Pharmaceuticals')
+
+                                            e.preventDefault();
+                                        }
+                                        } ><a href="#"><div className="icon"><img src={chemical} /> Chemical, Cosmetics &Pharmaceuticals</div></a></li>
+                                        <li onClick={(e) => {
+                                            document.getElementById("Category").checked = false;
+                                            this.setState({ category: 'Furniture, Wooden and Bedding', subMobileMenu: false })
+                                            category('Furniture, Wooden and Bedding')
+                                            e.preventDefault();
+                                        }
+                                        } ><a href="#"><div className="icon"><img src={furniture} />Furniture, Wooden & Bedding</div></a></li>
+                                        <li onClick={(e) => {
+                                            document.getElementById("Category").checked = false;
+                                            this.setState({ category: 'Textile and Sewn', subMobileMenu: false })
+                                            category('Textile and Sewn')
+                                            e.preventDefault();
+                                        }
+                                        }><a href="#"><div className="icon"><img src={Textile} />Textile & Sewn</div></a></li>
+                                    </ul>
+                                    : ''}
+                            </li>
+                        </ul>
+
+
+
+
+                    </div>
+
+                    <div className="map-section" name="map-listing">
+                        <div className="toggler check1">
+                            <button className={!this.props.showListing ? "map-toggle-btn active" : "map-toggle-btn"} onClick={this.props.toggleListing}>Map View</button>
+                            <button className={this.props.showListing ? "list-toggle-btn active" : "list-toggle-btn"} onClick={this.props.toggleListing}>List View</button>
+                        </div>
+                        <div className={this.props.showListing ? "hide" : "divMap"}>
+
+
+                            <Map
+
+
+                                //style="mapbox://styles/mapbox/streets-v8"
+                                style="mapbox://styles/kechealexprt2/cjq7f3fqf1h4q2rqdcz44o8j7"
+
+                                className="map"
+                                center={[this.state.centerLang, this.state.centerLat]}
+                                zoom={[this.state.centerZoom]}
+                                ref={(e) => { this.map = e; }}
+                                onStyleLoad={map => {
+                                    this.setState({
+                                        map: map
+                                    });
+                                    map.setPaintProperty('building', 'fill-color', [
+                                        "interpolate",
+                                        ["exponential", 0.5],
+                                        ["zoom"],
+                                        15,
+                                        "#e2714b",
+                                        22,
+                                        "#eee695"
+                                    ]);
+
+                                    map.setPaintProperty('building', 'fill-opacity', [
+                                        "interpolate",
+                                        ["exponential", 0.5],
+                                        ["zoom"],
+                                        15,
+                                        0,
+                                        22,
+                                        1
+                                    ]);
+                                }}
                             >
-                                {data.party.filter(item => regionData === 'all' ? item.categories === 'Food and Agro'
-                                    : item.region === regionData)
-                                    .filter(item => categoryData === 'all' ? item.categories === 'Food and Agro'
-                                        : item.categories === categoryData)
-                                    .map((item, index) => (
-                                        <Feature
-                                            key={index}
-                                            onClick={this.markerClick.bind(this, item)}
-                                            coordinates={[item.longitude, item.latitude]}
-                                        />
-                                    ))}
-
-                            </Layer>
-
-
-                            <Layer type="symbol" id={"marker2"} layout={{ "icon-image": categoryData == 'all' || categoryData == 'Printing, Packaging and Paper' ? "printing" : '', 'icon-allow-overlap': true }}
-                                images={printing1}
-                            >
-                                {data.party.filter(item => regionData === 'all' ? item.categories === 'Printing, Packaging and Paper'
-
-                                    : item.region === regionData)
-                                    .filter(item => categoryData === 'all' ? item.categories === 'Printing, Packaging and Paper'
-                                        : item.categories === categoryData)
-                                    .map((item, index) => (
-                                        <Feature
-                                            key={index}
-                                            onClick={this.markerClick.bind(this, item)}
-                                            coordinates={[item.longitude, item.latitude]}
-                                        />
-                                    ))}
-
-                            </Layer>
-
-
-                            <Layer type="symbol" id={"marker3"} layout={{ "icon-image": categoryData == 'all' || categoryData == 'Electrical, Electronics and Automotive' ? "electricity" : '', 'icon-allow-overlap': true }}
-                                images={electricity}
-                            >
-                                {data.party.filter(item => regionData === 'all' ? item.categories === 'Electrical, Electronics and Automotive'
-                                    : item.region === regionData)
-                                    .filter(item => categoryData === 'all' ? item.categories === 'Electrical, Electronics and Automotive'
-                                        : item.categories === categoryData)
-                                    .map((item, index) => (
-                                        <Feature
-                                            key={index}
-                                            onClick={this.markerClick.bind(this, item)}
-                                            coordinates={[item.longitude, item.latitude]}
-                                        />
-                                    ))}
-
-                            </Layer>
 
 
 
-                            <Layer type="symbol" id={"marker4"} layout={{ "icon-image": categoryData == 'all' || categoryData == 'Chemicals, Cosmetics and Pharmaceuticals' ? "chemical" : '', 'icon-allow-overlap': true }}
-                                images={chemical1}
-                            >
-                                {data.party.filter(item => regionData === 'all' ? item.categories === 'Chemicals, Cosmetics and Pharmaceuticals'
-                                    : item.region === regionData)
-                                    .filter(item => categoryData === 'all' ? item.categories === 'Chemicals, Cosmetics and Pharmaceuticals'
-                                        : item.categories === categoryData)
-                                    .map((item, index) => (
-                                        <Feature
-                                            key={index}
-                                            onClick={this.markerClick.bind(this, item)}
-                                            coordinates={[item.longitude, item.latitude]}
-                                        />
-                                    ))}
+                                } ) */}
+    
+    
+    
+    
+    
+                            <Layer
+                                    type="symbol"
+                                    id={"marker1"}
+                                    layout={{
+                                        "icon-image": categoryData == 'all' || categoryData == 'Food and Agro' ? "food" : '', 'icon-allow-overlap': true
+                                    }}
+                                    images={food}
 
-                            </Layer>
+                                //type="circle" radius={ 20 } color={ '#27ae60' } fillColor='#27ae60' fillOpacity={ 1 }
+                                >
+                                    {data.party.filter(item => regionData === 'all' ? item.categories === 'Food and Agro'
+                                        : item.region === regionData)
+                                        .filter(item => categoryData === 'all' ? item.categories === 'Food and Agro'
+                                            : item.categories === categoryData)
+                                        .map((item, index) => (
+                                            <Feature
+                                                key={index}
+                                                onClick={this.markerClick.bind(this, item)}
+                                                coordinates={[item.longitude, item.latitude]}
+                                            />
+                                        ))}
 
-
-
-
-                            <Layer type="symbol" id={"marker5"} layout={{ "icon-image": categoryData == 'all' || categoryData == 'Furniture, Wooden and Bedding' ? "furniture" : '', 'icon-allow-overlap': true }}
-                                images={furniture3}
-                            >
-                                {data.party.filter(item => regionData === 'all' ? item.categories === 'Furniture, Wooden and Bedding'
-                                    : item.region === regionData)
-                                    .filter(item => categoryData === 'all' ? item.categories === 'Furniture, Wooden and Bedding'
-                                        : item.categories === categoryData)
-                                    .map((item, index) => (
-                                        <Feature
-                                            key={index}
-                                            onClick={this.markerClick.bind(this, item)}
-                                            coordinates={[item.longitude, item.latitude]}
-                                        />
-                                    ))}
-
-                            </Layer>
-
-                            <Layer type="symbol" id={"marker6"} layout={{ "icon-image": categoryData == 'all' || categoryData == 'Minerals and Metal' ? "metal" : '', 'icon-allow-overlap': true }}
-                                images={metal}
-                            >
-                                {data.party.filter(item => regionData === 'all' ? item.categories === 'Minerals and Metal'
-                                    : item.region === regionData)
-                                    .filter(item => categoryData === 'all' ? item.categories === 'Minerals and Metal'
-                                        : item.categories === categoryData)
-                                    .map((item, index) => (
-                                        <Feature
-                                            key={index}
-
-                                            onClick={this.markerClick.bind(this, item)}
-                                            coordinates={[item.longitude, item.latitude]}
-                                        />
-                                    ))}
-
-                            </Layer>
+                                </Layer>
 
 
-                            <Layer type="symbol" id={"marker7"} layout={{ "icon-image": categoryData == 'all' || categoryData == 'Textile and Sewn' ? "textile" : '', 'icon-allow-overlap': true }}
-                                images={textile1}
-                            >
-                                {data.party.filter(item => regionData === 'all' ? item.categories === 'Textile and Sewn'
-                                    : item.region === regionData)
-                                    .filter(item => categoryData === 'all' ? item.categories === 'Textile and Sewn'
-                                        : item.categories === categoryData)
-                                    .map((item, index) => (
-                                        <Feature
-                                            key={index}
-                                            onClick={this.markerClick.bind(this, item)}
-                                            coordinates={[item.longitude, item.latitude]}
-                                        />
-                                    ))}
+                                <Layer type="symbol" id={"marker2"} layout={{ "icon-image": categoryData == 'all' || categoryData == 'Printing, Packaging and Paper' ? "printing" : '', 'icon-allow-overlap': true }}
+                                    images={printing1}
+                                >
+                                    {data.party.filter(item => regionData === 'all' ? item.categories === 'Printing, Packaging and Paper'
 
-                            </Layer>
-                            <ZoomControl style={{ position: 'relative', top: '-10px', left: 0, border: 'none', marginLeft: 10, boxShadow: ' rgba(0, 0, 0, 0.0) 0px 1px 4px' }} />
-                            {location && (
-                                <Popup key={location.id} coordinates={[location.longitude, location.latitude]}>
-                                    <div className="popup">
-                                        <div className="popup-content">
-                                            <div className="popup-header">
-                                                <span style={{ cursor: 'pointer' }} className="title" onClick={() => history.push(`/supplier/${location._id}`)}>{location.name} <span><img width="8" src={forward} /></span></span>
-                                                <img className="img" onClick={() => this.closePopup()} src={CloseBlue} />
-                                            </div>
-                                            <span className="category">{location.categories}</span>
-                                            <div className="labels">
-                                                {location.tags && location.tags.length > 0 ? location.tags.split(',').map((data, i) => {
-                                                    if (i < 4) {
-                                                        return <span key={i}>{data}</span>
-                                                    }
-                                                }) : ''}
+                                        : item.region === regionData)
+                                        .filter(item => categoryData === 'all' ? item.categories === 'Printing, Packaging and Paper'
+                                            : item.categories === categoryData)
+                                        .map((item, index) => (
+                                            <Feature
+                                                key={index}
+                                                onClick={this.markerClick.bind(this, item)}
+                                                coordinates={[item.longitude, item.latitude]}
+                                            />
+                                        ))}
 
-                                            </div>
-                                            <div className="contact-section">
-                                                <div className="item-contact">
-                                                    <img src={locationIcon} />
-                                                    <span>{location.address}</span>
+                                </Layer>
+
+
+                                <Layer type="symbol" id={"marker3"} layout={{ "icon-image": categoryData == 'all' || categoryData == 'Electrical, Electronics and Automotive' ? "electricity" : '', 'icon-allow-overlap': true }}
+                                    images={electricity}
+                                >
+                                    {data.party.filter(item => regionData === 'all' ? item.categories === 'Electrical, Electronics and Automotive'
+                                        : item.region === regionData)
+                                        .filter(item => categoryData === 'all' ? item.categories === 'Electrical, Electronics and Automotive'
+                                            : item.categories === categoryData)
+                                        .map((item, index) => (
+                                            <Feature
+                                                key={index}
+                                                onClick={this.markerClick.bind(this, item)}
+                                                coordinates={[item.longitude, item.latitude]}
+                                            />
+                                        ))}
+
+                                </Layer>
+
+
+
+                                <Layer type="symbol" id={"marker4"} layout={{ "icon-image": categoryData == 'all' || categoryData == 'Chemicals, Cosmetics and Pharmaceuticals' ? "chemical" : '', 'icon-allow-overlap': true }}
+                                    images={chemical1}
+                                >
+                                    {data.party.filter(item => regionData === 'all' ? item.categories === 'Chemicals, Cosmetics and Pharmaceuticals'
+                                        : item.region === regionData)
+                                        .filter(item => categoryData === 'all' ? item.categories === 'Chemicals, Cosmetics and Pharmaceuticals'
+                                            : item.categories === categoryData)
+                                        .map((item, index) => (
+                                            <Feature
+                                                key={index}
+                                                onClick={this.markerClick.bind(this, item)}
+                                                coordinates={[item.longitude, item.latitude]}
+                                            />
+                                        ))}
+
+                                </Layer>
+
+
+
+
+                                <Layer type="symbol" id={"marker5"} layout={{ "icon-image": categoryData == 'all' || categoryData == 'Furniture, Wooden and Bedding' ? "furniture" : '', 'icon-allow-overlap': true }}
+                                    images={furniture3}
+                                >
+                                    {data.party.filter(item => regionData === 'all' ? item.categories === 'Furniture, Wooden and Bedding'
+                                        : item.region === regionData)
+                                        .filter(item => categoryData === 'all' ? item.categories === 'Furniture, Wooden and Bedding'
+                                            : item.categories === categoryData)
+                                        .map((item, index) => (
+                                            <Feature
+                                                key={index}
+                                                onClick={this.markerClick.bind(this, item)}
+                                                coordinates={[item.longitude, item.latitude]}
+                                            />
+                                        ))}
+
+                                </Layer>
+
+                                <Layer type="symbol" id={"marker6"} layout={{ "icon-image": categoryData == 'all' || categoryData == 'Minerals and Metal' ? "metal" : '', 'icon-allow-overlap': true }}
+                                    images={metal}
+                                >
+                                    {data.party.filter(item => regionData === 'all' ? item.categories === 'Minerals and Metal'
+                                        : item.region === regionData)
+                                        .filter(item => categoryData === 'all' ? item.categories === 'Minerals and Metal'
+                                            : item.categories === categoryData)
+                                        .map((item, index) => (
+                                            <Feature
+                                                key={index}
+
+                                                onClick={this.markerClick.bind(this, item)}
+                                                coordinates={[item.longitude, item.latitude]}
+                                            />
+                                        ))}
+
+                                </Layer>
+
+
+                                <Layer type="symbol" id={"marker7"} layout={{ "icon-image": categoryData == 'all' || categoryData == 'Textile and Sewn' ? "textile" : '', 'icon-allow-overlap': true }}
+                                    images={textile1}
+                                >
+                                    {data.party.filter(item => regionData === 'all' ? item.categories === 'Textile and Sewn'
+                                        : item.region === regionData)
+                                        .filter(item => categoryData === 'all' ? item.categories === 'Textile and Sewn'
+                                            : item.categories === categoryData)
+                                        .map((item, index) => (
+                                            <Feature
+                                                key={index}
+                                                onClick={this.markerClick.bind(this, item)}
+                                                coordinates={[item.longitude, item.latitude]}
+                                            />
+                                        ))}
+
+                                </Layer>
+                                <ZoomControl style={{ position: 'relative', top: '-10px', left: 0, border: 'none', marginLeft: 10, boxShadow: ' rgba(0, 0, 0, 0.0) 0px 1px 4px' }} />
+                                {location && (
+                                    <Popup key={location.id} coordinates={[location.longitude, location.latitude]}>
+                                        <div className="popup">
+                                            <div className="popup-content">
+                                                <div className="popup-header">
+                                                    <span style={{ cursor: 'pointer' }} className="title" onClick={() => history.push(`/supplier/${location._id}`)}>{location.name} <span><img width="8" src={forward} /></span></span>
+                                                    <img className="img" onClick={() => this.closePopup()} src={CloseBlue} />
                                                 </div>
-                                                <div className="item-contact">
-                                                    <img src={phone} />
-                                                    <span>{location.phoneNumber}</span>
+                                                <span className="category">{location.categories}</span>
+                                                <div className="labels">
+                                                    {location.tags && location.tags.length > 0 ? location.tags.split(',').map((data, i) => {
+                                                        if (i < 4) {
+                                                            return <span key={i}>{data}</span>
+                                                        }
+                                                    }) : ''}
+
                                                 </div>
-                                            </div>
-                                            <div className="reviews-section">
-                                                <img className="rating" src={rating} />
-                                                <div className="reviews">
-                                                    <span>9 Reviews</span>
+                                                <div className="contact-section">
+                                                    <div className="item-contact">
+                                                        <img src={locationIcon} />
+                                                        <span>{location.address}</span>
+                                                    </div>
+                                                    <div className="item-contact">
+                                                        <img src={phone} />
+                                                        <span>{location.phoneNumber}</span>
+                                                    </div>
+                                                </div>
+                                                <div className="reviews-section">
+                                                    <img className="rating" src={rating} />
+                                                    <div className="reviews">
+                                                        <span>9 Reviews</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </Popup>
-                            )}
-                        </Map>
+                                    </Popup>
+                                )}
+                            </Map>
 
 
 
@@ -812,80 +814,82 @@ class Index extends React.Component {
 
 
 
-                    </div>
-                    <div className={this.props.showListing ? "list-section" : "hide"}>
-                        <div className="category category-sticky">
-                            <div>
-                                <span style={{ marginRight: '5px' }}>{data.party.filter(item => regionData === 'all' ? item
-                                    : item.region === regionData)
-                                    .filter(item => categoryData === 'all' ? item
-                                        : item.categories === categoryData).length}</span>
-                                {categoryData === 'all' ? 'All Categories' : categoryData}
-                            </div>
-                            <div>
-                                {regionData === 'all' ? '' : ' in ' + regionData}
-                            </div>
-
-                            {/* <span style={{ color: 'grey', fontSize: 12, marginTop: 10 }}>{regionData == "all" ? "All Jamica" : (regionData)}</span> */}
                         </div>
-                        {data.party.filter(item => regionData === 'all' ? item
-                            : item.region === regionData)
-                            .filter(item => categoryData === 'all' ? item
-                                : item.categories === categoryData)
-                            .map((item, i) => {
+                        <div className={this.props.showListing ? "list-section" : "hide"}>
+                            <div className="category category-sticky">
+                                <div>
+                                    <span style={{ marginRight: '5px' }}>{data.party.filter(item => regionData === 'all' ? item
+                                        : item.region === regionData)
+                                        .filter(item => categoryData === 'all' ? item
+                                            : item.categories === categoryData).length}</span>
+                                    {categoryData === 'all' ? 'All Categories' : categoryData}
+                                </div>
+                                <div>
+                                    {regionData === 'all' ? '' : ' in ' + regionData}
+                                </div>
 
-                                return <div key={i} onClick={() => history.push(`/supplier/${item._id}`)} className={"list-item" + (i == 0 ? ' first-item' : '')}>
-                                    <div className="item-header">
-                                        <span className="title">{item.name}</span>
-                                        {/*
+                                {/* <span style={{ color: 'grey', fontSize: 12, marginTop: 10 }}>{regionData == "all" ? "All Jamica" : (regionData)}</span> */}
+                            </div>
+                            {data.party.filter(item => regionData === 'all' ? item
+                                : item.region === regionData)
+                                .filter(item => categoryData === 'all' ? item
+                                    : item.categories === categoryData)
+                                .map((item, i) => {
+
+                                    return <div key={i} onClick={() => history.push(`/supplier/${item._id}`)} className={"list-item" + (i == 0 ? ' first-item' : '')}>
+                                        <div className="item-header">
+                                            <span className="title">{item.name}</span>
+                                            {/*
                                         <div className="rating">
                                             <img src={ rating } />
                                             <span className="reviews">9 Reviews</span>
                                         </div>
                                         */}
-                                    </div>
-                                    <span className="category">{item.categories}</span>
-                                    <div className="labels">
-                                        {item.length && item.tags.length > 0 ? item.tags.split(',').map((data, i) => {
-                                            if (i < 4) {
-                                                return <span key={i}>{data}</span>
-                                            }
-                                        }) : ''}
-                                    </div>
-                                    <div className="contact-section">
-                                        <div className="item-contact">
-                                            <img src={locationIcon} />
-                                            <span>{item.address}</span>
                                         </div>
-                                        <div className="item-contact">
-                                            <img src={phone} />
-                                            <span>{item.phoneNumber}</span>
+                                        <span className="category">{item.categories}</span>
+                                        <div className="labels">
+                                            {item.length && item.tags.length > 0 ? item.tags.split(',').map((data, i) => {
+                                                if (i < 4) {
+                                                    return <span key={i}>{data}</span>
+                                                }
+                                            }) : ''}
                                         </div>
+                                        <div className="contact-section">
+                                            <div className="item-contact">
+                                                <img src={locationIcon} />
+                                                <span>{item.address}</span>
+                                            </div>
+                                            <div className="item-contact">
+                                                <img src={phone} />
+                                                <span>{item.phoneNumber}</span>
+                                            </div>
+                                        </div>
+
                                     </div>
 
-                                </div>
+                                })
+                            }
 
-                            })
-                        }
-
+                        </div>
                     </div>
+
                 </div>
+            </div >
 
-            </div>
-        </div >
-
+            }
+        }
+        
+const mpStateToProps = (state) => ({
+                regionData: state.auth.region,
+            categoryData: state.auth.category
+        })
+        
+export default withRouter(connect(mpStateToProps, {region, category })(graphql(query, {
+                options: () => {
+        return {
+                variables: {
+                status: 'Published'
+        }
     }
 }
-
-const mpStateToProps = (state) => ({
-    regionData: state.auth.region,
-    categoryData: state.auth.category
-})
-
-export default withRouter(connect(mpStateToProps, { region, category })(graphql(query,{
-    options: () => {
-        return { variables : {
-            status: 'Published'
-        }}
-    }
 })(Index)));

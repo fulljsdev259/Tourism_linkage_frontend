@@ -10,6 +10,7 @@
  border-top: 1px solid #ebebeb;
   @media screen and(max-width:750px) {
     flex-direction: column;
+    text-align: center;
   }
   .copyright {
     display: flex;
