@@ -77,7 +77,11 @@ class AdminDash extends React.Component {
         }
         console.log( data )
         let row1 = [];
-        data.party.map( ( data, i ) => {
+
+
+        let partyData = data.party.reverse();
+
+        partyData.map( ( data, i ) => {
             //const c=data.passPercentage;
             //console.log( data )
 

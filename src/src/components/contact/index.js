@@ -98,7 +98,7 @@ class ContactUs extends React.Component {
                     <p style={{ marginTop: 40 }}>
                         <img src={phone} /> (876) 920-4926-30<br />
                         <img src={fax} /> (876) 920-4944<br />
-                        <img src={email} /> info@tourismlinkages.net<br />
+                        {/*<img src={email} /> info@tourismlinkages.net<br />*/}
                     </p>
 
                 </div>
