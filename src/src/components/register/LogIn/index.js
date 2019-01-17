@@ -101,7 +101,7 @@ class Login extends React.Component {
 
             <div className="remember-me">
                 <input type="checkbox" id="RememberMe" name="RememberMe" value="Remember Me" />
-                <label htmlFor="RememberMe">Remember Me</label>
+                {/*<label htmlFor="RememberMe">Remember Me</label>*/}
             </div>
             {this.renderErrors()}
             <div className="remeber-section">

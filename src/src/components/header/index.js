@@ -81,7 +81,6 @@ class Header extends React.Component {
         const oThis = this;
         if ( oThis.props.authenticated !== nextProps.authenticated )  // Check if it's a new user, you can also use some unique property, like the ID
         {
-            console.log( nextProps.authenticated )
             this.setState( { auth: nextProps.authenticated } )
         }
     }
@@ -104,6 +103,34 @@ class Header extends React.Component {
                     </div>
                 </Link>
                 <div className="itemDiv">
+                    {
+                        oThis.props.authenticated ?
+                            <span style={{marginRight:"66px", marginTop:"9px"}}>
+                                {loggedUserData && loggedUserData.name ? loggedUserData.name +', ' : null}
+                                
+                                <br/>
+                                <span onClick={ () => {
+                                this.setState({
+                                    apiCall: true
+                                })
+                                oThis.props.modalStateHandler( false, false, false, false, false, false, false )
+                                localStorage.removeItem( 'token' )
+                                localStorage.removeItem( 'token_user' )
+                                oThis.props.receiveLogout()
+
+                                oThis.props.history.push( '/' )
+                                setTimeout(() => {
+                                    this.setState({
+                                        apiCall: false
+                                    })
+                                },1000)
+                                
+                            } }>LOGOUT</span>
+                            </span>
+                        :
+                            null
+
+                    }
 
                     <button className="menu-toggle" onClick={ this.ToggleBody }></button>
                     <nav>
@@ -127,16 +154,26 @@ class Header extends React.Component {
                             } } data-text="GET COMPANY LISTED" onClick={ () => {
                                 oThis.props.modalStateHandler( false, false, false, true, false, false, true )
                             } }><span className="blueBtn">GET COMPANY LISTED </span></li>
-                            <li data-text="GET COMPANY LISTED" className="registerLi" onClick={ () => {
-                                oThis.props.modalStateHandler( false, false, false, false, false, true, true )
-                            } }>
-                                <div className="lower-section" >
-                                    <div className="registerDiv"
 
-                                    >REGISTER / LOGIN
-                                     </div>
-                                </div>
-                            </li>
+                            {
+                                !oThis.props.authenticated ?                            
+                                <li data-text="GET COMPANY LISTED" className="registerLi" onClick={ () => {
+                                    this.ToggleBody()
+                                    oThis.props.modalStateHandler( false, false, false, false, false, true, true )
+                                } }>
+                                    <div className="lower-section" >
+                                        <div className="registerDiv"
+
+                                        >REGISTER / LOGIN
+                                         </div>
+                                    </div>
+                                </li>
+                                :
+                                <li data-text="GET COMPANY LISTED" className="registerLi">
+                                    
+                                </li>
+                            }
+
                         </ul>
                     </nav>
                 </div>
