@@ -1,4 +1,38 @@
 .contact{
+
+
+    .content-one{
+
+      .heading-one{
+          font-family: "Open Sans"; 
+          font-weight: bolder;
+          margin-top:15px;
+          font-size: 30px;
+          color:#5165FF;
+          @media screen and(max-width:576px) {
+              margin: 15px 0px;
+          }
+      }
+
+      p{
+          color:#929292;
+          font-size: 16px;
+          @media screen and(max-width:576px) {
+              margin: 15px 0px;
+          }
+      }
+      .button{
+          text-decoration: none;
+          background-color: #5165FF;
+          color:#fff;
+          border:none;
+          padding:7px 25px;
+          border-radius: 5px;
+          font-size:13px;
+          font-weight: 'semi-bold';
+          box-shadow: 0 8px 25px 6px rgba(223, 223, 223, 0.5);
+        }
+    }
     
     margin:30px 75px 0px 75px;
     @media (max-width :576px) {

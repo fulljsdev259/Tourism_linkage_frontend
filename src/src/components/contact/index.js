@@ -63,6 +63,19 @@ class ContactUs extends React.Component {
 
     state = { errors: [], showMessage: false }
 
+     renderSuccessBlock = () => {
+        return (
+            <div className="content-one">
+                <div className="heading-one">Thank you for getting in touch!</div>
+                <br/>
+                <p>One of our staff at Tourism Linkages Network will be getting back to you shortly.</p>
+                <div className="heading-one">
+                    <button type="button" className="button" onClick={() => this.props.closeModal()}> OK</button>
+                </div>
+            </div>
+        )
+    }
+
     render() {
         return <div className="contact">
             <div className="header">
@@ -72,6 +85,13 @@ class ContactUs extends React.Component {
                 </div>
                 <img src={Close} onClick={() => this.props.closeModal()} />
             </div>
+
+            {
+                this.state.showMessage ? 
+                this.renderSuccessBlock()
+                :
+
+
             <div className="content">
                 <div className="contact1">
                     <div className="heading">
@@ -130,9 +150,7 @@ class ContactUs extends React.Component {
                             component={renderTextarea}
                             label="Message Box"
                         />
-                        {
-                            this.state.showMessage ? <div> Message sent!!</div> : null
-                        }
+                        
                         <div>
                             <button className="button" onClick={this.props.handleSubmit(async (data) => {
 
@@ -154,6 +172,13 @@ class ContactUs extends React.Component {
                     </form>
                 </div>
             </div>
+
+
+            }
+
+
+
+
             {/* <Map
                 style="mapbox://styles/kechealexprt2/cjq7f3fqf1h4q2rqdcz44o8j7"
                 className="desktop-map">
