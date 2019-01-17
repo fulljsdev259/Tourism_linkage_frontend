@@ -317,6 +317,8 @@ class ItemDetail extends React.Component {
 
                                                 this.setState({ leaveReview: false });
 
+                                                this.props.data.refetch();
+
                                             })}>Submit</button>
                                         </div>
                                         : ''}
