@@ -186,6 +186,9 @@
         color:red;
         font-size:12px
     }
+
+
+
 }
 
 .nextsignup{
@@ -207,3 +210,10 @@
         font-size:14px;
         background-color: #5165FF;
     }
+
+.ant-select-dropdown{
+    width: 25% !important;
+    @media screen and(max-width: 576px){
+        width:90% !important;
+    }
+}

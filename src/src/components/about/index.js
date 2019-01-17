@@ -1,6 +1,8 @@
 import React from 'react';
 import Close from '../../images/icon/cross.svg';
 import './index.scss'
+import About1 from '../../images/about1.png';
+import About2 from '../../images/about2.png';
 export default ( { closeModal } ) => {
     return <div className="about">
         <div className="header">
@@ -10,6 +12,15 @@ export default ( { closeModal } ) => {
             </div>
             <img src={ Close } onClick={ () => closeModal() } />
         </div>
+        <div className="flex-container">
+            <div>
+                <img src={About1}/>        
+            </div>
+            <div>
+                <img src={About2}/>        
+            </div>
+        </div>
+        
         <div className="content">
             <div className="heading">Background</div>
             <p>
