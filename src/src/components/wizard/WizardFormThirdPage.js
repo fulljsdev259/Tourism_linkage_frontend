@@ -233,7 +233,9 @@ class WizardFormThirdPage extends React.Component {
                                 component={ renderField }
                                 label="Company website"
                             />
+                            {/*
                             <Field name="hours" type="textarea" component={ renderTextarea } label="Open hours" />
+                            */}
 
                             {this.renderErrors()}
 

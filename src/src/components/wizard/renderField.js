@@ -21,7 +21,7 @@ export const renderTextarea = ( { input, label, placeholder, type, meta: { touch
     <div className="renderField">
         <label>{ label }</label>
         <div>
-            <input { ...input } placeholder={ placeholder } type={ type } className="textArea" />
+            <textarea style={ { height: 100 } } { ...input } placeholder={ placeholder } type={ type } className="textArea" />
             { touched && error && <span><sup>*</sup>{ error }</span> }
         </div>
     </div>
