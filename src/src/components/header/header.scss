@@ -368,6 +368,9 @@
         width: 160px;
         padding: 10px 20px;
       }
+      @media screen and (min-width: 770px) and (max-width:1090px) {
+        margin-right: 10px;
+      }
     }
     .itemDiv {
       flex: 3;
@@ -380,6 +383,18 @@
           margin: 0px 10px;
           font-size: 14px;
           padding: 7px;
+          @media screen and (min-width: 767px) and (max-width:870px) {
+            padding: 22px 0px 0px 0px;
+            white-space: nowrap;
+          }
+          @media screen and (min-width: 870px) and (max-width:935px) {
+            padding: 20px 0px 0px 0px;
+            white-space: nowrap;
+          }
+          @media screen and (min-width: 935px) and (max-width:976px) {
+            padding: 8px 0px 0px 0px;
+            white-space: nowrap;
+          }
         }
         .getStarted {
           margin: 0px 10px;
@@ -391,6 +406,10 @@
           background-color:#5165ff;
           a{
             color: white;
+          }
+          @media screen and (min-width: 767px) and (max-width:870px) {
+            white-space: nowrap;
+            margin-top: 10px;
           }
         }
         a{
