@@ -4,6 +4,7 @@ import crossWhite from '../../images/icon/cross-white.svg';
 import './index.scss'
 import Register1 from './signUp';
 import Login from './LogIn';
+import Forgot from './forgot';
 
 export default class Register extends React.Component {
 
@@ -12,7 +13,8 @@ export default class Register extends React.Component {
         this.state = {
             register: false,
             login: true,
-            registerationSuccess: false
+            registerationSuccess: false,
+            forgot: false
         }
     }
 
@@ -20,7 +22,8 @@ export default class Register extends React.Component {
         this.setState({
             registerationSuccess: true,
             login: true,
-            register: false
+            register: false,
+            forgot: false
         })
     }
 
@@ -40,19 +43,41 @@ export default class Register extends React.Component {
                     {
                         this.state.registerationSuccess ? <div className="register-success-message"> You have Register Successfully. You can login now!</div> : null
                     }
-                    <div className="heading">Welcome to TLN</div>
-                    
-                    <div className="subHead">
-                        <span onClick={ () => this.setState( { login: false, register: true } ) }
-                            style={ { color: this.state.register ? '#fff' : "#A4AFD0", cursor:'pointer' } }>Register</span>
-                        <span onClick={ () => this.setState( { login: true, register: false } ) }
-                            style={ { color: this.state.login ? '#fff' : "#A4AFD0", cursor:'pointer' } } >Login</span>
-                    </div>
+
+                    { 
+                        this.state.forgot 
+                        ?
+                            <div className="heading">Reset Password</div>
+                            
+                        :
+                            <div>
+                                <div className="heading">Welcome to TLN</div>
+                                
+                                <div className="subHead">
+                                    <span onClick={ () => this.setState( { login: false, register: true } ) }
+                                        style={ { color: this.state.register ? '#fff' : "#A4AFD0", cursor:'pointer' } }>Register</span>
+                                    <span onClick={ () => this.setState( { login: true, register: false } ) }
+                                        style={ { color: this.state.login ? '#fff' : "#A4AFD0", cursor:'pointer' } } >Login</span>
+                                </div>
+                            </div>
+                    }
 
                     <div>
-                        { this.state.login ? <Login closeModal={ closeModal } /> : '' }
+                        { this.state.login ? <Login closeModal={ closeModal } showForgotPassword={() => {
+                            this.setState({
+                                login: false,
+                                register: false,
+                                forgot: true
+                            })
+                        }} /> : '' }
                         { this.state.register ? <Register1 closeModal={ closeModal } onSuccessRegister={this.onSuccessRegister} /> : '' }
-
+                        { this.state.forgot ? <Forgot closeModal={ closeModal } showLogin={()=>{
+                            this.setState({
+                                login: true,
+                                register: false,
+                                forgot: false
+                            })
+                        }} /> : '' }
                     </div>
                 </div>
             </div>
