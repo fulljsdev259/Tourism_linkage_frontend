@@ -220,14 +220,6 @@ class EditRecord extends React.Component {
 
             } ) }>Save</button>
 
-
-            <div className="row">
-                <div className="col2">
-                    <div className="label"><h4>Manage Images</h4></div>
-                </div>
-                <div className="col1">
-                </div>
-            </div>
             <div className="row">
                 <div className="col1">
                     <ManageSupplierImages id={id}/>

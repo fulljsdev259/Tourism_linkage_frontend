@@ -2,16 +2,36 @@ import React from 'react'
 import { Field, reduxForm, FieldArray, } from 'redux-form'
 import gql from 'graphql-tag'
 import { withRouter } from 'react-router-dom';
-import { graphql } from 'react-apollo';
+import { graphql, compose } from 'react-apollo';
 import { url } from '../config/constant'
 
-const mutation = gql`mutation addVendorPhoto($file:Upload!, $id: String){
-        addVendorPhoto(file:$file, id: $id){
+const mutation = gql` 
+    mutation addVendorPhoto($file:Upload!, $id: String, $deletePhotoName: String){
+        addVendorPhoto(file:$file, id: $id, deletePhotoName: $deletePhotoName ){
             filename
         }
     }
 
+   
 `
+
+ // mutation deleteVendorPhoto($name: String){
+ //        deleteVendorPhoto(name:$name){
+ //          errors
+ //        }
+ //    }
+
+
+
+// const mutationDeleteVendorPhoto = gql`mutation 
+//     deleteVendorPhoto($name: String){
+//         deleteVendorPhoto(name:$name){
+//           errors
+//         }
+//     }
+// `
+
+
 
 const query = gql` query singleParty($name:String){
    
@@ -38,21 +58,31 @@ const query = gql` query singleParty($name:String){
 class ManageSupplierImages extends React.Component {
 
     render(){
-
-        console.log('***************')
-        console.log( this.props )
-
         const { mutate, handleSubmit, previousPage, id } = this.props
-        console.log('id::---'+ id )
         return (
-            <div>
+            <div style={{marginBottom:"30px", marginTop:"30px"}}>
+                <h2>Manage Images</h2>
                 <div>
                 {
                     this.props.data.singleParty && this.props.data.singleParty.photo && this.props.data.singleParty.photo.length > 0 ?
-                    this.props.data.singleParty.photo.map( (img) => {
+                    this.props.data.singleParty.photo.map( (img,i) => {
                         return(
-                            <div>
-                                <input type="button" value="Delete" />
+                            <div key={i}>
+                                <input style={{
+                                  fontSize: "10px",
+                                  color:"#fff",
+                                  background:"red",
+                                  border: "none"
+                                }} type="button" value="Delete" onClick={  (async  () => {
+                                  await mutate({
+                                    variables: { 
+                                        file:{},
+                                        id: id,
+                                        deletePhotoName: img.filename
+                                    }
+                                  })
+                                  this.props.data.refetch()
+                                })}/>
                                 <img src={`${url}/static/${img.filename}`} style={{height:'50px', marginLeft:'5px'}} />
                             </div>
                         )
@@ -66,16 +96,17 @@ class ManageSupplierImages extends React.Component {
                 <input
                     type="file"
                     onChange={  (async  ({ target: { validity, files:[file] } }) => {
-                        console.log( file )
-                      //validity.valid && uploadFile({ variables: { file } });
-                      mutate({
+                      console.log( this.props )
+                      await mutate({
                         variables: { 
                             file:file,
-                            id: id
+                            id: id,
+                            deletePhotoName: ""
                         }
                       })
-
-                    }  )}
+                      this.props.reset('manageSupplierImages')
+                      this.props.data.refetch()
+                    })}
                 />
             </div>
         )
@@ -84,7 +115,7 @@ class ManageSupplierImages extends React.Component {
 
 
 const form = reduxForm( {
-    form: 'editSupplier',
+    form: 'manageSupplierImages',
     enableReinitialize: true,
     multipartForm : true,
     //validate
@@ -92,7 +123,7 @@ const form = reduxForm( {
 } )
 
 
-const EditRecordForm = form( graphql( mutation )( ManageSupplierImages ) )
+const EditRecordForm = form( graphql(mutation) (ManageSupplierImages)  )
 
 
 export default withRouter( graphql( query, {
