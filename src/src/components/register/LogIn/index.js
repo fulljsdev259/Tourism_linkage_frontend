@@ -176,7 +176,7 @@ class Login extends React.Component {
 
                 </Modal1>
 
-                {/*<span className="forgot-password">Forgot Password?</span>*/}
+                <span className="forgot-password" onClick={this.props.showForgotPassword}>Forgot Password?</span>
             </div>
         </div>
     }

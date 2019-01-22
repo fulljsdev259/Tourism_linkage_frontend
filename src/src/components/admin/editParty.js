@@ -9,6 +9,7 @@ import './editrecord.scss'
 import { Modal, Button } from 'antd';
 
 import { query as query1} from './adminDashIndex';
+import ManageSupplierImages from '../ManageSupplierImages';
 
 const form = reduxForm( {
     form: 'editSupplier',
@@ -247,6 +248,15 @@ class EditRecord extends React.Component {
 
             } ) }>Save</button>
             {/*<button className="buttonBack">Back</button>*/}
+
+            <div className="row">
+                <div className="col1">
+                    <ManageSupplierImages id={id}/>
+                </div>
+                <div className="col2">
+                </div>
+            </div>
+
 
 
 
