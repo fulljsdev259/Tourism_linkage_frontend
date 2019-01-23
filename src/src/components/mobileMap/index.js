@@ -316,12 +316,14 @@ class Index extends React.Component {
                                                     <span>{location.phoneNumber}</span>
                                                 </div>
                                             </div>
+                                            {/*
                                             <div className="reviews-section">
                                                 <img className="rating" src={rating} />
                                                 <div className="reviews">
                                                     <span>9 Reviews</span>
                                                 </div>
                                             </div>
+                                            */}
                                         </div>
                                     </div>
                                 </Popup>
