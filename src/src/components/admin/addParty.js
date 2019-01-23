@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Field, reset, reduxForm } from 'redux-form';
+import { Field, reset, reduxForm, FieldArray } from 'redux-form';
 import { renderField, renderFieldTextArea, renderSelectBox } from './inputComponent'
 import './editrecord.scss'
 import { Input} from './inputComponent'
@@ -68,11 +68,12 @@ const mutation = gql`mutation addVendor1(
 , $categories: String, $region: String, $description: String, 
 $address: String,
 $phoneNumber: String, $website: String
-    $latitude:Float,$longitude:Float,
+    $latitude:String,$longitude:String,
 
 $facebook:String,$profile:String
     $instagram:String,$typeOfCompany:String,$fax:String
     $email:String,$password:String,
+    $photo:[fileUpload],
 
    
 ){
@@ -83,7 +84,8 @@ $facebook:String,$profile:String
         latitude:$latitude,longitude:$longitude,
         facebook:$facebook,profile:$profile
         instagram:$instagram,typeOfCompany:$typeOfCompany,fax:$fax,
-        email:$email,password:$password
+        email:$email,password:$password,
+        photo:$photo
         
 
         
@@ -101,6 +103,64 @@ $facebook:String,$profile:String
 
 
 
+const adaptFileEventToValue = delegate => e => delegate( e.target.files[0] );
+
+const adaptFileEventToValueMulti = delegate => e => delegate( e.target.files );
+
+const FileInput = ( {
+    input: { value: omitValue, multiple, onChange, onBlur, ...inputProps },
+    meta: omitMeta,
+    ...props
+} ) => {
+    return (
+
+        <input
+
+            onChange={ adaptFileEventToValue( onChange ) }
+            onBlur={ adaptFileEventToValue( onBlur ) }
+            type="file"
+            { ...props.input }
+            { ...props }
+        />
+
+    );
+};
+
+
+const renderMembers = ( { fields, meta: { error, submitFailed } } ) => (
+    <div>
+        <div>
+            <a href="" onClick={ ( e ) => {
+                e.preventDefault();
+                fields.push( {} )
+            } }>
+                Add Photo
+             </a>
+            { submitFailed && error && <span>{ error }</span> }
+        </div>
+        { fields.map( ( member, index ) => (
+            <div style={ { display: 'flex', width: 400, padding: 10 } } key={ index }>
+                <Field
+                    name={ `${ member }.firstName` }
+                    type="file"
+                    component={ FileInput }
+
+                />
+                <button
+                    type="button"
+                    title="Remove Member"
+                    onClick={ () => fields.remove( index ) }
+                >Remove</button>
+
+
+
+            </div>
+        ) ) }
+    </div>
+)
+
+
+
 
 
 
@@ -114,8 +174,8 @@ class EditRecord extends React.Component {
     constructor() {
         super()
         this.state = {
-            lat: -77.319222,
-            lng: 18,
+            lat: '-77.319222',
+            lng: '18',
             zoom: 7,
             map: '',
             visible:false
@@ -321,6 +381,13 @@ class EditRecord extends React.Component {
                     </div>
                 </div>
             </div>
+            <div className="row">
+                <div className="col1">
+                    <FieldArray name="photo" component={ renderMembers } />
+                </div>
+                <div className="col1">
+                </div>
+            </div> 
 
             <Modal
                 title="Notification"
@@ -345,7 +412,7 @@ class EditRecord extends React.Component {
                         region: data.region,
                         website: data.website,
                         address: data.address,
-                        email: data.password,
+                        email: data.email,
                         password: data.password,
                         latitude: this.state.lat,
                         longitude: this.state.lng,
@@ -353,7 +420,8 @@ class EditRecord extends React.Component {
 
                         instagram: data.instagram,
                         typeOfCompany: data.typeOfCompany,
-                        fax: data.fax
+                        fax: data.fax,
+                        photo: data.photo
                         
                  
                     },

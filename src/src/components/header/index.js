@@ -94,7 +94,7 @@ class Header extends React.Component {
             linkDashboard = "/user";            
         }
 
-        return <div style={ { borderBottom: "1px solid #ebebeb" } }>
+        return <div style={ { borderBottom: "1px solid #ebebeb" } } className="fix-header">
         { this.state.apiCall ? <Loader /> : '' }
             <div className="menuMobile">
                 <Link to="/">

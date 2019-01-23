@@ -144,6 +144,7 @@ class Home extends React.Component {
         return (
             <div className="App">
                 <Header authenticated={ this.props.authenticated } { ...this.state } setMobileMenu={ this.toggleMobileMenu } modalStateHandler={ this.handleModalState } />
+                <div className="body-top">
                 <Switch>
                     <Route exact path="/" render={ props => ( <Index toggleListing={ this.toggleListing } toggleMap={ this.toggleMap } { ...this.state } /> ) } />
                     <Route { ...this.state } path="/supplier/:name" render={ props => ( <ItemDetail { ...this.state } modalStateHandler={ this.handleModalState } /> ) }  />
@@ -174,6 +175,7 @@ class Home extends React.Component {
 
 
                 </Modal>
+                </div>
                 <Footer />
             </div>
         );

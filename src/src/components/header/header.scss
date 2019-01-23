@@ -488,6 +488,15 @@
    
   
   }
+
+  .fix-header {
+    position: fixed;
+    z-index: 9999;
+    background: #fff;
+    width: 100%;
+    margin-top: 0px;
+    top: 0px
+  }
  
 }
 
@@ -498,5 +507,13 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.75);
+}
+
+.body-top {
+  padding-top: 60px;
+}
+
+.Overlay{
+  z-index:55555;
 }
 
