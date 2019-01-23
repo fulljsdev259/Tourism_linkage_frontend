@@ -34,6 +34,7 @@ import GetListed from '../getListed';
 import News from '../news'
 import Register from '../register';
 import './detail.scss'
+import GalleryView from '../GalleryView';
 
 
 import { withRouter } from 'react-router-dom';
@@ -403,13 +404,16 @@ class ItemDetail extends React.Component {
                         </div>
                     </div>
                     <div className="image-section">
+                        <GalleryView data={data.singleParty.photo || []}/>
 
+                        {/*
                         <div className="image-row">
                             {data.singleParty.photo ? data.singleParty.photo.map((data, i) => {
                                 return <img key={i} className="image" src={`${url}/static/${data.filename}`} />
                             }) : ''}
 
                         </div>
+                        */}
                     </div>
                 </div>
             </div>
