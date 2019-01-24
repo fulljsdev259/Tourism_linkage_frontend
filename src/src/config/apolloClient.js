@@ -6,7 +6,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { url } from './constant';
 const { createUploadLink } = require( 'apollo-upload-client' )
 const httpLink = createUploadLink( {
-    uri: `${ url }/graphql`,
+    uri: `${ url }`,
 } );
 
 const authLink = setContext( ( _, { headers } ) => {
