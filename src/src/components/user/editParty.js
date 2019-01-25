@@ -80,6 +80,10 @@ class EditRecord extends React.Component {
         } );
     }
 
+    componentWillMount() {
+        this.props.refetch()
+    }
+
 
     handleOk = ( e ) => {
         this.setState( {
@@ -247,7 +251,8 @@ const EditRecordWrapper = ( {  data,history } ) => {
         description: data.singleParty.description, tags: data.singleParty.tags, 
         latitude: data.singleParty.latitude, longitude: data.singleParty.longitude
     }
-    return <EditRecordForm initialValues={ initialValues } id={ data.singleParty._id } history={ history} />
+
+    return <EditRecordForm refetch={data.refetch} initialValues={ initialValues } id={ data.singleParty._id } history={ history} />
 
 
 }
