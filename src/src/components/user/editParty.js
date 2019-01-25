@@ -32,6 +32,7 @@ const query = gql` query singleParty($name:String){
              tags
              latitude
              longitude
+             description
         }
         
    
@@ -78,7 +79,6 @@ class EditRecord extends React.Component {
             visible: true,
         } );
     }
-
 
 
     handleOk = ( e ) => {

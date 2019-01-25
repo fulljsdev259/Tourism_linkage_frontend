@@ -249,7 +249,7 @@ class WizardFormThirdPage extends React.Component {
                                             categories: data.categories,
                                             description: data.description,
                                             phoneNumber: data.phoneNumber,
-                                            address: this.state.map,
+                                            // address: this.state.map,
                                             tags: data.tags ? ( data.tags ).toString() : '',
                                             region: data.region,
                                             website: data.website,
