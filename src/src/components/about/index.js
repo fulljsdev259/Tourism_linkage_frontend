@@ -7,7 +7,7 @@ export default ( { closeModal } ) => {
     return <div className="about">
         <div className="header">
             <div>
-                <span>About Tourism Linkage</span>
+                <span>ABOUT TOURISM LINKAGES NETWORK</span>
                 <hr />
             </div>
             <img src={ Close } onClick={ () => closeModal() } />
