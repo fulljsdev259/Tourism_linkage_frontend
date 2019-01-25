@@ -42,7 +42,7 @@ export default class Footer extends React.Component {
                 </a>
             </div>
             <div className="copyright">
-                <span>Copyright © {currentYear}. Developed By Jamaica Ministry of Tourism & Powered By The Jamaica Tourism Linkages Network</span>
+                <span>Copyright © {currentYear}. Developed by Ministry of Tourism and Powered by Tourism Enhancement Fund</span>
                 <div className="social-icons">
                     <a href="https://www.facebook.com/tefjamaica/" target="_BLANK">
                         <img src={fb} />

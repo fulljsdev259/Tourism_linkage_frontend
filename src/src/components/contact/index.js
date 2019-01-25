@@ -98,11 +98,10 @@ class ContactUs extends React.Component {
                         Tourism Linkages Network
                     </div>
                     <p>
-                        Ministry of Tourism<br />
-                        Jamaica Tourism Centre<br />
-                        64 Knutsford Boulevard<br />
-                        Kingston 5<br />
-                        Jamaica W.I.<br />
+                        Tourism Enhancement Fund<br />
+                        60 Knutford Boulevard<br />
+                        Kingston 5<br /> 
+                        Jamaica, West Indies<br />
                     </p>
                     {/* <Map
                         style="mapbox://styles/mapbox/streets-v8"

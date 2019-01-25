@@ -214,6 +214,7 @@
     }
 
 .ant-select-dropdown{
+    z-index: 9999999 !important;
     width: 25% !important;
     @media screen and(max-width: 576px){
         width:90% !important;
