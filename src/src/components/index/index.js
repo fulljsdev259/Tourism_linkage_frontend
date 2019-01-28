@@ -347,7 +347,7 @@ class Index extends React.Component {
                 </div>
                 <div className="divMiddle">
                     <div className="header">
-                        <h3>Find Jamaica's Tourism Suppliers </h3>
+                        <h3>Choose a Location</h3>
                     </div>
 
 
@@ -389,7 +389,9 @@ class Index extends React.Component {
                                 : ''}
                         </li>
                     </ul>
-
+                    <div className="header">
+                        <h3>Select a Tourism Supplier Category</h3>
+                    </div>
 
                     <div style={{ width: categoryData === 'Food and Agro' ? '24vw' : '22vw' }}
                         onClick={() => category('Food and Agro')} className="contentItems">
@@ -455,7 +457,7 @@ class Index extends React.Component {
 
                 <div className="divMiddleMobileOnly" id="scollDiv">
                     <div className="header">
-                        <h3>Find Jamaica's Tourism Suppliers</h3> 
+                        <h3>Choose a Location</h3>
                     </div>
                         <ul id="menu">
                             <li>
@@ -494,8 +496,11 @@ class Index extends React.Component {
                                     : ''}
                             </li>
                         </ul>
-
+                    <div className="header">
+                        <h3>Select a Tourism Supplier Category</h3>
+                    </div>
                         <ul id="menu">
+                       
                             <li>
 
                                 <input onClick={(e) => {
