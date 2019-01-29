@@ -323,7 +323,7 @@ class Index extends React.Component {
 
                 <div className="divBanner">
                     <div className="fade"></div>
-                    <Slider >
+                    <Slider autoplay={3000}>
                         {sliderImages.map((item, index) => (
 
                             <div
