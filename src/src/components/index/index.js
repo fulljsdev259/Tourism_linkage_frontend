@@ -323,7 +323,7 @@ class Index extends React.Component {
 
                 <div className="divBanner">
                     <div className="fade"></div>
-                    <Slider autoplay={2000} >
+                    <Slider >
                         {sliderImages.map((item, index) => (
 
                             <div
@@ -346,6 +346,13 @@ class Index extends React.Component {
                     </div>
                 </div>
                 <div className="divMiddle">
+                    
+                    <div className="header">
+                        <h2>Find Jamaica's Tourism Suppliers</h2>
+                    </div>
+
+
+
                     <div className="header">
                         <h3>Choose a Location</h3>
                     </div>
@@ -390,7 +397,7 @@ class Index extends React.Component {
                         </li>
                     </ul>
                     <div className="header">
-                        <h3>Select a Tourism Supplier Category</h3>
+                        <h3>Select a Category</h3>
                     </div>
 
                     <div style={{ width: categoryData === 'Food and Agro' ? '24vw' : '22vw' }}
@@ -457,6 +464,11 @@ class Index extends React.Component {
 
                 <div className="divMiddleMobileOnly" id="scollDiv">
                     <div className="header">
+                        <h2>Find Jamaica's Tourism Suppliers</h2>
+                    </div>
+
+
+                    <div className="header">
                         <h3>Choose a Location</h3>
                     </div>
                         <ul id="menu">
@@ -497,7 +509,7 @@ class Index extends React.Component {
                             </li>
                         </ul>
                     <div className="header">
-                        <h3>Select a Tourism Supplier Category</h3>
+                        <h3>Select a Category</h3>
                     </div>
                         <ul id="menu">
                        

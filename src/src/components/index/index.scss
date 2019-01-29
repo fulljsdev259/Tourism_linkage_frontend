@@ -364,7 +364,7 @@
       @media all and(max-width:576px) {
         height: 100vh;
         min-width: 29vw;
-        max-height: 27em;
+        max-height: 18em;
       }
       .slider {
         height: 100% !important;
@@ -442,11 +442,25 @@
         /*width: 85%;*/
         
       }
+
+
+ h2 {
+        color: #5165ff;
+        font-weight: bolder;
+        font-size: 18px;
+        text-align: center;
+        @media all and(min-width:768px) and(max-width:996px) {
+          padding: 0px 20px 0px 20px;
+         
+
+        }
+      }
+      
       
       h3 {
         color: #5165ff;
-        font-weight: bolder;
-        font-size: 14px;
+        font-weight: bold;
+        font-size: 12px;
         text-align: center;
         @media all and(min-width:768px) and(max-width:996px) {
           padding: 0px 20px 0px 20px;
@@ -592,11 +606,24 @@
           width: 90%;
         }
       }
-      h3 {
+
+        h2 {
         color: #5165ff;
         font-weight: bolder;
-        font-size: 12px;
+        font-size: 18px;
         text-align: center;
+        @media all and(min-width:768px) and(max-width:996px) {
+          padding: 0px 20px 0px 20px;
+          
+        }
+      }
+      h3 {
+        color: #5165ff;
+       
+        font-weight: bold;
+        font-size: 12px;
+        text-align: left;
+        
         @media all and(min-width:768px) and(max-width:996px) {
           padding: 0px 20px 0px 20px;
           
