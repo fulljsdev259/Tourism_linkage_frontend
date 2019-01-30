@@ -382,14 +382,14 @@ class Index extends React.Component {
                                     <li onClick={
                                         (e) => {
                                             document.getElementById("check02").checked = false;
-                                            this.setState({ centerLang: -77.1939, centerLat: 17.9762, centerZoom: 8.5, region: "Central Jamaica", subMenu: !this.state.subMenu })
+                                            this.setState({ centerLang: -77.1939, centerLat: 18.1762, centerZoom: 8.5, region: "Central Jamaica", subMenu: !this.state.subMenu })
                                             region("Central Jamaica")
                                         }}><a href="#">Central Jamaica</a></li>
                                     <li onClick={
 
                                         (e) => {
                                             document.getElementById("check02").checked = false;
-                                            this.setState({ centerLang: -76.54864, centerLat: 17.91184, centerZoom: 8.5, centerZoom: 8.5, region: "Eastern Jamaica", subMenu: !this.state.subMenu })
+                                            this.setState({ centerLang: -76.54864, centerLat: 18.11184, centerZoom: 8.5, centerZoom: 8.5, region: "Eastern Jamaica", subMenu: !this.state.subMenu })
                                             region("Eastern Jamaica")
                                         }}><a href="#">Eastern Jamaica</a></li>
                                 </ul>
