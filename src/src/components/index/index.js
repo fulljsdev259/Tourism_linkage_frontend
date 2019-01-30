@@ -376,7 +376,7 @@ class Index extends React.Component {
                                     }}><a href="#">All Jamaica</a></li>
                                     <li onClick={(e) => {
                                         document.getElementById("check02").checked = false;
-                                        this.setState({ centerLang: -77.8939, centerLat: 17.9762, centerZoom: 8.5, region: "Western Jamaica", subMenu: !this.state.subMenu })
+                                        this.setState({ centerLang: -77.8939, centerLat: 18.2762, centerZoom: 8.5, region: "Western Jamaica", subMenu: !this.state.subMenu })
                                         region("Western Jamaica")
                                     }}><a href="#">Western Jamaica</a></li>
                                     <li onClick={
