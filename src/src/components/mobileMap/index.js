@@ -289,7 +289,7 @@ class Index extends React.Component {
                             </Layer>
                             <ZoomControl style={{ position: 'relative', bottom: '0px', top: '85%', left: 0, border: 'none', marginLeft: 10, boxShadow: ' rgba(0, 0, 0, 0.0) 0px 1px 4px' }} />
                             {location && (
-                                <Popup  key={location.id} coordinates={[location.longitude, location.latitude]}>
+                                <Popup key={location.id} coordinates={[location.longitude, location.latitude]}>
                                     <div className="popup">
                                         <div className="popup-content">
                                             <img onClick={this.closePopup} src={Close} />
