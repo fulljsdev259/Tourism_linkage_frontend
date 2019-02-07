@@ -396,6 +396,19 @@
         }
       }
 
+      .previousButton{
+        z-index:10;
+        svg {
+          height: 20px
+        }
+      }
+      .nextButton {
+        z-index: 10;
+        svg {
+          height: 20px
+        }
+      }
+
     
       .slider-title {
         h1 {
@@ -405,7 +418,7 @@
           padding: 10px 10px 0 10px;
           font-weight:700;
           position: absolute;
-          top: 50%;
+          top: 46%;
           z-index: 1;
           line-height:29px;
           font-size:30px !important;
@@ -413,7 +426,8 @@
           @media all and(max-width:768px) {
             font-size:23px !important;
             line-height:20px;
-             text-align: center !important;
+            text-align: center !important;
+            top: 44%;
           }
 
           
@@ -905,4 +919,8 @@
 .load {height:100vh; display:flex;flex-direction: column;align-items: center;
   justify-content: center;
 text-align: center;}
+
+#lightboxBackdrop {
+  z-index:9999999;
+}
 
