@@ -72,6 +72,7 @@ class GalleryView extends React.Component {
           onClickNext={this.gotoNext}
           currentImage={this.state.currentImage}
           isOpen={this.state.lightboxIsOpen}
+          backdropClosesModal={true}
         />
       </div>
     )
