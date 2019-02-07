@@ -348,7 +348,8 @@ class Index extends React.Component {
                 <div className="divMiddle">
                     
                     <div className="header">
-                        <h2>Find Jamaica's Tourism Suppliers</h2>
+                        <h2>Find Jamaica's Tourism Suppliers</h2><span className="jamaicalove"><img width="35" src={JamaicaLove} /></span>
+                       
                     </div>
 
 
@@ -464,7 +465,7 @@ class Index extends React.Component {
 
                 <div className="divMiddleMobileOnly" id="scollDiv">
                     <div className="header">
-                        <h2>Find Jamaica's Tourism Suppliers</h2>
+                        <h2>Find Jamaica's Tourism Suppliers</h2><span className="jamaicalove"><img width="35" src={JamaicaLove} /></span>
                     </div>
 
 
