@@ -51,14 +51,14 @@ const customStylesRegister = {
     }
 };
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement( '#root' )
-const Map = ReactMapboxGl( {
+Modal.setAppElement('#root')
+const Map = ReactMapboxGl({
     accessToken: "pk.eyJ1Ijoia2VjaGVhbGV4cHJ0MiIsImEiOiJjam94azh4OHcyODByM3FqeHd1Nm43NWl6In0.0w8_b3fwLMXf8a1zSGgC2w"
-} );
+});
 
 class Header extends React.Component {
-    constructor( props ) {
-        super( props );
+    constructor(props) {
+        super(props);
         this.state = {
             openClass: '',
             auth: false,
@@ -66,22 +66,22 @@ class Header extends React.Component {
         }
         this.ToggleBody = () => {
             //this.props.setMobileMenu();
-            var currentClass = document.getElementsByTagName( 'body' )[0];
-            var isAlreadyOpened = currentClass.classList.contains( 'open' );
+            var currentClass = document.getElementsByTagName('body')[0];
+            var isAlreadyOpened = currentClass.classList.contains('open');
 
-            if ( !isAlreadyOpened ) {
-                currentClass.classList.add( 'open' );
+            if (!isAlreadyOpened) {
+                currentClass.classList.add('open');
             }
             else {
-                currentClass.classList.remove( 'open' );
+                currentClass.classList.remove('open');
             }
         }
     }
-    componentWillReceiveProps( nextProps ) {
+    componentWillReceiveProps(nextProps) {
         const oThis = this;
-        if ( oThis.props.authenticated !== nextProps.authenticated )  // Check if it's a new user, you can also use some unique property, like the ID
+        if (oThis.props.authenticated !== nextProps.authenticated)  // Check if it's a new user, you can also use some unique property, like the ID
         {
-            this.setState( { auth: nextProps.authenticated } )
+            this.setState({ auth: nextProps.authenticated })
         }
     }
 
@@ -90,88 +90,93 @@ class Header extends React.Component {
         let { loggedUserData } = this.props;
 
         let linkDashboard = "/admin";
-        if( loggedUserData && loggedUserData.role !== 'admin' ){            
-            linkDashboard = "/user";            
+        if (loggedUserData && loggedUserData.role !== 'admin') {
+            linkDashboard = "/user";
         }
 
-        return <div style={ { borderBottom: "1px solid #ebebeb" } } className="fix-header">
-        { this.state.apiCall ? <Loader /> : '' }
+        return <div style={{ borderBottom: "1px solid #ebebeb" }} className="fix-header">
+            {this.state.apiCall ? <Loader /> : ''}
             <div className="menuMobile">
                 <Link to="/">
                     <div className="logoDiv">
-                        <img className="logo" src={ Logo } />
+                        <img className="logo" src={Logo} />
                     </div>
                 </Link>
                 <div className="itemDiv">
                     {
                         oThis.props.authenticated ?
-                            <span style={{marginRight:"66px", marginTop:"9px"}}>
-                                {loggedUserData && loggedUserData.name ? loggedUserData.name +', ' : null}
-                                
-                                <br/>
-                                <span onClick={ () => {
-                                this.setState({
-                                    apiCall: true
-                                })
-                                oThis.props.modalStateHandler( false, false, false, false, false, false, false )
-                                localStorage.removeItem( 'token' )
-                                localStorage.removeItem( 'token_user' )
-                                oThis.props.receiveLogout()
+                            <span style={{ marginRight: "66px", marginTop: "9px" }}>
+                                {loggedUserData && loggedUserData.name ? loggedUserData.name + ', ' : null}
 
-                                oThis.props.history.push( '/' )
-                                setTimeout(() => {
+                                <br />
+                                <span onClick={() => {
                                     this.setState({
-                                        apiCall: false
+                                        apiCall: true
                                     })
-                                },1000)
-                                
-                            } }>LOGOUT</span>
+                                    oThis.props.modalStateHandler(false, false, false, false, false, false, false)
+                                    localStorage.removeItem('token')
+                                    localStorage.removeItem('token_user')
+                                    oThis.props.receiveLogout()
+
+                                    oThis.props.history.push('/')
+                                    setTimeout(() => {
+                                        this.setState({
+                                            apiCall: false
+                                        })
+                                    }, 1000)
+
+                                }}>LOGOUT</span>
                             </span>
-                        :
+                            :
                             null
 
                     }
 
-                    <button className="menu-toggle" onClick={ this.ToggleBody }></button>
+                    <button className="menu-toggle" onClick={this.ToggleBody}></button>
                     <nav>
-                        <Link to="/"> <img onClick={ this.ToggleBody } className="logo" src={ Logo } /></Link>
+                        <Link to="/"> <img onClick={this.ToggleBody} className="logo" src={Logo} /></Link>
 
                         <ul className="menu">
 
-                            <li data-text="ABOUT" onClick={ () => {
-                                oThis.props.modalStateHandler( true, false, false, false, false, false, true )
-                            } }>ABOUT</li>
-                            <li data-text="CONTACT" onClick={ () => {
-                                oThis.props.modalStateHandler( false, true, false, false, false, false, true )
-                            } }>CONTACT US</li>
+                            <li data-text="ABOUT" onClick={() => {
+                                oThis.props.modalStateHandler(true, false, false, false, false, false, true)
+                            }}>ABOUT</li>
+                            <li data-text="CONTACT" onClick={() => {
+                                oThis.props.modalStateHandler(false, true, false, false, false, false, true)
+                            }}>CONTACT US</li>
 
-                            <li data-text="Christmas in July" onClick={ () => {
-                                oThis.props.modalStateHandler( false, false, false, false, false, false, true, true )
-                            } }>CHRISTMAS IN JULY</li>
 
-                            <li style={ {
+                            <li data-text="Event" onClick={() => {
+                                oThis.props.modalStateHandler(false, false, false, false, false, false, true, true)
+                            }}>EVENTS</li>
+
+                            <li data-text="Christmas in July" onClick={() => {
+                                oThis.props.modalStateHandler(false, false, false, false, false, false, true, true)
+                            }}>CHRISTMAS IN JULY</li>
+
+                            <li style={{
                                 marginTop: "10px"
-                            } } data-text="GET COMPANY LISTED" onClick={ () => {
-                                oThis.props.modalStateHandler( false, false, false, true, false, false, true )
-                            } }><span className="blueBtn">GET COMPANY LISTED </span></li>
+                            }} data-text="GET COMPANY LISTED" onClick={() => {
+                                oThis.props.modalStateHandler(false, false, false, true, false, false, true)
+                            }}><span className="blueBtn">GET COMPANY LISTED </span></li>
 
                             {
-                                !oThis.props.authenticated ?                            
-                                <li data-text="GET COMPANY LISTED" className="registerLi" onClick={ () => {
-                                    this.ToggleBody()
-                                    oThis.props.modalStateHandler( false, false, false, false, false, true, true )
-                                } }>
-                                    <div className="lower-section" >
-                                        <div className="registerDiv"
+                                !oThis.props.authenticated ?
+                                    <li data-text="GET COMPANY LISTED" className="registerLi" onClick={() => {
+                                        this.ToggleBody()
+                                        oThis.props.modalStateHandler(false, false, false, false, false, true, true)
+                                    }}>
+                                        <div className="lower-section" >
+                                            <div className="registerDiv"
 
-                                        >REGISTER / LOGIN
+                                            >REGISTER / LOGIN
                                          </div>
-                                    </div>
-                                </li>
-                                :
-                                <li data-text="GET COMPANY LISTED" className="registerLi">
-                                    
-                                </li>
+                                        </div>
+                                    </li>
+                                    :
+                                    <li data-text="GET COMPANY LISTED" className="registerLi">
+
+                                    </li>
                             }
 
                         </ul>
@@ -179,107 +184,106 @@ class Header extends React.Component {
                 </div>
             </div>
             {
-                <div className={ this.props.mobileMenu ? "menuItemMobile" : "menuItemMobileNone" }>
+                <div className={this.props.mobileMenu ? "menuItemMobile" : "menuItemMobileNone"}>
                     <div className="headerMobileMenu">
                         <div></div>
-                        <img onClick={ this.props.setMobileMenu } src={ Close } />
+                        <img onClick={this.props.setMobileMenu} src={Close} />
                     </div>
                     <div className="contentMobileMenu">
                         <div className="upper-section">
-                            <div className="item" onClick={ () => {
-                                oThis.props.modalStateHandler( true, false, false, false, false, false, true )
-                            } }><a>ABOUT</a></div>
-                            {/* <div className="item">News</div>
-                        <div className="item">Events</div> */}
-                            <div className="item" onClick={ () => {
-                                oThis.props.modalStateHandler( false, true, false, false, false, false, true )
-                            } }><a>CONTACT US</a></div>
-                            <div className="getStarted" onClick={ () => {
+                            <div className="item" onClick={() => {
+                                oThis.props.modalStateHandler(true, false, false, false, false, false, true)
+                            }}><a>ABOUT</a></div>
 
-                                oThis.props.modalStateHandler( false, false, false, true, false, false, true )
-                            } }><a>GET COMPANY LISTED</a></div>
+                            <div className="item">Events</div>
+
+                            <div className="item" onClick={() => {
+                                oThis.props.modalStateHandler(false, true, false, false, false, false, true)
+                            }}><a>CONTACT US</a></div>
+                            <div className="getStarted" onClick={() => {
+
+                                oThis.props.modalStateHandler(false, false, false, true, false, false, true)
+                            }}><a>GET COMPANY LISTED</a></div>
                         </div>
 
 
                     </div>
                     <div className="lower-section" >
                         <div className="registerDiv"
-                            onClick={ () => {
-                                oThis.props.modalStateHandler( false, false, false, false, false, true, true )
-                            } }
+                            onClick={() => {
+                                oThis.props.modalStateHandler(false, false, false, false, false, true, true)
+                            }}
                         >REGISTER / LOGIN</div>
                     </div>
                 </div>
             }
             <div className="menu">
                 <Link to="/"> <div className="logoDiv">
-                    <img className="logo" src={ Logo } />
+                    <img className="logo" src={Logo} />
                 </div>
                 </Link>
                 <div className="itemDiv">
                     <div className="item">
-                        <div className="normal" onClick={ () => {
-                            oThis.props.modalStateHandler( true, false, false, false, false, false, true )
-                        } }><a>ABOUT</a></div>
-                        {/* <div className="normal" onClick={() => {
-                            oThis.props.modalStateHandler(false,false,false,false,true,false,true)
-                        }}>NEWS</div>
                         <div className="normal" onClick={() => {
-                            oThis.props.modalStateHandler(false,false,true,false,false,false,true)
-                        }}>EVENT</div> */}
-                        <div className="normal" onClick={ () => {
-                            oThis.props.modalStateHandler( false, true, false, false, false, false, true )
-                        } }><a>CONTACT US</a></div>
+                            oThis.props.modalStateHandler(true, false, false, false, false, false, true)
+                        }}><a>ABOUT</a></div>
 
-                        <div className="normal" onClick={ () => {
-                            oThis.props.modalStateHandler( false, false, false, false, false, false, true, true )
-                        } }><a>CHRISTMAS IN JULY</a></div>
+                        <div className="normal" onClick={() => {
+                            oThis.props.modalStateHandler(false, false, true, false, false, false, true)
+                        }}><a>EVENTS</a></div>
+                        <div className="normal" onClick={() => {
+                            oThis.props.modalStateHandler(false, true, false, false, false, false, true)
+                        }}><a>CONTACT US</a></div>
 
-                        <div className="getStarted" onClick={ () => {
+                        <div className="normal" onClick={() => {
+                            oThis.props.modalStateHandler(false, false, false, false, false, false, true, true)
+                        }}><a>CHRISTMAS IN JULY</a></div>
 
-                            oThis.props.modalStateHandler( false, false, false, true, false, false, true )
-                        } }><a>GET COMPANY LISTED</a></div>
+                        <div className="getStarted" onClick={() => {
+
+                            oThis.props.modalStateHandler(false, false, false, true, false, false, true)
+                        }}><a>GET COMPANY LISTED</a></div>
 
                     </div>
                 </div>
-                { oThis.props.authenticated ?
+                {oThis.props.authenticated ?
 
-                        
-                        <div className="registerDiv">
-                        
-                            <span className="user-name" >
-                            <span style={{marginRight:'20px'}}>
-                            <Link to={linkDashboard}>
-                                My Dashboard
+
+                    <div className="registerDiv">
+
+                        <span className="user-name" >
+                            <span style={{ marginRight: '20px' }}>
+                                <Link to={linkDashboard}>
+                                    My Dashboard
                             </Link>
-                        </span>
+                            </span>
 
-                            {loggedUserData && loggedUserData.name ? loggedUserData.name +', ' : null }
-                            <a onClick={ () => {
+                            {loggedUserData && loggedUserData.name ? loggedUserData.name + ', ' : null}
+                            <a onClick={() => {
                                 this.setState({
                                     apiCall: true
                                 })
-                                oThis.props.modalStateHandler( false, false, false, false, false, false, false )
-                                localStorage.removeItem( 'token' )
-                                localStorage.removeItem( 'token_user' )
+                                oThis.props.modalStateHandler(false, false, false, false, false, false, false)
+                                localStorage.removeItem('token')
+                                localStorage.removeItem('token_user')
                                 oThis.props.receiveLogout()
 
-                                oThis.props.history.push( '/' )
+                                oThis.props.history.push('/')
                                 setTimeout(() => {
                                     this.setState({
                                         apiCall: false
                                     })
-                                },1000)
-                                
-                            } }>LOGOUT</a>
-                            </span>
-                        </div>
-                    
+                                }, 1000)
+
+                            }}>LOGOUT</a>
+                        </span>
+                    </div>
+
                     :
                     <div className="registerDiv"
-                        onClick={ () => {
-                            oThis.props.modalStateHandler( false, false, false, false, false, true, true )
-                        } }
+                        onClick={() => {
+                            oThis.props.modalStateHandler(false, false, false, false, false, true, true)
+                        }}
                     ><a>REGISTER / LOGIN</a>
                     </div>
                 }
@@ -301,9 +305,9 @@ class Header extends React.Component {
 
 
 
-function mapStateToProps( state ) {
+function mapStateToProps(state) {
     return { authenticated: state.auth.isAuthenticated, loggedUserData: state.auth.loggedUserData }
 }
 
 
-export default connect( mapStateToProps, { receiveLogout } )( withRouter( Header ) )
+export default connect(mapStateToProps, { receiveLogout })(withRouter(Header))

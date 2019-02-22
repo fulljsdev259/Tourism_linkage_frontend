@@ -16,9 +16,7 @@ export default ({ closeModal }) => {
             <div>
                 <img src={About1} />
             </div>
-            <div>
-                <img src={About2} />
-            </div>
+
         </div>
 
         <div className="content">
