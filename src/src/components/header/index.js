@@ -147,7 +147,7 @@ class Header extends React.Component {
 
 
                             <li data-text="Event" onClick={() => {
-                                oThis.props.modalStateHandler(false, false, false, false, false, false, true, true)
+                                oThis.props.modalStateHandler(false, false, true, false, false, false, true)
                             }}>EVENTS</li>
 
                             <li data-text="Christmas in July" onClick={() => {

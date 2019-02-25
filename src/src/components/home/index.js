@@ -21,6 +21,7 @@ import requireAdminAuth from '../../config/require_admin_auth';
 import { connect } from 'react-redux';
 import Loader from '../loader';
 import Publications from '../publications';
+import EventPopUp from '../EventPopUp';
 
 const customStyles = {
     content: {
@@ -176,6 +177,7 @@ class Home extends React.Component {
 
                 </Modal>
                 </div>
+                <EventPopUp/>
                 <Footer />
             </div>
         );
