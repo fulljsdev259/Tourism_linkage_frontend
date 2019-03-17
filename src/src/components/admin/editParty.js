@@ -49,11 +49,11 @@ categories:$categories,description:$description,phoneNumber:$phoneNumber,tags:$t
 */
 
 const mutation = gql`mutation editVendor1($dataId:String,$name:String,$tags: String,
-, $categories: String, $region: String, $description: String, 
+, $categories: String, $region: String, $description: String, ,$password:String,
 $address: String,
 $phoneNumber: String, $website: String, $latitude:String, $longitude:String, $status: String
 ){
-        editVendor(name:$name,dataId:$dataId,
+        editVendor(name:$name,dataId:$dataId,password:$password,
         categories:$categories,description:$description,phoneNumber:$phoneNumber,tags:$tags,
     region:$region,website:$website,address:$address, latitude:$latitude, longitude:$longitude,
     status:$status
@@ -127,7 +127,11 @@ class EditRecord extends React.Component {
                     </div>
                 </div>
                 <div className="col2">
-                    
+                    <div className="label">Password</div>
+                    <div className="input">
+                        <Field name='password' component={renderField} type="text" label="Password" />
+
+                    </div>
                 </div>
             </div>
 
@@ -238,6 +242,7 @@ class EditRecord extends React.Component {
              //   console.log( mutate )
                 const editData = await mutate( {
                     variables: {
+                        password:data.password?data.password:'',
                         name: data.name, dataId: id, tags: data.tags, address: data.address, phoneNumber: data.phoneNumber,
                         region: data.region, categories: data.categories, website: data.website, description: data.description,
                         latitude: data.latitude, longitude:data.longitude,
