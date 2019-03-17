@@ -119,6 +119,12 @@ const query = gql`query singleParty($name:String)
         description
         tags
         address
+        workingDay{
+            day
+            openClose
+            fromHour
+            toHour
+        }
         comment{
             name
             rating
@@ -374,37 +380,33 @@ class ItemDetail extends React.Component {
                     </div>
                     <div className="open-hour">
                         <h4>Open Hours</h4>
-                        <div className="schedule">
-                            <span className="day">Monday</span>
-                            <span>10:00 a.m. - 5:00 p.m. </span>
-                        </div>
-                        <div className="schedule">
-                            <span className="day"> Tuesday</span>
-                            <span className="time">10:00 a.m. - 5:00 p.m. </span>
-                        </div>
-                        <div className="schedule">
-                            <span className="day">Wednesday</span>
-                            <span>10:00 a.m. - 5:00 p.m. </span>
-                        </div>
-                        <div className="schedule">
-                            <span className="day">Thursday</span>
-                            <span>10:00 a.m. - 5:00 p.m. </span>
-                        </div>
-                        <div className="schedule">
-                            <span className="day">Friday</span>
-                            <span>10:00 a.m. - 5:00 p.m. </span>
-                        </div>
-                        <div className="schedule">
-                            <span className="day"> Saturday</span>
-                            <span>Closed </span>
-                        </div>
-                        <div className="schedule">
-                            <span className="day"> Sunday</span>
-                            <span>Closed </span>
-                        </div>
+                        {
+                            data.singleParty.workingDay ? data.singleParty.workingDay.map((d, i) => {
+                                return <div className="schedule">
+                                    <span className="day">{d.day}</span>
+                                    <span>{d.openClose === 'Open' ? `${d.fromHour} - ${d.toHour}` : 'Closed'} </span>
+                                </div>
+                            }) : [
+                                { day: "Monday", openClose: "Open", fromHour: "10 A.M", toHour: "17:00 P.M" },
+                                { day: "Tuesday", openClose: "Open", fromHour: "10 A.M", toHour: "17:00 P.M" },
+                                { day: "Wednesday", openClose: "Open", fromHour: "10 A.M", toHour: "17:00 P.M" },
+                                { day: "Thrusday", openClose: "Open", fromHour: "10 A.M", toHour: "17:00 P.M" },
+                                { day: "Friday", openClose: "Open", fromHour: "10 A.M", toHour: "17:00 P.M" },
+                                { day: "Saturday", openClose: "Closed", fromHour: "10 A.M", toHour: "17:00 P.M" },
+                                { day: "Sunday", openClose: "Closed", fromHour: "10 A.M", toHour: "17:00 P.M" },
+
+
+                            ].map((d, i) => {
+                                return <div className="schedule">
+                                    <span className="day">{d.day}</span>
+                                    <span>{d.openClose === 'Open' ? `${d.fromHour} - ${d.toHour}` : 'Closed'} </span>
+                                </div>
+                            })
+                        }
+
                     </div>
                     <div className="image-section">
-                        <GalleryView data={data.singleParty.photo || []}/>
+                        <GalleryView data={data.singleParty.photo || []} />
 
                         {/*
                         <div className="image-row">
