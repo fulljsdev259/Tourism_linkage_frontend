@@ -1,19 +1,21 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, FieldArray } from 'redux-form'
 import validate from './validate'
-import { renderField, renderSelect, renderTextarea, renderTag } from './renderField'
+import { renderField, renderSelect, renderTextarea, renderTag, } from './renderField'
 import './index.scss';
 import checkMark from '../../images/icon/checkmark-green.svg'
 import Geocode from "react-geocode";
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import Loader from '../loader';
+import { renderSelectBox } from '../../components/admin/inputComponent';
 
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import moment from 'moment'
 
 const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet']
 const mutation = gql`mutation addVendor1(
-    $name:String,$tags: String,
+    $name:String,$tags: String,$workingDay:[workingDayInput],
 , $categories: String, $region: String, $description: String, 
 $address: String,
 $phoneNumber: String, $website: String
@@ -27,7 +29,7 @@ $facebook:String,$profile:String
    
 ){
         addVendor(
-          name:$name,
+          name:$name,workingDay:$workingDay,
         categories:$categories,description:$description,phoneNumber:$phoneNumber,tags:$tags,
         region:$region,website:$website,address:$address  
         latitude:$latitude,longitude:$longitude,
@@ -51,7 +53,14 @@ $facebook:String,$profile:String
 
 `
 
-
+function someFunction() {
+    let items = [];
+    new Array(24).fill().forEach((acc, index) => {
+        items.push(moment({ hour: index }).format('h:mm A'));
+        //items.push(moment({ hour: index, minute: 60 }).format('h:mm A'));
+    })
+    return items;
+}
 
 const Map1 = ReactMapboxGl({
     accessToken: "pk.eyJ1Ijoia2VjaGVhbGV4cHJ0MiIsImEiOiJjam94azh4OHcyODByM3FqeHd1Nm43NWl6In0.0w8_b3fwLMXf8a1zSGgC2w"
@@ -77,6 +86,57 @@ const renderColorSelector = ({ input, meta: { touched, error } }) => (
         {touched && error && <span>{error}</span>}
     </div>
 )
+
+
+
+
+
+
+const renderWorkingDays = ({ fields, meta: { error, submitFailed } }) => {
+    // fields.push({}, {}, {}, {}, {}, {}, {})
+    return (<div>
+        <div>
+            <a href="" onClick={(e) => {
+                // e.preventDefault();
+                //fields.push({})
+            }}>
+                Bussiness Hours
+             </a>
+            {submitFailed && error && <span>{error}</span>}
+        </div>
+
+
+
+
+        {fields.map((member, index) => (
+            <div>
+
+                <div style={{
+
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+                    gridAutoRows: 'dense',
+                    gridGap: 10
+                }} >
+                    <Field
+                        name={`${member}.day`}
+                        type="select" data={["Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday", "Sunday"]} component={renderSelect}
+                        label="" />
+
+                    <Field
+                        name={`${member}.openClose`}
+                        type="select" data={["Open", "Closed"]} component={renderSelect} label="" />
+                    <Field name={`${member}.fromHour`} type="select" data={someFunction()} component={renderSelect} label="" />
+                    <Field name={`${member}.toHour`} type="select" data={someFunction()} component={renderSelect} label="" />
+                </div>
+            </div>
+        ))}
+    </div>
+    )
+}
+
+
+
 
 
 class WizardFormThirdPage extends React.Component {
@@ -233,6 +293,7 @@ class WizardFormThirdPage extends React.Component {
                                 component={renderField}
                                 label="Company website"
                             />
+                            <FieldArray name="workingDay" component={renderWorkingDays} />
                             {/*
                             <Field name="hours" type="textarea" component={ renderTextarea } label="Open hours" />
                             */}
@@ -310,5 +371,7 @@ export default reduxForm({
     form: 'wizard', //Form name is same
     destroyOnUnmount: false,
     forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
+    keepDirtyOnReinitialize: true,
+    enableReinitialize: true,
     validate
 })(graphql(mutation)(WizardFormThirdPage))

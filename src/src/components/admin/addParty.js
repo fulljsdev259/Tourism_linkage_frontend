@@ -283,7 +283,8 @@ class EditRecord extends React.Component {
                             name="region" 
                             type="select" 
                             data={ ["Western Jamaica", "Central Jamaica", "Eastern Jamaica"] } 
-                            component={ renderSelectBox } label="Select Region" />
+                            component={ renderSelectBox } 
+                            label="Select Region" />
 
                     </div>
                 </div>

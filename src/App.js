@@ -1,3 +1,6 @@
+import 'typename-monkey-patch';
+
+
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.scss';

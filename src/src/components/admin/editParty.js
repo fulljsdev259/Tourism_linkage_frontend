@@ -2,9 +2,11 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Field, reset, reduxForm } from 'redux-form';
+import { Field, reset, reduxForm, FieldArray  } from 'redux-form';
 import { renderField, renderFieldTextArea, renderSelectBox } from './inputComponent'
 import './editrecord.scss'
+import {renderSelect} from '../wizard/renderField';
+import moment from 'moment'
 
 import { Modal, Button } from 'antd';
 
@@ -17,6 +19,61 @@ const form = reduxForm( {
     //validate
 
 } )
+
+function someFunction() {
+    let items = [];
+    new Array(24).fill().forEach((acc, index) => {
+        items.push(moment({ hour: index }).format('h:mm A'));
+        //items.push(moment({ hour: index, minute: 60 }).format('h:mm A'));
+    })
+    return items;
+}
+
+
+
+const renderWorkingDays = ({ fields, meta: { error, submitFailed } }) => {
+    // fields.push({}, {}, {}, {}, {}, {}, {})
+    return (<div>
+        <div>
+            <a href="" onClick={(e) => {
+                // e.preventDefault();
+                //fields.push({})
+            }}>
+                Bussiness Hours
+             </a>
+            {submitFailed && error && <span>{error}</span>}
+        </div>
+
+
+
+
+        {fields.map((member, index) => (
+            <div>
+
+                <div style={{
+
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+                    gridAutoRows: 'dense',
+                    gridGap: 10
+                }} >
+                    <Field
+                        name={`${member}.day`}
+                        type="select" data={["Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday", "Sunday"]} component={renderSelect}
+                        label="" />
+
+                    <Field
+                        name={`${member}.openClose`}
+                        type="select" data={["Open", "Closed"]} component={renderSelect} label="" />
+                    <Field name={`${member}.fromHour`} type="select" data={someFunction()} component={renderSelect} label="" />
+                    <Field name={`${member}.toHour`} type="select" data={someFunction()} component={renderSelect} label="" />
+                </div>
+            </div>
+        ))}
+    </div>
+    )
+}
+
 
 export const query = gql` query singleParty($name:String){
    
@@ -33,6 +90,12 @@ export const query = gql` query singleParty($name:String){
              longitude
              status
              description
+             workingDay{
+                  day
+      openClose
+      fromHour
+      toHour
+             }
         }
         
    
@@ -51,11 +114,11 @@ categories:$categories,description:$description,phoneNumber:$phoneNumber,tags:$t
 const mutation = gql`mutation editVendor1($dataId:String,$name:String,$tags: String,
 , $categories: String, $region: String, $description: String, ,$password:String,
 $address: String,
-$phoneNumber: String, $website: String, $latitude:String, $longitude:String, $status: String
+$phoneNumber: String, $website: String, $latitude:String, $longitude:String, $status: String,$workingDay:[workingDayInput]
 ){
         editVendor(name:$name,dataId:$dataId,password:$password,
         categories:$categories,description:$description,phoneNumber:$phoneNumber,tags:$tags,
-    region:$region,website:$website,address:$address, latitude:$latitude, longitude:$longitude,
+    region:$region,website:$website,address:$address, latitude:$latitude, longitude:$longitude,workingDay:$workingDay
     status:$status
         
         ){
@@ -229,6 +292,10 @@ class EditRecord extends React.Component {
                 </div>
             </div>
 
+
+            <FieldArray name="workingDay" component={renderWorkingDays} />
+
+
             <Modal
                 title="Notification"
                 visible={ this.state.visible }
@@ -246,7 +313,7 @@ class EditRecord extends React.Component {
                         name: data.name, dataId: id, tags: data.tags, address: data.address, phoneNumber: data.phoneNumber,
                         region: data.region, categories: data.categories, website: data.website, description: data.description,
                         latitude: data.latitude, longitude:data.longitude,
-                        status: data.status
+                        status: data.status,workingDay:data.workingDay
                     },
                     refetchQueries: [{query:query1}]
                 } )
@@ -282,7 +349,17 @@ const EditRecordWrapper = ( {  data,history } ) => {
         region: data.singleParty.region, phoneNumber: data.singleParty.phoneNumber, website: data.singleParty.website,
         description: data.singleParty.description, tags: data.singleParty.tags,
         latitude: data.singleParty.latitude, longitude: data.singleParty.longitude,
-        status: data.singleParty.status
+        status: data.singleParty.status, workingDay: data.singleParty.workingDay ? data.singleParty.workingDay : [
+            { day: "Monday", openClose: "Open", fromHour: "10 A.M", toHour: "17:00 P.M" },
+            { day: "Tuesday", openClose: "Open", fromHour: "10 A.M", toHour: "17:00 P.M" },
+            { day: "Wednesday", openClose: "Open", fromHour: "10 A.M", toHour: "17:00 P.M" },
+            { day: "Thrusday", openClose: "Open", fromHour: "10 A.M", toHour: "17:00 P.M" },
+            { day: "Friday", openClose: "Open", fromHour: "10 A.M", toHour: "17:00 P.M" },
+            { day: "Saturday", openClose: "Closed", fromHour: "10 A.M", toHour: "17:00 P.M" },
+            { day: "Sunday", openClose: "Closed", fromHour: "10 A.M", toHour: "17:00 P.M" },
+
+
+        ],
     }
     return <EditRecordForm refetch={data.refetch} initialValues={ initialValues } id={ data.singleParty._id } history={ history} />
 
