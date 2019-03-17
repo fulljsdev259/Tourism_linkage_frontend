@@ -5,59 +5,80 @@ import { renderField, renderSelect, renderTextarea, renderTag } from './renderFi
 import './index.scss';
 import checkMark from '../../images/icon/checkmark-green.svg'
 
-const adaptFileEventToValue = delegate => e => delegate( e.target.files[0] );
+const adaptFileEventToValue = delegate => e => delegate(e.target.files[0]);
 
-const adaptFileEventToValueMulti = delegate => e => delegate( e.target.files );
+const adaptFileEventToValueMulti = delegate => e => delegate(e.target.files);
 
-const FileInput = ( {
+const FileInput = ({
     input: { value: omitValue, multiple, onChange, onBlur, ...inputProps },
     meta: omitMeta,
     ...props
-} ) => {
+}) => {
     return (
 
         <input
 
-            onChange={ adaptFileEventToValue( onChange ) }
-            onBlur={ adaptFileEventToValue( onBlur ) }
+            onChange={adaptFileEventToValue(onChange)}
+            onBlur={adaptFileEventToValue(onBlur)}
             type="file"
-            { ...props.input }
-            { ...props }
+            {...props.input}
+            {...props}
         />
 
     );
 };
 
 
-const renderMembers = ( { fields, meta: { error, submitFailed } } ) => (
+
+const MultiFileInput = ({
+    input: { value: omitValue, multiple, onChange, onBlur, ...inputProps },
+    meta: omitMeta,
+    ...props
+}) => {
+    return (
+
+        <input
+            multiple={true}
+            onChange={adaptFileEventToValueMulti(onChange)}
+            onBlur={adaptFileEventToValueMulti(onBlur)}
+            type="file"
+            {...props.input}
+            {...props}
+        />
+
+    );
+};
+
+
+const renderMembers = ({ fields, meta: { error, submitFailed } }) => (
     <div>
         <div>
-            <a href="" onClick={ ( e ) => {
+            <a href="" onClick={(e) => {
                 e.preventDefault();
-                fields.push( {} )
-            } }>
+                fields.push({})
+            }}>
                 Add Photo
              </a>
-            { submitFailed && error && <span>{ error }</span> }
+            {submitFailed && error && <span>{error}</span>}
         </div>
-        { fields.map( ( member, index ) => (
-            <div style={ { display: 'flex', width: 400, padding: 10 } } key={ index }>
+        {fields.map((member, index) => (
+            <div style={{ display: 'flex', width: 400, padding: 10 }} key={index}>
                 <Field
-                    name={ `${ member }.firstName` }
+                    name={`${member}.firstName`}
                     type="file"
-                    component={ FileInput }
+                    component={MultiFileInput}
 
                 />
                 <button
                     type="button"
                     title="Remove Member"
-                    onClick={ () => fields.remove( index ) }
+                    onClick={() => fields.remove(index)}
                 >Remove</button>
 
 
 
             </div>
-        ) ) }
+        ))}
     </div>
 )
 
@@ -68,8 +89,8 @@ const renderMembers = ( { fields, meta: { error, submitFailed } } ) => (
 
 
 
-const renderError = ( { meta: { touched, error } } ) =>
-    touched && error ? <span>{ error }</span> : false
+const renderError = ({ meta: { touched, error } }) =>
+    touched && error ? <span>{error}</span> : false
 
 const WizardFormSecondPage = props => {
     const { handleSubmit, previousPage } = props
@@ -78,7 +99,7 @@ const WizardFormSecondPage = props => {
             <div className="inActiveHeader">
                 <div className="number">1</div>
                 <div className="subHeading">General information</div>
-                <img src={ checkMark } />
+                <img src={checkMark} />
             </div>
             <div className="form">
 
@@ -88,21 +109,21 @@ const WizardFormSecondPage = props => {
                         <div className="number">2</div>
                         <div className="subHeading">About your company</div>
                     </div>
-                    <form onSubmit={ handleSubmit } >
-                        <Field name="region" type="select" data={ ["Western Jamaica", "Central Jamaica", "Eastern Jamaica"] } component={ renderSelect } label="Select Region" />
+                    <form onSubmit={handleSubmit} >
+                        <Field name="region" type="select" data={["Western Jamaica", "Central Jamaica", "Eastern Jamaica"]} component={renderSelect} label="Select Region" />
                         <Field name="categories" type="select"
-                            data={ ['Food and Agro', 'Printing, Packaging and Paper', 'Minerals and Metal',
+                            data={['Food and Agro', 'Printing, Packaging and Paper', 'Minerals and Metal',
                                 'Electrical, Electronics and Automotive', 'Chemicals, Cosmetics and Pharmaceuticals',
-                                'Furniture, Wooden and Bedding', 'Textile and Sewn'] }
+                                'Furniture, Wooden and Bedding', 'Textile and Sewn']}
 
 
 
-                            component={ renderSelect } label="Select Manufacturer Type" />
+                            component={renderSelect} label="Select Manufacturer Type" />
                         {/*<Field name="typeOfCompany" type="text" component={ renderField } label="Type of your company" />*/}
-                        <Field name="description" type="textarea" component={ renderTextarea } label="Describe your company" />
-                        <Field name="tags" type="text" component={ renderTag } label="Tags" />
-                        <FieldArray name="photo" component={ renderMembers } />
-                        {/*  <Field name="photo" type="file" component={ FileInput } label="Tags" />*/ }
+                        <Field name="description" type="textarea" component={renderTextarea} label="Describe your company" />
+                        <Field name="tags" type="text" component={renderTag} label="Tags" />
+                        <FieldArray name="photo" component={renderMembers} />
+                        {/*  <Field name="photo" type="file" component={ FileInput } label="Tags" />*/}
 
                         <div>
                             <button type="submit" className="nextsignup">
@@ -121,9 +142,9 @@ const WizardFormSecondPage = props => {
     )
 }
 
-export default reduxForm( {
+export default reduxForm({
     form: 'wizard', //Form name is same
     destroyOnUnmount: false,
     forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
     validate
-} )( WizardFormSecondPage )
+})(WizardFormSecondPage)

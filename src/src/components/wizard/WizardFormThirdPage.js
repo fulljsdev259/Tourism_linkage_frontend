@@ -53,28 +53,28 @@ $facebook:String,$profile:String
 
 
 
-const Map1 = ReactMapboxGl( {
+const Map1 = ReactMapboxGl({
     accessToken: "pk.eyJ1Ijoia2VjaGVhbGV4cHJ0MiIsImEiOiJjam94azh4OHcyODByM3FqeHd1Nm43NWl6In0.0w8_b3fwLMXf8a1zSGgC2w"
-} );
+});
 
 // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
-Geocode.setApiKey( "AIzaSyDr1I4GNAiIlQbtz72Ydg4527vvyhL-tdE" );
+Geocode.setApiKey("AIzaSyDr1I4GNAiIlQbtz72Ydg4527vvyhL-tdE");
 
 // Enable or disable logs. Its optional.
 Geocode.enableDebug();
 
 
-const renderColorSelector = ( { input, meta: { touched, error } } ) => (
+const renderColorSelector = ({ input, meta: { touched, error } }) => (
     <div>
-        <select { ...input }>
+        <select {...input}>
             <option value="">Select a color...</option>
-            { colors.map( val => (
-                <option value={ val } key={ val }>
-                    { val }
+            {colors.map(val => (
+                <option value={val} key={val}>
+                    {val}
                 </option>
-            ) ) }
+            ))}
         </select>
-        { touched && error && <span>{ error }</span> }
+        {touched && error && <span>{error}</span>}
     </div>
 )
 
@@ -98,27 +98,27 @@ class WizardFormThirdPage extends React.Component {
         //     const data1 = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${data}&key=AIzaSyDr1I4GNAiIlQbtz72Ydg4527vvyhL-tdE`)
         //     console.log(data1)
         //    this.setState({lat:lat,lng:lng})   
-        Geocode.fromAddress( this.state.map ).then(
+        Geocode.fromAddress(this.state.map).then(
             response => {
                 const { lat, lng } = response.results[0].geometry.location;
-                this.setState( { lat: lat, lng: lng } );
+                this.setState({ lat: lat, lng: lng });
 
-                console.log( lat, lng );
+                console.log(lat, lng);
             },
             error => {
-                console.error( error );
+                console.error(error);
             }
         );
 
     }
 
     renderErrors = () => {
-        if( this.state.errors.length > 0 ){
+        if (this.state.errors.length > 0) {
             return (
                 <div className="company-list-error-message">
                     {
-                        this.state.errors.map((error, i ) => {
-                            return ( <div key={i}>*{error}</div>)
+                        this.state.errors.map((error, i) => {
+                            return (<div key={i}>*{error}</div>)
                         })
                     }
                 </div>
@@ -134,16 +134,16 @@ class WizardFormThirdPage extends React.Component {
 
         return (
             <div>
-                { this.state.apiCall ? <Loader /> : '' }
+                {this.state.apiCall ? <Loader /> : ''}
                 <div className="inActiveHeader">
                     <div className="number">1</div>
                     <div className="subHeading">General information</div>
-                    <img src={ checkMark } />
+                    <img src={checkMark} />
                 </div>
                 <div className="inActiveHeader">
                     <div className="number">2</div>
                     <div className="subHeading">About your company</div>
-                    <img src={ checkMark } />
+                    <img src={checkMark} />
                 </div>
                 <div className="form" >
                     <div className="form-1">
@@ -152,12 +152,12 @@ class WizardFormThirdPage extends React.Component {
                             <div className="subHeading">Contact information</div>
                         </div>
 
-                        <form onSubmit={ handleSubmit } encType="multipart/form-data">
+                        <form onSubmit={handleSubmit} encType="multipart/form-data">
 
                             <Field
                                 name="address"
                                 type="text"
-                                component={ renderField }
+                                component={renderField}
                                 label="Full address"
                             />
                             {/*
@@ -205,32 +205,32 @@ class WizardFormThirdPage extends React.Component {
                             <Field
                                 name="phoneNumber"
                                 type="text"
-                                component={ renderField }
+                                component={renderField}
                                 label="Phone number"
                             />
 
                             <Field
                                 name="facebook"
                                 type="text"
-                                component={ renderField }
+                                component={renderField}
                                 label="Facebook Url"
                             />
 
                             <Field
                                 name="instagram"
                                 type="text"
-                                component={ renderField }
+                                component={renderField}
                                 label="Instagram"
                             />
                             <Field
                                 name="fax"
                                 type="text"
-                                component={ renderField }
+                                component={renderField}
                                 label="Fax"
                             />  <Field
                                 name="website"
                                 type="text"
-                                component={ renderField }
+                                component={renderField}
                                 label="Company website"
                             />
                             {/*
@@ -240,9 +240,10 @@ class WizardFormThirdPage extends React.Component {
                             {this.renderErrors()}
 
                             <button type="button"
-                                onClick={ handleSubmit( async ( data ) => {
-                                    this.setState( { apiCall: true } );
-                                    const editData = await mutate( {
+                                onClick={handleSubmit(async (data) => {
+                                    this.setState({ apiCall: true });
+                                    console.log(data)
+                                    const editData = await mutate({
                                         variables: {
                                             name: data.name,
                                             fullName: data.fullName,
@@ -250,7 +251,7 @@ class WizardFormThirdPage extends React.Component {
                                             description: data.description,
                                             phoneNumber: data.phoneNumber,
                                             // address: this.state.map,
-                                            tags: data.tags ? ( data.tags ).toString() : '',
+                                            tags: data.tags ? (data.tags).toString() : '',
                                             region: data.region,
                                             website: data.website,
                                             address: data.address,
@@ -267,18 +268,18 @@ class WizardFormThirdPage extends React.Component {
                                         },
 
                                         //   refetchQueries: [{ query: query1 }]
-                                    } )
-                                    this.setState( { apiCall: false } );
+                                    })
+                                    this.setState({ apiCall: false });
                                     //   this.showModal();
 
-                                    if ( editData.data.addVendor.errors === null ) {
+                                    if (editData.data.addVendor.errors === null) {
                                         this.props.onSuccessCompanyListed();
                                         // this.setState( { errors: result.data.signUp.errors, } )
                                         // this.showModal()
                                         //commonError()
                                     }
                                     else {
-                                        this.setState( { errors: editData.data.addVendor.errors } )
+                                        this.setState({ errors: editData.data.addVendor.errors })
                                         // this.showModal()
                                         // this.props.onSuccessRegister();
                                     }
@@ -288,9 +289,9 @@ class WizardFormThirdPage extends React.Component {
 
 
 
-                                } ) }
+                                })}
 
-                                className="nextsignup" disabled={ pristine || submitting }>
+                                className="nextsignup" disabled={pristine || submitting}>
                                 CONTINUE
                              </button>
 
@@ -305,9 +306,9 @@ class WizardFormThirdPage extends React.Component {
 
 
 }
-export default reduxForm( {
+export default reduxForm({
     form: 'wizard', //Form name is same
     destroyOnUnmount: false,
     forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
     validate
-} )( graphql( mutation )( WizardFormThirdPage ) )
+})(graphql(mutation)(WizardFormThirdPage))
