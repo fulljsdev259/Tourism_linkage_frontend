@@ -115,7 +115,7 @@ const FileInput = ( {
     return (
 
         <input
-
+            multiple={true}
             onChange={ adaptFileEventToValue( onChange ) }
             onBlur={ adaptFileEventToValue( onBlur ) }
             type="file"

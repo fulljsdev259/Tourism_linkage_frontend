@@ -18,7 +18,7 @@ const form = reduxForm( {
 
 } )
 
-const query = gql` query singleParty($name:String){
+export const query = gql` query singleParty($name:String){
    
         singleParty(name:$name){
          _id
