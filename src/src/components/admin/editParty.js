@@ -76,7 +76,10 @@ const renderWorkingDays = ({ fields, meta: { error, submitFailed } }) => {
 
 
 export const query = gql` query singleParty($name:String){
-   
+        userAll{
+            _id
+            fullName
+        }
         singleParty(name:$name){
          _id
              name
@@ -84,6 +87,7 @@ export const query = gql` query singleParty($name:String){
              categories
              address
              phoneNumber
+            
              website
              tags
              latitude
@@ -92,10 +96,15 @@ export const query = gql` query singleParty($name:String){
              description
              workingDay{
                   day
-      openClose
-      fromHour
-      toHour
+                  openClose
+                  fromHour
+                  toHour
              }
+          
+             facebook
+        instagram
+        fax
+        email
         }
         
    
@@ -114,12 +123,21 @@ categories:$categories,description:$description,phoneNumber:$phoneNumber,tags:$t
 const mutation = gql`mutation editVendor1($dataId:String,$name:String,$tags: String,
 , $categories: String, $region: String, $description: String, ,$password:String,
 $address: String,
-$phoneNumber: String, $website: String, $latitude:String, $longitude:String, $status: String,$workingDay:[workingDayInput]
+$facebook:String,
+$instagram: String,
+$fax: String,
+$email:String
+$fullName:String,
+                $phoneNumber: String, $website: String, $latitude:String, $longitude:String, $status: String,$workingDay:[workingDayInput]
 ){
         editVendor(name:$name,dataId:$dataId,password:$password,
         categories:$categories,description:$description,phoneNumber:$phoneNumber,tags:$tags,
     region:$region,website:$website,address:$address, latitude:$latitude, longitude:$longitude,workingDay:$workingDay
-    status:$status
+    status:$status,facebook:$facebook,
+				instagram: $instagram,
+				fax: $fax,
+                email:$email,
+                fullName:$fullName
         
         ){
             party{
@@ -277,6 +295,50 @@ class EditRecord extends React.Component {
             </div>
             <div className="row">
                 <div className="col1">
+                    <div className="label">User name</div>
+                    <div className="input">
+                        <Field name='fullName' component={renderField} type="text" label="User Name" />
+
+                    </div>
+                </div>
+                <div className="col2">
+                    <div className="label">Facebook Url</div>
+                    <div className="input">
+                        <Field name='facebook' component={renderField} type="text" label="Facebook Url" />
+
+                    </div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col1">
+                    <div className="label">Instagram</div>
+                    <div className="input">
+                        <Field name='instagram' component={renderField} type="text" label="Instagram" />
+
+                    </div>
+                </div>
+                <div className="col2">
+                    <div className="label">Fax</div>
+                    <div className="input">
+                        <Field name='fax' component={renderField} type="text" label="Fax" />
+
+                    </div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col1">
+                    <div className="label">Email</div>
+                    <div className="input">
+                        <Field name='email' component={renderField} type="text" label="email" />
+
+                    </div>
+                </div>
+                <div className="col2">
+                  
+                </div>
+            </div>
+            <div className="row">
+                <div className="col1">
                     <div className="label">Description</div>
                     <div className="input">
                         <Field name='description' component={ renderFieldTextArea } type="text" label="Description" />
@@ -313,7 +375,12 @@ class EditRecord extends React.Component {
                         name: data.name, dataId: id, tags: data.tags, address: data.address, phoneNumber: data.phoneNumber,
                         region: data.region, categories: data.categories, website: data.website, description: data.description,
                         latitude: data.latitude, longitude:data.longitude,
-                        status: data.status,workingDay:data.workingDay
+                        status: data.status,workingDay:data.workingDay,
+                        facebook: data.facebook,
+                        instagram: data.instagram,
+                        fax: data.fax,
+                        email:data.email,
+                        fullName:data.fullName
                     },
                     refetchQueries: [{query:query1}]
                 } )
@@ -349,6 +416,11 @@ const EditRecordWrapper = ( {  data,history } ) => {
         region: data.singleParty.region, phoneNumber: data.singleParty.phoneNumber, website: data.singleParty.website,
         description: data.singleParty.description, tags: data.singleParty.tags,
         latitude: data.singleParty.latitude, longitude: data.singleParty.longitude,
+        fullName: data.userAll.filter(d => d._id === data.singleParty.userId) ? 
+        data.userAll.filter(d => d.userId === data.singleParty.userId)[0].fullName:'' , facebook: data.singleParty.facebook,
+        instagram: data.singleParty.instagram,
+        fax: data.singleParty.fax,
+        email: data.singleParty.email,
         status: data.singleParty.status, workingDay: data.singleParty.workingDay ? data.singleParty.workingDay : [
             { day: "Monday", openClose: "Open", fromHour: "10 A.M", toHour: "17:00 P.M" },
             { day: "Tuesday", openClose: "Open", fromHour: "10 A.M", toHour: "17:00 P.M" },

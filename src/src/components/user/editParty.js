@@ -2,18 +2,16 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Field, reset, reduxForm, FieldArray } from 'redux-form';
+import { Field, reset, reduxForm, FieldArray  } from 'redux-form';
 import { renderField, renderFieldTextArea, renderSelectBox } from './inputComponent'
 import './editrecord.scss'
+import {renderSelect} from '../wizard/renderField';
+import moment from 'moment'
 
 import { Modal, Button } from 'antd';
 
 import { query as query1} from './userDashIndex';
-
 import ManageSupplierImages from '../ManageSupplierImages';
-import { renderSelect } from '../wizard/renderField';
-import moment from 'moment'
-
 
 const form = reduxForm( {
     form: 'editSupplier',
@@ -77,8 +75,11 @@ const renderWorkingDays = ({ fields, meta: { error, submitFailed } }) => {
 }
 
 
-const query = gql` query singleParty($name:String){
-   
+export const query = gql` query singleParty($name:String){
+        userAll{
+            _id
+            fullName
+        }
         singleParty(name:$name){
          _id
              name
@@ -86,17 +87,24 @@ const query = gql` query singleParty($name:String){
              categories
              address
              phoneNumber
+            
              website
              tags
              latitude
              longitude
+             status
              description
              workingDay{
                   day
-      openClose
-      fromHour
-      toHour
+                  openClose
+                  fromHour
+                  toHour
              }
+          
+             facebook
+        instagram
+        fax
+        email
         }
         
    
@@ -113,13 +121,23 @@ categories:$categories,description:$description,phoneNumber:$phoneNumber,tags:$t
 */
 
 const mutation = gql`mutation editVendor1($dataId:String,$name:String,$tags: String,
-, $categories: String, $region: String, $description: String, 
+, $categories: String, $region: String, $description: String, ,$password:String,
 $address: String,
-$phoneNumber: String, $website: String,$workingDay:[workingDayInput]
+$facebook:String,
+$instagram: String,
+$fax: String,
+$email:String
+$fullName:String,
+                $phoneNumber: String, $website: String, $latitude:String, $longitude:String, $status: String,$workingDay:[workingDayInput]
 ){
-        editVendor(name:$name,dataId:$dataId,
+        editVendor(name:$name,dataId:$dataId,password:$password,
         categories:$categories,description:$description,phoneNumber:$phoneNumber,tags:$tags,
-    region:$region,website:$website,address:$address,workingDay:$workingDay
+    region:$region,website:$website,address:$address, latitude:$latitude, longitude:$longitude,workingDay:$workingDay
+    status:$status,facebook:$facebook,
+				instagram: $instagram,
+				fax: $fax,
+                email:$email,
+                fullName:$fullName
         
         ){
             party{
@@ -132,6 +150,14 @@ $phoneNumber: String, $website: String,$workingDay:[workingDayInput]
     }
 
 `
+
+
+
+
+
+
+
+
 
 
 
@@ -148,27 +174,47 @@ class EditRecord extends React.Component {
         this.props.refetch()
     }
 
-
     handleOk = ( e ) => {
+        console.log( e );
         this.setState( {
             visible: false,
         } );
-        this.props.history.push('/user')
+        this.props.history.push('/admin')
     }
 
     handleCancel = ( e ) => {
+        console.log( e );
         this.setState( {
             visible: false,
         } );
-        this.props.history.push( '/user' )
+        this.props.history.push( '/admin' )
     }
     render() {
-        const { match, mutate, handleSubmit, id, initialValues } = this.props;
-
-
+        const { match, mutate, handleSubmit, id } = this.props;
         return <div className="editRecord">
 
             <h2>Edit Record</h2>
+
+            <div className="row">
+                <div className="col1">
+                    <div className="label">Status</div>
+                    <div className="input">
+                        <Field 
+                            name="status" 
+                            type="select" 
+                            data={ ["Published", "Unpublished"] } 
+                            component={ renderSelectBox } label="Set Status" 
+                        />
+                    </div>
+                </div>
+                <div className="col2">
+                    <div className="label">Password</div>
+                    <div className="input">
+                        <Field name='password' component={renderField} type="text" label="Password" />
+
+                    </div>
+                </div>
+            </div>
 
             <div className="row">
                 <div className="col1">
@@ -189,16 +235,13 @@ class EditRecord extends React.Component {
                             component={ renderSelectBox } label="Select Region" />
 
                     </div>
-
-
                 </div>
             </div>
             <div className="row">
                 <div className="col1">
-                    <div className="label">Select Manufacturer Type</div>
+                    <div className="label">Category</div>
                     <div className="input">
                         {/*<Field name='categories' component={ renderField } type="text" label="Category" />*/}
-
                         <Field name="categories" type="select"
                             data={ ['Food and Agro', 'Printing, Packaging and Paper', 'Minerals and Metal',
                                 'Electrical, Electronics and Automotive', 'Chemicals, Cosmetics and Pharmaceuticals',
@@ -220,20 +263,6 @@ class EditRecord extends React.Component {
             </div>
             <div className="row">
                 <div className="col1">
-                    <div className="label">Latitude</div>
-                    <div className="input" style={{fontWeight:'bold'}}>
-                        {initialValues.latitude || '--'}
-                    </div>
-                </div>
-                <div className="col2">
-                    <div className="label">Longitude</div>
-                    <div className="input" style={{fontWeight:'bold'}}>
-                        {initialValues.longitude || '--'}
-                    </div>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col1">
                     <div className="label">Phone Number</div>
                     <div className="input">
                         <Field name='phoneNumber' component={ renderField } type="text" label="Phone Number" />
@@ -246,6 +275,66 @@ class EditRecord extends React.Component {
                         <Field name='website' component={ renderField } type="text" label="Website" />
 
                     </div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col1">
+                    <div className="label">Latitude</div>
+                    <div className="input">
+                        <Field name='latitude' component={ renderField } type="text" label="Latitude" />
+
+                    </div>
+                </div>
+                <div className="col2">
+                    <div className="label">Longitude</div>
+                    <div className="input">
+                        <Field name='longitude' component={ renderField } type="text" label="Longitude" />
+
+                    </div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col1">
+                    <div className="label">User name</div>
+                    <div className="input">
+                        <Field name='fullName' component={renderField} type="text" label="User Name" />
+
+                    </div>
+                </div>
+                <div className="col2">
+                    <div className="label">Facebook Url</div>
+                    <div className="input">
+                        <Field name='facebook' component={renderField} type="text" label="Facebook Url" />
+
+                    </div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col1">
+                    <div className="label">Instagram</div>
+                    <div className="input">
+                        <Field name='instagram' component={renderField} type="text" label="Instagram" />
+
+                    </div>
+                </div>
+                <div className="col2">
+                    <div className="label">Fax</div>
+                    <div className="input">
+                        <Field name='fax' component={renderField} type="text" label="Fax" />
+
+                    </div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col1">
+                    <div className="label">Email</div>
+                    <div className="input">
+                        <Field name='email' component={renderField} type="text" label="email" />
+
+                    </div>
+                </div>
+                <div className="col2">
+                  
                 </div>
             </div>
             <div className="row">
@@ -265,7 +354,10 @@ class EditRecord extends React.Component {
                 </div>
             </div>
 
+
             <FieldArray name="workingDay" component={renderWorkingDays} />
+
+
             <Modal
                 title="Notification"
                 visible={ this.state.visible }
@@ -276,21 +368,28 @@ class EditRecord extends React.Component {
                 
             </Modal>
             <button className="buttonSave" onClick={ handleSubmit( async ( data ) => {
-               console.log(data)
+             //   console.log( mutate )
                 const editData = await mutate( {
                     variables: {
+                        password:data.password?data.password:'',
                         name: data.name, dataId: id, tags: data.tags, address: data.address, phoneNumber: data.phoneNumber,
-                        region: data.region, categories: data.categories, website: data.website, 
-                        description: data.description,
-                        workingDay:data.workingDay
+                        region: data.region, categories: data.categories, website: data.website, description: data.description,
+                        latitude: data.latitude, longitude:data.longitude,
+                        status: data.status,workingDay:data.workingDay,
+                        facebook: data.facebook,
+                        instagram: data.instagram,
+                        fax: data.fax,
+                        email:data.email,
+                        fullName:data.fullName
                     },
                     refetchQueries: [{query:query1}]
                 } )
-console.log(editData)
+
                 this.showModal();
 
 
             } ) }>Save</button>
+            {/*<button className="buttonBack">Back</button>*/}
 
             <div className="row">
                 <div className="col1">
@@ -300,7 +399,6 @@ console.log(editData)
                 </div>
             </div>
 
-            
 
 
 
@@ -313,12 +411,17 @@ const EditRecordWrapper = ( {  data,history } ) => {
     if ( data.loading ) {
         return <span>Loading ....</span>
     }
-
-    
     const initialValues = {
         name: data.singleParty.name, categories: data.singleParty.categories, address: data.singleParty.address,
         region: data.singleParty.region, phoneNumber: data.singleParty.phoneNumber, website: data.singleParty.website,
-        description: data.singleParty.description, tags: data.singleParty.tags, workingDay: data.singleParty.workingDay ? data.singleParty.workingDay: [
+        description: data.singleParty.description, tags: data.singleParty.tags,
+        latitude: data.singleParty.latitude, longitude: data.singleParty.longitude,
+        fullName: data.userAll.filter(d => d._id === data.singleParty.userId) ? 
+        data.userAll.filter(d => d.userId === data.singleParty.userId)[0].fullName:'' , facebook: data.singleParty.facebook,
+        instagram: data.singleParty.instagram,
+        fax: data.singleParty.fax,
+        email: data.singleParty.email,
+        status: data.singleParty.status, workingDay: data.singleParty.workingDay ? data.singleParty.workingDay : [
             { day: "Monday", openClose: "Open", fromHour: "10 A.M", toHour: "17:00 P.M" },
             { day: "Tuesday", openClose: "Open", fromHour: "10 A.M", toHour: "17:00 P.M" },
             { day: "Wednesday", openClose: "Open", fromHour: "10 A.M", toHour: "17:00 P.M" },
@@ -329,9 +432,7 @@ const EditRecordWrapper = ( {  data,history } ) => {
 
 
         ],
-        latitude: data.singleParty.latitude, longitude: data.singleParty.longitude
     }
-
     return <EditRecordForm refetch={data.refetch} initialValues={ initialValues } id={ data.singleParty._id } history={ history} />
 
 
