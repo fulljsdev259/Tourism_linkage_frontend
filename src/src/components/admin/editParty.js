@@ -209,6 +209,18 @@ class EditRecord extends React.Component {
                     </div>
                 </div>
                 <div className="col2">
+                  
+                </div>
+            </div>
+  <div className="row">
+                <div className="col1">
+                    <div className="label">Email</div>
+                    <div className="input">
+                        <Field name='email' component={renderField} type="text" label="email" />
+
+                    </div>
+                </div>
+                <div className="col2">
                     <div className="label">Password</div>
                     <div className="input">
                         <Field name='password' component={renderField} type="text" label="Password" />
@@ -216,17 +228,16 @@ class EditRecord extends React.Component {
                     </div>
                 </div>
             </div>
-
             <div className="row">
                 <div className="col1">
-                    <div className="label">Name</div>
+                    <div className="label">Business Name</div>
                     <div className="input">
-                        <Field name='name' component={ renderField } type="text" label="Name" />
+                        <Field name='name' component={ renderField } type="text" label="Business Name" />
 
                     </div>
                 </div>
                 <div className="col2">
-                    <div className="label">Region</div>
+                    <div className="label">Business Region</div>
                     <div className="input">
                         {/*<Field name='region' component={ renderField } type="text" label="Region" />*/}
                         <Field 
@@ -240,7 +251,7 @@ class EditRecord extends React.Component {
             </div>
             <div className="row">
                 <div className="col1">
-                    <div className="label">Category</div>
+                    <div className="label">Business Category</div>
                     <div className="input">
                         {/*<Field name='categories' component={ renderField } type="text" label="Category" />*/}
                         <Field name="categories" type="select"
@@ -255,7 +266,7 @@ class EditRecord extends React.Component {
                     </div>
                 </div>
                 <div className="col2">
-                    <div className="label">Address</div>
+                    <div className="label">Business Address</div>
                     <div className="input">
                         <Field name='address' component={ renderFieldTextArea } type="text" label="Address" />
 
@@ -296,9 +307,9 @@ class EditRecord extends React.Component {
             </div>
             <div className="row">
                 <div className="col1">
-                    <div className="label">User name</div>
+                    <div className="label">Full Name </div>
                     <div className="input">
-                        <Field name='fullName' component={renderField} type="text" label="User Name" />
+                        <Field name='fullName' component={renderField} type="text" label="Full Name" />
 
                     </div>
                 </div>
@@ -326,18 +337,7 @@ class EditRecord extends React.Component {
                     </div>
                 </div>
             </div>
-            <div className="row">
-                <div className="col1">
-                    <div className="label">Email</div>
-                    <div className="input">
-                        <Field name='email' component={renderField} type="text" label="email" />
-
-                    </div>
-                </div>
-                <div className="col2">
-                  
-                </div>
-            </div>
+          
             <div className="row">
                 <div className="col1">
                     <div className="label">Description</div>
