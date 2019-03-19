@@ -35,9 +35,10 @@ class AdminDash extends React.Component {
                     <div className="item" onClick={ () => history.push( '/user' ) }>Dashboard</div>
                 </div>
                 <div className="content">
-                    <Route exact path="/user" render={ props => ( <Index parties={loggedUserData.userParties || []} /> ) } />
+                    <Route exact path="/user" render={ props => ( <Index /> ) } />
                     <Route path="/user/editSupplier/:name" render={ props => {
-                        let isUserParty = false;
+                        {/* let isUserParty = false;
+                        console.log(loggedUserData)
                         loggedUserData.userParties.map((i) => {
                             if(i._id == props.match.params.name){
                                 isUserParty = true;
@@ -45,7 +46,7 @@ class AdminDash extends React.Component {
                         })
                         if( !isUserParty ){
                             props.history.push('/user')
-                        }
+                        } */}
                         return ( <EditParty parties={loggedUserData.userParties || []} /> ) }
                     } />
                     <Route path="/user/addSupplier" component={ AddParty } />

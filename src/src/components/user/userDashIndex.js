@@ -10,7 +10,7 @@ import gql from 'graphql-tag';
 
 export const query = gql`{
    
-        party{
+        partyData{
             _id
              name
              region
@@ -76,18 +76,18 @@ class AdminDash extends React.Component {
 
         const { data, match, history, parties } = this.props;
 
-        let dbParties = this.props.data.party || [];
+        // let dbParties = this.props.data.party || [];
 
-        let partiesToShow = [];
-        if( dbParties.length > 0 && parties.length > 0 ){
-            dbParties.map(i => {
-                parties.map(j => {
-                    if( i._id == j._id ){
-                        partiesToShow.push( i )
-                    }
-                })
-            })
-        }
+        // let partiesToShow = [];
+        // if( dbParties.length > 0 && parties.length > 0 ){
+        //     dbParties.map(i => {
+        //         parties.map(j => {
+        //             if( i._id == j._id ){
+        //                 partiesToShow.push( i )
+        //             }
+        //         })
+        //     })
+        // }
 
 
 
@@ -95,16 +95,17 @@ class AdminDash extends React.Component {
             return <span>Loading ..</span>
         }
         let row1 = [];
-        partiesToShow.map( ( data, i ) => {
-            //const c=data.passPercentage;
-            //console.log( data )
+        // partiesToShow.map( ( data, i ) => {
+        //     //const c=data.passPercentage;
+        //     //console.log( data )
 
 
-
+    if(this.props.data.partyData){
             row1.push( ...[{
-                id: i + 1, name: data.name, region: data.region, categories: data.categories,
+                id:  1, name: this.props.data.partyData.name, region: this.props.data.partyData.region, 
+                categories: this.props.data.partyData.categories,
                 action: <div style={ { display: 'flex', justifyContent: 'center' } }>
-                    <button onClick={ () => history.push( `${ match.url }/editSupplier/${ data._id }` ) }
+                    <button onClick={ () => history.push( `${ match.url }/editSupplier/${ this.props.data.partyData._id }` ) }
                         style={ {
                             fontSize: 17, border: 'none', borderRadius: 5,
                             backgroundColor: '#1289A7', color: '#fff', padding: "7px 15px"
@@ -112,8 +113,9 @@ class AdminDash extends React.Component {
                         
                 </div>
             }] )
-            return row1;
-        } )
+    }
+        //     return row1;
+        // } )
 
         const columns = [
             {

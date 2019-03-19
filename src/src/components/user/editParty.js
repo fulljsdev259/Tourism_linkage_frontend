@@ -79,6 +79,7 @@ export const query = gql` query singleParty($name:String){
         userAll{
             _id
             fullName
+            email
         }
         singleParty(name:$name){
          _id
@@ -411,13 +412,15 @@ const EditRecordWrapper = ( {  data,history } ) => {
     if ( data.loading ) {
         return <span>Loading ....</span>
     }
+    console.log(data.singleParty.email)
+    console.log(data.userAll.filter(d => d.email== data.singleParty.email))
     const initialValues = {
         name: data.singleParty.name, categories: data.singleParty.categories, address: data.singleParty.address,
         region: data.singleParty.region, phoneNumber: data.singleParty.phoneNumber, website: data.singleParty.website,
         description: data.singleParty.description, tags: data.singleParty.tags,
         latitude: data.singleParty.latitude, longitude: data.singleParty.longitude,
-        fullName: data.userAll.filter(d => d._id === data.singleParty.userId) ? 
-        data.userAll.filter(d => d.userId === data.singleParty.userId)[0].fullName:'' , facebook: data.singleParty.facebook,
+        fullName: data.userAll.filter(d => d.email === data.singleParty.email) ? 
+        data.userAll.filter(d => d.email === data.singleParty.email)[0].fullName:'' , facebook: data.singleParty.facebook,
         instagram: data.singleParty.instagram,
         fax: data.singleParty.fax,
         email: data.singleParty.email,
