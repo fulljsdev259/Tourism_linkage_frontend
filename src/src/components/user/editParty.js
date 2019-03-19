@@ -427,13 +427,13 @@ const EditRecordWrapper = ( {  data,history } ) => {
         fax: data.singleParty.fax,
         email: data.singleParty.email,
         status: data.singleParty.status, workingDay: data.singleParty.workingDay ? data.singleParty.workingDay : [
-            { day: "Monday", openClose: "Open", fromHour: "10 A.M", toHour: "17:00 P.M" },
-            { day: "Tuesday", openClose: "Open", fromHour: "10 A.M", toHour: "17:00 P.M" },
-            { day: "Wednesday", openClose: "Open", fromHour: "10 A.M", toHour: "17:00 P.M" },
-            { day: "Thrusday", openClose: "Open", fromHour: "10 A.M", toHour: "17:00 P.M" },
-            { day: "Friday", openClose: "Open", fromHour: "10 A.M", toHour: "17:00 P.M" },
-            { day: "Saturday", openClose: "Closed", fromHour: "10 A.M", toHour: "17:00 P.M" },
-            { day: "Sunday", openClose: "Closed", fromHour: "10 A.M", toHour: "17:00 P.M" },
+            { day: "Monday", openClose: "Open",fromHour: "10:00 AM", toHour: "5:00 PM" },
+            { day: "Tuesday", openClose: "Open", fromHour: "10:00 AM", toHour: "5:00 PM"},
+            { day: "Wednesday", openClose: "Open", fromHour: "10:00 AM", toHour: "5:00 PM" },
+            { day: "Thrusday", openClose: "Open", fromHour: "10:00 AM", toHour: "5:00 PM"},
+            { day: "Friday", openClose: "Open", fromHour: "10:00 AM", toHour: "5:00 PM" },
+            { day: "Saturday", openClose: "Closed", fromHour: "10:00 AM", toHour: "5:00 PM" },
+            { day: "Sunday", openClose: "Closed", fromHour: "10:00 AM", toHour: "5:00 PM" },
 
 
         ],
