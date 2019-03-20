@@ -29,7 +29,10 @@ export default class GetListed extends React.Component {
         return (
             <div className="content">
                 <div className="heading">Thank you for submitting you company.</div>
-                <p>You will be contacted by one of our agent with 2 working days to verify your submission</p>
+                <p>You will be contacted by one of our agent within 2 working days to verify your submission.
+
+
+</p>
                 <div className="heading">
                     <button type="button" className="button" onClick={() => this.props.closeModal()}> OK</button>
                 </div>

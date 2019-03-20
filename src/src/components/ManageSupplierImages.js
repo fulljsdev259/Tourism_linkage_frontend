@@ -59,6 +59,7 @@ class ManageSupplierImages extends React.Component {
 
     render() {
         const { mutate, handleSubmit, previousPage, id } = this.props
+        console.log(id)
         return (
             <div style={{ marginBottom: "30px", marginTop: "30px" }}>
                 <h2>Manage Images</h2>
