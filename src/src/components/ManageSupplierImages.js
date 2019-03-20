@@ -104,7 +104,7 @@ class ManageSupplierImages extends React.Component {
                                 file: files,
                                 id: id,
                                 deletePhotoName: ""
-                            }, refetchQueries: [{ query: query1 }]
+                            }
                         })
                         this.props.reset('manageSupplierImages')
                         this.props.data.refetch()

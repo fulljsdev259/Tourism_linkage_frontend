@@ -1,17 +1,11 @@
 #!/bin/bash
-cd build
-tar czf myApp.tar.gz  static/ asset-manifest.json favicon.png index.html
-scp -P 1982 myApp.tar.gz root@142.44.214.146:/home/admin/web/alexdemo.go4itest.com
-rm myApp.tar.gz
-ssh -T  -p 1982 root@142.44.214.146 << 'ENDSSH'
-cd ../
-cd /home/admin/web/alexdemo.go4itest.com
-rm -rf public_html
-mkdir public_html
-tar -xf myApp.tar.gz -C public_html
-rm -rf myApp.tar.gz
-#rm myApp.tar.gz
-#cd myApp
-#sudo npm install
-#pm2 start myApp
+
+zip build.zip  build/* 
+scp -i ~/Desktop/Tourism_Linkages_front_end.pem  build.zip  ubuntu@ec2-3-17-143-130.us-east-2.compute.amazonaws.com:~/
+rm -rf build.zip
+ssh -i Tourism_Linkages_front_end.pem ubuntu@ec2-3-17-143-130.us-east-2.compute.amazonaws.com << 'ENDSSH'
+unzip build.zip
+cp -R build/*  /var/www/html/app/
+rm -rf build.zip
+rm -rf build
 ENDSSH
