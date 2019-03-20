@@ -418,7 +418,7 @@ const EditRecordWrapper = ( {  data,history } ) => {
         region: data.singleParty.region, phoneNumber: data.singleParty.phoneNumber, website: data.singleParty.website,
         description: data.singleParty.description, tags: data.singleParty.tags,
         latitude: data.singleParty.latitude, longitude: data.singleParty.longitude,
-        fullName: data.userAll.filter(d => d.email === data.singleParty.email) ? 
+        fullName: data.userAll.filter(d => d.email === data.singleParty.email).length>0 ? 
         data.userAll.filter(d => d.email === data.singleParty.email)[0].fullName:'' , facebook: data.singleParty.facebook,
         instagram: data.singleParty.instagram,
         fax: data.singleParty.fax,
