@@ -10,7 +10,7 @@ import { url } from '../config/constant';
 class EventPopUp extends React.Component {
   constructor() {
     super();
-    this.state = { currentImage: 0, lightboxIsOpen: true };
+    this.state = { currentImage: 0, lightboxIsOpen: false };
     this.closeLightbox = this.closeLightbox.bind(this);
     this.openLightbox = this.openLightbox.bind(this);
     this.gotoNext = this.gotoNext.bind(this);
