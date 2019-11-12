@@ -10,21 +10,24 @@ import { Provider } from 'react-redux';
 import { store } from './src/config/store'
 import { ApolloProvider } from 'react-apollo';
 import { HashRouter as Router } from 'react-router-dom';
-import { client } from './src/config/apolloClient'
+import { client } from './src/config/apolloClient';
+import HttpsRedirect from 'react-https-redirect';
 
 
 class App extends Component {
   render() {
     return (
-      <ApolloProvider client={ client }>
-        <Provider store={ store }>
-          <Router>
-            <div className="App">
-              <Home />
-            </div>
-          </Router>
-        </Provider>
-      </ApolloProvider >
+      <HttpsRedirect>
+        <ApolloProvider client={ client }>
+          <Provider store={ store }>
+            <Router>
+              <div className="App">
+                <Home />
+              </div>
+            </Router>
+          </Provider>
+        </ApolloProvider >
+      </HttpsRedirect>
     );
   }
 }
