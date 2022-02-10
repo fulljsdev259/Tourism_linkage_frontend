@@ -14,7 +14,7 @@
     "apollo-upload-client": "^10.0.0",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
-    "node-sass": "^4.10.0",
+    "node-sass": "^7.0.0",
     "react": "^16.6.3",
     "react-animated-slider": "^1.1.4",
     "react-apollo": "^2.3.2",
